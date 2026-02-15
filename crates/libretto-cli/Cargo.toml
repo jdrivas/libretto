@@ -19,3 +19,6 @@ libretto-model = { workspace = true }
 libretto-acquire = { workspace = true }
 libretto-parse = { workspace = true }
 libretto-validate = { workspace = true }
+
+[build-dependencies]
+chrono = "0.4"

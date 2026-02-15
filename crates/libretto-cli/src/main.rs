@@ -4,7 +4,7 @@ use clap::{Parser, Subcommand};
 #[derive(Parser)]
 #[command(name = "libretto")]
 #[command(about = "Opera libretto acquisition, parsing, and validation tool")]
-#[command(version)]
+#[command(version = concat!(env!("CARGO_PKG_VERSION"), " (", env!("BUILD_HASH"), ")"))]
 struct Cli {
     /// Enable verbose logging
     #[arg(short, long, global = true)]
