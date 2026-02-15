@@ -90,6 +90,7 @@ fn normalize_for_match(text: &str) -> String {
         .replace('\u{201c}', "\"")
         .replace('\u{201d}', "\"")
         .replace("...", "…")
+        .replace([',', ';', ':', '!', '?'], "")
         .replace("  ", " ")
         .trim()
         .to_string()
