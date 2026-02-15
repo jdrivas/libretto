@@ -26,7 +26,7 @@ enum Commands {
         #[arg(short, long)]
         opera: String,
 
-        /// Languages to fetch, comma-separated (e.g., "it,en") or "it+en" for side-by-side
+        /// Languages: "it,en" (opera-arias, one per page), "en+it" (murashev, side-by-side), or "en"/"it" (single language)
         #[arg(short, long, default_value = "it,en")]
         lang: String,
 

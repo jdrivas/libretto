@@ -9,23 +9,39 @@ const BASE_URL: &str = "https://www.murashev.com/opera";
 
 /// Acquire libretto text from murashev.com.
 ///
-/// Fetches the side-by-side bilingual page, parses the HTML table,
-/// extracts pre-aligned paragraph pairs, and writes output files.
+/// Supports two modes:
+/// - **Bilingual** (`lang` = "en+it"): fetches side-by-side page, writes both text files + bilingual.json.
+/// - **Single language** (`lang` = "en" or "it"): fetches single-language page, writes one text file.
 ///
-/// `opera` should be the murashev URL slug (e.g., "Le_nozze_di_Figaro").
-/// `lang` should be "en+it", "it+en", "it+de", etc.
+/// `opera` is a standard identifier (e.g., "mozart/le-nozze-di-figaro") or murashev slug.
 pub async fn acquire(opera: &str, lang: &str, output_dir: &str) -> Result<()> {
-    let (lang1, lang2) = parse_lang_pair(lang)?;
-    let url = build_url(opera, &lang1, &lang2);
+    if lang.contains('+') {
+        // Bilingual mode
+        let (lang1, lang2) = parse_lang_pair(lang)?;
+        let url = build_url_bilingual(opera, &lang1, &lang2);
 
-    tracing::info!(url = %url, "Fetching from murashev.com");
-    let html = fetch_page(&url).await?;
-    tracing::info!(bytes = html.len(), "Received HTML");
+        tracing::info!(url = %url, "Fetching bilingual page from murashev.com");
+        let html = fetch_page(&url).await?;
+        tracing::info!(bytes = html.len(), "Received HTML");
 
-    let libretto = parse_bilingual_page(&html, &url, opera, &lang1, &lang2)?;
-    tracing::info!(rows = libretto.rows.len(), "Parsed bilingual rows");
+        let libretto = parse_bilingual_page(&html, &url, opera, &lang1, &lang2)?;
+        tracing::info!(rows = libretto.rows.len(), "Parsed bilingual rows");
 
-    output::write_acquired(&libretto, output_dir)?;
+        output::write_acquired(&libretto, output_dir)?;
+    } else {
+        // Single language mode
+        let lang_info = LangInfo::from_code(lang)?;
+        let url = build_url_single(opera, &lang_info);
+
+        tracing::info!(url = %url, lang = %lang, "Fetching single-language page from murashev.com");
+        let html = fetch_page(&url).await?;
+        tracing::info!(bytes = html.len(), "Received HTML");
+
+        let elements = parse_single_page(&html)?;
+        tracing::info!(elements = elements.len(), "Parsed content elements");
+
+        output::write_single_language(&elements, lang, &url, opera, output_dir)?;
+    }
 
     Ok(())
 }
@@ -94,12 +110,17 @@ fn normalize_opera_slug(opera: &str) -> String {
         .join("_")
 }
 
-fn build_url(opera: &str, lang1: &LangInfo, lang2: &LangInfo) -> String {
+fn build_url_bilingual(opera: &str, lang1: &LangInfo, lang2: &LangInfo) -> String {
     let slug = normalize_opera_slug(opera);
     format!(
         "{BASE_URL}/{slug}_libretto_{}_{}",
         lang1.url_name, lang2.url_name
     )
+}
+
+fn build_url_single(opera: &str, lang: &LangInfo) -> String {
+    let slug = normalize_opera_slug(opera);
+    format!("{BASE_URL}/{slug}_libretto_{}", lang.url_name)
 }
 
 async fn fetch_page(url: &str) -> Result<String> {
@@ -173,6 +194,37 @@ fn parse_bilingual_page(
         lang2: lang2.code.clone(),
         rows,
     })
+}
+
+/// Parse a single-language murashev page.
+///
+/// Single-language pages use a `table[width="80%"]` with one `<td>` per row.
+fn parse_single_page(html: &str) -> Result<Vec<ContentElement>> {
+    let document = Html::parse_document(html);
+
+    // Single-language table: width="80%"
+    let table_sel =
+        Selector::parse(r#"table[width="80%"][border="0"]"#)
+            .expect("valid selector");
+    let table = document
+        .select(&table_sel)
+        .next()
+        .context("Could not find the single-language table (width=\"80%\")")?;
+
+    let tr_sel = Selector::parse("tr").expect("valid selector");
+    let td_sel = Selector::parse("td").expect("valid selector");
+
+    let mut all_elements = Vec::new();
+
+    for tr in table.select(&tr_sel) {
+        if let Some(td) = tr.select(&td_sel).next() {
+            let elements = extract_cell_content(td);
+            all_elements.extend(elements);
+            all_elements.push(ContentElement::BlankLine);
+        }
+    }
+
+    Ok(all_elements)
 }
 
 /// Extract structured content elements from a single `<td>` cell.
@@ -450,20 +502,30 @@ mod tests {
     }
 
     #[test]
-    fn test_build_url() {
+    fn test_build_url_bilingual() {
         let l1 = LangInfo { code: "en".into(), url_name: "English".into() };
         let l2 = LangInfo { code: "it".into(), url_name: "Italian".into() };
         // Standard format
-        let url = build_url("mozart/le-nozze-di-figaro", &l1, &l2);
+        let url = build_url_bilingual("mozart/le-nozze-di-figaro", &l1, &l2);
         assert_eq!(
             url,
             "https://www.murashev.com/opera/Le_Nozze_Di_Figaro_libretto_English_Italian"
         );
         // Native murashev slug
-        let url2 = build_url("Le_nozze_di_Figaro", &l1, &l2);
+        let url2 = build_url_bilingual("Le_nozze_di_Figaro", &l1, &l2);
         assert_eq!(
             url2,
             "https://www.murashev.com/opera/Le_nozze_di_Figaro_libretto_English_Italian"
+        );
+    }
+
+    #[test]
+    fn test_build_url_single() {
+        let l = LangInfo { code: "en".into(), url_name: "English".into() };
+        let url = build_url_single("mozart/le-nozze-di-figaro", &l);
+        assert_eq!(
+            url,
+            "https://www.murashev.com/opera/Le_Nozze_Di_Figaro_libretto_English"
         );
     }
 
