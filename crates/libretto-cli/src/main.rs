@@ -89,6 +89,21 @@ enum TimingAction {
         output: String,
     },
 
+    /// Estimate segment timings from track durations and word counts
+    Estimate {
+        /// Path to the base libretto JSON
+        #[arg(short, long)]
+        base: String,
+
+        /// Path to the timing overlay JSON (must have duration_seconds on tracks)
+        #[arg(short, long)]
+        timing: String,
+
+        /// Output path for the updated timing overlay with estimated segment_times
+        #[arg(short, long, default_value = "estimated.timing.json")]
+        output: String,
+    },
+
     /// Merge a base libretto + timing overlay into an interchange libretto
     Merge {
         /// Path to the base libretto JSON
@@ -185,6 +200,40 @@ async fn main() -> Result<()> {
                     segments = seg_count,
                     path = %output,
                     "Wrote scaffold timing overlay"
+                );
+            }
+            TimingAction::Estimate { base, timing, output } => {
+                tracing::info!(base = %base, timing = %timing, output = %output, "Estimating segment timings");
+                let base_contents = std::fs::read_to_string(&base)?;
+                let base_libretto: libretto_model::BaseLibretto =
+                    serde_json::from_str(&base_contents)?;
+                let overlay_contents = std::fs::read_to_string(&timing)?;
+                let overlay: libretto_model::TimingOverlay =
+                    serde_json::from_str(&overlay_contents)?;
+
+                let result = libretto_model::estimate::estimate_timings(&base_libretto, &overlay);
+                for w in &result.warnings {
+                    tracing::warn!("{w}");
+                }
+                for stat in &result.stats {
+                    tracing::info!(
+                        track = %stat.track_title,
+                        disc = ?stat.disc_number,
+                        num = ?stat.track_number,
+                        duration = stat.duration,
+                        segments = stat.segments_estimated,
+                        word_weight = format!("{:.1}", stat.total_word_weight),
+                        "Estimated"
+                    );
+                }
+                let total_segs: usize = result.stats.iter().map(|s| s.segments_estimated).sum();
+                let json = serde_json::to_string_pretty(&result.overlay)?;
+                std::fs::write(&output, &json)?;
+                tracing::info!(
+                    segments = total_segs,
+                    tracks = result.stats.len(),
+                    path = %output,
+                    "Wrote estimated timing overlay"
                 );
             }
             TimingAction::Merge { base, timing, output } => {
