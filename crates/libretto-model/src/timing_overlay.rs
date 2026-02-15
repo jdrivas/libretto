@@ -57,6 +57,11 @@ pub struct TrackTiming {
     pub duration_seconds: Option<f64>,
     /// Which musical number IDs from the base libretto this track contains.
     pub number_ids: Vec<String>,
+    /// Resolved first segment ID for this track (from anchor matching).
+    /// When set, this track's segments start at this segment rather than
+    /// at the first segment of the referenced number_ids.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub start_segment_id: Option<String>,
     /// Timed segment references, ordered by start time.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub segment_times: Vec<SegmentTime>,
@@ -133,6 +138,7 @@ mod tests {
                 track_number: Some(2),
                 duration_seconds: Some(195.0),
                 number_ids: vec!["no-1-duettino".to_string()],
+                start_segment_id: None,
                 segment_times: vec![
                     SegmentTime {
                         segment_id: "no-1-001".to_string(),

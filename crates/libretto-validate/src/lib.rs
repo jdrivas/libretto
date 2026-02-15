@@ -289,6 +289,7 @@ mod tests {
                 track_number: None,
                 duration_seconds: None,
                 number_ids: vec!["no-1".to_string()],
+                start_segment_id: None,
                 segment_times: vec![
                     SegmentTime { segment_id: "no-1-001".to_string(), start: 0.0 },
                     SegmentTime { segment_id: "no-1-999".to_string(), start: 5.0 }, // unknown
@@ -319,6 +320,7 @@ mod tests {
                 track_number: None,
                 duration_seconds: None,
                 number_ids: vec![],
+                start_segment_id: None,
                 segment_times: vec![
                     SegmentTime { segment_id: "a".to_string(), start: 10.0 },
                     SegmentTime { segment_id: "b".to_string(), start: 5.0 }, // out of order
@@ -389,6 +391,7 @@ mod tests {
                 track_number: None,
                 duration_seconds: None,
                 number_ids: vec!["no-1".to_string()],
+                start_segment_id: None,
                 segment_times: vec![],
             }],
         };
@@ -417,6 +420,7 @@ mod tests {
                 track_number: None,
                 duration_seconds: None,
                 number_ids: vec!["no-1".to_string()],
+                start_segment_id: None,
                 segment_times: vec![],
             }],
         };

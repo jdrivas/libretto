@@ -184,6 +184,7 @@ pub fn scaffold_overlay(base: &BaseLibretto, base_path: &str) -> TimingOverlay {
                 track_number: None,
                 duration_seconds: None,
                 number_ids: vec![number.id.clone()],
+                start_segment_id: None,
                 segment_times,
             }
         })
@@ -267,6 +268,7 @@ mod tests {
                 track_number: Some(2),
                 duration_seconds: Some(195.0),
                 number_ids: vec!["no-1-duettino".to_string()],
+                start_segment_id: None,
                 segment_times: vec![
                     SegmentTime { segment_id: "no-1-duettino-001".to_string(), start: 0.0 },
                     SegmentTime { segment_id: "no-1-duettino-002".to_string(), start: 12.5 },

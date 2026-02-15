@@ -89,6 +89,21 @@ enum TimingAction {
         output: String,
     },
 
+    /// Resolve track title anchors to segment IDs (populates start_segment_id)
+    Resolve {
+        /// Path to the base libretto JSON
+        #[arg(short, long)]
+        base: String,
+
+        /// Path to the timing overlay JSON
+        #[arg(short, long)]
+        timing: String,
+
+        /// Output path for the resolved timing overlay
+        #[arg(short, long, default_value = "resolved.timing.json")]
+        output: String,
+    },
+
     /// Estimate segment timings from track durations and word counts
     Estimate {
         /// Path to the base libretto JSON
@@ -200,6 +215,60 @@ async fn main() -> Result<()> {
                     segments = seg_count,
                     path = %output,
                     "Wrote scaffold timing overlay"
+                );
+            }
+            TimingAction::Resolve { base, timing, output } => {
+                tracing::info!(base = %base, timing = %timing, output = %output, "Resolving track anchors");
+                let base_contents = std::fs::read_to_string(&base)?;
+                let base_libretto: libretto_model::BaseLibretto =
+                    serde_json::from_str(&base_contents)?;
+                let overlay_contents = std::fs::read_to_string(&timing)?;
+                let overlay: libretto_model::TimingOverlay =
+                    serde_json::from_str(&overlay_contents)?;
+
+                let result = libretto_model::resolve::resolve_anchors(&base_libretto, &overlay);
+                for w in &result.warnings {
+                    tracing::warn!("{w}");
+                }
+                let mut resolved = 0;
+                let mut unresolved = 0;
+                for res in &result.resolutions {
+                    let disc = res.disc_number.unwrap_or(0);
+                    let track = res.track_number.unwrap_or(0);
+                    match &res.resolved_segment_id {
+                        Some(seg_id) => {
+                            let method = res.match_method.as_ref()
+                                .map(|m| format!("{:?}", m))
+                                .unwrap_or_default();
+                            tracing::info!(
+                                disc = disc,
+                                track = track,
+                                segment = %seg_id,
+                                method = %method,
+                                anchors = ?res.anchors,
+                                "Resolved"
+                            );
+                            resolved += 1;
+                        }
+                        None => {
+                            tracing::warn!(
+                                disc = disc,
+                                track = track,
+                                anchors = ?res.anchors,
+                                "Unresolved"
+                            );
+                            unresolved += 1;
+                        }
+                    }
+                }
+                let json = serde_json::to_string_pretty(&result.overlay)?;
+                std::fs::write(&output, &json)?;
+                tracing::info!(
+                    resolved = resolved,
+                    unresolved = unresolved,
+                    total = result.resolutions.len(),
+                    path = %output,
+                    "Wrote resolved timing overlay"
                 );
             }
             TimingAction::Estimate { base, timing, output } => {

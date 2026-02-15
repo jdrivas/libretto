@@ -329,6 +329,7 @@ mod tests {
                 track_number: Some(1),
                 duration_seconds: Some(duration),
                 number_ids: vec!["no-1".to_string()],
+                start_segment_id: None,
                 segment_times: vec![],
             }],
         }
@@ -444,6 +445,7 @@ mod tests {
                     track_number: Some(1),
                     duration_seconds: Some(50.0), // half the time
                     number_ids: vec!["no-2".to_string()],
+                    start_segment_id: None,
                     segment_times: vec![],
                 },
                 TrackTiming {
@@ -452,6 +454,7 @@ mod tests {
                     track_number: Some(2),
                     duration_seconds: Some(50.0), // half the time
                     number_ids: vec!["no-2".to_string()],
+                    start_segment_id: None,
                     segment_times: vec![],
                 },
             ],
