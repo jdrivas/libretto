@@ -6,12 +6,25 @@ use clap::{Parser, Subcommand};
 #[command(about = "Opera libretto acquisition, parsing, and validation tool")]
 #[command(version = concat!(env!("CARGO_PKG_VERSION"), " (", env!("BUILD_HASH"), ")"))]
 struct Cli {
-    /// Enable verbose logging
-    #[arg(short, long, global = true)]
-    verbose: bool,
+    /// Log level: error, warn, info, debug, trace
+    #[arg(long, global = true, default_value = "info", value_enum)]
+    log_level: LogLevel,
+
+    /// Use UTC timestamps instead of local time
+    #[arg(long, global = true)]
+    utc: bool,
 
     #[command(subcommand)]
     command: Commands,
+}
+
+#[derive(Clone, clap::ValueEnum)]
+enum LogLevel {
+    Error,
+    Warn,
+    Info,
+    Debug,
+    Trace,
 }
 
 #[derive(Subcommand)]
@@ -69,17 +82,31 @@ enum AcquireSource {
 async fn main() -> Result<()> {
     let cli = Cli::parse();
 
-    let default_filter = if cli.verbose {
-        "debug,selectors=warn,html5ever=warn"
-    } else {
-        "info"
+    // Map log level, suppressing noisy HTML-parsing crates at debug/trace
+    let level = match cli.log_level {
+        LogLevel::Error => "error",
+        LogLevel::Warn  => "warn",
+        LogLevel::Info  => "info",
+        LogLevel::Debug => "debug,selectors=warn,html5ever=warn",
+        LogLevel::Trace => "trace,selectors=warn,html5ever=warn",
     };
-    tracing_subscriber::fmt()
-        .with_env_filter(
-            tracing_subscriber::EnvFilter::try_from_default_env()
-                .unwrap_or_else(|_| tracing_subscriber::EnvFilter::new(default_filter)),
-        )
-        .init();
+    let env_filter = tracing_subscriber::EnvFilter::try_from_default_env()
+        .unwrap_or_else(|_| tracing_subscriber::EnvFilter::new(level));
+
+    // Timestamp format: 2026-02-14 19:44:09.123 -08:00
+    let time_format = "%Y-%m-%d %H:%M:%S%.3f %:z";
+
+    if cli.utc {
+        tracing_subscriber::fmt()
+            .with_env_filter(env_filter)
+            .with_timer(tracing_subscriber::fmt::time::ChronoUtc::new(time_format.to_string()))
+            .init();
+    } else {
+        tracing_subscriber::fmt()
+            .with_env_filter(env_filter)
+            .with_timer(tracing_subscriber::fmt::time::ChronoLocal::new(time_format.to_string()))
+            .init();
+    }
 
     match cli.command {
         Commands::Acquire {
