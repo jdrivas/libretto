@@ -69,11 +69,15 @@ enum AcquireSource {
 async fn main() -> Result<()> {
     let cli = Cli::parse();
 
-    let filter = if cli.verbose { "debug" } else { "info" };
+    let default_filter = if cli.verbose {
+        "debug,selectors=warn,html5ever=warn"
+    } else {
+        "info"
+    };
     tracing_subscriber::fmt()
         .with_env_filter(
             tracing_subscriber::EnvFilter::try_from_default_env()
-                .unwrap_or_else(|_| tracing_subscriber::EnvFilter::new(filter)),
+                .unwrap_or_else(|_| tracing_subscriber::EnvFilter::new(default_filter)),
         )
         .init();
 

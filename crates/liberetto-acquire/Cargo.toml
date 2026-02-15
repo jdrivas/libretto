@@ -8,6 +8,7 @@ license.workspace = true
 [dependencies]
 reqwest = { workspace = true }
 scraper = { workspace = true }
+ego-tree = "0.10"
 tokio = { workspace = true }
 unicode-normalization = { workspace = true }
 anyhow = { workspace = true }
