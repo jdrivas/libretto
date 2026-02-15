@@ -201,6 +201,7 @@ pub fn scaffold_overlay(base: &BaseLibretto, base_path: &str) -> TimingOverlay {
         },
         contributors: Vec::new(),
         track_timings,
+        omitted_numbers: Vec::new(),
     }
 }
 
@@ -259,6 +260,7 @@ mod tests {
                 album_title: Some("Le nozze di Figaro".to_string()),
             },
             contributors: vec![],
+            omitted_numbers: vec![],
             track_timings: vec![TrackTiming {
                 track_title: "Cinque... dieci...".to_string(),
                 disc_number: Some(1),

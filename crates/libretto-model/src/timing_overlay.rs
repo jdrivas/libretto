@@ -14,6 +14,9 @@ pub struct TimingOverlay {
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub contributors: Vec<Contributor>,
     pub track_timings: Vec<TrackTiming>,
+    /// Numbers from the base libretto that this recording does not perform.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub omitted_numbers: Vec<OmittedNumber>,
 }
 
 /// Metadata about the specific recording this timing is for.
@@ -59,6 +62,16 @@ pub struct TrackTiming {
     pub segment_times: Vec<SegmentTime>,
 }
 
+/// A musical number explicitly declared as not performed in this recording.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct OmittedNumber {
+    /// The number ID from the base libretto (e.g., "no-24-aria").
+    pub number_id: String,
+    /// Human-readable reason for the omission.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub reason: Option<String>,
+}
+
 /// A single segment's timing within a track.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SegmentTime {
@@ -75,6 +88,22 @@ impl TimingOverlay {
             .iter()
             .flat_map(|t| t.segment_times.iter().map(|s| s.segment_id.as_str()))
             .collect()
+    }
+
+    /// Get all number IDs referenced across all tracks.
+    pub fn covered_number_ids(&self) -> Vec<&str> {
+        let mut ids: Vec<&str> = self.track_timings
+            .iter()
+            .flat_map(|t| t.number_ids.iter().map(|s| s.as_str()))
+            .collect();
+        ids.sort();
+        ids.dedup();
+        ids
+    }
+
+    /// Get all explicitly omitted number IDs.
+    pub fn omitted_number_ids(&self) -> Vec<&str> {
+        self.omitted_numbers.iter().map(|o| o.number_id.as_str()).collect()
     }
 }
 
@@ -114,6 +143,10 @@ mod tests {
                         start: 12.5,
                     },
                 ],
+            }],
+            omitted_numbers: vec![OmittedNumber {
+                number_id: "no-24-aria".to_string(),
+                reason: Some("Traditional cut".to_string()),
             }],
         }
     }

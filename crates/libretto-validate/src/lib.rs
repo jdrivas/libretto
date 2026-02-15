@@ -20,6 +20,15 @@ pub enum ValidationError {
     #[error("segment time {0}s is negative")]
     NegativeTime(f64),
 
+    #[error("number '{0}' is neither covered by any track nor declared as omitted")]
+    UnaccountedNumber(String),
+
+    #[error("omitted number '{0}' does not exist in the base libretto")]
+    UnknownOmittedNumber(String),
+
+    #[error("number '{0}' is both covered by a track and declared as omitted")]
+    ConflictingCoverage(String),
+
     #[error("{0}")]
     Other(String),
 }
@@ -102,14 +111,54 @@ pub fn validate_timing_overlay(
     let mut errors = validate_timing_overlay_standalone(overlay)?;
 
     // Check that all referenced segment IDs exist in the base libretto
-    let base_ids: HashSet<&str> = base.segment_ids().into_iter().collect();
+    let base_seg_ids: HashSet<&str> = base.segment_ids().into_iter().collect();
     for track in &overlay.track_timings {
         for st in &track.segment_times {
-            if !base_ids.contains(st.segment_id.as_str()) {
+            if !base_seg_ids.contains(st.segment_id.as_str()) {
                 errors.push(ValidationError::UnknownSegmentId(st.segment_id.clone()));
             }
         }
     }
+
+    // Number coverage analysis
+    let base_number_ids: HashSet<&str> = base.numbers.iter().map(|n| n.id.as_str()).collect();
+    let covered: HashSet<&str> = overlay.covered_number_ids().into_iter().collect();
+    let omitted: HashSet<&str> = overlay.omitted_number_ids().into_iter().collect();
+
+    // Check for omitted numbers that don't exist in the base
+    for id in &omitted {
+        if !base_number_ids.contains(id) {
+            errors.push(ValidationError::UnknownOmittedNumber(id.to_string()));
+        }
+    }
+
+    // Check for numbers that are both covered and omitted
+    for id in covered.intersection(&omitted) {
+        errors.push(ValidationError::ConflictingCoverage(id.to_string()));
+    }
+
+    // Check for unaccounted numbers (neither covered nor omitted)
+    let accounted: HashSet<&str> = covered.union(&omitted).copied().collect();
+    let mut unaccounted: Vec<&str> = base_number_ids.difference(&accounted).copied().collect();
+    unaccounted.sort();
+    for id in &unaccounted {
+        errors.push(ValidationError::UnaccountedNumber(id.to_string()));
+    }
+
+    // Log coverage summary
+    let coverage = CoverageReport {
+        total: base_number_ids.len(),
+        covered: covered.len(),
+        omitted: omitted.len(),
+        unaccounted: unaccounted.len(),
+    };
+    tracing::info!(
+        total = coverage.total,
+        covered = coverage.covered,
+        omitted = coverage.omitted,
+        unaccounted = coverage.unaccounted,
+        "Number coverage"
+    );
 
     if !errors.is_empty() {
         for e in &errors {
@@ -118,6 +167,15 @@ pub fn validate_timing_overlay(
     }
 
     Ok(errors)
+}
+
+/// Summary of how well a timing overlay covers the base libretto.
+#[derive(Debug, Clone)]
+pub struct CoverageReport {
+    pub total: usize,
+    pub covered: usize,
+    pub omitted: usize,
+    pub unaccounted: usize,
 }
 
 /// Validate a timing overlay for internal consistency (without a base libretto).
@@ -224,6 +282,7 @@ mod tests {
                 album_title: None,
             },
             contributors: vec![],
+            omitted_numbers: vec![],
             track_timings: vec![TrackTiming {
                 track_title: "Track 1".to_string(),
                 disc_number: None,
@@ -253,6 +312,7 @@ mod tests {
                 album_title: None,
             },
             contributors: vec![],
+            omitted_numbers: vec![],
             track_timings: vec![TrackTiming {
                 track_title: "Track 1".to_string(),
                 disc_number: None,
@@ -267,5 +327,100 @@ mod tests {
         };
         let errors = validate_timing_overlay_standalone(&overlay).unwrap();
         assert!(errors.iter().any(|e| matches!(e, ValidationError::SegmentsUnordered(_))));
+    }
+
+    #[test]
+    fn test_unaccounted_number() {
+        // Base has "no-1" but overlay doesn't cover or omit it
+        let libretto = sample_libretto();
+        let overlay = TimingOverlay {
+            version: "1.0".to_string(),
+            base_libretto: "test".to_string(),
+            recording: RecordingMetadata {
+                conductor: None, orchestra: None, year: None, label: None, album_title: None,
+            },
+            contributors: vec![],
+            omitted_numbers: vec![],
+            track_timings: vec![], // no tracks at all
+        };
+        let errors = validate_timing_overlay(&overlay, &libretto).unwrap();
+        assert!(errors.iter().any(|e| matches!(e, ValidationError::UnaccountedNumber(_))));
+    }
+
+    #[test]
+    fn test_omitted_number_valid() {
+        // Base has "no-1", overlay declares it omitted — should be clean
+        let libretto = sample_libretto();
+        let overlay = TimingOverlay {
+            version: "1.0".to_string(),
+            base_libretto: "test".to_string(),
+            recording: RecordingMetadata {
+                conductor: None, orchestra: None, year: None, label: None, album_title: None,
+            },
+            contributors: vec![],
+            omitted_numbers: vec![OmittedNumber {
+                number_id: "no-1".to_string(),
+                reason: Some("Traditional cut".to_string()),
+            }],
+            track_timings: vec![],
+        };
+        let errors = validate_timing_overlay(&overlay, &libretto).unwrap();
+        assert!(errors.is_empty(), "Expected no errors, got: {:?}", errors);
+    }
+
+    #[test]
+    fn test_conflicting_coverage() {
+        // Number is both covered by a track AND declared omitted
+        let libretto = sample_libretto();
+        let overlay = TimingOverlay {
+            version: "1.0".to_string(),
+            base_libretto: "test".to_string(),
+            recording: RecordingMetadata {
+                conductor: None, orchestra: None, year: None, label: None, album_title: None,
+            },
+            contributors: vec![],
+            omitted_numbers: vec![OmittedNumber {
+                number_id: "no-1".to_string(),
+                reason: None,
+            }],
+            track_timings: vec![TrackTiming {
+                track_title: "Track 1".to_string(),
+                disc_number: None,
+                track_number: None,
+                duration_seconds: None,
+                number_ids: vec!["no-1".to_string()],
+                segment_times: vec![],
+            }],
+        };
+        let errors = validate_timing_overlay(&overlay, &libretto).unwrap();
+        assert!(errors.iter().any(|e| matches!(e, ValidationError::ConflictingCoverage(_))));
+    }
+
+    #[test]
+    fn test_unknown_omitted_number() {
+        // Overlay declares a number omitted that doesn't exist in the base
+        let libretto = sample_libretto();
+        let overlay = TimingOverlay {
+            version: "1.0".to_string(),
+            base_libretto: "test".to_string(),
+            recording: RecordingMetadata {
+                conductor: None, orchestra: None, year: None, label: None, album_title: None,
+            },
+            contributors: vec![],
+            omitted_numbers: vec![OmittedNumber {
+                number_id: "no-99-nonexistent".to_string(),
+                reason: None,
+            }],
+            track_timings: vec![TrackTiming {
+                track_title: "Track 1".to_string(),
+                disc_number: None,
+                track_number: None,
+                duration_seconds: None,
+                number_ids: vec!["no-1".to_string()],
+                segment_times: vec![],
+            }],
+        };
+        let errors = validate_timing_overlay(&overlay, &libretto).unwrap();
+        assert!(errors.iter().any(|e| matches!(e, ValidationError::UnknownOmittedNumber(_))));
     }
 }
