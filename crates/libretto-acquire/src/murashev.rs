@@ -36,7 +36,7 @@ fn parse_lang_pair(lang: &str) -> Result<(LangInfo, LangInfo)> {
     let parts: Vec<&str> = lang.split('+').collect();
     anyhow::ensure!(
         parts.len() == 2,
-        "Language pair must be in format 'en+it', got '{lang}'"
+        "murashev requires a language pair in format 'en+it' (use '+' separator), got '{lang}'"
     );
     let lang1 = LangInfo::from_code(parts[0])?;
     let lang2 = LangInfo::from_code(parts[1])?;
@@ -65,9 +65,39 @@ impl LangInfo {
     }
 }
 
+/// Convert a standard opera identifier like "mozart/le-nozze-di-figaro"
+/// into a murashev URL slug like "Le_Nozze_Di_Figaro".
+///
+/// Also accepts a slug that's already in murashev format (contains underscores).
+fn normalize_opera_slug(opera: &str) -> String {
+    // Strip composer prefix if present (e.g., "mozart/le-nozze-di-figaro" → "le-nozze-di-figaro")
+    let slug = opera.rsplit('/').next().unwrap_or(opera);
+
+    // If it already contains underscores, assume it's already in murashev format
+    if slug.contains('_') {
+        return slug.to_string();
+    }
+
+    // Convert hyphens to underscores and title-case each word
+    slug.split('-')
+        .map(|word| {
+            let mut chars = word.chars();
+            match chars.next() {
+                None => String::new(),
+                Some(c) => {
+                    let upper: String = c.to_uppercase().collect();
+                    upper + chars.as_str()
+                }
+            }
+        })
+        .collect::<Vec<_>>()
+        .join("_")
+}
+
 fn build_url(opera: &str, lang1: &LangInfo, lang2: &LangInfo) -> String {
+    let slug = normalize_opera_slug(opera);
     format!(
-        "{BASE_URL}/{opera}_libretto_{}_{}",
+        "{BASE_URL}/{slug}_libretto_{}_{}",
         lang1.url_name, lang2.url_name
     )
 }
@@ -401,12 +431,38 @@ mod tests {
     }
 
     #[test]
+    fn test_normalize_opera_slug() {
+        // Standard format → murashev slug
+        assert_eq!(
+            normalize_opera_slug("mozart/le-nozze-di-figaro"),
+            "Le_Nozze_Di_Figaro"
+        );
+        // Already in murashev format (has underscores) → pass through
+        assert_eq!(
+            normalize_opera_slug("Le_nozze_di_Figaro"),
+            "Le_nozze_di_Figaro"
+        );
+        // No composer prefix
+        assert_eq!(
+            normalize_opera_slug("le-nozze-di-figaro"),
+            "Le_Nozze_Di_Figaro"
+        );
+    }
+
+    #[test]
     fn test_build_url() {
         let l1 = LangInfo { code: "en".into(), url_name: "English".into() };
         let l2 = LangInfo { code: "it".into(), url_name: "Italian".into() };
-        let url = build_url("Le_nozze_di_Figaro", &l1, &l2);
+        // Standard format
+        let url = build_url("mozart/le-nozze-di-figaro", &l1, &l2);
         assert_eq!(
             url,
+            "https://www.murashev.com/opera/Le_Nozze_Di_Figaro_libretto_English_Italian"
+        );
+        // Native murashev slug
+        let url2 = build_url("Le_nozze_di_Figaro", &l1, &l2);
+        assert_eq!(
+            url2,
             "https://www.murashev.com/opera/Le_nozze_di_Figaro_libretto_English_Italian"
         );
     }
