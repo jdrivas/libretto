@@ -7,6 +7,7 @@ use std::collections::HashMap;
 
 use crate::base_libretto::{BaseLibretto, Segment};
 use crate::interchange::{InterchangeLibretto, InterchangeOpera, InterchangeSegment, InterchangeTrack};
+use crate::resolve;
 use crate::timing_overlay::{TimingOverlay, TrackTiming};
 
 /// Merge a base libretto with a timing overlay to produce an interchange libretto.
@@ -44,9 +45,16 @@ pub fn merge(base: &BaseLibretto, overlay: &TimingOverlay) -> MergeResult {
         year: base.opera.year,
     };
 
+    // Build resolve infrastructure for recitative classification
+    let resolve_candidates = resolve::build_segment_index(base);
+    let all_nids: Vec<String> = overlay.covered_number_ids().iter().map(|s| s.to_string()).collect();
+
     let tracks: Vec<InterchangeTrack> = overlay.track_timings.iter()
         .enumerate()
-        .map(|(i, track)| merge_track(track, i, &segment_map, &segment_context, &overlay.recording, &mut warnings))
+        .map(|(i, track)| merge_track(
+            track, i, &segment_map, &segment_context,
+            &overlay.recording, &resolve_candidates, &all_nids, &mut warnings,
+        ))
         .collect();
 
     let total_segments: usize = tracks.iter().map(|t| t.segments.len()).sum();
@@ -77,11 +85,28 @@ fn merge_track(
     segment_map: &HashMap<&str, &Segment>,
     segment_context: &HashMap<&str, (&str, Option<&str>)>,
     recording: &crate::timing_overlay::RecordingMetadata,
+    resolve_candidates: &[resolve::SegCandidate<'_>],
+    all_nids: &[String],
     warnings: &mut Vec<String>,
 ) -> InterchangeTrack {
+    // Classify title sections and build segment_id → is_recitative map
+    let title_anchors = resolve::classify_title_anchors(&track.track_title);
+    let mut section_seg_ids: Vec<(String, bool)> = Vec::new();
+    for ta in &title_anchors {
+        if let Some((seg_id, _)) = resolve::match_anchor(&ta.anchor, all_nids, resolve_candidates) {
+            section_seg_ids.push((seg_id, ta.is_recitative));
+        }
+    }
+
+    let mut current_is_recitative = false;
     let segments: Vec<InterchangeSegment> = track.segment_times.iter()
         .enumerate()
         .map(|(j, st)| {
+            // Update recitative state at section boundaries
+            if let Some(pos) = section_seg_ids.iter().position(|(sid, _)| sid == &st.segment_id) {
+                current_is_recitative = section_seg_ids[pos].1;
+            }
+
             let base_seg = segment_map.get(st.segment_id.as_str());
             if base_seg.is_none() {
                 warnings.push(format!(
@@ -99,12 +124,19 @@ fn merge_track(
                 track.duration_seconds
             };
 
+            let mut seg_type = base_seg
+                .map(|s| format!("{:?}", s.segment_type).to_lowercase())
+                .unwrap_or_else(|| "sung".to_string());
+
+            // Override "sung" to "recitative" based on track title classification
+            if current_is_recitative && seg_type == "sung" {
+                seg_type = "recitative".to_string();
+            }
+
             InterchangeSegment {
                 start: st.start,
                 end,
-                segment_type: base_seg
-                    .map(|s| format!("{:?}", s.segment_type).to_lowercase())
-                    .unwrap_or_else(|| "sung".to_string()),
+                segment_type: seg_type,
                 character: base_seg.and_then(|s| s.character.clone()),
                 text: base_seg.and_then(|s| s.text.clone()),
                 translation: base_seg.and_then(|s| s.translation.clone()),

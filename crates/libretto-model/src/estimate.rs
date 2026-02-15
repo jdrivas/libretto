@@ -7,6 +7,7 @@
 use std::collections::HashMap;
 
 use crate::base_libretto::{BaseLibretto, MusicalNumber, SegmentType};
+use crate::resolve;
 use crate::timing_overlay::{SegmentTime, TimingOverlay, TrackTiming};
 
 /// Result of an estimation pass.
@@ -33,6 +34,10 @@ pub struct TrackEstimateStats {
 
 /// Minimum weight for segments with no text (directions, interludes).
 const MIN_SEGMENT_WEIGHT: f64 = 0.5;
+
+/// Recitative segments are spoken-sung at roughly 2× the pace of sung text,
+/// so their word weight is discounted by this factor.
+const RECITATIVE_DISCOUNT: f64 = 0.5;
 
 /// Calculate word weight for a segment's text.
 fn word_weight(text: &Option<String>, seg_type: &SegmentType) -> f64 {
@@ -85,6 +90,10 @@ fn estimate_with_boundaries(base: &BaseLibretto, overlay: &TimingOverlay) -> Est
         .enumerate()
         .map(|(i, s)| (s.id.as_str(), i))
         .collect();
+
+    // Build resolve infrastructure once for recitative classification
+    let resolve_candidates = resolve::build_segment_index(base);
+    let all_nids: Vec<String> = covered.iter().map(|s| s.to_string()).collect();
 
     for (i, track) in overlay.track_timings.iter().enumerate() {
         // Skip tracks that already have segment_times
@@ -143,8 +152,31 @@ fn estimate_with_boundaries(base: &BaseLibretto, overlay: &TimingOverlay) -> Est
             continue;
         }
 
-        let track_segments = &all_segments[start_pos..end_pos];
-        let segment_times = distribute_segments(track_segments, duration);
+        // Classify title sections and resolve sub-boundaries for recitative discount
+        let section_marks = resolve_section_marks(
+            &track.track_title, start_pos, end_pos,
+            &seg_index, &resolve_candidates, &all_nids,
+        );
+
+        // Build adjusted weights: recitative segments get discounted
+        let track_segments: Vec<WeightedSegment> = all_segments[start_pos..end_pos]
+            .iter()
+            .enumerate()
+            .map(|(j, seg)| {
+                let global_pos = start_pos + j;
+                let is_recit = section_marks.iter()
+                    .rev()
+                    .find(|(pos, _)| *pos <= global_pos)
+                    .map(|(_, recit)| *recit)
+                    .unwrap_or(false);
+                WeightedSegment {
+                    id: seg.id.clone(),
+                    weight: if is_recit { seg.weight * RECITATIVE_DISCOUNT } else { seg.weight },
+                }
+            })
+            .collect();
+
+        let segment_times = distribute_segments(&track_segments, duration);
 
         let stat = TrackEstimateStats {
             track_title: track.track_title.clone(),
@@ -159,6 +191,33 @@ fn estimate_with_boundaries(base: &BaseLibretto, overlay: &TimingOverlay) -> Est
     }
 
     EstimateResult { overlay: result_overlay, stats, warnings }
+}
+
+/// Resolve title section anchors to global segment positions, returning
+/// (position, is_recitative) pairs sorted by position.
+fn resolve_section_marks(
+    title: &str,
+    start_pos: usize,
+    end_pos: usize,
+    seg_index: &HashMap<&str, usize>,
+    candidates: &[resolve::SegCandidate<'_>],
+    all_nids: &[String],
+) -> Vec<(usize, bool)> {
+    let title_anchors = resolve::classify_title_anchors(title);
+    let mut marks: Vec<(usize, bool)> = Vec::new();
+
+    for ta in &title_anchors {
+        if let Some((seg_id, _)) = resolve::match_anchor(&ta.anchor, all_nids, candidates) {
+            if let Some(&pos) = seg_index.get(seg_id.as_str()) {
+                if pos >= start_pos && pos < end_pos {
+                    marks.push((pos, ta.is_recitative));
+                }
+            }
+        }
+    }
+
+    marks.sort_by_key(|(pos, _)| *pos);
+    marks
 }
 
 /// Number-based estimation (legacy): uses `number_ids` to assign segments

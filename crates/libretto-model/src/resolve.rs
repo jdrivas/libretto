@@ -54,7 +54,7 @@ pub enum MatchMethod {
 
 /// Extract quoted strings from a track title.
 /// Handles both straight quotes and typographic quotes.
-fn extract_anchors(title: &str) -> Vec<String> {
+pub(crate) fn extract_anchors(title: &str) -> Vec<String> {
     let mut anchors = Vec::new();
     let mut chars = title.chars().peekable();
 
@@ -96,8 +96,64 @@ fn normalize_for_match(text: &str) -> String {
         .to_string()
 }
 
+/// A classified anchor from a track title, tagged as recitative or not.
+#[derive(Debug, Clone)]
+pub struct TitleAnchor {
+    /// Whether this anchor is in a recitative section of the title.
+    pub is_recitative: bool,
+    /// The quoted anchor text.
+    pub anchor: String,
+}
+
+/// Parse a track title and classify each quoted anchor as recitative or not.
+///
+/// Examines the text preceding each quoted string to determine if it falls
+/// under a "recitativo" label. Keywords like "aria", "duetto", "cavatina"
+/// indicate non-recitative (sung) sections.
+pub fn classify_title_anchors(title: &str) -> Vec<TitleAnchor> {
+    let anchors = extract_anchors(title);
+    let mut result = Vec::new();
+    let mut search_from = 0;
+
+    for anchor in &anchors {
+        if let Some(pos) = title[search_from..].find(anchor.as_str()) {
+            let abs_pos = search_from + pos;
+            let context = title[search_from..abs_pos].to_lowercase();
+            result.push(TitleAnchor {
+                is_recitative: is_recitative_context(&context),
+                anchor: anchor.clone(),
+            });
+            search_from = abs_pos + anchor.len();
+        }
+    }
+
+    result
+}
+
+/// Check whether the context text preceding a quoted anchor indicates recitative.
+///
+/// Returns true if "recitativ" appears and is the last type-indicating keyword
+/// (i.e., no aria/duet/etc. keyword appears after it).
+fn is_recitative_context(context: &str) -> bool {
+    let recit_pos = context.rfind("recitativ");
+    let sung_keywords = [
+        "aria", "duett", "cavatina", "canzon", "terzett",
+        "quartett", "quintett", "sestett", "finale", "coro",
+        "sinfonia", "marcia",
+    ];
+    let last_sung_pos = sung_keywords.iter()
+        .filter_map(|kw| context.rfind(kw))
+        .max();
+
+    match (recit_pos, last_sung_pos) {
+        (Some(rp), Some(sp)) => rp > sp,
+        (Some(_), None) => true,
+        _ => false,
+    }
+}
+
 /// A candidate segment for matching.
-struct SegCandidate<'a> {
+pub(crate) struct SegCandidate<'a> {
     segment_id: &'a str,
     number_id: &'a str,
     first_line: String,
@@ -107,7 +163,7 @@ struct SegCandidate<'a> {
 }
 
 /// Build a searchable index of all segments with text.
-fn build_segment_index(base: &BaseLibretto) -> Vec<SegCandidate<'_>> {
+pub(crate) fn build_segment_index(base: &BaseLibretto) -> Vec<SegCandidate<'_>> {
     let mut candidates = Vec::new();
     for number in &base.numbers {
         for seg in &number.segments {
@@ -139,7 +195,7 @@ fn char_prefix(s: &str, n: usize) -> &str {
 }
 
 /// Try to match an anchor to a segment, preferring matches within the given number_ids.
-fn match_anchor(
+pub(crate) fn match_anchor(
     anchor: &str,
     number_ids: &[String],
     candidates: &[SegCandidate<'_>],
@@ -503,5 +559,42 @@ mod tests {
             normalize_for_match("Crudel\u{2019}s"),
             normalize_for_match("Crudel's")
         );
+    }
+
+    #[test]
+    fn test_classify_title_anchors_mixed() {
+        let title = r#"Recitativo "Bravo, signor padrone"; No. 3 Cavatina "Se vuol ballare"; recitativo "Ed aspettaste il giorno""#;
+        let anchors = classify_title_anchors(title);
+        assert_eq!(anchors.len(), 3);
+        assert!(anchors[0].is_recitative);
+        assert_eq!(anchors[0].anchor, "Bravo, signor padrone");
+        assert!(!anchors[1].is_recitative);
+        assert_eq!(anchors[1].anchor, "Se vuol ballare");
+        assert!(anchors[2].is_recitative);
+        assert_eq!(anchors[2].anchor, "Ed aspettaste il giorno");
+    }
+
+    #[test]
+    fn test_classify_title_anchors_recit_then_aria() {
+        // "No. 17 Recitativo ... ed Aria ..." has two anchors in one section
+        let title = r#"No. 17 Recitativo "Hai già vinta la causa?" ed Aria "Vedrò, mentr'io sospiro""#;
+        let anchors = classify_title_anchors(title);
+        assert_eq!(anchors.len(), 2);
+        assert!(anchors[0].is_recitative);
+        assert!(!anchors[1].is_recitative);
+    }
+
+    #[test]
+    fn test_classify_title_anchors_no_quotes() {
+        let anchors = classify_title_anchors("Sinfonia");
+        assert!(anchors.is_empty());
+    }
+
+    #[test]
+    fn test_classify_title_anchors_aria_only() {
+        let title = r#"No. 9 Aria "Non più andrai""#;
+        let anchors = classify_title_anchors(title);
+        assert_eq!(anchors.len(), 1);
+        assert!(!anchors[0].is_recitative);
     }
 }
