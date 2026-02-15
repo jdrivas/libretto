@@ -29,17 +29,31 @@ pub async fn acquire(opera: &str, lang: &str, output_dir: &str) -> Result<()> {
 
         output::write_acquired(&libretto, output_dir)?;
     } else {
-        // Single language mode
+        // Single language mode — murashev paginates by act
         let lang_info = LangInfo::from_code(lang)?;
         let url = build_url_single(opera, &lang_info);
 
-        tracing::info!(url = %url, lang = %lang, "Fetching single-language page from murashev.com");
+        tracing::info!(url = %url, lang = %lang, "Fetching single-language main page from murashev.com");
         let html = fetch_page(&url).await?;
         tracing::info!(bytes = html.len(), "Received HTML");
 
-        let elements = parse_single_page(&html)?;
-        tracing::info!(elements = elements.len(), "Parsed content elements");
+        // Parse the cast from the main page
+        let mut elements = parse_single_page(&html)?;
+        tracing::info!(elements = elements.len(), "Parsed cast/main page elements");
 
+        // Discover act page links and fetch each one
+        let act_urls = extract_act_links(&html);
+        tracing::info!(acts = act_urls.len(), "Found act page links");
+
+        for act_url in &act_urls {
+            tracing::info!(url = %act_url, "Fetching act page");
+            let act_html = fetch_page(act_url).await?;
+            let act_elements = parse_single_page(&act_html)?;
+            tracing::info!(url = %act_url, elements = act_elements.len(), "Parsed act page");
+            elements.extend(act_elements);
+        }
+
+        tracing::info!(total_elements = elements.len(), "Total elements across all pages");
         output::write_single_language(&elements, lang, &url, opera, output_dir)?;
     }
 
@@ -218,6 +232,12 @@ fn parse_single_page(html: &str) -> Result<Vec<ContentElement>> {
 
     for tr in table.select(&tr_sel) {
         if let Some(td) = tr.select(&td_sel).next() {
+            // Skip navigation rows ("Contents: Cast; Act One; ...")
+            let raw_text = td.text().collect::<String>();
+            let trimmed = raw_text.trim();
+            if trimmed.starts_with("Contents:") || trimmed.is_empty() || trimmed == "\u{a0}" {
+                continue;
+            }
             let elements = extract_cell_content(td);
             all_elements.extend(elements);
             all_elements.push(ContentElement::BlankLine);
@@ -225,6 +245,30 @@ fn parse_single_page(html: &str) -> Result<Vec<ContentElement>> {
     }
 
     Ok(all_elements)
+}
+
+/// Extract act page URLs from a single-language main page.
+///
+/// Murashev single-language pages link to per-act pages like
+/// `Le_nozze_di_Figaro_libretto_English_Act_1`.
+/// We find `<a>` tags whose href contains `_Act_` within the content table.
+fn extract_act_links(html: &str) -> Vec<String> {
+    let document = Html::parse_document(html);
+    let a_sel = Selector::parse("a[href]").expect("valid selector");
+
+    let mut urls = Vec::new();
+    for a in document.select(&a_sel) {
+        if let Some(href) = a.value().attr("href") {
+            if href.contains("_Act_") && href.contains("libretto") {
+                // Deduplicate (contents section appears twice on the page)
+                if !urls.contains(&href.to_string()) {
+                    urls.push(href.to_string());
+                }
+            }
+        }
+    }
+
+    urls
 }
 
 /// Extract structured content elements from a single `<td>` cell.
