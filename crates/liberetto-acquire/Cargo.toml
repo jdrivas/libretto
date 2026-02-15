@@ -1,0 +1,18 @@
+[package]
+name = "liberetto-acquire"
+description = "Web scraping and text acquisition for opera librettos"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+reqwest = { workspace = true }
+scraper = { workspace = true }
+tokio = { workspace = true }
+unicode-normalization = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+chrono = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+liberetto-model = { workspace = true }

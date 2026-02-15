@@ -1,0 +1,40 @@
+[workspace]
+members = [
+    "crates/liberetto-cli",
+    "crates/liberetto-model",
+    "crates/liberetto-acquire",
+    "crates/liberetto-parse",
+    "crates/liberetto-validate",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[workspace.dependencies]
+# Shared across workspace
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+anyhow = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+regex = "1"
+chrono = { version = "0.4", features = ["serde"] }
+
+# HTTP + HTML parsing (acquire)
+reqwest = { version = "0.12", features = ["rustls-tls"], default-features = false }
+scraper = "0.22"
+tokio = { version = "1", features = ["full"] }
+unicode-normalization = "0.1"
+
+# CLI
+clap = { version = "4", features = ["derive"] }
+
+# Internal crates
+liberetto-model = { path = "crates/liberetto-model" }
+liberetto-acquire = { path = "crates/liberetto-acquire" }
+liberetto-parse = { path = "crates/liberetto-parse" }
+liberetto-validate = { path = "crates/liberetto-validate" }
