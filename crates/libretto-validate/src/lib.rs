@@ -1,5 +1,5 @@
 use anyhow::Result;
-use liberetto_model::{BaseLibretto, TimingOverlay};
+use libretto_model::{BaseLibretto, TimingOverlay};
 use std::collections::HashSet;
 use thiserror::Error;
 
@@ -148,7 +148,7 @@ pub fn validate_timing_overlay_standalone(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use liberetto_model::*;
+    use libretto_model::*;
 
     fn sample_libretto() -> BaseLibretto {
         let mut libretto = BaseLibretto::new(OperaMetadata {

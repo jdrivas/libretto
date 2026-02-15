@@ -1,8 +1,8 @@
-# Liberetto: Real-Time Opera Libretto Display
+# Libretto: Real-Time Opera Libretto Display
 
 ## Overview
 
-Liberetto solves the problem of displaying opera libretto text synchronized with music playback. The system has two distinct parts:
+Libretto solves the problem of displaying opera libretto text synchronized with music playback. The system has two distinct parts:
 
 1. **Annotation & Interchange** — Given a plain-text libretto, produce a time-annotated interchange format that maps text segments to timestamps within a music track.
 2. **Synchronized Display** — Consume the interchange format and display the appropriate libretto text in real time during playback, initially integrated with `roon-rd`.
@@ -108,7 +108,7 @@ For v1, option 3 (user assignment via config) is simplest and most reliable, wit
 #### File Organization
 
 ```
-liberetto/
+libretto/
   data/
     la-boheme-karajan/
       metadata.json          # Opera-level metadata
@@ -210,7 +210,7 @@ Libretto JSON files
 
 ## Crowdsourcing Libretto Content
 
-The value of Liberetto scales directly with the breadth of its libretto library. One person cannot realistically annotate the entire opera repertoire. Crowdsourcing is essential — but it needs to be easy to contribute, easy to consume, and resistant to quality problems.
+The value of Libretto scales directly with the breadth of its libretto library. One person cannot realistically annotate the entire opera repertoire. Crowdsourcing is essential — but it needs to be easy to contribute, easy to consume, and resistant to quality problems.
 
 ### The Core Challenge
 
@@ -255,7 +255,7 @@ Host the libretto library as a public GitHub repository. This gives us:
 Repository structure:
 
 ```
-liberetto-library/
+libretto-library/
   operas/
     puccini/
       la-boheme/

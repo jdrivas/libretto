@@ -1,12 +1,12 @@
 [package]
-name = "liberetto-cli"
-description = "CLI tool for Liberetto opera libretto processing"
+name = "libretto-cli"
+description = "CLI tool for Libretto opera libretto processing"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
 
 [[bin]]
-name = "liberetto"
+name = "libretto"
 path = "src/main.rs"
 
 [dependencies]
@@ -15,7 +15,7 @@ anyhow = { workspace = true }
 tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
 tokio = { workspace = true }
-liberetto-model = { workspace = true }
-liberetto-acquire = { workspace = true }
-liberetto-parse = { workspace = true }
-liberetto-validate = { workspace = true }
+libretto-model = { workspace = true }
+libretto-acquire = { workspace = true }
+libretto-parse = { workspace = true }
+libretto-validate = { workspace = true }

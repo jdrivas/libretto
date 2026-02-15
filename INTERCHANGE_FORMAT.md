@@ -1,8 +1,8 @@
-# Liberetto Interchange Format Specification
+# Libretto Interchange Format Specification
 
 ## Overview
 
-The Liberetto interchange format is a JSON document that pairs opera libretto text with precise timing information relative to audio tracks. A single file describes one complete opera recording (which may span multiple tracks).
+The Libretto interchange format is a JSON document that pairs opera libretto text with precise timing information relative to audio tracks. A single file describes one complete opera recording (which may span multiple tracks).
 
 ## File Extension
 

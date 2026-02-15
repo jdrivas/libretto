@@ -681,13 +681,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6800badb6cb2082ffd7b6a67e6125bb39f18782f793520caee8cb8846be06112"
 
 [[package]]
-name = "liberetto-acquire"
+name = "libretto-acquire"
 version = "0.1.0"
 dependencies = [
  "anyhow",
  "chrono",
  "ego-tree",
- "liberetto-model",
+ "libretto-model",
  "reqwest",
  "scraper",
  "serde",
@@ -698,22 +698,22 @@ dependencies = [
 ]
 
 [[package]]
-name = "liberetto-cli"
+name = "libretto-cli"
 version = "0.1.0"
 dependencies = [
  "anyhow",
  "clap",
- "liberetto-acquire",
- "liberetto-model",
- "liberetto-parse",
- "liberetto-validate",
+ "libretto-acquire",
+ "libretto-model",
+ "libretto-parse",
+ "libretto-validate",
  "tokio",
  "tracing",
  "tracing-subscriber",
 ]
 
 [[package]]
-name = "liberetto-model"
+name = "libretto-model"
 version = "0.1.0"
 dependencies = [
  "chrono",
@@ -723,11 +723,11 @@ dependencies = [
 ]
 
 [[package]]
-name = "liberetto-parse"
+name = "libretto-parse"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "liberetto-model",
+ "libretto-model",
  "regex",
  "serde",
  "serde_json",
@@ -735,11 +735,11 @@ dependencies = [
 ]
 
 [[package]]
-name = "liberetto-validate"
+name = "libretto-validate"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "liberetto-model",
+ "libretto-model",
  "serde_json",
  "thiserror",
  "tracing",

@@ -74,7 +74,7 @@ fn build_url(opera: &str, lang1: &LangInfo, lang2: &LangInfo) -> String {
 
 async fn fetch_page(url: &str) -> Result<String> {
     let client = reqwest::Client::builder()
-        .user_agent("liberetto/0.1 (opera libretto tool)")
+        .user_agent("libretto/0.1 (opera libretto tool)")
         .build()?;
 
     let response = client

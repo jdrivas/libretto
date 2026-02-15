@@ -1,10 +1,10 @@
 [workspace]
 members = [
-    "crates/liberetto-cli",
-    "crates/liberetto-model",
-    "crates/liberetto-acquire",
-    "crates/liberetto-parse",
-    "crates/liberetto-validate",
+    "crates/libretto-cli",
+    "crates/libretto-model",
+    "crates/libretto-acquire",
+    "crates/libretto-parse",
+    "crates/libretto-validate",
 ]
 resolver = "2"
 
@@ -34,7 +34,7 @@ unicode-normalization = "0.1"
 clap = { version = "4", features = ["derive"] }
 
 # Internal crates
-liberetto-model = { path = "crates/liberetto-model" }
-liberetto-acquire = { path = "crates/liberetto-acquire" }
-liberetto-parse = { path = "crates/liberetto-parse" }
-liberetto-validate = { path = "crates/liberetto-validate" }
+libretto-model = { path = "crates/libretto-model" }
+libretto-acquire = { path = "crates/libretto-acquire" }
+libretto-parse = { path = "crates/libretto-parse" }
+libretto-validate = { path = "crates/libretto-validate" }

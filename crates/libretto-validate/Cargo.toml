@@ -1,5 +1,5 @@
 [package]
-name = "liberetto-validate"
+name = "libretto-validate"
 description = "Validation for base libretto and timing overlay files"
 version.workspace = true
 edition.workspace = true
@@ -10,4 +10,4 @@ anyhow = { workspace = true }
 thiserror = { workspace = true }
 tracing = { workspace = true }
 serde_json = { workspace = true }
-liberetto-model = { workspace = true }
+libretto-model = { workspace = true }

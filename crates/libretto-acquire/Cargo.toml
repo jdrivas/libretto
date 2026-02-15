@@ -1,5 +1,5 @@
 [package]
-name = "liberetto-acquire"
+name = "libretto-acquire"
 description = "Web scraping and text acquisition for opera librettos"
 version.workspace = true
 edition.workspace = true
@@ -16,4 +16,4 @@ tracing = { workspace = true }
 chrono = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
-liberetto-model = { workspace = true }
+libretto-model = { workspace = true }

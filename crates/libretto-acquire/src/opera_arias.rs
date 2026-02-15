@@ -75,7 +75,7 @@ pub async fn acquire(opera: &str, lang: &str, output_dir: &str) -> Result<()> {
 
 async fn fetch_page(url: &str) -> Result<String> {
     let client = reqwest::Client::builder()
-        .user_agent("liberetto/0.1 (opera libretto tool)")
+        .user_agent("libretto/0.1 (opera libretto tool)")
         .build()?;
 
     let response = client

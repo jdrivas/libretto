@@ -2,7 +2,7 @@ use anyhow::Result;
 use clap::{Parser, Subcommand};
 
 #[derive(Parser)]
-#[command(name = "liberetto")]
+#[command(name = "libretto")]
 #[command(about = "Opera libretto acquisition, parsing, and validation tool")]
 #[command(version)]
 struct Cli {
@@ -91,20 +91,20 @@ async fn main() -> Result<()> {
             tracing::info!(opera = %opera, lang = %lang, "Acquiring libretto text");
             match source {
                 AcquireSource::OperaArias => {
-                    liberetto_acquire::opera_arias::acquire(&opera, &lang, &output_dir).await?;
+                    libretto_acquire::opera_arias::acquire(&opera, &lang, &output_dir).await?;
                 }
                 AcquireSource::Murashev => {
-                    liberetto_acquire::murashev::acquire(&opera, &lang, &output_dir).await?;
+                    libretto_acquire::murashev::acquire(&opera, &lang, &output_dir).await?;
                 }
             }
         }
         Commands::Parse { input, output } => {
             tracing::info!(input = %input, output = %output, "Parsing raw text");
-            liberetto_parse::parse(&input, &output)?;
+            libretto_parse::parse(&input, &output)?;
         }
         Commands::Validate { file, base } => {
             tracing::info!(file = %file, "Validating");
-            liberetto_validate::validate(&file, base.as_deref())?;
+            libretto_validate::validate(&file, base.as_deref())?;
         }
     }
 

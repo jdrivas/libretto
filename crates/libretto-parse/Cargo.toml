@@ -1,5 +1,5 @@
 [package]
-name = "liberetto-parse"
+name = "libretto-parse"
 description = "Parse raw libretto text into structured base libretto JSON"
 version.workspace = true
 edition.workspace = true
@@ -11,4 +11,4 @@ anyhow = { workspace = true }
 tracing = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
-liberetto-model = { workspace = true }
+libretto-model = { workspace = true }

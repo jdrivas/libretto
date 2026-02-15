@@ -1,4 +1,4 @@
-# Liberetto: Content Preparation & Development Plan
+# Libretto: Content Preparation & Development Plan
 
 ## Libretto Sources
 
@@ -156,7 +156,7 @@ These patterns are regular enough that a parser can handle the bulk of the struc
 
 ### Step 1: Acquire Raw Text (automated)
 
-The acquisition tool (`liberetto acquire`) fetches libretto text from configured sources and normalizes it into clean plain text files.
+The acquisition tool (`libretto acquire`) fetches libretto text from configured sources and normalizes it into clean plain text files.
 
 **What the tool does:**
 1. Takes an opera identifier (e.g., `mozart/le-nozze-di-figaro`) and source site.
@@ -310,7 +310,7 @@ The reviewed base libretto is committed to the library repository.
 ## Repository Structure
 
 ```
-liberetto-library/
+libretto-library/
 │
 ├── README.md                           # Project overview, how to use, how to contribute
 ├── CONTRIBUTING.md                     # Contribution guidelines
@@ -444,20 +444,20 @@ Key points:
 
 ## Rust Tooling Architecture
 
-All tooling is implemented in Rust as a single CLI binary: `liberetto`.
+All tooling is implemented in Rust as a single CLI binary: `libretto`.
 
 ### Crate / Workspace Structure
 
 ```
-liberetto/
+libretto/
 ├── Cargo.toml                      # Workspace root
 ├── crates/
-│   ├── liberetto-cli/              # CLI entry point (clap)
+│   ├── libretto-cli/              # CLI entry point (clap)
 │   │   ├── Cargo.toml
 │   │   └── src/
 │   │       └── main.rs
 │   │
-│   ├── liberetto-acquire/          # Web scraping / text acquisition
+│   ├── libretto-acquire/          # Web scraping / text acquisition
 │   │   ├── Cargo.toml
 │   │   └── src/
 │   │       ├── lib.rs
@@ -465,7 +465,7 @@ liberetto/
 │   │       ├── murashev.rs         # murashev.com adapter
 │   │       └── normalize.rs        # Text normalization (Unicode, whitespace)
 │   │
-│   ├── liberetto-parse/            # Raw text → structured base libretto JSON
+│   ├── libretto-parse/            # Raw text → structured base libretto JSON
 │   │   ├── Cargo.toml
 │   │   └── src/
 │   │       ├── lib.rs
@@ -474,14 +474,14 @@ liberetto/
 │   │       ├── segments.rs         # Character/text/direction splitting
 │   │       └── align.rs            # Italian/English parallel alignment
 │   │
-│   ├── liberetto-model/            # Shared data types (serde structs)
+│   ├── libretto-model/            # Shared data types (serde structs)
 │   │   ├── Cargo.toml
 │   │   └── src/
 │   │       ├── lib.rs
 │   │       ├── base_libretto.rs    # BaseLibretto, Number, Segment, Cast, etc.
 │   │       └── timing_overlay.rs   # TimingOverlay, TrackTiming, etc.
 │   │
-│   └── liberetto-validate/         # Schema/semantic validation
+│   └── libretto-validate/         # Schema/semantic validation
 │       ├── Cargo.toml
 │       └── src/
 │           └── lib.rs
@@ -506,15 +506,15 @@ liberetto/
 
 ```bash
 # Acquire raw text from a source
-liberetto acquire --source opera-arias --opera mozart/le-nozze-di-figaro --lang it,en
-liberetto acquire --source murashev --opera mozart/le-nozze-di-figaro --lang it+en
+libretto acquire --source opera-arias --opera mozart/le-nozze-di-figaro --lang it,en
+libretto acquire --source murashev --opera mozart/le-nozze-di-figaro --lang it+en
 
 # Parse raw text into base libretto JSON
-liberetto parse --input raw/ --output base.libretto.json
+libretto parse --input raw/ --output base.libretto.json
 
 # Validate a base libretto or timing overlay
-liberetto validate base.libretto.json
-liberetto validate timings/giulini-1959-emi.timing.json --base base.libretto.json
+libretto validate base.libretto.json
+libretto validate timings/giulini-1959-emi.timing.json --base base.libretto.json
 ```
 
 ---
@@ -527,15 +527,15 @@ See `notes/murashev-api-investigation.md` for detailed findings. Key result: mur
 
 ### Phase 1: Project Scaffolding (~1 day)
 
-1. Initialize the Cargo workspace under `liberetto/`.
-2. Create the crate structure: `liberetto-cli`, `liberetto-model`, `liberetto-acquire`, `liberetto-parse`, `liberetto-validate`.
-3. Define the core data model in `liberetto-model`: `BaseLibretto`, `Opera`, `Cast`, `Number`, `Segment`, `TimingOverlay`, etc. as Rust structs with serde derive.
+1. Initialize the Cargo workspace under `libretto/`.
+2. Create the crate structure: `libretto-cli`, `libretto-model`, `libretto-acquire`, `libretto-parse`, `libretto-validate`.
+3. Define the core data model in `libretto-model`: `BaseLibretto`, `Opera`, `Cast`, `Number`, `Segment`, `TimingOverlay`, etc. as Rust structs with serde derive.
 4. Set up `clap` CLI skeleton with subcommands: `acquire`, `parse`, `validate`.
 5. Add basic tests.
 
 ### Phase 2: Acquisition Tool (~2-3 days)
 
-Build `liberetto acquire` with per-source adapters.
+Build `libretto acquire` with per-source adapters.
 
 **opera-arias.com adapter:**
 1. Fetch page with `reqwest`.
@@ -561,7 +561,7 @@ Build `liberetto acquire` with per-source adapters.
 
 ### Phase 3: Parser Tool (~3-5 days)
 
-Build `liberetto parse` to transform raw text into structured JSON.
+Build `libretto parse` to transform raw text into structured JSON.
 
 **Parser responsibilities:**
 1. Extract the cast list from the opening section.
@@ -589,19 +589,19 @@ Build `liberetto parse` to transform raw text into structured JSON.
 
 ### Phase 5: Le nozze di Figaro End-to-End (~2-3 days)
 
-1. Run `liberetto acquire` on both sources for Figaro.
-2. Run `liberetto parse` on the acquired text.
-3. Run `liberetto validate` on the output.
+1. Run `libretto acquire` on both sources for Figaro.
+2. Run `libretto parse` on the acquired text.
+3. Run `libretto validate` on the output.
 4. Human review and correction of the base libretto.
 5. Commit the reviewed `base.libretto.json`.
 
 ### Phase 6: Repository Setup (~1 day)
 
-1. Create the `liberetto-library` GitHub repository (content only, separate from the Rust tooling).
+1. Create the `libretto-library` GitHub repository (content only, separate from the Rust tooling).
 2. Set up the directory structure.
 3. Add README.md, CONTRIBUTING.md, LICENSE.
 4. Add the reviewed Figaro base libretto.
-5. Set up CI with `liberetto validate` running on PRs.
+5. Set up CI with `libretto validate` running on PRs.
 
 ### Phase 7: Second Opera (validation, ~2-3 days)
 
@@ -619,7 +619,7 @@ At the end of this plan, we have:
 
 2. **A defined timing overlay schema** — so the timing tool knows exactly what to produce: a list of `{ segment_id, start }` pairs per track, plus track metadata.
 
-3. **A Rust CLI tool (`liberetto`)** with three commands:
+3. **A Rust CLI tool (`libretto`)** with three commands:
    - `acquire` — automated web scraping to fetch raw libretto text.
    - `parse` — transform raw text into structured base libretto JSON.
    - `validate` — check files for schema conformance and semantic correctness.
