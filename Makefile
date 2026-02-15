@@ -23,8 +23,10 @@ clean:
 
 # Release workflow:
 #   1. Bump version in workspace Cargo.toml
-#   2. Rebuild to verify + embed new version
-#   3. Commit, tag, push
+#   2. Run tests to verify
+#   3. Commit and tag (so the tree is clean)
+#   4. Build release binary (embeds clean git hash)
+#   5. Push
 #
 # Usage: make release V=0.1.1
 release:
@@ -33,16 +35,16 @@ ifndef V
 endif
 	@echo "==> Bumping version to $(V)"
 	sed -i '' 's/^version = ".*"/version = "$(V)"/' Cargo.toml
-	@echo "==> Building release"
-	cargo build --release
 	@echo "==> Running tests"
 	cargo test
-	@echo "==> Version check"
-	./target/release/libretto --version
 	@echo "==> Committing and tagging v$(V)"
 	git add -A
 	git commit -m "Release v$(V)"
 	git tag "v$(V)"
+	@echo "==> Building release (clean hash)"
+	cargo build --release
+	@echo "==> Version check"
+	./target/release/libretto --version
 	@echo "==> Pushing to origin"
 	git push
 	git push origin "v$(V)"
