@@ -47,6 +47,42 @@ pub enum ContentElement {
     BlankLine,
 }
 
+/// A complete acquired single-language libretto before parsing into BaseLibretto.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct AcquiredMonolingual {
+    pub source: SourceInfo,
+    /// ISO 639-1 code for the language (e.g., "en").
+    pub lang: String,
+    /// Typed content elements extracted from the source.
+    pub elements: Vec<ContentElement>,
+}
+
+impl AcquiredMonolingual {
+    /// Generate the full plain text.
+    pub fn plain_text(&self) -> String {
+        BilingualRow::plain_text(&self.elements)
+    }
+
+    /// Generate a source.md provenance file.
+    pub fn source_md(&self) -> String {
+        format!(
+            "# Source\n\n\
+             - **Site:** {}\n\
+             - **URL:** {}\n\
+             - **Opera:** {}\n\
+             - **Fetched:** {}\n\
+             - **Language:** {}\n\
+             - **Elements:** {}\n",
+            self.source.site,
+            self.source.url,
+            self.source.opera,
+            self.source.fetched_at,
+            self.lang,
+            self.elements.len(),
+        )
+    }
+}
+
 impl BilingualRow {
     /// Extract plain text from one language column, collapsing elements into lines.
     pub fn plain_text(elements: &[ContentElement]) -> String {

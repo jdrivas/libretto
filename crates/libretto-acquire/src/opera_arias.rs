@@ -1,4 +1,4 @@
-use crate::normalize;
+use crate::output;
 use crate::types::ContentElement;
 use anyhow::{Context, Result};
 use ego_tree;
@@ -10,16 +10,12 @@ const BASE_URL: &str = "https://www.opera-arias.com";
 /// Acquire libretto text from opera-arias.com.
 ///
 /// Fetches the Italian and/or English libretto pages, parses the HTML,
-/// extracts the libretto text, and writes clean `.txt` files.
+/// extracts the libretto text, and writes structured JSON + plain text files.
 ///
 /// `opera` should be the opera-arias.com path slug (e.g., "mozart/le-nozze-di-figaro").
 /// `lang` should be comma-separated: "it", "en", or "it,en".
 pub async fn acquire(opera: &str, lang: &str, output_dir: &str) -> Result<()> {
     let langs: Vec<&str> = lang.split(',').map(|s| s.trim()).collect();
-    let dir = std::path::Path::new(output_dir);
-    std::fs::create_dir_all(dir)?;
-
-    let mut source_lines = Vec::new();
 
     for lang_code in &langs {
         let (url, div_class) = match *lang_code {
@@ -38,37 +34,16 @@ pub async fn acquire(opera: &str, lang: &str, output_dir: &str) -> Result<()> {
         let html = fetch_page(&url).await?;
         tracing::info!(bytes = html.len(), "Received HTML");
 
+        // Cache raw HTML
+        let html_filename = format!("raw_{}.html", lang_code);
+        output::cache_html(output_dir, &html_filename, &html)?;
+
         let elements = parse_libretto_page(&html, div_class)?;
         tracing::info!(elements = elements.len(), lang = lang_code, "Parsed content elements");
 
-        let text = elements_to_text(&elements);
-        let text = normalize::normalize_text(&text);
-        let text = normalize::collapse_blank_lines(&text);
-
-        let lang_name = match *lang_code {
-            "it" => "italian",
-            "en" => "english",
-            other => other,
-        };
-        let out_path = dir.join(format!("{lang_name}.txt"));
-        std::fs::write(&out_path, &text)?;
-        tracing::info!(path = %out_path.display(), lines = text.lines().count(), "Wrote {lang_name} text");
-
-        source_lines.push(format!("- **{lang_name}:** {url}"));
+        // Write structured JSON + plain text + source.md via shared output helper
+        output::write_single_language(&elements, lang_code, &url, "opera-arias.com", opera, output_dir)?;
     }
-
-    // Write source.md
-    let now = chrono::Utc::now().to_rfc3339();
-    let source_md = format!(
-        "# Source\n\n\
-         - **Site:** opera-arias.com\n\
-         - **Opera:** {opera}\n\
-         - **Fetched:** {now}\n\
-         {}\n",
-        source_lines.join("\n"),
-    );
-    std::fs::write(dir.join("source.md"), &source_md)?;
-    tracing::info!("Wrote source provenance");
 
     Ok(())
 }
@@ -295,22 +270,6 @@ fn is_character_name(s: &str) -> bool {
     }
 
     true
-}
-
-/// Convert a flat list of ContentElements into plain text.
-fn elements_to_text(elements: &[ContentElement]) -> String {
-    let mut lines = Vec::new();
-    for elem in elements {
-        match elem {
-            ContentElement::ActHeader(s) => lines.push(s.clone()),
-            ContentElement::NumberLabel(s) => lines.push(s.clone()),
-            ContentElement::Character(s) => lines.push(s.clone()),
-            ContentElement::Direction(s) => lines.push(s.clone()),
-            ContentElement::Text(s) => lines.push(s.clone()),
-            ContentElement::BlankLine => lines.push(String::new()),
-        }
-    }
-    lines.join("\n")
 }
 
 #[cfg(test)]

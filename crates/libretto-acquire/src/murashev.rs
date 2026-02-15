@@ -24,6 +24,9 @@ pub async fn acquire(opera: &str, lang: &str, output_dir: &str) -> Result<()> {
         let html = fetch_page(&url).await?;
         tracing::info!(bytes = html.len(), "Received HTML");
 
+        // Cache raw HTML
+        output::cache_html(output_dir, "raw_bilingual.html", &html)?;
+
         let libretto = parse_bilingual_page(&html, &url, opera, &lang1, &lang2)?;
         tracing::info!(rows = libretto.rows.len(), "Parsed bilingual rows");
 
@@ -37,6 +40,9 @@ pub async fn acquire(opera: &str, lang: &str, output_dir: &str) -> Result<()> {
         let html = fetch_page(&url).await?;
         tracing::info!(bytes = html.len(), "Received HTML");
 
+        // Cache main page HTML
+        output::cache_html(output_dir, "raw.html", &html)?;
+
         // Parse the cast from the main page
         let mut elements = parse_single_page(&html)?;
         tracing::info!(elements = elements.len(), "Parsed cast/main page elements");
@@ -45,16 +51,18 @@ pub async fn acquire(opera: &str, lang: &str, output_dir: &str) -> Result<()> {
         let act_urls = extract_act_links(&html);
         tracing::info!(acts = act_urls.len(), "Found act page links");
 
-        for act_url in &act_urls {
+        for (i, act_url) in act_urls.iter().enumerate() {
             tracing::info!(url = %act_url, "Fetching act page");
             let act_html = fetch_page(act_url).await?;
+            // Cache each act page
+            output::cache_html(output_dir, &format!("raw_Act_{}.html", i + 1), &act_html)?;
             let act_elements = parse_single_page(&act_html)?;
             tracing::info!(url = %act_url, elements = act_elements.len(), "Parsed act page");
             elements.extend(act_elements);
         }
 
         tracing::info!(total_elements = elements.len(), "Total elements across all pages");
-        output::write_single_language(&elements, lang, &url, opera, output_dir)?;
+        output::write_single_language(&elements, lang, &url, "murashev.com", opera, output_dir)?;
     }
 
     Ok(())
