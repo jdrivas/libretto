@@ -68,6 +68,41 @@ enum Commands {
         #[arg(short, long)]
         base: Option<String>,
     },
+
+    /// Timing overlay tools: init, validate, merge
+    Timing {
+        #[command(subcommand)]
+        action: TimingAction,
+    },
+}
+
+#[derive(Subcommand)]
+enum TimingAction {
+    /// Generate a scaffold timing overlay from a base libretto
+    Init {
+        /// Path to the base libretto JSON
+        #[arg(short, long)]
+        base: String,
+
+        /// Output path for the timing overlay JSON
+        #[arg(short, long, default_value = "timing.overlay.json")]
+        output: String,
+    },
+
+    /// Merge a base libretto + timing overlay into an interchange libretto
+    Merge {
+        /// Path to the base libretto JSON
+        #[arg(short, long)]
+        base: String,
+
+        /// Path to the timing overlay JSON
+        #[arg(short, long)]
+        timing: String,
+
+        /// Output path for the interchange libretto JSON
+        #[arg(short, long, default_value = "timed.libretto.json")]
+        output: String,
+    },
 }
 
 #[derive(Clone, clap::ValueEnum)]
@@ -133,6 +168,57 @@ async fn main() -> Result<()> {
             tracing::info!(file = %file, "Validating");
             libretto_validate::validate(&file, base.as_deref())?;
         }
+        Commands::Timing { action } => match action {
+            TimingAction::Init { base, output } => {
+                tracing::info!(base = %base, output = %output, "Generating scaffold timing overlay");
+                let base_contents = std::fs::read_to_string(&base)?;
+                let base_libretto: libretto_model::BaseLibretto =
+                    serde_json::from_str(&base_contents)?;
+                let overlay = libretto_model::merge::scaffold_overlay(&base_libretto, &base);
+                let json = serde_json::to_string_pretty(&overlay)?;
+                std::fs::write(&output, &json)?;
+                let seg_count: usize = overlay.track_timings.iter()
+                    .map(|t| t.segment_times.len())
+                    .sum();
+                tracing::info!(
+                    tracks = overlay.track_timings.len(),
+                    segments = seg_count,
+                    path = %output,
+                    "Wrote scaffold timing overlay"
+                );
+            }
+            TimingAction::Merge { base, timing, output } => {
+                tracing::info!(base = %base, timing = %timing, output = %output, "Merging");
+                let base_contents = std::fs::read_to_string(&base)?;
+                let base_libretto: libretto_model::BaseLibretto =
+                    serde_json::from_str(&base_contents)?;
+                let overlay_contents = std::fs::read_to_string(&timing)?;
+                let overlay: libretto_model::TimingOverlay =
+                    serde_json::from_str(&overlay_contents)?;
+
+                // Validate before merging
+                let errors = libretto_validate::validate_timing_overlay(&overlay, &base_libretto)?;
+                if !errors.is_empty() {
+                    for e in &errors {
+                        tracing::error!("{e}");
+                    }
+                    anyhow::bail!("{} validation errors — fix before merging", errors.len());
+                }
+
+                let result = libretto_model::merge::merge(&base_libretto, &overlay);
+                for w in &result.warnings {
+                    tracing::warn!("{w}");
+                }
+                let json = serde_json::to_string_pretty(&result.libretto)?;
+                std::fs::write(&output, &json)?;
+                tracing::info!(
+                    tracks = result.stats.tracks,
+                    segments = result.stats.merged_segments,
+                    path = %output,
+                    "Wrote interchange libretto"
+                );
+            }
+        },
     }
 
     Ok(())

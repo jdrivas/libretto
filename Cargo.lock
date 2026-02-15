@@ -708,6 +708,7 @@ dependencies = [
  "libretto-model",
  "libretto-parse",
  "libretto-validate",
+ "serde_json",
  "tokio",
  "tracing",
  "tracing-subscriber",
