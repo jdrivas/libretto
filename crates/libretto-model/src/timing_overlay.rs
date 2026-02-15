@@ -55,6 +55,7 @@ pub struct TrackTiming {
     /// Which musical number IDs from the base libretto this track contains.
     pub number_ids: Vec<String>,
     /// Timed segment references, ordered by start time.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub segment_times: Vec<SegmentTime>,
 }
 
