@@ -34,6 +34,7 @@ pub fn split_segments(number: &RawNumber) -> Vec<Segment> {
                     text: None,
                     translation: None,
                     direction: None,
+                    group: None,
                 });
             }
 
@@ -61,6 +62,7 @@ pub fn split_segments(number: &RawNumber) -> Vec<Segment> {
                         text: Some(text.to_string()),
                         translation: None,
                         direction: None,
+                        group: None,
                     });
                 }
             }
@@ -89,6 +91,7 @@ pub fn split_segments(number: &RawNumber) -> Vec<Segment> {
                         text: None,
                         translation: None,
                         direction: Some(text.to_string()),
+                        group: None,
                     });
                 }
             }

@@ -115,6 +115,7 @@ mod tests {
                 text: Some("Cinque... dieci...".to_string()),
                 translation: None,
                 direction: None,
+                group: None,
             },
             Segment {
                 id: "no-1-duettino-002".to_string(),
@@ -123,6 +124,7 @@ mod tests {
                 text: Some("Ora sì ch'io son contenta.".to_string()),
                 translation: None,
                 direction: None,
+                group: None,
             },
         ];
 
@@ -134,6 +136,7 @@ mod tests {
                 text: Some("Five... ten...".to_string()),
                 translation: None,
                 direction: None,
+                group: None,
             },
             Segment {
                 id: "no-1-duettino-002".to_string(),
@@ -142,6 +145,7 @@ mod tests {
                 text: Some("How happy I am now.".to_string()),
                 translation: None,
                 direction: None,
+                group: None,
             },
         ];
 

@@ -110,6 +110,10 @@ pub struct Segment {
     /// Stage direction associated with this segment.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub direction: Option<String>,
+    /// Ensemble group tag. Segments with the same group within a number are
+    /// sung simultaneously and should be displayed together.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub group: Option<String>,
 }
 
 /// Type of content in a segment.
@@ -194,6 +198,7 @@ mod tests {
                     text: Some("Cinque... dieci... venti...".to_string()),
                     translation: Some("Five... ten... twenty...".to_string()),
                     direction: None,
+                    group: None,
                 },
                 Segment {
                     id: "no-1-002".to_string(),
@@ -202,6 +207,7 @@ mod tests {
                     text: Some("Ora sì ch'io son contenta.".to_string()),
                     translation: Some("How happy I am now.".to_string()),
                     direction: None,
+                    group: None,
                 },
             ],
         });

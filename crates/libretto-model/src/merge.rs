@@ -143,6 +143,7 @@ fn merge_track(
                 direction: base_seg.and_then(|s| s.direction.clone()),
                 act: ctx.map(|(act, _)| act.to_string()),
                 scene: ctx.and_then(|(_, scene)| scene.map(|s| s.to_string())),
+                group: base_seg.and_then(|s| s.group.clone()),
             }
         })
         .collect();
@@ -267,6 +268,7 @@ mod tests {
                     text: Some("Cinque... dieci...".to_string()),
                     translation: Some("Five... ten...".to_string()),
                     direction: None,
+                    group: None,
                 },
                 Segment {
                     id: "no-1-duettino-002".to_string(),
@@ -275,6 +277,7 @@ mod tests {
                     text: Some("Ora sì ch'io son contenta.".to_string()),
                     translation: Some("How happy I am now.".to_string()),
                     direction: None,
+                    group: None,
                 },
             ],
         });

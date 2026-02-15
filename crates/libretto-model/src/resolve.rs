@@ -384,6 +384,7 @@ mod tests {
                     text: Some("Se a caso madama la notte ti chiama".to_string()),
                     translation: None,
                     direction: None,
+                    group: None,
                 },
                 Segment {
                     id: "no-1-002".to_string(),
@@ -392,6 +393,7 @@ mod tests {
                     text: Some("Or bene, ascolta, e taci".to_string()),
                     translation: None,
                     direction: None,
+                    group: None,
                 },
                 Segment {
                     id: "no-1-003".to_string(),
@@ -400,6 +402,7 @@ mod tests {
                     text: Some("Bravo, signor padrone! Ora incomincio".to_string()),
                     translation: None,
                     direction: None,
+                    group: None,
                 },
             ],
         });
@@ -417,6 +420,7 @@ mod tests {
                     text: Some("Se vuol ballare, signor contino".to_string()),
                     translation: None,
                     direction: None,
+                    group: None,
                 },
             ],
         });

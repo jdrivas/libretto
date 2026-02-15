@@ -447,6 +447,7 @@ mod tests {
                     text: Some("one two three".to_string()), // 3 words
                     translation: None,
                     direction: None,
+                    group: None,
                 },
                 Segment {
                     id: "no-1-002".to_string(),
@@ -455,6 +456,7 @@ mod tests {
                     text: Some("four five six seven eight nine ten eleven twelve".to_string()), // 9 words
                     translation: None,
                     direction: None,
+                    group: None,
                 },
                 Segment {
                     id: "no-1-003".to_string(),
@@ -463,6 +465,7 @@ mod tests {
                     text: None,
                     translation: None,
                     direction: Some("exits".to_string()),
+                    group: None,
                 },
             ],
         });
@@ -557,6 +560,7 @@ mod tests {
                     text: Some("one two three four five".to_string()), // 5 words
                     translation: None,
                     direction: None,
+                    group: None,
                 },
                 Segment {
                     id: "no-2-002".to_string(),
@@ -565,6 +569,7 @@ mod tests {
                     text: Some("six seven eight nine ten".to_string()), // 5 words
                     translation: None,
                     direction: None,
+                    group: None,
                 },
                 Segment {
                     id: "no-2-003".to_string(),
@@ -573,6 +578,7 @@ mod tests {
                     text: Some("eleven twelve thirteen fourteen fifteen".to_string()), // 5
                     translation: None,
                     direction: None,
+                    group: None,
                 },
                 Segment {
                     id: "no-2-004".to_string(),
@@ -581,6 +587,7 @@ mod tests {
                     text: Some("sixteen seventeen eighteen nineteen twenty".to_string()), // 5
                     translation: None,
                     direction: None,
+                    group: None,
                 },
             ],
         });
@@ -655,6 +662,7 @@ mod tests {
                     text: Some("alpha beta gamma delta".to_string()), // 4 words
                     translation: None,
                     direction: None,
+                    group: None,
                 },
             ],
         });

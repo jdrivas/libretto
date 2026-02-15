@@ -71,6 +71,10 @@ pub struct InterchangeSegment {
     pub act: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub scene: Option<String>,
+    /// Ensemble group tag. Segments with the same group within a track are
+    /// sung simultaneously and should be displayed together.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub group: Option<String>,
 }
 
 fn default_type() -> String {
@@ -120,6 +124,7 @@ mod tests {
                     direction: Some("Overture begins.".to_string()),
                     act: None,
                     scene: None,
+                    group: None,
                 },
                 InterchangeSegment {
                     start: 10.0,
@@ -131,6 +136,7 @@ mod tests {
                     direction: None,
                     act: None,
                     scene: None,
+                    group: None,
                 },
             ],
         };

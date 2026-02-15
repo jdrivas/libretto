@@ -231,6 +231,7 @@ mod tests {
                     text: Some("Test text".to_string()),
                     translation: None,
                     direction: None,
+                    group: None,
                 },
                 Segment {
                     id: "no-1-002".to_string(),
@@ -239,6 +240,7 @@ mod tests {
                     text: Some("More text".to_string()),
                     translation: None,
                     direction: None,
+                    group: None,
                 },
             ],
         });
