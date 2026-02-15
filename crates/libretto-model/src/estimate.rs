@@ -4,6 +4,8 @@
 // segment_times, this module fills in estimated start times by distributing
 // each track's duration proportionally across its segments' word counts.
 
+use std::collections::HashMap;
+
 use crate::base_libretto::{BaseLibretto, MusicalNumber, SegmentType};
 use crate::timing_overlay::{SegmentTime, TimingOverlay, TrackTiming};
 
@@ -47,26 +49,127 @@ fn word_weight(text: &Option<String>, seg_type: &SegmentType) -> f64 {
 
 /// Estimate segment timings for all tracks in the overlay.
 ///
-/// For each track that has:
-/// - `duration_seconds` set
-/// - `number_ids` referencing numbers in the base libretto
-/// - Empty `segment_times`
-///
-/// The function distributes the track duration across the number's segments
-/// proportionally by word count.
-///
-/// Multi-track numbers (e.g., a finale spanning 3 tracks) are handled by
-/// pooling their total duration, distributing segments across the combined
-/// span, and then splitting back into per-track offsets.
+/// If tracks have `start_segment_id` set (from anchor resolution), uses
+/// those boundaries to precisely partition segments across tracks.
+/// Otherwise, falls back to number-based assignment using `number_ids`.
 pub fn estimate_timings(base: &BaseLibretto, overlay: &TimingOverlay) -> EstimateResult {
+    let has_boundaries = overlay.track_timings.iter()
+        .any(|t| t.start_segment_id.is_some());
+
+    if has_boundaries {
+        estimate_with_boundaries(base, overlay)
+    } else {
+        estimate_by_numbers(base, overlay)
+    }
+}
+
+/// Boundary-based estimation: uses `start_segment_id` to determine which
+/// segments belong to each track, regardless of number boundaries.
+///
+/// Builds a global ordered segment list from all numbers covered by the
+/// overlay, then partitions it using the start_segment_id markers.
+fn estimate_with_boundaries(base: &BaseLibretto, overlay: &TimingOverlay) -> EstimateResult {
+    let mut result_overlay = overlay.clone();
+    let mut stats = Vec::new();
+    let mut warnings: Vec<String> = Vec::new();
+
+    // Build global ordered segment list from all covered numbers (in libretto order)
+    let covered: Vec<&str> = overlay.covered_number_ids();
+    let all_segments: Vec<WeightedSegment> = base.numbers.iter()
+        .filter(|n| covered.contains(&n.id.as_str()))
+        .flat_map(|n| collect_number_segments(n))
+        .collect();
+
+    // Build segment_id → position index
+    let seg_index: HashMap<&str, usize> = all_segments.iter()
+        .enumerate()
+        .map(|(i, s)| (s.id.as_str(), i))
+        .collect();
+
+    for (i, track) in overlay.track_timings.iter().enumerate() {
+        // Skip tracks that already have segment_times
+        if !track.segment_times.is_empty() {
+            continue;
+        }
+        let duration = match track.duration_seconds {
+            Some(d) => d,
+            None => continue,
+        };
+
+        // Find start position from start_segment_id or first segment of first number
+        let start_pos = match &track.start_segment_id {
+            Some(sid) => match seg_index.get(sid.as_str()) {
+                Some(&pos) => pos,
+                None => {
+                    warnings.push(format!(
+                        "D{}T{} '{}': start_segment_id '{}' not found in segment index",
+                        track.disc_number.unwrap_or(0),
+                        track.track_number.unwrap_or(0),
+                        track.track_title, sid,
+                    ));
+                    continue;
+                }
+            },
+            None => {
+                // Fallback: first segment of first referenced number
+                match track.number_ids.first()
+                    .and_then(|nid| base.find_number(nid))
+                    .and_then(|n| n.segments.first())
+                    .and_then(|s| seg_index.get(s.id.as_str()))
+                    .copied()
+                {
+                    Some(pos) => pos,
+                    None => continue,
+                }
+            }
+        };
+
+        // Find end position: the next track's start_segment_id boundary
+        let end_pos = (i + 1..overlay.track_timings.len())
+            .find_map(|j| {
+                overlay.track_timings[j].start_segment_id.as_ref()
+                    .and_then(|sid| seg_index.get(sid.as_str()))
+                    .copied()
+            })
+            .unwrap_or(all_segments.len());
+
+        if start_pos >= end_pos {
+            warnings.push(format!(
+                "D{}T{} '{}': empty segment range (start={}, end={})",
+                track.disc_number.unwrap_or(0),
+                track.track_number.unwrap_or(0),
+                track.track_title, start_pos, end_pos,
+            ));
+            continue;
+        }
+
+        let track_segments = &all_segments[start_pos..end_pos];
+        let segment_times = distribute_segments(track_segments, duration);
+
+        let stat = TrackEstimateStats {
+            track_title: track.track_title.clone(),
+            disc_number: track.disc_number,
+            track_number: track.track_number,
+            duration,
+            segments_estimated: segment_times.len(),
+            total_word_weight: track_segments.iter().map(|s| s.weight).sum(),
+        };
+        stats.push(stat);
+        result_overlay.track_timings[i].segment_times = segment_times;
+    }
+
+    EstimateResult { overlay: result_overlay, stats, warnings }
+}
+
+/// Number-based estimation (legacy): uses `number_ids` to assign segments
+/// to tracks. Multi-track numbers are handled by pooling duration.
+fn estimate_by_numbers(base: &BaseLibretto, overlay: &TimingOverlay) -> EstimateResult {
     let mut result_overlay = overlay.clone();
     let mut stats = Vec::new();
     let mut warnings: Vec<String> = Vec::new();
 
     // Build a map of number_id → list of track indices that reference it.
-    // Preserve track order (by index) for multi-track numbers.
-    let mut number_to_tracks: std::collections::HashMap<&str, Vec<usize>> =
-        std::collections::HashMap::new();
+    let mut number_to_tracks: HashMap<&str, Vec<usize>> = HashMap::new();
     for (i, track) in overlay.track_timings.iter().enumerate() {
         for nid in &track.number_ids {
             number_to_tracks.entry(nid.as_str()).or_default().push(i);
@@ -111,15 +214,12 @@ pub fn estimate_timings(base: &BaseLibretto, overlay: &TimingOverlay) -> Estimat
             continue;
         }
 
-        // For tracks that reference ONLY this number_id, we can do clean estimation.
-        // For tracks that reference multiple number_ids, we need to split the duration.
         if track_durations.len() == 1 {
             let (track_idx, duration) = track_durations[0];
             if estimated_tracks.contains(&track_idx) {
                 continue;
             }
 
-            // How many numbers does this track contain?
             let track = &overlay.track_timings[track_idx];
             let all_segments = collect_track_segments(base, track, &mut warnings);
             let segment_times = distribute_segments(&all_segments, duration);
@@ -138,7 +238,6 @@ pub fn estimate_timings(base: &BaseLibretto, overlay: &TimingOverlay) -> Estimat
             estimated_tracks.insert(track_idx);
         } else {
             // Multi-track number: pool duration and distribute
-            // Skip if any of these tracks are already estimated
             if track_durations.iter().any(|(i, _)| estimated_tracks.contains(i)) {
                 continue;
             }
@@ -150,10 +249,8 @@ pub fn estimate_timings(base: &BaseLibretto, overlay: &TimingOverlay) -> Estimat
                 continue;
             }
 
-            // Distribute across total duration
             let all_times = distribute_segments(&segments, total_duration);
 
-            // Split into per-track buckets based on cumulative track durations
             let mut cumulative = 0.0;
             let mut time_iter = all_times.into_iter().peekable();
 
@@ -164,7 +261,6 @@ pub fn estimate_timings(base: &BaseLibretto, overlay: &TimingOverlay) -> Estimat
                 while let Some(st) = time_iter.peek() {
                     if st.start < track_end || time_iter.len() == 1 {
                         let mut seg = time_iter.next().unwrap();
-                        // Adjust start time to be relative to track start
                         seg.start = (seg.start - cumulative).max(0.0);
                         track_segments.push(seg);
                     } else {
@@ -476,6 +572,83 @@ mod tests {
         assert_eq!(t2[1].segment_id, "no-2-004");
 
         // Start times should be relative to each track
+        assert_eq!(t1[0].start, 0.0);
+        assert_eq!(t2[0].start, 0.0);
+    }
+
+    #[test]
+    fn test_estimate_with_boundaries_crossover() {
+        // Simulates the real-world case: number-1 has 3 segments, but the
+        // 3rd segment ("Bravo, signor padrone") actually starts in track 2.
+        // number-2 has 1 segment that also belongs to track 2.
+        let mut base = test_base(); // no-1: 3 segments (001, 002, 003)
+        base.numbers.push(MusicalNumber {
+            id: "no-2".to_string(),
+            label: "No. 2".to_string(),
+            number_type: NumberType::Cavatina,
+            act: "1".to_string(),
+            scene: None,
+            segments: vec![
+                Segment {
+                    id: "no-2-001".to_string(),
+                    segment_type: SegmentType::Sung,
+                    character: Some("A".to_string()),
+                    text: Some("alpha beta gamma delta".to_string()), // 4 words
+                    translation: None,
+                    direction: None,
+                },
+            ],
+        });
+
+        let overlay = TimingOverlay {
+            version: "1.0".to_string(),
+            base_libretto: "test".to_string(),
+            recording: RecordingMetadata {
+                conductor: None, orchestra: None, year: None, label: None, album_title: None,
+            },
+            contributors: vec![],
+            omitted_numbers: vec![],
+            track_timings: vec![
+                TrackTiming {
+                    track_title: "Track 1".to_string(),
+                    disc_number: Some(1),
+                    track_number: Some(1),
+                    duration_seconds: Some(100.0),
+                    number_ids: vec!["no-1".to_string()],
+                    // Track 1 starts at seg 001
+                    start_segment_id: Some("no-1-001".to_string()),
+                    segment_times: vec![],
+                },
+                TrackTiming {
+                    track_title: "Track 2".to_string(),
+                    disc_number: Some(1),
+                    track_number: Some(2),
+                    duration_seconds: Some(100.0),
+                    number_ids: vec!["no-2".to_string()],
+                    // Track 2 starts at seg 003 (crossover from no-1!)
+                    start_segment_id: Some("no-1-003".to_string()),
+                    segment_times: vec![],
+                },
+            ],
+        };
+
+        let result = estimate_timings(&base, &overlay);
+        assert!(result.warnings.is_empty(), "warnings: {:?}", result.warnings);
+
+        let t1 = &result.overlay.track_timings[0].segment_times;
+        let t2 = &result.overlay.track_timings[1].segment_times;
+
+        // Track 1: no-1-001, no-1-002 (boundary stops before no-1-003)
+        assert_eq!(t1.len(), 2, "Track 1 segments: {:?}", t1);
+        assert_eq!(t1[0].segment_id, "no-1-001");
+        assert_eq!(t1[1].segment_id, "no-1-002");
+
+        // Track 2: no-1-003 (crossover!) + no-2-001
+        assert_eq!(t2.len(), 2, "Track 2 segments: {:?}", t2);
+        assert_eq!(t2[0].segment_id, "no-1-003");
+        assert_eq!(t2[1].segment_id, "no-2-001");
+
+        // Start times relative to each track
         assert_eq!(t1[0].start, 0.0);
         assert_eq!(t2[0].start, 0.0);
     }
