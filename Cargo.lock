@@ -682,7 +682,7 @@ checksum = "6800badb6cb2082ffd7b6a67e6125bb39f18782f793520caee8cb8846be06112"
 
 [[package]]
 name = "libretto-acquire"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "chrono",
@@ -699,7 +699,7 @@ dependencies = [
 
 [[package]]
 name = "libretto-cli"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "chrono",
@@ -715,7 +715,7 @@ dependencies = [
 
 [[package]]
 name = "libretto-model"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "chrono",
  "serde",
@@ -725,7 +725,7 @@ dependencies = [
 
 [[package]]
 name = "libretto-parse"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "libretto-model",
@@ -737,7 +737,7 @@ dependencies = [
 
 [[package]]
 name = "libretto-validate"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "libretto-model",
