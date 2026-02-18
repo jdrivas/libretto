@@ -6,7 +6,7 @@
 
 use std::collections::HashMap;
 
-use crate::base_libretto::{BaseLibretto, MusicalNumber, SegmentType};
+use crate::base_libretto::{BaseLibretto, MusicalNumber, NumberType, SegmentType};
 use crate::resolve;
 use crate::timing_overlay::{SegmentTime, TimingOverlay, TrackTiming};
 
@@ -35,9 +35,22 @@ pub struct TrackEstimateStats {
 /// Minimum weight for segments with no text (directions, interludes).
 const MIN_SEGMENT_WEIGHT: f64 = 0.5;
 
-/// Recitative segments are spoken-sung at roughly 2× the pace of sung text,
+/// Secco recitative segments are spoken-sung at roughly 2× the pace of sung text,
 /// so their word weight is discounted by this factor.
 const RECITATIVE_DISCOUNT: f64 = 0.5;
+
+/// Accompanied recitative is more metered than secco, closer to aria pacing.
+const RECITATIVE_ACCOMPAGNATO_DISCOUNT: f64 = 0.75;
+
+/// Get the timing weight discount for a segment based on its parent number type.
+/// Returns a multiplier: 1.0 for normal, < 1.0 for recitative.
+fn number_type_discount(number_type: &NumberType) -> f64 {
+    match number_type {
+        NumberType::Recitative => RECITATIVE_DISCOUNT,
+        NumberType::RecitativeAccompagnato => RECITATIVE_ACCOMPAGNATO_DISCOUNT,
+        _ => 1.0,
+    }
+}
 
 /// Calculate word weight for a segment's text.
 fn word_weight(text: &Option<String>, seg_type: &SegmentType) -> f64 {
@@ -78,11 +91,12 @@ fn estimate_with_boundaries(base: &BaseLibretto, overlay: &TimingOverlay) -> Est
     let mut stats = Vec::new();
     let mut warnings: Vec<String> = Vec::new();
 
-    // Build global ordered segment list from all covered numbers (in libretto order)
+    // Build global ordered segment list from all covered numbers (in libretto order),
+    // carrying each segment's parent number type for discount calculation.
     let covered: Vec<&str> = overlay.covered_number_ids();
-    let all_segments: Vec<WeightedSegment> = base.numbers.iter()
+    let all_segments: Vec<SegmentWithContext> = base.numbers.iter()
         .filter(|n| covered.contains(&n.id.as_str()))
-        .flat_map(|n| collect_number_segments(n))
+        .flat_map(|n| collect_number_segments_with_context(n))
         .collect();
 
     // Build segment_id → position index
@@ -91,7 +105,10 @@ fn estimate_with_boundaries(base: &BaseLibretto, overlay: &TimingOverlay) -> Est
         .map(|(i, s)| (s.id.as_str(), i))
         .collect();
 
-    // Build resolve infrastructure once for recitative classification
+    // Build resolve infrastructure for fallback recitative classification from track titles.
+    // This is used only when the base libretto doesn't have authoritative number types
+    // (i.e., all segments in a track belong to non-recitative numbers but the track title
+    // says "Recitativo"). The primary path uses the parent number's NumberType.
     let resolve_candidates = resolve::build_segment_index(base);
     let all_nids: Vec<String> = covered.iter().map(|s| s.to_string()).collect();
 
@@ -152,29 +169,45 @@ fn estimate_with_boundaries(base: &BaseLibretto, overlay: &TimingOverlay) -> Est
             continue;
         }
 
-        // Classify title sections and resolve sub-boundaries for recitative discount
-        let section_marks = resolve_section_marks(
-            &track.track_title, start_pos, end_pos,
-            &seg_index, &resolve_candidates, &all_nids,
-        );
+        // Check if any segments in this track have authoritative recitative types
+        let has_authoritative_types = all_segments[start_pos..end_pos].iter()
+            .any(|s| matches!(s.number_type, NumberType::Recitative | NumberType::RecitativeAccompagnato));
 
-        // Build adjusted weights: recitative segments get discounted
-        let track_segments: Vec<WeightedSegment> = all_segments[start_pos..end_pos]
-            .iter()
-            .enumerate()
-            .map(|(j, seg)| {
-                let global_pos = start_pos + j;
-                let is_recit = section_marks.iter()
-                    .rev()
-                    .find(|(pos, _)| *pos <= global_pos)
-                    .map(|(_, recit)| *recit)
-                    .unwrap_or(false);
-                WeightedSegment {
-                    id: seg.id.clone(),
-                    weight: if is_recit { seg.weight * RECITATIVE_DISCOUNT } else { seg.weight },
-                }
-            })
-            .collect();
+        // Build adjusted weights using parent number type for discount
+        let track_segments: Vec<WeightedSegment> = if has_authoritative_types {
+            // Primary path: use parent number type
+            all_segments[start_pos..end_pos].iter()
+                .map(|seg| {
+                    let discount = number_type_discount(&seg.number_type);
+                    WeightedSegment {
+                        id: seg.id.clone(),
+                        weight: seg.base_weight * discount,
+                    }
+                })
+                .collect()
+        } else {
+            // Fallback: use track-title heuristic (for base librettos without
+            // authoritative number types, e.g., all numbers typed as "Other")
+            let section_marks = resolve_section_marks(
+                &track.track_title, start_pos, end_pos,
+                &seg_index, &resolve_candidates, &all_nids,
+            );
+            all_segments[start_pos..end_pos].iter()
+                .enumerate()
+                .map(|(j, seg)| {
+                    let global_pos = start_pos + j;
+                    let is_recit = section_marks.iter()
+                        .rev()
+                        .find(|(pos, _)| *pos <= global_pos)
+                        .map(|(_, recit)| *recit)
+                        .unwrap_or(false);
+                    WeightedSegment {
+                        id: seg.id.clone(),
+                        weight: if is_recit { seg.base_weight * RECITATIVE_DISCOUNT } else { seg.base_weight },
+                    }
+                })
+                .collect()
+        };
 
         let segment_times = distribute_segments(&track_segments, duration);
 
@@ -354,12 +387,30 @@ struct WeightedSegment {
     weight: f64,
 }
 
+/// A weighted segment with its parent number type for discount application.
+struct SegmentWithContext {
+    id: String,
+    base_weight: f64,
+    number_type: NumberType,
+}
+
 /// Collect all segments for a single musical number, with word weights.
 fn collect_number_segments(number: &MusicalNumber) -> Vec<WeightedSegment> {
     number.segments.iter()
         .map(|s| WeightedSegment {
             id: s.id.clone(),
             weight: word_weight(&s.text, &s.segment_type),
+        })
+        .collect()
+}
+
+/// Collect all segments for a musical number, carrying the parent number type.
+fn collect_number_segments_with_context(number: &MusicalNumber) -> Vec<SegmentWithContext> {
+    number.segments.iter()
+        .map(|s| SegmentWithContext {
+            id: s.id.clone(),
+            base_weight: word_weight(&s.text, &s.segment_type),
+            number_type: number.number_type.clone(),
         })
         .collect()
 }
@@ -439,6 +490,7 @@ mod tests {
             number_type: NumberType::Aria,
             act: "1".to_string(),
             scene: None,
+            tempo_marking: None,
             segments: vec![
                 Segment {
                     id: "no-1-001".to_string(),
@@ -477,7 +529,7 @@ mod tests {
             version: "1.0".to_string(),
             base_libretto: "test".to_string(),
             recording: RecordingMetadata {
-                conductor: None, orchestra: None, year: None, label: None, album_title: None,
+                conductor: None, orchestra: None, year: None, label: None, album_title: None, album_title_aliases: vec![],
             },
             contributors: vec![],
             omitted_numbers: vec![],
@@ -486,6 +538,7 @@ mod tests {
                 disc_number: Some(1),
                 track_number: Some(1),
                 duration_seconds: Some(duration),
+                characters: vec![],
                 number_ids: vec!["no-1".to_string()],
                 start_segment_id: None,
                 segment_times: vec![],
@@ -552,6 +605,7 @@ mod tests {
             number_type: NumberType::Finale,
             act: "1".to_string(),
             scene: None,
+            tempo_marking: None,
             segments: vec![
                 Segment {
                     id: "no-2-001".to_string(),
@@ -596,7 +650,7 @@ mod tests {
             version: "1.0".to_string(),
             base_libretto: "test".to_string(),
             recording: RecordingMetadata {
-                conductor: None, orchestra: None, year: None, label: None, album_title: None,
+                conductor: None, orchestra: None, year: None, label: None, album_title: None, album_title_aliases: vec![],
             },
             contributors: vec![],
             omitted_numbers: vec![],
@@ -606,6 +660,7 @@ mod tests {
                     disc_number: Some(1),
                     track_number: Some(1),
                     duration_seconds: Some(50.0), // half the time
+                    characters: vec![],
                     number_ids: vec!["no-2".to_string()],
                     start_segment_id: None,
                     segment_times: vec![],
@@ -615,6 +670,7 @@ mod tests {
                     disc_number: Some(1),
                     track_number: Some(2),
                     duration_seconds: Some(50.0), // half the time
+                    characters: vec![],
                     number_ids: vec!["no-2".to_string()],
                     start_segment_id: None,
                     segment_times: vec![],
@@ -654,6 +710,7 @@ mod tests {
             number_type: NumberType::Cavatina,
             act: "1".to_string(),
             scene: None,
+            tempo_marking: None,
             segments: vec![
                 Segment {
                     id: "no-2-001".to_string(),
@@ -671,7 +728,7 @@ mod tests {
             version: "1.0".to_string(),
             base_libretto: "test".to_string(),
             recording: RecordingMetadata {
-                conductor: None, orchestra: None, year: None, label: None, album_title: None,
+                conductor: None, orchestra: None, year: None, label: None, album_title: None, album_title_aliases: vec![],
             },
             contributors: vec![],
             omitted_numbers: vec![],
@@ -681,6 +738,7 @@ mod tests {
                     disc_number: Some(1),
                     track_number: Some(1),
                     duration_seconds: Some(100.0),
+                    characters: vec![],
                     number_ids: vec!["no-1".to_string()],
                     // Track 1 starts at seg 001
                     start_segment_id: Some("no-1-001".to_string()),
@@ -691,6 +749,7 @@ mod tests {
                     disc_number: Some(1),
                     track_number: Some(2),
                     duration_seconds: Some(100.0),
+                    characters: vec![],
                     number_ids: vec!["no-2".to_string()],
                     // Track 2 starts at seg 003 (crossover from no-1!)
                     start_segment_id: Some("no-1-003".to_string()),

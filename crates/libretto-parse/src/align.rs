@@ -40,14 +40,14 @@ pub fn align_segments(
 /// Returns `(original_language_segments_per_number, translation_language)`.
 pub fn parse_bilingual(libretto: &AcquiredLibretto) -> (Vec<ContentElement>, Vec<ContentElement>) {
     // Flatten all rows into a single element sequence per language
-    let lang1_elements: Vec<ContentElement> = libretto.rows.iter()
-        .flat_map(|row| row.lang1_elements.clone())
+    let text_elements: Vec<ContentElement> = libretto.rows.iter()
+        .flat_map(|row| row.text_elements.clone())
         .collect();
-    let lang2_elements: Vec<ContentElement> = libretto.rows.iter()
-        .flat_map(|row| row.lang2_elements.clone())
+    let translation_elements: Vec<ContentElement> = libretto.rows.iter()
+        .flat_map(|row| row.translation_elements.clone())
         .collect();
 
-    (lang1_elements, lang2_elements)
+    (text_elements, translation_elements)
 }
 
 /// Run the full parse pipeline on a single element sequence:

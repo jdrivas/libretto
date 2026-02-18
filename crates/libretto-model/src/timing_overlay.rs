@@ -32,6 +32,8 @@ pub struct RecordingMetadata {
     pub label: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub album_title: Option<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub album_title_aliases: Vec<String>,
 }
 
 /// A person who contributed timing data.
@@ -55,6 +57,9 @@ pub struct TrackTiming {
     pub track_number: Option<u32>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub duration_seconds: Option<f64>,
+    /// Character names extracted from the track title (e.g. "Figaro", "Susanna").
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub characters: Vec<String>,
     /// Which musical number IDs from the base libretto this track contains.
     pub number_ids: Vec<String>,
     /// Resolved first segment ID for this track (from anchor matching).
@@ -126,6 +131,7 @@ mod tests {
                 year: Some(1959),
                 label: Some("EMI".to_string()),
                 album_title: Some("Le nozze di Figaro (Giulini)".to_string()),
+                album_title_aliases: vec![],
             },
             contributors: vec![Contributor {
                 name: "Test User".to_string(),
@@ -137,6 +143,7 @@ mod tests {
                 disc_number: Some(1),
                 track_number: Some(2),
                 duration_seconds: Some(195.0),
+                characters: vec![],
                 number_ids: vec!["no-1-duettino".to_string()],
                 start_segment_id: None,
                 segment_times: vec![

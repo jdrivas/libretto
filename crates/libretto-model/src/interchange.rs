@@ -11,7 +11,29 @@ use serde::{Deserialize, Serialize};
 pub struct InterchangeLibretto {
     pub version: String,
     pub opera: InterchangeOpera,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub recording: Option<InterchangeRecording>,
     pub tracks: Vec<InterchangeTrack>,
+}
+
+/// Recording metadata in the interchange format.
+/// Holds album-level information that applies to all tracks.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct InterchangeRecording {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub album_title: Option<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub album_title_aliases: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub artist: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub conductor: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub orchestra: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub year: Option<u16>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub label: Option<String>,
 }
 
 /// Opera metadata in the interchange format.
@@ -33,10 +55,6 @@ pub struct InterchangeOpera {
 pub struct InterchangeTrack {
     pub track_id: String,
     pub title: String,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub album: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub artist: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub disc_number: Option<u32>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -106,8 +124,6 @@ mod tests {
         let track = InterchangeTrack {
             track_id: "act-1".to_string(),
             title: "Act I".to_string(),
-            album: None,
-            artist: None,
             disc_number: None,
             track_number: None,
             duration_seconds: Some(100.0),
@@ -162,6 +178,7 @@ mod tests {
                 translation_language: Some("en".to_string()),
                 year: None,
             },
+            recording: None,
             tracks: vec![],
         };
         let json = serde_json::to_string_pretty(&libretto).unwrap();

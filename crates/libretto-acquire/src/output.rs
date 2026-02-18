@@ -15,19 +15,19 @@ pub fn write_acquired(libretto: &AcquiredLibretto, output_dir: &str) -> Result<(
     let dir = Path::new(output_dir);
     fs::create_dir_all(dir)?;
 
-    let lang1_name = lang_code_to_name(&libretto.lang1);
-    let lang2_name = lang_code_to_name(&libretto.lang2);
+    let text_name = lang_code_to_name(&libretto.text_lang);
+    let trans_name = lang_code_to_name(&libretto.translation_lang);
 
     // Write plain text files (human convenience)
-    let lang1_text = normalize::normalize_text(&libretto.lang1_text());
-    let lang1_text = normalize::collapse_blank_lines(&lang1_text);
-    fs::write(dir.join(format!("{lang1_name}.txt")), &lang1_text)?;
-    tracing::info!(path = %dir.join(format!("{lang1_name}.txt")).display(), lines = lang1_text.lines().count(), "Wrote {lang1_name} text");
+    let text_text = normalize::normalize_text(&libretto.text_lang_text());
+    let text_text = normalize::collapse_blank_lines(&text_text);
+    fs::write(dir.join(format!("{text_name}.txt")), &text_text)?;
+    tracing::info!(path = %dir.join(format!("{text_name}.txt")).display(), lines = text_text.lines().count(), "Wrote {text_name} text");
 
-    let lang2_text = normalize::normalize_text(&libretto.lang2_text());
-    let lang2_text = normalize::collapse_blank_lines(&lang2_text);
-    fs::write(dir.join(format!("{lang2_name}.txt")), &lang2_text)?;
-    tracing::info!(path = %dir.join(format!("{lang2_name}.txt")).display(), lines = lang2_text.lines().count(), "Wrote {lang2_name} text");
+    let trans_text = normalize::normalize_text(&libretto.translation_lang_text());
+    let trans_text = normalize::collapse_blank_lines(&trans_text);
+    fs::write(dir.join(format!("{trans_name}.txt")), &trans_text)?;
+    tracing::info!(path = %dir.join(format!("{trans_name}.txt")).display(), lines = trans_text.lines().count(), "Wrote {trans_name} text");
 
     // Write bilingual JSON (parser input — source of truth)
     let json = serde_json::to_string_pretty(libretto)?;

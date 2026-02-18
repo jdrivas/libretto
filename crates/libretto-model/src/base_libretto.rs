@@ -63,6 +63,9 @@ pub struct MusicalNumber {
     /// Scene within the act, if applicable.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub scene: Option<String>,
+    /// Tempo marking from the score (e.g., "Allegro", "Andante").
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub tempo_marking: Option<String>,
     /// Ordered segments of text within this number.
     pub segments: Vec<Segment>,
 }
@@ -73,6 +76,7 @@ pub struct MusicalNumber {
 pub enum NumberType {
     Overture,
     Aria,
+    Arietta,
     Duet,
     Duettino,
     Terzetto,
@@ -84,6 +88,8 @@ pub enum NumberType {
     Chorus,
     Finale,
     Recitative,
+    RecitativeAccompagnato,
+    March,
     /// Catch-all for types not in the enum.
     Other,
 }
@@ -161,6 +167,13 @@ impl BaseLibretto {
     pub fn find_number(&self, id: &str) -> Option<&MusicalNumber> {
         self.numbers.iter().find(|n| n.id == id)
     }
+
+    /// Look up a segment's parent number type.
+    pub fn segment_number_type(&self, segment_id: &str) -> Option<&NumberType> {
+        self.numbers.iter()
+            .find(|n| n.segments.iter().any(|s| s.id == segment_id))
+            .map(|n| &n.number_type)
+    }
 }
 
 #[cfg(test)]
@@ -190,6 +203,7 @@ mod tests {
             number_type: NumberType::Duettino,
             act: "1".to_string(),
             scene: Some("1".to_string()),
+            tempo_marking: None,
             segments: vec![
                 Segment {
                     id: "no-1-001".to_string(),

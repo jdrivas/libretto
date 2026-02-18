@@ -4,10 +4,10 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AcquiredLibretto {
     pub source: SourceInfo,
-    /// ISO 639-1 code for language in column 1 (e.g., "en").
-    pub lang1: String,
-    /// ISO 639-1 code for language in column 2 (e.g., "it").
-    pub lang2: String,
+    /// ISO 639-1 code for the original text language (e.g., "it" for Italian opera).
+    pub text_lang: String,
+    /// ISO 639-1 code for the translation language (e.g., "en" for English).
+    pub translation_lang: String,
     /// Pre-aligned bilingual rows extracted from the source.
     pub rows: Vec<BilingualRow>,
 }
@@ -25,8 +25,8 @@ pub struct SourceInfo {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct BilingualRow {
     pub index: usize,
-    pub lang1_elements: Vec<ContentElement>,
-    pub lang2_elements: Vec<ContentElement>,
+    pub text_elements: Vec<ContentElement>,
+    pub translation_elements: Vec<ContentElement>,
 }
 
 /// A structural element extracted from an HTML cell.
@@ -102,20 +102,20 @@ impl BilingualRow {
 }
 
 impl AcquiredLibretto {
-    /// Generate the full plain text for language 1.
-    pub fn lang1_text(&self) -> String {
+    /// Generate the full plain text for the original text language.
+    pub fn text_lang_text(&self) -> String {
         self.rows
             .iter()
-            .map(|r| BilingualRow::plain_text(&r.lang1_elements))
+            .map(|r| BilingualRow::plain_text(&r.text_elements))
             .collect::<Vec<_>>()
             .join("\n\n")
     }
 
-    /// Generate the full plain text for language 2.
-    pub fn lang2_text(&self) -> String {
+    /// Generate the full plain text for the translation language.
+    pub fn translation_lang_text(&self) -> String {
         self.rows
             .iter()
-            .map(|r| BilingualRow::plain_text(&r.lang2_elements))
+            .map(|r| BilingualRow::plain_text(&r.translation_elements))
             .collect::<Vec<_>>()
             .join("\n\n")
     }
@@ -128,14 +128,14 @@ impl AcquiredLibretto {
              - **URL:** {}\n\
              - **Opera:** {}\n\
              - **Fetched:** {}\n\
-             - **Languages:** {} + {}\n\
+             - **Languages:** {} (text) + {} (translation)\n\
              - **Rows:** {}\n",
             self.source.site,
             self.source.url,
             self.source.opera,
             self.source.fetched_at,
-            self.lang1,
-            self.lang2,
+            self.text_lang,
+            self.translation_lang,
             self.rows.len(),
         )
     }

@@ -79,6 +79,80 @@ pub(crate) fn extract_anchors(title: &str) -> Vec<String> {
     anchors
 }
 
+/// Extract character names from parenthesized groups in a track title.
+///
+/// Opera recording track titles typically embed character names in parentheses:
+///   "No. 1 Duetto \"Cinque...dieci...venti\" (Figaro, Susanna)"
+///
+/// Returns a deduplicated list of character names, preserving first-seen order.
+/// Skips parenthesized groups that look like durations (e.g. "3:51") or
+/// footnote references (e.g. "[1]").
+pub fn extract_characters_from_title(title: &str) -> Vec<String> {
+    let mut characters = Vec::new();
+    let chars: Vec<char> = title.chars().collect();
+    let mut i = 0;
+
+    while i < chars.len() {
+        if chars[i] == '(' {
+            let start = i + 1;
+            let mut depth = 1;
+            i += 1;
+            while i < chars.len() && depth > 0 {
+                if chars[i] == '(' { depth += 1; }
+                if chars[i] == ')' { depth -= 1; }
+                i += 1;
+            }
+            // If paren was never closed, treat content as extending to end-of-string
+            let end = if depth > 0 { chars.len() } else if i > 0 { i - 1 } else { start };
+            let content: String = chars[start..end].iter().collect();
+            let content = content.trim();
+
+            // Skip duration-like groups (e.g. "3:51") and empty groups
+            if !content.is_empty() && !is_duration_like(content) {
+                // Split on comma, or period followed by space+uppercase (e.g. "Curzio. Marcellina")
+                for name in split_character_names(content) {
+                    let name = name.trim().to_string();
+                    if !name.is_empty() && !characters.contains(&name) {
+                        characters.push(name);
+                    }
+                }
+            }
+        } else {
+            i += 1;
+        }
+    }
+
+    characters
+}
+
+/// Split a character-list string on commas and also on periods followed by
+/// a space and an uppercase letter (handles Wikipedia typos like "Curzio. Marcellina").
+fn split_character_names(s: &str) -> Vec<&str> {
+    let mut parts = Vec::new();
+    let mut last = 0;
+    let bytes = s.as_bytes();
+    for i in 0..bytes.len() {
+        if bytes[i] == b',' {
+            parts.push(&s[last..i]);
+            last = i + 1;
+        } else if bytes[i] == b'.'
+            && i + 2 < bytes.len()
+            && bytes[i + 1] == b' '
+            && (bytes[i + 2] as char).is_uppercase()
+        {
+            parts.push(&s[last..i]);
+            last = i + 2; // skip ". "
+        }
+    }
+    parts.push(&s[last..]);
+    parts
+}
+
+/// Check whether a parenthesized string looks like a duration (digits + colons).
+fn is_duration_like(s: &str) -> bool {
+    !s.is_empty() && s.chars().all(|c| c.is_ascii_digit() || c == ':' || c == '.')
+}
+
 /// Normalize text for fuzzy matching: lowercase, strip accents, normalize punctuation.
 fn normalize_for_match(text: &str) -> String {
     text.nfd()
@@ -376,6 +450,7 @@ mod tests {
             number_type: NumberType::Duettino,
             act: "1".to_string(),
             scene: None,
+            tempo_marking: None,
             segments: vec![
                 Segment {
                     id: "no-1-001".to_string(),
@@ -412,6 +487,7 @@ mod tests {
             number_type: NumberType::Cavatina,
             act: "1".to_string(),
             scene: None,
+            tempo_marking: None,
             segments: vec![
                 Segment {
                     id: "no-2-001".to_string(),
@@ -447,7 +523,7 @@ mod tests {
             version: "1.0".to_string(),
             base_libretto: "test".to_string(),
             recording: RecordingMetadata {
-                conductor: None, orchestra: None, year: None, label: None, album_title: None,
+                conductor: None, orchestra: None, year: None, label: None, album_title: None, album_title_aliases: vec![],
             },
             contributors: vec![],
             omitted_numbers: vec![],
@@ -457,6 +533,7 @@ mod tests {
                     disc_number: Some(1),
                     track_number: Some(1),
                     duration_seconds: Some(200.0),
+                    characters: vec![],
                     number_ids: vec!["no-1".to_string()],
                     start_segment_id: None,
                     segment_times: vec![],
@@ -466,6 +543,7 @@ mod tests {
                     disc_number: Some(1),
                     track_number: Some(2),
                     duration_seconds: Some(250.0),
+                    characters: vec![],
                     number_ids: vec!["no-2".to_string()],
                     start_segment_id: None,
                     segment_times: vec![],
@@ -497,7 +575,7 @@ mod tests {
             version: "1.0".to_string(),
             base_libretto: "test".to_string(),
             recording: RecordingMetadata {
-                conductor: None, orchestra: None, year: None, label: None, album_title: None,
+                conductor: None, orchestra: None, year: None, label: None, album_title: None, album_title_aliases: vec![],
             },
             contributors: vec![],
             omitted_numbers: vec![],
@@ -506,6 +584,7 @@ mod tests {
                 disc_number: Some(1),
                 track_number: Some(1),
                 duration_seconds: Some(200.0),
+                characters: vec![],
                 number_ids: vec!["no-1".to_string()],
                 start_segment_id: Some("no-1-002".to_string()), // manual override
                 segment_times: vec![],
@@ -528,7 +607,7 @@ mod tests {
             version: "1.0".to_string(),
             base_libretto: "test".to_string(),
             recording: RecordingMetadata {
-                conductor: None, orchestra: None, year: None, label: None, album_title: None,
+                conductor: None, orchestra: None, year: None, label: None, album_title: None, album_title_aliases: vec![],
             },
             contributors: vec![],
             omitted_numbers: vec![],
@@ -537,6 +616,7 @@ mod tests {
                 disc_number: Some(1),
                 track_number: Some(1),
                 duration_seconds: Some(200.0),
+                characters: vec![],
                 number_ids: vec!["no-1".to_string()],
                 start_segment_id: None,
                 segment_times: vec![],
@@ -600,5 +680,58 @@ mod tests {
         let anchors = classify_title_anchors(title);
         assert_eq!(anchors.len(), 1);
         assert!(!anchors[0].is_recitative);
+    }
+
+    #[test]
+    fn test_extract_characters_single_group() {
+        let title = r#"No. 9 Aria "Non più andrai" (Figaro)"#;
+        let chars = extract_characters_from_title(title);
+        assert_eq!(chars, vec!["Figaro"]);
+    }
+
+    #[test]
+    fn test_extract_characters_multiple_groups() {
+        let title = r#"No. 1 Duetto "Cinque...dieci...venti" (Figaro, Susanna); recitativo "Cosa stai misurando" (Susanna, Figaro)"#;
+        let chars = extract_characters_from_title(title);
+        assert_eq!(chars, vec!["Figaro", "Susanna"]);
+    }
+
+    #[test]
+    fn test_extract_characters_no_parens() {
+        let chars = extract_characters_from_title("Sinfonia");
+        assert!(chars.is_empty());
+    }
+
+    #[test]
+    fn test_extract_characters_skips_duration() {
+        // Duration-like parens should be skipped
+        let chars = extract_characters_from_title("Track (3:51) title (Figaro)");
+        assert_eq!(chars, vec!["Figaro"]);
+    }
+
+    #[test]
+    fn test_extract_characters_large_ensemble() {
+        let title = r#"No. 15 Finale, Part 3: "Voi signor, che giusto siete" (Marcellina, Basilio, Bartolo, Conte, Susanna, Contessa, Figaro)"#;
+        let chars = extract_characters_from_title(title);
+        assert_eq!(chars, vec!["Marcellina", "Basilio", "Bartolo", "Conte", "Susanna", "Contessa", "Figaro"]);
+    }
+
+    #[test]
+    fn test_extract_characters_unclosed_paren() {
+        // Wikipedia source sometimes has unclosed parens
+        let title = r#"No. 26 Recitativo "Tutto è disposto" ed Aria "O Aprite un po' quegli occhi" (Figaro); recitativo "Signora ella mi disse" (Susanna, Marcellina, Contessa, Figaro"#;
+        let chars = extract_characters_from_title(title);
+        assert!(chars.contains(&"Figaro".to_string()));
+        assert!(chars.contains(&"Susanna".to_string()));
+        assert!(chars.contains(&"Marcellina".to_string()));
+        assert!(chars.contains(&"Contessa".to_string()));
+    }
+
+    #[test]
+    fn test_extract_characters_period_separator() {
+        // Wikipedia sometimes uses ". " instead of ", " between character names
+        let title = r#"No. 17 Recitativo "Hai già vinta la causa?" (Conte); recitativo "È decisa la lite" (Curzio. Marcellina, Figaro, Conte, Bartolo)"#;
+        let chars = extract_characters_from_title(title);
+        assert_eq!(chars, vec!["Conte", "Curzio", "Marcellina", "Figaro", "Bartolo"]);
     }
 }

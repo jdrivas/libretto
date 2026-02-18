@@ -223,6 +223,7 @@ mod tests {
             number_type: NumberType::Aria,
             act: "1".to_string(),
             scene: None,
+            tempo_marking: None,
             segments: vec![
                 Segment {
                     id: "no-1-001".to_string(),
@@ -282,6 +283,7 @@ mod tests {
                 year: None,
                 label: None,
                 album_title: None,
+                album_title_aliases: vec![],
             },
             contributors: vec![],
             omitted_numbers: vec![],
@@ -290,6 +292,7 @@ mod tests {
                 disc_number: None,
                 track_number: None,
                 duration_seconds: None,
+                characters: vec![],
                 number_ids: vec!["no-1".to_string()],
                 start_segment_id: None,
                 segment_times: vec![
@@ -313,6 +316,7 @@ mod tests {
                 year: None,
                 label: None,
                 album_title: None,
+                album_title_aliases: vec![],
             },
             contributors: vec![],
             omitted_numbers: vec![],
@@ -321,6 +325,7 @@ mod tests {
                 disc_number: None,
                 track_number: None,
                 duration_seconds: None,
+                characters: vec![],
                 number_ids: vec![],
                 start_segment_id: None,
                 segment_times: vec![
@@ -341,7 +346,7 @@ mod tests {
             version: "1.0".to_string(),
             base_libretto: "test".to_string(),
             recording: RecordingMetadata {
-                conductor: None, orchestra: None, year: None, label: None, album_title: None,
+                conductor: None, orchestra: None, year: None, label: None, album_title: None, album_title_aliases: vec![],
             },
             contributors: vec![],
             omitted_numbers: vec![],
@@ -359,7 +364,7 @@ mod tests {
             version: "1.0".to_string(),
             base_libretto: "test".to_string(),
             recording: RecordingMetadata {
-                conductor: None, orchestra: None, year: None, label: None, album_title: None,
+                conductor: None, orchestra: None, year: None, label: None, album_title: None, album_title_aliases: vec![],
             },
             contributors: vec![],
             omitted_numbers: vec![OmittedNumber {
@@ -380,7 +385,7 @@ mod tests {
             version: "1.0".to_string(),
             base_libretto: "test".to_string(),
             recording: RecordingMetadata {
-                conductor: None, orchestra: None, year: None, label: None, album_title: None,
+                conductor: None, orchestra: None, year: None, label: None, album_title: None, album_title_aliases: vec![],
             },
             contributors: vec![],
             omitted_numbers: vec![OmittedNumber {
@@ -392,6 +397,7 @@ mod tests {
                 disc_number: None,
                 track_number: None,
                 duration_seconds: None,
+                characters: vec![],
                 number_ids: vec!["no-1".to_string()],
                 start_segment_id: None,
                 segment_times: vec![],
@@ -409,7 +415,7 @@ mod tests {
             version: "1.0".to_string(),
             base_libretto: "test".to_string(),
             recording: RecordingMetadata {
-                conductor: None, orchestra: None, year: None, label: None, album_title: None,
+                conductor: None, orchestra: None, year: None, label: None, album_title: None, album_title_aliases: vec![],
             },
             contributors: vec![],
             omitted_numbers: vec![OmittedNumber {
@@ -421,6 +427,7 @@ mod tests {
                 disc_number: None,
                 track_number: None,
                 duration_seconds: None,
+                characters: vec![],
                 number_ids: vec!["no-1".to_string()],
                 start_segment_id: None,
                 segment_times: vec![],

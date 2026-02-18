@@ -28,11 +28,11 @@ pub fn merge(base: &BaseLibretto, overlay: &TimingOverlay) -> MergeResult {
         .map(|s| (s.id.as_str(), s))
         .collect();
 
-    // Also index number metadata by segment ID → (act, scene)
-    let mut segment_context: HashMap<&str, (&str, Option<&str>)> = HashMap::new();
+    // Also index number metadata by segment ID → (act, scene, number_type)
+    let mut segment_context: HashMap<&str, (&str, Option<&str>, &crate::base_libretto::NumberType)> = HashMap::new();
     for number in &base.numbers {
         for seg in &number.segments {
-            segment_context.insert(seg.id.as_str(), (number.act.as_str(), number.scene.as_deref()));
+            segment_context.insert(seg.id.as_str(), (number.act.as_str(), number.scene.as_deref(), &number.number_type));
         }
     }
 
@@ -53,7 +53,7 @@ pub fn merge(base: &BaseLibretto, overlay: &TimingOverlay) -> MergeResult {
         .enumerate()
         .map(|(i, track)| merge_track(
             track, i, &segment_map, &segment_context,
-            &overlay.recording, &resolve_candidates, &all_nids, &mut warnings,
+            &resolve_candidates, &all_nids, &mut warnings,
         ))
         .collect();
 
@@ -63,10 +63,27 @@ pub fn merge(base: &BaseLibretto, overlay: &TimingOverlay) -> MergeResult {
         .map(|t| t.segment_times.len())
         .sum();
 
+    // Build interchange recording metadata from overlay
+    let recording = crate::interchange::InterchangeRecording {
+        album_title: overlay.recording.album_title.clone(),
+        album_title_aliases: overlay.recording.album_title_aliases.clone(),
+        artist: match (&overlay.recording.conductor, &overlay.recording.orchestra) {
+            (Some(c), Some(o)) => Some(format!("{c} / {o}")),
+            (Some(c), None) => Some(c.clone()),
+            (None, Some(o)) => Some(o.clone()),
+            (None, None) => None,
+        },
+        conductor: overlay.recording.conductor.clone(),
+        orchestra: overlay.recording.orchestra.clone(),
+        year: overlay.recording.year,
+        label: overlay.recording.label.clone(),
+    };
+
     MergeResult {
         libretto: InterchangeLibretto {
             version: "1.0".to_string(),
             opera,
+            recording: Some(recording),
             tracks,
         },
         stats: MergeStats {
@@ -83,30 +100,40 @@ fn merge_track(
     track: &TrackTiming,
     index: usize,
     segment_map: &HashMap<&str, &Segment>,
-    segment_context: &HashMap<&str, (&str, Option<&str>)>,
-    recording: &crate::timing_overlay::RecordingMetadata,
+    segment_context: &HashMap<&str, (&str, Option<&str>, &crate::base_libretto::NumberType)>,
     resolve_candidates: &[resolve::SegCandidate<'_>],
     all_nids: &[String],
     warnings: &mut Vec<String>,
 ) -> InterchangeTrack {
-    // Classify title sections and build segment_id → is_recitative map
-    let title_anchors = resolve::classify_title_anchors(&track.track_title);
-    let mut section_seg_ids: Vec<(String, bool)> = Vec::new();
-    for ta in &title_anchors {
-        if let Some((seg_id, _)) = resolve::match_anchor(&ta.anchor, all_nids, resolve_candidates) {
-            section_seg_ids.push((seg_id, ta.is_recitative));
+    // Check if any segments have authoritative recitative number types
+    let has_authoritative_types = track.segment_times.iter()
+        .any(|st| {
+            segment_context.get(st.segment_id.as_str())
+                .map(|(_, _, nt)| matches!(nt,
+                    crate::base_libretto::NumberType::Recitative |
+                    crate::base_libretto::NumberType::RecitativeAccompagnato
+                ))
+                .unwrap_or(false)
+        });
+
+    // Fallback: classify from track title if no authoritative types found
+    let title_anchors = if !has_authoritative_types {
+        let anchors = resolve::classify_title_anchors(&track.track_title);
+        let mut section_seg_ids: Vec<(String, bool)> = Vec::new();
+        for ta in &anchors {
+            if let Some((seg_id, _)) = resolve::match_anchor(&ta.anchor, all_nids, resolve_candidates) {
+                section_seg_ids.push((seg_id, ta.is_recitative));
+            }
         }
-    }
+        Some(section_seg_ids)
+    } else {
+        None
+    };
 
     let mut current_is_recitative = false;
     let segments: Vec<InterchangeSegment> = track.segment_times.iter()
         .enumerate()
         .map(|(j, st)| {
-            // Update recitative state at section boundaries
-            if let Some(pos) = section_seg_ids.iter().position(|(sid, _)| sid == &st.segment_id) {
-                current_is_recitative = section_seg_ids[pos].1;
-            }
-
             let base_seg = segment_map.get(st.segment_id.as_str());
             if base_seg.is_none() {
                 warnings.push(format!(
@@ -128,9 +155,25 @@ fn merge_track(
                 .map(|s| format!("{:?}", s.segment_type).to_lowercase())
                 .unwrap_or_else(|| "sung".to_string());
 
-            // Override "sung" to "recitative" based on track title classification
-            if current_is_recitative && seg_type == "sung" {
-                seg_type = "recitative".to_string();
+            // Classify as recitative using parent number type (primary) or track title (fallback)
+            if seg_type == "sung" {
+                if has_authoritative_types {
+                    if let Some((_, _, nt)) = ctx {
+                        if matches!(nt,
+                            crate::base_libretto::NumberType::Recitative |
+                            crate::base_libretto::NumberType::RecitativeAccompagnato
+                        ) {
+                            seg_type = "recitative".to_string();
+                        }
+                    }
+                } else if let Some(ref section_seg_ids) = title_anchors {
+                    if let Some(pos) = section_seg_ids.iter().position(|(sid, _)| sid == &st.segment_id) {
+                        current_is_recitative = section_seg_ids[pos].1;
+                    }
+                    if current_is_recitative {
+                        seg_type = "recitative".to_string();
+                    }
+                }
             }
 
             InterchangeSegment {
@@ -141,8 +184,8 @@ fn merge_track(
                 text: base_seg.and_then(|s| s.text.clone()),
                 translation: base_seg.and_then(|s| s.translation.clone()),
                 direction: base_seg.and_then(|s| s.direction.clone()),
-                act: ctx.map(|(act, _)| act.to_string()),
-                scene: ctx.and_then(|(_, scene)| scene.map(|s| s.to_string())),
+                act: ctx.map(|(act, _, _)| act.to_string()),
+                scene: ctx.and_then(|(_, scene, _)| scene.map(|s| s.to_string())),
                 group: base_seg.and_then(|s| s.group.clone()),
             }
         })
@@ -158,20 +201,9 @@ fn merge_track(
         _ => format!("track-{}", index + 1),
     };
 
-    // Artist from recording metadata
-    let artist = recording.conductor.as_ref().map(|c| {
-        if let Some(orch) = &recording.orchestra {
-            format!("{c} / {orch}")
-        } else {
-            c.clone()
-        }
-    });
-
     InterchangeTrack {
         track_id,
         title: track.track_title.clone(),
-        album: recording.album_title.clone(),
-        artist,
         disc_number: track.disc_number,
         track_number: track.track_number,
         duration_seconds: track.duration_seconds,
@@ -216,6 +248,7 @@ pub fn scaffold_overlay(base: &BaseLibretto, base_path: &str) -> TimingOverlay {
                 disc_number: None,
                 track_number: None,
                 duration_seconds: None,
+                characters: vec![],
                 number_ids: vec![number.id.clone()],
                 start_segment_id: None,
                 segment_times,
@@ -232,6 +265,7 @@ pub fn scaffold_overlay(base: &BaseLibretto, base_path: &str) -> TimingOverlay {
             year: None,
             label: None,
             album_title: None,
+            album_title_aliases: vec![],
         },
         contributors: Vec::new(),
         track_timings,
@@ -260,6 +294,7 @@ mod tests {
             number_type: NumberType::Duettino,
             act: "1".to_string(),
             scene: Some("1".to_string()),
+            tempo_marking: None,
             segments: vec![
                 Segment {
                     id: "no-1-duettino-001".to_string(),
@@ -294,6 +329,7 @@ mod tests {
                 year: Some(1959),
                 label: Some("EMI".to_string()),
                 album_title: Some("Le nozze di Figaro".to_string()),
+                album_title_aliases: vec![],
             },
             contributors: vec![],
             omitted_numbers: vec![],
@@ -302,6 +338,7 @@ mod tests {
                 disc_number: Some(1),
                 track_number: Some(2),
                 duration_seconds: Some(195.0),
+                characters: vec![],
                 number_ids: vec!["no-1-duettino".to_string()],
                 start_segment_id: None,
                 segment_times: vec![
@@ -324,8 +361,9 @@ mod tests {
         let track = &result.libretto.tracks[0];
         assert_eq!(track.track_id, "d1-t2");
         assert_eq!(track.title, "Cinque... dieci...");
-        assert_eq!(track.album.as_deref(), Some("Le nozze di Figaro"));
-        assert_eq!(track.artist.as_deref(), Some("Giulini / Philharmonia"));
+        let rec = result.libretto.recording.as_ref().unwrap();
+        assert_eq!(rec.album_title.as_deref(), Some("Le nozze di Figaro"));
+        assert_eq!(rec.artist.as_deref(), Some("Giulini / Philharmonia"));
         assert_eq!(track.segments.len(), 2);
 
         let seg0 = &track.segments[0];

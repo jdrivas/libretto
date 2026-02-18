@@ -194,13 +194,14 @@ fn parse_bilingual_page(
             continue;
         }
 
-        let lang1_elements = extract_cell_content(tds[0]);
-        let lang2_elements = extract_cell_content(tds[1]);
+        // Murashev bilingual: column 1 = translation, column 2 = original text
+        let translation_elements = extract_cell_content(tds[0]);
+        let text_elements = extract_cell_content(tds[1]);
 
         rows.push(BilingualRow {
             index,
-            lang1_elements,
-            lang2_elements,
+            text_elements,
+            translation_elements,
         });
     }
 
@@ -212,8 +213,9 @@ fn parse_bilingual_page(
             fetched_at: now,
             opera: opera.to_string(),
         },
-        lang1: lang1.code.clone(),
-        lang2: lang2.code.clone(),
+        // Murashev bilingual: lang1 = translation, lang2 = original text
+        text_lang: lang2.code.clone(),
+        translation_lang: lang1.code.clone(),
         rows,
     })
 }
@@ -632,21 +634,23 @@ mod tests {
 
         // Row 0: Act header + number label + character + text
         let row0 = &libretto.rows[0];
-        assert!(row0.lang1_elements.contains(&ContentElement::ActHeader("ACT ONE".into())));
-        assert!(row0.lang1_elements.contains(&ContentElement::NumberLabel("No. 1: Duettino".into())));
-        assert!(row0.lang1_elements.contains(&ContentElement::Character("FIGARO".into())));
-        assert!(row0.lang1_elements.contains(&ContentElement::Text("Five... ten... twenty...".into())));
+        // translation_elements = English (column 1)
+        assert!(row0.translation_elements.contains(&ContentElement::ActHeader("ACT ONE".into())));
+        assert!(row0.translation_elements.contains(&ContentElement::NumberLabel("No. 1: Duettino".into())));
+        assert!(row0.translation_elements.contains(&ContentElement::Character("FIGARO".into())));
+        assert!(row0.translation_elements.contains(&ContentElement::Text("Five... ten... twenty...".into())));
 
-        assert!(row0.lang2_elements.contains(&ContentElement::ActHeader("ATTO PRIMO".into())));
-        assert!(row0.lang2_elements.contains(&ContentElement::NumberLabel("N° 1: Duettino".into())));
+        // text_elements = Italian (column 2)
+        assert!(row0.text_elements.contains(&ContentElement::ActHeader("ATTO PRIMO".into())));
+        assert!(row0.text_elements.contains(&ContentElement::NumberLabel("N° 1: Duettino".into())));
 
         // Row 1: Character + direction + text
         let row1 = &libretto.rows[1];
-        assert!(row1.lang1_elements.contains(&ContentElement::Character("SUSANNA".into())));
-        assert!(row1.lang1_elements.contains(&ContentElement::Direction("(looking at herself in a mirror)".into())));
-        assert!(row1.lang1_elements.contains(&ContentElement::Text("How happy I am now.".into())));
+        assert!(row1.translation_elements.contains(&ContentElement::Character("SUSANNA".into())));
+        assert!(row1.translation_elements.contains(&ContentElement::Direction("(looking at herself in a mirror)".into())));
+        assert!(row1.translation_elements.contains(&ContentElement::Text("How happy I am now.".into())));
 
-        assert!(row1.lang2_elements.contains(&ContentElement::Character("SUSANNA".into())));
-        assert!(row1.lang2_elements.contains(&ContentElement::Direction("(guardandosi nello specchio)".into())));
+        assert!(row1.text_elements.contains(&ContentElement::Character("SUSANNA".into())));
+        assert!(row1.text_elements.contains(&ContentElement::Direction("(guardandosi nello specchio)".into())));
     }
 }

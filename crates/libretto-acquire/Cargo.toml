@@ -16,4 +16,5 @@ tracing = { workspace = true }
 chrono = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
+base64 = { workspace = true }
 libretto-model = { workspace = true }

@@ -63,26 +63,18 @@ fn parse_bilingual(path: &Path) -> Result<BaseLibretto> {
     let acquired: AcquiredLibretto = serde_json::from_str(&text)
         .context("Failed to parse bilingual.json")?;
 
-    let (lang1_elements, lang2_elements) = align::parse_bilingual(&acquired);
-
-    // Determine which is the original language (Italian) and which is translation
-    let (original_elements, translation_elements, orig_lang, trans_lang) =
-        if acquired.lang2 == "it" {
-            (lang2_elements, lang1_elements, &acquired.lang2, &acquired.lang1)
-        } else {
-            (lang1_elements, lang2_elements, &acquired.lang1, &acquired.lang2)
-        };
+    let (text_elements, translation_elements) = align::parse_bilingual(&acquired);
 
     tracing::info!(
-        original = %orig_lang,
-        translation = %trans_lang,
-        orig_elements = original_elements.len(),
+        original = %acquired.text_lang,
+        translation = %acquired.translation_lang,
+        text_elements = text_elements.len(),
         trans_elements = translation_elements.len(),
         "Running bilingual pipeline"
     );
 
     // Run pipeline on both languages
-    let orig_result = align::pipeline(&original_elements);
+    let orig_result = align::pipeline(&text_elements);
     let trans_result = align::pipeline(&translation_elements);
 
     tracing::info!(
@@ -103,8 +95,8 @@ fn parse_bilingual(path: &Path) -> Result<BaseLibretto> {
         title: acquired.source.opera.clone(),
         composer: String::new(),
         librettist: None,
-        language: orig_lang.clone(),
-        translation_language: Some(trans_lang.clone()),
+        language: acquired.text_lang.clone(),
+        translation_language: Some(acquired.translation_lang.clone()),
         year: None,
     };
 
@@ -191,6 +183,7 @@ fn assemble(
             number_type: meta.number_type.clone(),
             act: meta.act.clone(),
             scene: meta.scene.clone(),
+            tempo_marking: None,
             segments: number_segments,
         });
     }
