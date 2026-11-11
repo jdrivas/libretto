@@ -166,7 +166,8 @@ barlines are drawn lines; notes, clefs, rests and accidentals are Maestro-font c
 at exact positions; lyrics (Italian upright, German italic), staff labels, bar numbers
 and tempo marks are real text. `ba_vector.py` decodes the whole finale (110 pages) in 2
 seconds:
-- 940 bars, matching the printed bar number on every system;
+- 940 bars, matching the printed bar number on every system (the decoder's count; the score
+  itself has 939, because the closing double barline was counted as one more bar);
 - 18,968 notes, with pitches from staff position, clef, key and accidentals (every
   singer's range checked);
 - 8,813 Italian syllables, each attached to its note;

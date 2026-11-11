@@ -86,6 +86,7 @@ table { border-collapse: collapse; width: 100%; font-size: 0.9rem; line-height: 
 th, td { text-align: left; vertical-align: top; padding: 0.45em 0.7em; border-bottom: 1px solid var(--rule); }
 th { font-family: var(--f-mono); font-weight: 500; font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); border-bottom: 1.5px solid var(--ink-2); }
 td.num, th.num { text-align: right; white-space: nowrap; }
+td .loc { display: block; font-family: var(--f-mono); font-size: 0.74rem; color: var(--muted); margin: 0.15em 0 0.35em; white-space: nowrap; }
 td .best { color: var(--good); font-weight: 600; }
 td .worst { color: var(--bad); }
 caption { caption-side: bottom; text-align: left; font-size: 0.85rem; color: var(--muted); padding-top: 0.6em; }
@@ -172,7 +173,7 @@ dl.params dd { margin: 0; min-width: 0; }
   <section class="abstract">
     <h4>Abstract</h4>
     <p>We built a display that shows, while an opera recording plays in Roon, the words being sung and a word-for-word English gloss, much as streaming services show song lyrics. The text comes from the score's vocal parts, not from a published libretto, so repeats and simultaneous ensemble lines are shown as sung. Timing comes from aligning the score to the recording with multiscale dynamic time warping on chroma (pitch-class) and onset features. Where there is no usable score (secco recitative), a multilingual speech aligner places the text on a separated vocal track instead. No step uses hand-marked timing.</p>
-    <p>We tested the method on six passages of <i>Le nozze di Figaro</i>, each in two recordings (Solti 1981, Currentzis 2014): the Act III Sextet, two recitatives, the aria “Voi che sapete”, and the 940-bar Act II finale. With an engraved, born-digital vocal score read directly from its PDF, entries after a silence land a median of 0.07–0.10 s from where singing is heard, and 91–95% land within 1 s. That is well inside the 1–2 s target. Reading a scanned score by optical music recognition gave 0.35–0.63 s and 62–89%. The listener's verdict on the finale was “near perfect”.</p>
+    <p>We tested the method on six passages of <i>Le nozze di Figaro</i>, each in two recordings (Solti 1981, Currentzis 2014): the Act III Sextet, two recitatives, the aria “Voi che sapete”, and the 939-bar Act II finale. With an engraved, born-digital vocal score read directly from its PDF, entries after a silence land a median of 0.07–0.10 s from where singing is heard, and 91–95% land within 1 s. That is well inside the 1–2 s target. Reading a scanned score by optical music recognition gave 0.35–0.63 s and 62–89%. The listener's verdict on the finale was “near perfect”.</p>
     <p>Terms and acronyms are spelled out where they first appear, and collected in a glossary (Appendix B).</p>
     <p>This report describes the theory behind each tool and the results of each experiment, with intermediate figures. It records every manual step taken along the way, describes the software written, and states the production pipeline we intend to build next.</p>
   </section>
@@ -218,15 +219,16 @@ dl.params dd { margin: 0; min-width: 0; }
     <table>
       <thead><tr><th>Passage</th><th>Kind</th><th class="num">Size</th><th>Score used</th><th>Solti 1981 (Decca)</th><th>Currentzis 2014 (Sony)</th></tr></thead>
       <tbody>
-        <tr><td>No. 18 Sestetto “Riconosci in questo amplesso” (III)</td><td>ensemble, 6 voices</td><td class="num">140 bars</td><td>typeset IMSLP PDF (WIMA), MIDI as reference</td><td>one track, with the recitative after it</td><td>one track</td></tr>
-        <tr><td>Recit. “Eccovi, o caro amico” / “Andiam, bel paggio” (III)</td><td>secco</td><td class="num">≈2 min</td><td>none</td><td>same track as the Sextet</td><td>own track</td></tr>
-        <tr><td>No. 11 Canzona “Voi che sapete” (II)</td><td>aria, strophic</td><td class="num">≈2.5 min</td><td>none (text from Ricordi)</td><td>one track with the next recitative</td><td>own track</td></tr>
-        <tr><td>Recit. “Bravo! che bella voce!” (II)</td><td>secco</td><td class="num">≈1 min</td><td>none</td><td>same track as the aria</td><td>own track</td></tr>
-        <tr><td>No. 15 Finale “Esci omai, garzon malnato” (II)</td><td>ensemble finale, 2–8 voices</td><td class="num">940 bars</td><td>Ricordi scan (Audiveris), then Bärenreiter BA 4565 vector PDF</td><td>3 tracks</td><td>7 tracks</td></tr>
+        <tr><td>No. 19 Sestetto “Riconosci in questo amplesso” (III, Scena V)<span class="loc">BA pp. 342–360 · bars 1–140</span></td><td>ensemble, 6 voices</td><td class="num">140 bars</td><td>typeset IMSLP PDF (WIMA), MIDI as reference</td><td>one track, with the recitative after it</td><td>one track</td></tr>
+        <tr><td>Recit. “Eccovi, oh caro amico” (III, Scena VI)<span class="loc">BA pp. 361–363 · bars 1–19</span>then Recit. “Andiam, bel paggio” (III, Scena VII)<span class="loc">BA pp. 364–365 · bars 1–16</span></td><td>secco, two recitatives</td><td class="num">19 + 16 bars<br>≈2 min</td><td>none</td><td>same track as the Sextet</td><td>own track</td></tr>
+        <tr><td>No. 12 Arietta “Voi che sapete” (II, Scena II)<span class="loc">BA pp. 147–151 · bars 1–79</span></td><td>aria, strophic</td><td class="num">79 bars<br>≈2.5 min</td><td>none (text from Ricordi)</td><td>one track with the next recitative</td><td>own track</td></tr>
+        <tr><td>Recit. “Bravo! che bella voce!” (II, Scena II)<span class="loc">BA pp. 152–154 · bars 1–25</span></td><td>secco</td><td class="num">25 bars<br>≈1 min</td><td>none</td><td>same track as the aria</td><td>own track</td></tr>
+        <tr><td>No. 16 Finale “Esci omai, garzon malnato” (II, Scene VI–XI)<span class="loc">BA pp. 199–308 · bars 1–939</span></td><td>ensemble finale, 2–8 voices</td><td class="num">939 bars</td><td>Ricordi scan (Audiveris), then Bärenreiter BA 4565 vector PDF</td><td>3 tracks</td><td>7 tracks</td></tr>
       </tbody>
     </table>
   </div>
-  <p>The two recordings differ in useful ways. Solti uses modern pitch and steady studio tempos. Currentzis uses period instruments at about A = 431, broad tempos with long dramatic pauses, and fortepiano improvisation in the recitatives. His tracks also cut the finale into seven pieces, several starting mid-number. Numbers follow the Bärenreiter (Neue Mozart-Ausgabe) numbering; the Ricordi vocal score numbers differently.</p>
+  <p>The two recordings differ in useful ways. Solti uses modern pitch and steady studio tempos. Currentzis uses period instruments at about A = 431, broad tempos with long dramatic pauses, and fortepiano improvisation in the recitatives. His tracks also cut the finale into seven pieces, several starting mid-number.</p>
+  <p>Numbers, scenes, pages and bars are those of the Bärenreiter vocal score BA 4565 (the Neue Mozart-Ausgabe text), which is the reference wherever sources disagree. Bärenreiter numbers the bars of each secco recitative from 1. The Ricordi vocal score numbers the pieces differently: there the Sextet is No. 18, “Voi che sapete” is No. 11 (a Canzona), and the finale is No. 15.</p>
   <p>The scores came from three sources:</p>
   <ul>
     <li><b>Typeset Sextet (IMSLP 115717, WIMA):</b> from IMSLP (the International Music Score Library Project, a public-domain score library), originally from WIMA (the Werner Icking Music Archive). A vector PDF engraved in Finale (a commercial music-notation program), plus the engraver's MIDI file (Musical Instrument Digital Interface: notes as pitches and times) with 15 tracks and 140 bars of 4/4. The MIDI served as an independent reference while testing. The method does not need it, because MIDI scores of operas are not generally available.</li>
@@ -536,7 +538,7 @@ dl.params dd { margin: 0; min-width: 0; }
   </div>
   <p>The decoder (<code>ba_vector.py</code>, 379 lines, using PyMuPDF, a Python library that lists every glyph, line and text run on a PDF page with its position) reads the whole finale (110 pages) in about 2 seconds. It produced:</p>
   <ul>
-    <li>940 bars, agreeing with the printed bar number on every system;</li>
+    <li>939 bars, agreeing with the printed bar number on every system (the decoder counted 940, because it took the closing double barline for one more bar);</li>
     <li>18,968 notes;</li>
     <li>8,813 Italian syllables;</li>
     <li>every staff labelled with its character;</li>
@@ -822,7 +824,7 @@ dl.params dd { margin: 0; min-width: 0; }
   <p>Route C on both recordings: the Sextet's recitative, then “Voi che sapete” with “Bravo! che bella voce!” from the full albums. 5 of 95 recitative words in Currentzis lay mostly in silence. For the aria, see Figure 6. Verdicts: “Yeah, that worked.” and “This works.”</p>
 
   <h3><span class="n">11.8</span>The Act II finale: scan versus born-digital (7–8 Nov)</h3>
-  <p>The finale was the hardest test: 940 bars, ten tempo and metre changes, 2–8 voices, and ten tracks across the two recordings. The scan route needed the shared bar grid, the cast-order DP, the on-stage penalty, the phrase caps and the two-pass tempo rescaling, and it was still the weakest result so far. The Bärenreiter decode, with the rest of the pipeline unchanged, removed most of the error:</p>
+  <p>The finale was the hardest test: 939 bars, ten tempo and metre changes, 2–8 voices, and ten tracks across the two recordings. The scan route needed the shared bar grid, the cast-order DP, the on-stage penalty, the phrase caps and the two-pass tempo rescaling, and it was still the weakest result so far. The Bärenreiter decode, with the rest of the pipeline unchanged, removed most of the error:</p>
   <div class="tablewrap">
     <table>
       <thead><tr><th>Act II finale</th><th class="num">Ricordi scan + Audiveris</th><th class="num">Bärenreiter vector decode</th></tr></thead>

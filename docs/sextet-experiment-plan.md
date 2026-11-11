@@ -24,7 +24,7 @@ segment → measure → start time  ──► interchange file ──► roon-rd
 
 We use audio-to-score alignment rather than tempo/beat extraction. Tempo integration drifts, and it fails on rubato, fermatas and recitativo secco. Dynamic time warping (DTW) on chroma features matches every point against the actual sound, so it doesn't drift.
 
-This experiment tests each step on a single number, the Sextet (No. 18/19, "Riconosci in questo amplesso"), before committing to the whole opera.
+This experiment tests each step on a single number, the Sextet (No. 18/19, "Riconosci in questo amplesso"; No. 18 in the Ricordi vocal score, No. 19 in Bärenreiter BA 4565, which is the reference), before committing to the whole opera.
 
 ## Why the Sextet
 

@@ -20,6 +20,8 @@ interchange files in `sextet-experiment/out/librettos/`.
 | No. 18 (III) Sextet "Riconosci in questo amplesso" | ensemble, 140 bars | typeset IMSLP PDF, read by Audiveris | score alignment | ✓ | ✓ |
 | Recit. "Eccovi, o caro amico" / "Andiam, bel paggio" (III) | secco | none | text forced alignment | same track as Sextet | own tracks |
 
+*Source of these numbers:* the numbers in this table (Nos. 11, 15 and 18) are the Ricordi vocal score's. The 940 bars is our decoder's count. The reference is the Bärenreiter vocal score BA 4565: there the finale is No. 16, with 939 bars (the decoder also counted the closing double barline as a bar), "Voi che sapete" is No. 12 (Arietta), and the Sextet is No. 19. The technical report's §2 table gives Bärenreiter pages and bars for every passage.
+
 All of them pass the every-line-accounted check (no line missing, none shown twice). Your
 listening verdicts: the Sextet "lands quite well", and the finale is "near perfect".
 
