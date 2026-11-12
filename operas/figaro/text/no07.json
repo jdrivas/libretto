@@ -1,0 +1,41 @@
+{
+ "piece": "no07",
+ "written": "2026-11-12 in session, from the Bärenreiter decode (libretto-pipeline text figaro no07)",
+ "source": "Bärenreiter BA 4565, No. 7 Terzetto (Atto primo, Scena VII)",
+ "characters": {
+  "IL CONTE": [
+   [["Cosa sento!", "What do I hear!"], ["tosto andate,", "at-once go,"], ["e scacciate", "and drive-out"], ["il seduttor.", "the seducer."]],
+   [["Ah già svien la poverina!", "Ah already faints the poor-girl!"], ["come oddio!", "how oh-God!"], ["le batte il cor!", "her beats the heart!"]],
+   [["Siamo qui per aiutarti,", "We are here to help-you,"], ["non turbarti,", "do not be-upset,"], ["oh mio tesor,", "oh my treasure,"]],
+   [["Parta parta il damerino!", "Let-him-leave let-him-leave the dandy!"]],
+   [["Poverino!", "Poor-boy!"], ["ma da me sorpreso ancor.", "but by me caught again."]],
+   [["Da tua cugina", "At your cousin’s"], ["l’uscio ier trovai rinchiuso;", "the door yesterday I-found shut;"],
+    ["picchio,", "I knock,"], ["m’apre Barbarina", "to-me opens Barbarina"], ["paurosa fuor dell’uso.", "frightened beyond the usual."],
+    ["Io dal muso insospettito,", "I by-the face made-suspicious,"], ["guardo, cerco", "look, search"], ["in ogni sito,", "in every place,"],
+    ["ed alzando", "and lifting"], ["pian pianino", "softly very-softly"], ["il tappeto al tavolino", "the cloth on-the table"],
+    ["vedo il paggio…", "I see the page…"]],
+   [["ah!", "ah!"], ["cosa veggio!", "what do I see!"]],
+   [["Onestissima signora!", "Most-honest lady!"], ["or capisco come va,", "now I understand how it goes,"]]
+  ],
+  "SUSANNA": [
+   [["Che ruina,", "What ruin,"], ["me meschina,", "me wretched,"], ["son oppressa", "I am oppressed"], ["dal dolor.", "by grief."]],
+   [["Dove sono!", "Where am I!"], ["cosa veggio!", "what do I see!"], ["che insolenza,", "what insolence,"], ["andate fuor,", "go out,"]],
+   [["È un’insidia,", "It is a trap,"], ["una perfidia,", "a treachery,"], ["non credete", "do not believe"], ["all’impostor,", "the impostor,"]],
+   [["Poverino!", "Poor-boy!"]],
+   [["Come!", "What!"], ["Che!", "What!"]],
+   [["Ah!", "Ah!"], ["crude stelle!", "cruel stars!"]],
+   [["Accader non può", "Happen cannot"], ["di peggio,", "anything worse,"], ["giusti Dei!", "just Gods!"], ["che mai sarà!", "what ever will be!"]]
+  ],
+  "BASILIO": [
+   [["In mal punto", "At a bad moment"], ["son qui giunto,", "I have here arrived,"], ["perdonate, oh mio signor.", "pardon, oh my lord."]],
+   [["Ah già svien la poverina!", "Ah already faints the poor-girl!"], ["come oddio!", "how oh-God!"], ["le batte il cor!", "her beats the heart!"]],
+   [["Pian pianin", "Softly very-softly"], ["su questo seggio.", "onto this seat."]],
+   [["Siamo qui", "We are here"], ["per aiutarvi,", "to help-you,"], ["è sicuro", "is safe"], ["il vostro onor,", "your honour,"]],
+   [["Ah del paggio", "Ah of-the page"], ["quel che ho detto", "what I have said"], ["era solo", "was only"], ["un mio sospetto.", "a suspicion of mine."]],
+   [["Poverino!", "Poor-boy!"]],
+   [["Che!", "What!"], ["Come!", "What!"]],
+   [["Ah!", "Ah!"], ["meglio ancora!", "better still!"]],
+   [["Così fan tutte", "So do all (women)"], ["le belle;", "the beauties;"], ["non c’è alcuna", "there is no"], ["novità.", "novelty."]]
+  ]
+ }
+}

@@ -1,0 +1,18 @@
+{
+ "piece": "no03",
+ "written": "2026-11-12 in session, from the Bärenreiter decode (libretto-pipeline text figaro no03)",
+ "source": "Bärenreiter BA 4565, No. 3 Cavatina (Atto primo, Scena II)",
+ "characters": {
+  "FIGARO": [
+   [["Se vuol ballare", "If you want to dance"], ["signor Contino,", "lord little-Count,"],
+    ["il chitarrino", "the little-guitar"], ["le suonerò sì,", "for-you I will play yes,"]],
+   [["Se vuol venire", "If you want to come"], ["nella mia scuola", "into my school"],
+    ["la capriola", "the caper"], ["le insegnerò sì,", "to-you I will teach yes,"]],
+   [["Saprò…", "I will know how…"], ["ma piano…", "but softly…"],
+    ["meglio ogni arcano", "better every secret"], ["dissimulando", "by dissembling"], ["scoprir potrò!", "uncover I will be able!"]],
+   [["L’arte schermendo,", "The art (of) fencing,"], ["l’arte adoprando,", "the art employing,"],
+    ["di qua pungendo,", "on this side stinging,"], ["di là scherzando,", "on that side joking,"],
+    ["tutte le macchine", "all the schemes"], ["rovescierò.", "I will overturn."]]
+  ]
+ }
+}

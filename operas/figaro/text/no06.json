@@ -1,0 +1,25 @@
+{
+ "piece": "no06",
+ "written": "2026-11-12 in session, from the Bärenreiter decode (libretto-pipeline text figaro no06)",
+ "source": "Bärenreiter BA 4565, No. 6 Aria (Atto primo, Scena V)",
+ "characters": {
+  "CHERUBINO": [
+   [["Non so più", "I know no more"], ["cosa son, cosa faccio,", "what I am, what I do,"],
+    ["or di foco,", "now of fire,"], ["ora sono di ghiaccio,", "now I am of ice,"],
+    ["ogni donna", "every woman"], ["cangiar di colore,", "to change of colour,"],
+    ["ogni donna", "every woman"], ["mi fa palpitar.", "me makes throb."]],
+   [["Solo ai nomi", "Only at-the names"], ["d’amor di diletto,", "of love of delight,"],
+    ["mi si turba,", "to-me is troubled,"], ["mi s’altera il petto", "to-me is-altered the breast"],
+    ["e a parlare", "and to speak"], ["mi sforza d’amore", "me forces of love"],
+    ["un desio", "a desire"], ["ch’io non posso spiegar.", "that I cannot explain."]],
+   [["Parlo d’amor vegliando,", "I speak of love waking,"], ["parlo d’amor sognando,", "I speak of love dreaming,"],
+    ["all’acque, all’ombre,", "to-the waters, to-the shadows,"], ["ai monti,", "to-the mountains,"],
+    ["ai fiori, all’erbe,", "to-the flowers, to-the grasses,"], ["ai fonti,", "to-the fountains,"],
+    ["all’eco, all’aria,", "to-the echo, to-the air,"], ["ai venti,", "to-the winds,"],
+    ["che il suon", "which the sound"], ["de’ vani accenti", "of-the vain words"],
+    ["portano via con se.", "carry away with them."]],
+   [["E se non ho", "And if I have not"], ["chi m’oda,", "anyone-who me hears,"],
+    ["parlo d’amor con me.", "I speak of love with me."]]
+  ]
+ }
+}

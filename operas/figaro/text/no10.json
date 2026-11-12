@@ -1,0 +1,32 @@
+{
+ "piece": "no10",
+ "written": "2026-11-12 in session, from the Bärenreiter decode (libretto-pipeline text figaro no10)",
+ "source": "Bärenreiter BA 4565, No. 10 Aria (Atto primo, Scena VIII)",
+ "characters": {
+  "FIGARO": [
+   [["Non più andrai", "No more will you go"], ["farfallone amoroso", "big-butterfly amorous"],
+    ["notte e giorno", "night and day"], ["d’intorno girando;", "around wandering;"],
+    ["delle belle", "of-the beauties"], ["turbando il riposo", "disturbing the rest"],
+    ["Narcisetto,", "little-Narcissus,"], ["Adoncino d’amor.", "little-Adonis of love."]],
+   [["Non più avrai", "No more will you have"], ["questi bei pennacchini,", "these pretty little-plumes,"],
+    ["quel cappello", "that hat"], ["leggero e galante,", "light and gallant,"],
+    ["quella chioma", "that head-of-hair"], ["quell’aria brillante,", "that air brilliant,"],
+    ["quel vermiglio", "that vermilion"], ["donnesco color.", "womanly colour."]],
+   [["Non più avrai", "No more will you have"], ["quei pennacchini,", "those little-plumes,"],
+    ["quel cappello,", "that hat,"], ["quella chioma,", "that head-of-hair,"], ["quell’aria brillante.", "that air brilliant."]],
+   [["Tra guerrieri", "Among warriors"], ["poffar Bacco!", "by Bacchus!"],
+    ["gran mustacchi,", "great moustaches,"], ["stretto sacco.", "tight knapsack."],
+    ["Schioppo in spalla,", "Musket on shoulder,"], ["sciabla al fianco,", "sabre at-the side,"],
+    ["collo dritto,", "neck straight,"], ["muso franco,", "face bold,"],
+    ["un gran casco,", "a great helmet,"], ["o un gran turbante,", "or a great turban,"],
+    ["molto onor,", "much honour,"], ["poco contante!", "little cash!"]],
+   [["Ed in vece del fandango", "And instead of-the fandango"], ["una marcia per il fango", "a march through the mud"],
+    ["per montagne,", "over mountains,"], ["per valloni", "through valleys"],
+    ["con le nevi", "with the snows"], ["e i sollioni", "and the heat-waves"],
+    ["al concerto di tromboni", "to-the concert of trombones"], ["di bombarde", "of bombards"],
+    ["di cannoni", "of cannons"], ["che le palle", "whose balls"], ["in tutti i tuoni", "in all the keys"],
+    ["all’orecchio", "at-the ear"], ["fan fischiar.", "make whistle."]],
+   [["Cherubino", "Cherubino"], ["alla vittoria;", "to victory;"], ["alla gloria militar.", "to glory military."]]
+  ]
+ }
+}

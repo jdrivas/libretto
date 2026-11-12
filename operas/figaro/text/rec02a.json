@@ -1,0 +1,70 @@
+{
+ "piece": "rec02a",
+ "written": "2026-11-12 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec02a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 2 (Atto primo, Scene I-II)",
+ "speeches": [
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Or bene;", "Well now;"], ["ascolta, e taci!", "listen, and be quiet!"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Parla;", "Speak;"], ["che c’è di nuovo?", "what is there of new?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Il signor Conte,", "The lord Count,"], ["stanco di andar cacciando", "tired of going hunting"],
+   ["le straniere bellezze forastiere,", "the strange beauties foreign,"], ["vuole ancor nel castello", "wants also in-the castle"],
+   ["ritentar la sua sorte,", "to-retry his luck,"], ["nè già di sua consorte,", "nor indeed for his wife,"],
+   ["bada bene,", "mind well,"], ["appetito gli viene…", "appetite to-him comes…"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["E di chi dunque?", "And for whom then?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Della tua Susannetta.", "For your little-Susanna."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Di te?", "For you?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Di me medesma;", "For me myself;"], ["ed ha speranza,", "and he has hope,"],
+   ["che al nobil suo progetto", "that to-the noble his plan"], ["utilissima sia", "most-useful be"],
+   ["tal vicinanza.", "such nearness."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Bravo!", "Bravo!"], ["tiriamo avanti.", "let us pull ahead."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Queste le grazie son,", "These the favours are,"], ["questa la cura", "this the care"],
+   ["ch’egli prende di te,", "that he takes of you,"], ["della tua sposa:", "of your bride:"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Oh guarda un po’", "Oh look a little"], ["che carità pelosa!", "what charity hairy!"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Chetati:", "Hush:"], ["or viene il meglio:", "now comes the best:"], ["Don Basilio,", "Don Basilio,"],
+   ["mio maestro di canto,", "my master of singing,"], ["e suo mezzano,", "and his go-between,"],
+   ["nel darmi la lezione", "in giving-me the lesson"], ["mi ripete ogni dì", "to-me repeats every day"],
+   ["questa canzone.", "this song."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Chi?", "Who?"], ["Basilio?", "Basilio?"], ["oh birbante!", "oh scoundrel!"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["E tu credevi", "And you believed"], ["che fosse la mia dote", "that was my dowry"],
+   ["merto del tuo bel muso!", "merit of your pretty face!"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Me n’era lusingato.", "Myself of-it I-had flattered."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Ei la destina", "He it intends"], ["per ottener da me", "to obtain from me"],
+   ["certe mezz’ore…", "certain half-hours…"], ["che il diritto feudale…", "that the right feudal…"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Come?", "How?"], ["ne’ feudi suoi", "in-the fiefs his"], ["non l’ha il Conte abolito?", "not it-has the Count abolished?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Ebben;", "Well;"], ["ora è pentito,", "now he is repentant,"], ["e par che tenti", "and it-seems that he tries"],
+   ["riscattarlo da me.", "to-buy-it-back from me."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Bravo!", "Bravo!"], ["mi piace:", "it pleases me:"], ["che caro signor Conte!", "what a dear lord Count!"],
+   ["Ci vogliam divertir:", "Ourselves we-want to-amuse:"], ["trovato avete…", "found you have…"],
+   ["Chi suona?", "Who rings?"], ["la Contessa.", "the Countess."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Addio addio", "Goodbye goodbye"], ["Fi Fi Figaro bello…", "Fi Fi Figaro handsome…"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Coraggio mio tesoro.", "Courage my treasure."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["E tu cervello.", "And you brains."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Bravo signor padrone!…", "Bravo lord master!…"], ["ora incomincio", "now I begin"],
+   ["a capir il mistero…", "to understand the mystery…"], ["e a veder schietto", "and to see plainly"],
+   ["tutto il vostro progetto:", "all your plan:"], ["a Londra è vero?", "to London is it true?"],
+   ["voi ministro,", "you minister,"], ["io corriero,", "I courier,"], ["e la Susanna…", "and the Susanna…"],
+   ["secreta ambasciatrice:", "secret ambassadress:"], ["non sarà, non sarà.", "it will not be, it will not be."],
+   ["Figaro il dice.", "Figaro it says."]]}
+ ]
+}

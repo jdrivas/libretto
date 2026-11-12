@@ -1,0 +1,24 @@
+{
+ "piece": "rec03a",
+ "written": "2026-11-12 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec03a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 3 (Atto primo, Scena III)",
+ "speeches": [
+  {"characters": ["BARTOLO"], "phrases": [
+   ["Ed aspettaste il giorno", "And you waited-for the day"], ["fissato a le sue nozze", "fixed for his wedding"],
+   ["per parlarmi di questo?", "to speak-to-me of this?"]]},
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["Io non mi perdo", "I do not lose"], ["dottor mio di coraggio:", "doctor mine courage:"],
+   ["per romper de’ sponsali", "to break-off betrothals"], ["più avanzati di questo", "more advanced than this"],
+   ["bastò spesso un pretesto:", "sufficed often a pretext:"], ["ed egli ha meco,", "and he has with-me,"],
+   ["oltre questo contratto,", "beyond this contract,"], ["certi impegni…", "certain obligations…"],
+   ["so io…", "I know…"], ["basta…", "enough…"], ["conviene la Susanna atterrir.", "it-is-fitting Susanna to-frighten."],
+   ["Convien con arte", "One-must with art"], ["impuntigliarla", "provoke-her"], ["a rifiutare il Conte.", "to refuse the Count."],
+   ["Egli per vendicarsi", "He to avenge-himself"], ["prenderà il mio partito,", "will take my side,"],
+   ["e Figaro così", "and Figaro thus"], ["fia mio marito.", "will-be my husband."]]},
+  {"characters": ["BARTOLO"], "phrases": [
+   ["Bene, io tutto farò:", "Good, I everything will do:"], ["senza riserve", "without reserve"],
+   ["tutto a me palesate:", "everything to me reveal:"], ["(avrei pur gusto", "(I would indeed like"],
+   ["di dar per moglie", "to give as wife"], ["la mia serva antica", "my servant old"],
+   ["a chi mi fece un dì", "to him-who me made one day"], ["rapir l’amica.)", "steal the beloved.)"]]}
+ ]
+}

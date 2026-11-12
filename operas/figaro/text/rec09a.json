@@ -1,0 +1,49 @@
+{
+ "piece": "rec09a",
+ "written": "2026-11-12 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec09a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 9 (Atto primo, Scena VIII). The decode loses the Count's \"-dio\" (bar 18) and puts the end of Cherubino's line on Susanna's staff; written as sung",
+ "speeches": [
+  {"characters": ["FIGARO"], "phrases": [["Evviva!", "Hurrah!"]]},
+  {"characters": ["SUSANNA"], "phrases": [["Evviva!", "Hurrah!"]]},
+  {"characters": ["BASILIO"], "phrases": [["Evviva!", "Hurrah!"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["E voi non applaudite?", "And you do not applaud?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["È afflitto poveretto!", "He is grieved poor-thing!"], ["perché il padron lo scaccia", "because the master him drives-out"],
+   ["dal castello!", "from-the castle!"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Ah in un giorno sì bello!", "Ah on a day so beautiful!"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["In un giorno di nozze!", "On a day of wedding!"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Quando ognuno v’ammira!", "When everyone you-admires!"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Perdono mio signor…", "Pardon my lord…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Nol meritate.", "You do not deserve-it."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Egli è ancora fanciullo!", "He is still a child!"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Men di quel che tu credi.", "Less than what you believe."]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["È ver, mancai;", "It is true, I did-wrong;"], ["ma dal mio labbro alfine…", "but from my lip after-all…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Ben ben;", "Well well;"], ["io vi perdono.", "I you pardon."], ["Anzi farò di più;", "Indeed I-will-do more;"],
+   ["vacante è un posto d’uffizial", "vacant is a post of officer"], ["nel reggimento mio;", "in-the regiment mine;"],
+   ["io scelgo voi;", "I choose you;"], ["partite tosto:", "leave at-once:"], ["addio.", "farewell."]]},
+  {"characters": ["SUSANNA", "FIGARO"], "phrases": [
+   ["Ah fin domani sol…", "Ah until tomorrow only…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["No, parta tosto.", "No, let-him-leave at-once."]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["A ubbidirvi signor", "To obey-you my lord"], ["son già disposto.", "I am already ready."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Via per l’ultima volta", "Come for the last time"], ["la Susanna abbracciate.", "Susanna embrace."],
+   ["(Inaspettato è il colpo.)", "(Unexpected is the blow.)"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Ehi capitano", "Hey captain"], ["a me pure la mano;", "to me too the hand;"],
+   ["(io vo’ parlarti", "(I want to speak-to-you"], ["pria che tu parta)", "before you leave)"],
+   ["addio piccolo Cherubino;", "farewell little Cherubino;"], ["come cangia in un punto", "how changes in a moment"],
+   ["il tuo destino.", "your destiny."]]}
+ ]
+}

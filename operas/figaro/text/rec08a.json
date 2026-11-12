@@ -1,0 +1,42 @@
+{
+ "piece": "rec08a",
+ "written": "2026-11-12 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec08a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 8 (Atto primo, Scena VIII)",
+ "speeches": [
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Cos’è questa commedia?", "What is this comedy?"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["(Eccoci in danza:", "(Here-we-are in-the dance:"], ["secondami cor mio.)", "back-me-up heart mine.)"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["(Non ci ho speranza.)", "(I have no hope in-it.)"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Signor non isdegnate", "My lord do not disdain"], ["questo del nostro affetto", "this of our affection"],
+   ["meritato tributo:", "deserved tribute:"], ["or che aboliste", "now that you-abolished"],
+   ["un diritto sì ingrato", "a right so unwelcome"], ["a chi ben ama…", "to one-who truly loves…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Quel dritto or non v’è più;", "That right now no longer exists;"], ["cosa si brama?", "what is desired?"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Della vostra saggezza", "Of your wisdom"], ["il primo frutto", "the first fruit"], ["oggi noi coglierem:", "today we will-gather:"],
+   ["le nostre nozze", "our wedding"], ["si son già stabilite:", "has already been-arranged:"], ["or a voi tocca", "now to you it-falls"],
+   ["costei che un vostro dono", "this-woman who a gift of-yours"], ["illibata serbò,", "untouched kept,"], ["coprir di questa,", "to cover with this,"],
+   ["simbolo d’onestà,", "symbol of honesty,"], ["candida vesta.", "white veil."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["(Diabolica astuzia!", "(Diabolical cunning!"], ["ma fingere convien.)", "but to-pretend is-fitting.)"],
+   ["Son grato amici", "I am grateful friends"], ["ad un senso sì onesto!", "for a sentiment so honest!"],
+   ["ma non merto per questo", "but I do not deserve for this"], ["nè tributi, nè lodi;", "neither tributes, nor praises;"],
+   ["e un dritto ingiusto", "and a right unjust"], ["ne’ miei feudi abolendo,", "in my fiefs abolishing,"],
+   ["a natura, al dover", "to nature, to duty"], ["lor dritti io rendo.", "their rights I return."]]},
+  {"characters": ["CORO"], "phrases": [
+   ["Evviva, evviva, evviva!", "Hurrah, hurrah, hurrah!"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Che virtù!", "What virtue!"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Che giustizia!", "What justice!"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["A voi prometto", "To you I promise"], ["compier la cerimonia:", "to complete the ceremony:"],
+   ["chiedo sol breve indugio;", "I ask only brief delay;"], ["io voglio in faccia", "I want in-the presence"],
+   ["de’ miei più fidi,", "of my most faithful,"], ["e con più ricca pompa", "and with richer pomp"],
+   ["rendervi appien felici;", "to-make-you fully happy;"], ["(Marcellina si trovi)", "(Marcellina must-be found)"],
+   ["andate, amici.", "go, friends."]]}
+ ]
+}

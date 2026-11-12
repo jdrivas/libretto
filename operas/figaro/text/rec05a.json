@@ -1,0 +1,57 @@
+{
+ "piece": "rec05a",
+ "written": "2026-11-12 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec05a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 5 (Atto primo, Scene IV-V). The decode puts \"Cos’è quest’insolenza?\" (bar 32) on Cherubino's staff; given to Susanna as in Da Ponte's libretto",
+ "speeches": [
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Va’ là,", "Go on,"], ["vecchia pedante,", "old pedant,"], ["dottoressa arrogante,", "lady-doctor arrogant,"],
+   ["perché hai letti due libri", "because you-have read two books"], ["e seccata madama", "and bored madam"],
+   ["in gioventù…", "in youth…"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Susannetta sei tu?", "Little-Susanna is it you?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Son io,", "It is I,"], ["cosa volete?", "what do you want?"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Ah cor mio,", "Ah heart mine,"], ["che accidente!", "what a mishap!"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Cor vostro!", "Heart yours!"], ["Cosa avvenne?", "What happened?"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Il Conte ieri", "The Count yesterday"], ["perché trovommi sol", "because he-found-me alone"],
+   ["con Barbarina,", "with Barbarina,"], ["il congedo mi diede;", "the dismissal me gave;"],
+   ["e se la Contessina,", "and if the little-Countess,"], ["la mia bella comare,", "my pretty godmother,"],
+   ["grazia non m’intercede,", "pardon not for-me intercedes,"], ["io vado via,", "I go away,"],
+   ["io non ti vedo più,", "I not you see more,"], ["Susanna mia!", "Susanna mine!"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Non vedete più me!", "You no longer see me!"], ["Bravo!", "Bravo!"], ["Ma dunque non più", "But then no more"],
+   ["per la Contessa", "for the Countess"], ["secretamente", "secretly"], ["il vostro cor sospira?", "your heart sighs?"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Ah che troppo rispetto", "Ah too-much respect"], ["ella m’ispira!", "she me inspires!"],
+   ["Felice te,", "Happy you,"], ["che puoi vederla", "who can see-her"], ["quando vuoi,", "when you want,"],
+   ["che la vesti il mattino,", "who her dress in-the morning,"], ["che la sera la spogli,", "who in-the evening her undress,"],
+   ["che le metti gli spilloni,", "who on-her put the hairpins,"], ["i merletti…", "the laces…"],
+   ["ah se in tuo loco…", "ah if in your place…"], ["Cos’hai lì?", "What have-you there?"], ["Dimmi un poco…", "Tell-me a little…"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Ah il vago nastro,", "Ah the pretty ribbon,"], ["e la notturna cuffia", "and the night cap"],
+   ["di comare sì bella.", "of godmother so beautiful."]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Deh dammelo sorella,", "Oh give-it-to-me sister,"], ["dammelo per pietà!", "give-it-to-me for pity!"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Presto quel nastro!", "Quick that ribbon!"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Oh caro, oh bello,", "Oh dear, oh beautiful,"], ["oh fortunato nastro!", "oh fortunate ribbon!"],
+   ["Io non te’l renderò", "I not to-you-it will-return"], ["che colla vita!", "but with-the life!"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Cos’è quest’insolenza?", "What is this insolence?"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Eh via, sta cheta!", "Eh come, be quiet!"], ["In ricompensa poi", "In reward then"],
+   ["questa mia canzonetta", "this my little-song"], ["io ti vo’ dare.", "I to-you want to give."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["E che ne debbo fare?", "And what with-it must-I do?"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Leggila alla padrona:", "Read-it to-the mistress:"], ["leggila tu medesma;", "read-it you yourself;"],
+   ["leggila a Barbarina,", "read-it to Barbarina,"], ["a Marcellina;", "to Marcellina;"],
+   ["leggila ad ogni donna", "read-it to every woman"], ["del palazzo!", "of-the palace!"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Povero Cherubin,", "Poor Cherubino,"], ["siete voi pazzo!", "are you mad!"]]}
+ ]
+}

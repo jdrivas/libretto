@@ -1,0 +1,34 @@
+{
+ "piece": "rec01a",
+ "written": "2026-11-12 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec01a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 1 (Atto primo, Scena I)",
+ "speeches": [
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Cosa stai misurando,", "What are you measuring,"], ["caro il mio Figaretto?", "dear my little-Figaro?"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Io guardo", "I look"], ["se quel letto", "whether that bed"], ["che ci destina il Conte", "that for-us intends the Count"],
+   ["farà buona figura", "will make good figure"], ["in questo loco.", "in this place."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["E in questa stanza?…", "And in this room?…"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Certo:", "Certainly:"], ["a noi la cede", "to us it yields"], ["generoso il padrone.", "generous the master."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Io per me", "I for my part"], ["te la dono.", "to-you it give."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["E la ragione?", "And the reason?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["La ragione l’ho qui.", "The reason I-have it here."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Perché non puoi", "Why can you not"], ["far che passi", "make that it pass"], ["un po’ qui?", "a little here?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Perché non voglio.", "Because I do not want."], ["Sei tu mio servo o no?", "Are you my servant or not?"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Ma non capisco", "But I do not understand"], ["perché tanto ti spiace", "why so-much to-you displeases"],
+   ["la più comoda stanza", "the most convenient room"], ["del palazzo.", "of-the palace."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Perch’io son la Susanna,", "Because I am the Susanna,"], ["e tu sei pazzo.", "and you are mad."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Grazie;", "Thanks;"], ["non tanti elogi!", "not so-many praises!"], ["Guarda un poco", "Look a little"],
+   ["se potriasi star meglio", "whether one-could be better"], ["in altro loco.", "in another place."]]}
+ ]
+}

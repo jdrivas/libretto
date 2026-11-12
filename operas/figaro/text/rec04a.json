@@ -1,0 +1,26 @@
+{
+ "piece": "rec04a",
+ "written": "2026-11-12 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec04a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 4 (Atto primo, Scena IV)",
+ "speeches": [
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["Tutto ancor non ho perso:", "All yet I have not lost:"], ["mi resta la speranza:", "to-me remains the hope:"],
+   ["ma Susanna si avanza:", "but Susanna approaches:"], ["io vo’ provarmi…", "I want to-try-myself…"],
+   ["fingiam di non vederla.", "let-us-pretend not to see-her."], ["E quella buona perla", "And that good pearl"],
+   ["la vorrebbe sposar!", "her he would-like to marry!"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["(Di me favella.)", "(Of me she speaks.)"]]},
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["Ma da Figaro alfine", "But from Figaro after-all"], ["non può meglio sperarsi:", "not can better be-hoped:"],
+   ["argent fait tout.", "money does everything."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["(Che lingua!", "(What a tongue!"], ["manco male", "less bad"], ["ch’ognun sa quanto vale.)", "that everyone knows how-much she is-worth.)"]]},
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["Brava!", "Brava!"], ["questo è giudizio!", "this is good-sense!"], ["Con quegli occhi modesti,", "With those eyes modest,"],
+   ["con quell’aria pietosa,", "with that air pious,"], ["e poi…", "and then…"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["(Meglio è partir.)", "(Better it is to leave.)"]]},
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["(Che cara sposa!)", "(What a dear bride!)"]]}
+ ]
+}

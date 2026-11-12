@@ -1,0 +1,39 @@
+{
+ "piece": "rec07a",
+ "written": "2026-11-12 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec07a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 7 (Atto primo, Scena VII)",
+ "speeches": [
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Basilio, in traccia tosto", "Basilio, in pursuit at-once"], ["di Figaro volate:", "of Figaro fly:"], ["io vo’ ch’ei veda…", "I want that he see…"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Ed io che senta:", "And I that he hear:"], ["andate:", "go:"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Restate:", "Stay:"], ["che baldanza!", "what boldness!"], ["e quale scusa", "and what excuse"], ["se la colpa è evidente?", "if the guilt is evident?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Non ha d’uopo di scusa", "Has no need of excuse"], ["un’innocente.", "an innocent-woman."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Ma costui quando venne?", "But this-fellow when did-he-come?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Egli era meco", "He was with-me"], ["quando voi qui giungeste,", "when you here arrived,"], ["e mi chiedea", "and me was-asking"],
+   ["d’impegnar la padrona", "to engage the mistress"], ["a intercedergli grazia:", "to intercede-for-him pardon:"], ["il vostro arrivo", "your arrival"],
+   ["in scompiglio lo pose,", "in confusion him put,"], ["ed allor in quel loco", "and then in that place"], ["si nascose.", "he hid himself."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Ma s’io stesso m’assisi", "But if I myself sat-down"], ["quando in camera entrai!", "when into-the room I-came!"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Ed allora di dietro", "And then behind"], ["io mi celai.", "I hid myself."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["E quando io là mi posi?", "And when I there put myself?"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Allor io pian mi volsi,", "Then I softly turned,"], ["e qui m’ascosi.", "and here hid-myself."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Oh cielo dunque ha sentito", "Oh heaven then he has heard"], ["quello ch’io ti dicea!", "what I to-you was-saying!"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Feci per non sentir", "I did (my best) not to hear"], ["quanto potea.", "as-much-as I could."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Oh perfidia!", "Oh treachery!"]]},
+  {"characters": ["BASILIO"], "phrases": [
+   ["Frenatevi:", "Restrain-yourself:"], ["vien gente:", "people are coming:"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["E voi restate qui,", "And you stay here,"], ["picciol serpente!", "little serpent!"]]}
+ ]
+}

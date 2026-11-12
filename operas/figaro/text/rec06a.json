@@ -1,0 +1,112 @@
+{
+ "piece": "rec06a",
+ "written": "2026-11-12 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec06a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 6 (Atto primo, Scene VI-VII)",
+ "speeches": [
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Ah son perduto!", "Ah I am lost!"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Che timor!", "What fear!"], ["il Conte!", "the Count!"], ["misera me!", "wretched me!"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Susanna, tu mi sembri", "Susanna, you to-me seem"], ["agitata e confusa.", "agitated and confused."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Signor…", "My lord…"], ["io chiedo scusa…", "I ask pardon…"], ["ma… se mai…", "but… if ever…"],
+   ["qui sorpresa…", "here surprised…"], ["per carità!", "for charity!"], ["partite.", "leave."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Un momento, e ti lascio,", "A moment, and I leave you,"], ["odi.", "listen."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Non odo nulla.", "I hear nothing."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Due parole.", "Two words."], ["Tu sai che ambasciatore", "You know that ambassador"],
+   ["a Londra il re mi dichiarò;", "to London the king me declared;"], ["di condur meco Figaro", "to take with-me Figaro"],
+   ["destinai.", "I decided."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Signor, se osassi…", "My lord, if I dared…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Parla, parla mia cara,", "Speak, speak my dear,"], ["e con quel dritto", "and with that right"],
+   ["ch’oggi prendi su me", "that today you-take over me"], ["finché tu vivi", "as-long-as you live"],
+   ["chiedi, imponi, prescrivi.", "ask, impose, prescribe."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Lasciatemi signor;", "Leave-me my lord;"], ["dritti non prendo,", "rights I do not take,"],
+   ["non ne vo’,", "not of-them I-want,"], ["non ne intendo…", "not of-them I-intend…"], ["oh me infelice!", "oh me unhappy!"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Ah no Susanna,", "Ah no Susanna,"], ["io ti vo’ far felice!", "I you want to make happy!"],
+   ["Tu ben sai quanto io t’amo:", "You well know how-much I you-love:"], ["a te Basilio", "to you Basilio"],
+   ["tutto già disse:", "everything already said:"], ["or senti,", "now listen,"], ["se per pochi momenti", "if for a-few moments"],
+   ["meco in giardin", "with-me in-the garden"], ["sull’imbrunir del giorno…", "at-the darkening of-the day…"],
+   ["ah per questo favore", "ah for this favour"], ["io pagherei…", "I would pay…"]]},
+  {"characters": ["BASILIO"], "phrases": [
+   ["È uscito poco fa.", "He went-out a-little ago."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Chi parla?", "Who speaks?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Oh Dei!", "Oh Gods!"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Esci, e alcun non entri.", "Go-out, and no-one let enter."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Ch’io vi lasci qui solo?", "That I you leave here alone?"]]},
+  {"characters": ["BASILIO"], "phrases": [
+   ["Da madama ei sarà,", "With madam he will be,"], ["vado a cercarlo.", "I go to look-for-him."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Qui dietro mi porrò.", "Here behind myself I-will-put."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Non vi celate.", "Do not hide yourself."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Taci, e cerca ch’ei parta.", "Be quiet, and try that he leave."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Oimè! che fate?", "Alas! what are-you-doing?"]]},
+  {"characters": ["BASILIO"], "phrases": [
+   ["Susanna, il ciel vi salvi:", "Susanna, heaven you save:"], ["avreste a caso", "would-you-have by chance"],
+   ["veduto il Conte?", "seen the Count?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["E cosa deve far", "And what must do"], ["meco il Conte?", "with-me the Count?"], ["animo uscite.", "come-on go-out."]]},
+  {"characters": ["BASILIO"], "phrases": [
+   ["Aspettate, sentite,", "Wait, listen,"], ["Figaro di lui cerca.", "Figaro for him looks."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["(Oh cieli!)", "(Oh heavens!)"], ["ei cerca chi dopo voi", "he looks-for the-one-who after you"], ["più l’odia.", "most him-hates."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["(Veggiam come mi serve.)", "(Let-us-see how me he-serves.)"]]},
+  {"characters": ["BASILIO"], "phrases": [
+   ["Io non ho mai", "I have never"], ["nella moral sentito", "in-the morals heard"], ["ch’uno ch’ama la moglie", "that one who-loves the wife"],
+   ["odi il marito.", "should hate the husband."], ["Per dir che il Conte v’ama…", "To say that the Count you-loves…"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Sortite,", "Get out,"], ["vil ministro", "vile minister"], ["dell’altrui sfrenatezza:", "of-another’s licentiousness:"],
+   ["io non ho d’uopo", "I have no need"], ["della vostra morale,", "of your morals,"], ["del Conte,", "of the Count,"],
+   ["del suo amor…", "of his love…"]]},
+  {"characters": ["BASILIO"], "phrases": [
+   ["Non c’è alcun male.", "There is no harm."], ["Ha ciascun i suoi gusti:", "Has each-one his tastes:"],
+   ["io mi credea", "I believed"], ["che preferir doveste", "that prefer you-should"], ["per amante,", "as lover,"],
+   ["come fan tutte quante,", "as do all of-them,"], ["un signor liberal,", "a lord generous,"], ["prudente, e saggio,", "prudent, and wise,"],
+   ["a un giovinastro,", "to a youngster,"], ["a un paggio…", "to a page…"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["A Cherubino!", "To Cherubino!"]]},
+  {"characters": ["BASILIO"], "phrases": [
+   ["A Cherubino!", "To Cherubino!"], ["a Cherubin d’amore", "to Cherub of love"], ["ch’oggi sul far del giorno", "who today at-the break of-the day"],
+   ["passeggiava qui d’intorno,", "was-walking here around,"], ["per entrar…", "to enter…"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Uom maligno,", "Man malicious,"], ["un’impostura è questa.", "a lie is this."]]},
+  {"characters": ["BASILIO"], "phrases": [
+   ["È un maligno con voi", "Is a malicious-one with you"], ["chi ha gli occhi in testa.", "whoever has the eyes in-the head."],
+   ["E quella canzonetta?", "And that little-song?"], ["ditemi in confidenza;", "tell-me in confidence;"],
+   ["io sono amico,", "I am a friend,"], ["ed altrui nulla dico;", "and to-others nothing I-say;"],
+   ["è per voi,", "is it for you,"], ["per madama…", "for madam…"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["(Chi diavol gliel’ha detto?)", "(Who the-devil to-him-it-has told?)"]]},
+  {"characters": ["BASILIO"], "phrases": [
+   ["A proposito, figlia,", "By the way, daughter,"], ["instruitelo meglio;", "instruct-him better;"],
+   ["egli la guarda a tavola", "he her watches at table"], ["sì spesso,", "so often,"], ["e con tale immodestia,", "and with such immodesty,"],
+   ["che se il Conte s’accorge…", "that if the Count notices…"], ["che su tal punto,", "that on such a point,"],
+   ["sapete, egli è una bestia.", "you know, he is a beast."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Scellerato!", "Wretch!"], ["e perché andate voi", "and why go you"], ["tai menzogne spargendo?", "such lies spreading?"]]},
+  {"characters": ["BASILIO"], "phrases": [
+   ["Io! che ingiustizia!", "I! what injustice!"], ["quel che compro io vendo.", "what I buy I sell."],
+   ["A quel che tutti dicono", "To what all say"], ["io non ci aggiungo un pelo:", "I to-it do-not add a hair:"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Come, che dicon tutti!", "What, what do all say!"]]},
+  {"characters": ["BASILIO"], "phrases": [
+   ["Oh bella!", "Oh lovely!"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Oh cielo!", "Oh heaven!"]]}
+ ]
+}

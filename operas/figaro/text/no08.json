@@ -1,0 +1,13 @@
+{
+ "piece": "no08",
+ "written": "2026-11-12 in session, from the Bärenreiter decode (libretto-pipeline text figaro no08)",
+ "source": "Bärenreiter BA 4565, No. 8 Coro (Atto primo, Scena VIII)",
+ "characters": {
+  "CORO": [
+   [["Giovani liete,", "Young-women happy,"], ["fiori spargete", "flowers scatter"],
+    ["davanti il nobile", "before the noble"], ["nostro signor.", "our lord."]],
+   [["Il suo gran core", "His great heart"], ["vi serba intatto", "for-you keeps intact"],
+    ["d’un più bel fiore", "of a more beautiful flower"], ["l’almo candor.", "the pure whiteness."]]
+  ]
+ }
+}

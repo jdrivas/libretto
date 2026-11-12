@@ -1,0 +1,23 @@
+{
+ "piece": "no04",
+ "written": "2026-11-12 in session, from the Bärenreiter decode (libretto-pipeline text figaro no04)",
+ "source": "Bärenreiter BA 4565, No. 4 Aria (Atto primo, Scena III)",
+ "characters": {
+  "BARTOLO": [
+   [["La vendetta,", "Vengeance,"], ["oh la vendetta!", "oh vengeance!"],
+    ["è un piacer", "is a pleasure"], ["serbato ai saggi:", "reserved for-the wise:"],
+    ["Obliar l’onte", "To forget the shames"], ["e gli oltraggi", "and the outrages"],
+    ["è bassezza,", "is baseness,"], ["è ognor viltà.", "is always cowardice."]],
+   [["Coll’astuzia…", "With cunning…"], ["coll’arguzia…", "with wit…"],
+    ["col giudizio…", "with judgment…"], ["col criterio…", "with discernment…"],
+    ["si potrebbe…", "one could…"], ["il fatto è serio…", "the matter is serious…"],
+    ["ma credete", "but believe (me)"], ["si farà.", "it will be done."]],
+   [["Se tutto il codice", "If all the code-of-law"], ["dovessi volgere,", "I had to turn-over,"],
+    ["se tutto l’indice", "if all the index"], ["dovessi leggere,", "I had to read,"],
+    ["con un equivoco,", "with an ambiguity,"], ["con un sinonimo", "with a synonym"],
+    ["qualche garbuglio", "some tangle"], ["si troverà.", "will be found."]],
+   [["Tutta Siviglia", "All Seville"], ["conosce Bartolo:", "knows Bartolo:"],
+    ["il birbo Figaro", "the rogue Figaro"], ["vostro sarà.", "yours will be."]]
+  ]
+ }
+}

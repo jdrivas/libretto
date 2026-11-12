@@ -1,0 +1,27 @@
+{
+ "piece": "no02",
+ "written": "2026-11-12 in session, from the Bärenreiter decode (libretto-pipeline text figaro no02)",
+ "source": "Bärenreiter BA 4565, No. 2 Duettino (Atto primo, Scena I)",
+ "characters": {
+  "FIGARO": [
+   [["Se a caso madama", "If by chance madam"], ["la notte ti chiama,", "at night you calls,"],
+    ["din din;", "ding ding;"], ["in due passi", "in two steps"], ["da quella puoi gir.", "to her you can go."]],
+   [["Vien poi l’occasione", "Comes then the occasion"], ["che vuolmi il padrone,", "that wants-me the master,"],
+    ["don don;", "dong dong;"], ["in tre salti", "in three leaps"], ["lo vado a servir.", "him I go to serve."]],
+   [["Susanna pian pian…", "Susanna softly softly…"]],
+   [["Fa presto…", "Be quick…"]],
+   [["Udir bramo il resto,", "To hear I long the rest,"], ["i dubbi, i sospetti", "the doubts, the suspicions"],
+    ["gelare mi fan.", "freeze me make."]]
+  ],
+  "SUSANNA": [
+   [["Così se il mattino", "So if in-the morning"], ["il caro Contino,", "the dear little-Count,"],
+    ["din din;", "ding ding;"], ["e ti manda", "and you sends"], ["tre miglia lontan,", "three miles away,"],
+    ["din din; don don;", "ding ding; dong dong;"], ["a mia porta", "to my door"], ["il diavol lo porta,", "the devil him brings,"],
+    ["ed ecco in tre salti…", "and there in three leaps…"]],
+   [["Ascolta…", "Listen…"]],
+   [["Se udir brami il resto,", "If to hear you long the rest,"], ["discaccia i sospetti", "drive-away the suspicions"],
+    ["che torto mi fan.", "that wrong me do."]],
+   [["discaccia i dubbi,", "drive-away the doubts,"], ["i sospetti.", "the suspicions."]]
+  ]
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "piece": "no05",
+ "written": "2026-11-12 in session, from the Bärenreiter decode (libretto-pipeline text figaro no05)",
+ "source": "Bärenreiter BA 4565, No. 5 Duettino (Atto primo, Scena IV)",
+ "characters": {
+  "MARCELLINA": [
+   [["Via resti servita,", "Come, be served (go first),"], ["madama brillante:", "madam brilliant:"],
+    ["no, prima a lei tocca:", "no, first to you it falls:"],
+    ["io so i dover miei,", "I know the duties mine,"], ["non fo inciviltà.", "I do not do incivility."]],
+   [["La sposa novella!", "The bride new!"], ["del Conte la bella!", "of-the Count the beauty!"],
+    ["i meriti!", "the merits!"], ["il posto!", "the position!"]],
+   [["Per Bacco precipito,", "By Bacchus I explode,"], ["se ancor resto qua.", "if still I stay here."]]
+  ],
+  "SUSANNA": [
+   [["Non sono sì ardita,", "I am not so bold,"], ["madama piccante:", "madam spicy:"],
+    ["no no, tocca a lei:", "no no, it falls to you:"],
+    ["io so i dover miei,", "I know the duties mine,"], ["non fo inciviltà.", "I do not do incivility."]],
+   [["La dama d’onore!", "The lady of honour!"], ["di Spagna l’amore!", "of Spain the love!"],
+    ["l’abito!", "the dress!"], ["l’età!", "the age!"]],
+   [["Sibilla decrepita,", "Sibyl decrepit,"], ["da rider mi fa.", "to laugh me makes."]]
+  ]
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "piece": "no01",
+ "written": "2026-11-12 in session, from the Bärenreiter decode (libretto-pipeline text figaro no01)",
+ "source": "Bärenreiter BA 4565, No. 1 Duettino (Atto primo, Scena I)",
+ "characters": {
+  "FIGARO": [
+   [["Cinque…", "Five…"], ["dieci…", "ten…"], ["venti…", "twenty…"], ["trenta…", "thirty…"],
+    ["trentasei…", "thirty-six…"], ["quarantatre…", "forty-three…"]],
+   [["Sì mio core,", "Yes my heart,"], ["or è più bello,", "now it is more beautiful,"],
+    ["sembra fatto", "it seems made"], ["inver per te.", "truly for you."]],
+   [["Ah il mattino", "Ah the morning"], ["alle nozze vicino", "to-the wedding near"],
+    ["quanto è dolce", "how it is sweet"], ["al tuo tenero sposo", "to your tender husband"],
+    ["questo bel cappellino", "this pretty little-hat"], ["vezzoso", "charming"],
+    ["che Susanna", "that Susanna"], ["ella stessa si fe’.", "she herself made."]]
+  ],
+  "SUSANNA": [
+   [["Ora sì", "Now yes"], ["ch’io son contenta;", "that I am happy;"],
+    ["sembra fatto", "it seems made"], ["inver per me.", "truly for me."]],
+   [["Guarda un po’,", "Look a little,"], ["mio caro Figaro,", "my dear Figaro,"],
+    ["guarda adesso", "look now (at)"], ["il mio cappello.", "my hat."]],
+   [["Ah il mattino", "Ah the morning"], ["alle nozze vicino", "to-the wedding near"],
+    ["quanto è dolce", "how it is sweet"], ["al mio tenero sposo", "to my tender husband"],
+    ["questo bel cappellino", "this pretty little-hat"], ["vezzoso", "charming"],
+    ["che Susanna", "that Susanna"], ["ella stessa si fe’.", "she herself made."]]
+  ]
+ }
+}
