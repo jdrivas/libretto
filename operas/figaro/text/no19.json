@@ -1,7 +1,7 @@
 {
  "piece": "no19",
- "written": "2026-11 in session (experiment); converted 2026-11-11",
- "source": "sextet_text.py",
+ "written": "2026-11 in session (experiment); converted 2026-11-11; checked against the Bärenreiter decode 2026-11-11 (spellings as sung there)",
+ "source": "sextet_text.py; Bärenreiter BA 4565 wording where it differs",
  "characters": {
   "SUSANNA": [
    [
@@ -44,8 +44,8 @@
      "Already in agreement"
     ],
     [
-     "colla sposa!",
-     "with the bride!"
+     "ei se la sposa;",
+     "he her marries;"
     ],
     [
      "Giusti Dei,",
@@ -174,7 +174,7 @@
      "It is an effect"
     ],
     [
-     "di buon core,",
+     "di bon core,",
      "of good heart,"
     ],
     [
@@ -490,7 +490,7 @@
      "It is an effect"
     ],
     [
-     "di buon core,",
+     "di bon core,",
      "of good heart,"
     ],
     [
@@ -592,7 +592,7 @@
      "It is an effect"
     ],
     [
-     "di buon core,",
+     "di bon core,",
      "of good heart,"
     ],
     [

@@ -41,6 +41,13 @@ def cmd_clean(args):
     stages.run_clean(load_opera(args.opera), args.piece or None)
 
 
+def cmd_text(args):
+    from . import textdraft
+    opera = load_opera(args.opera)
+    for pid in args.piece:
+        print(textdraft.draft(opera, pid))
+
+
 def cmd_place(args):
     from . import place
     opera = load_opera(args.opera)
@@ -104,6 +111,10 @@ def parser():
         c.add_argument("opera")
         c.add_argument("piece", nargs="*", help="piece ids (default: all main pieces)")
         c.set_defaults(func=func)
+    tx = sub.add_parser("text", help="print a piece's decoded text by speaker, as a draft for its text file")
+    tx.add_argument("opera")
+    tx.add_argument("piece", nargs="+")
+    tx.set_defaults(func=cmd_text)
     pl = sub.add_parser("place", help="find each piece in a recording (all configured if none named)")
     pl.add_argument("opera")
     pl.add_argument("recording", nargs="*")

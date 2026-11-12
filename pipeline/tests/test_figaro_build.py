@@ -23,7 +23,13 @@ def test_score_and_clean_reproduce_the_experiment_finale():
     sc = score_time.score_time(dec, OPERA.cast)
     old = json.loads((EXP / "finale2ba.score.json").read_text())
     assert sc["notes"] == old["notes"] and sc["sections"] == old["sections"]
-    text = json.loads((OPERAS / "figaro" / "text" / "no16.json").read_text())["characters"]
+    # The experiment's own text (the repo's no16 text has since taken Bärenreiter's
+    # spellings), so this tests that the method is unchanged.
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("finale2_text", OPERAS.parent / "pipeline" / "experiment" / "finale2_text.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    text = {c.replace("DON BARTOLO", "BARTOLO"): v for c, v in mod.TEXT.items()}
     new, _ = clean.clean_piece(sc["lines"], text, [n for n, _ in OPERA.cast.members])
     ren = lambda l: json.loads(json.dumps({k: v for k, v in l.items() if k not in ("voice", "bar_start", "bar_end")},
                                           ensure_ascii=False).replace("DON BARTOLO", "BARTOLO"))

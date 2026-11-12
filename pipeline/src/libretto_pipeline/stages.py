@@ -23,8 +23,18 @@ def main_pieces(opera):
 
 
 def text_of(opera, pid):
+    """A piece's text file. Route C files list speeches in order; the per-character verse
+    lists route B and the clean stage use are derived from them when not given."""
     path = OPERAS / opera.id / "text" / f"{pid}.json"
-    return json.loads(path.read_text()) if path.exists() else None
+    if not path.exists():
+        return None
+    t = json.loads(path.read_text())
+    if "characters" not in t and "speeches" in t:
+        t["characters"] = {}
+        for sp in t["speeches"]:
+            for c in sp["characters"]:
+                t["characters"].setdefault(c, []).append(sp["phrases"])
+    return t
 
 
 def run_score(opera, ids=None):

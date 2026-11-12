@@ -14,7 +14,7 @@ P8's regression check. Decisions: `docs/sung-text-pipeline.md` ("Decisions").
 | P3 | Recordings: inventory, mix and Demucs stems (FLAC) for both full operas | done 2026-11-11 |
 | P4 | The tool: stages score, clean, place, time, publish; per-piece outputs | code done; finale reproduces the experiment |
 | P5 | Placement of every piece in each recording | done 2026-11-11, **waiting for review** |
-| P6 | Text: verse list, phrase split, gloss (in session) for the five passages | texts converted from the experiment; score-text rewrite not started |
+| P6 | Text: verse list, phrase split, gloss (in session) for the five passages | done 2026-11-11, **waiting for review** |
 | P7 | Interchange format: piece id, bars, edition | publish writes 1.1-score with edition and piece; bars and roon-rd check not done |
 | P8 | Regression: rebuild the five passages from scratch; route B side test on a recitative | not started |
 
@@ -86,6 +86,21 @@ Known gaps:
 - No. 23 "Amanti costanti": unlabelled choir staves inherit names from earlier systems
   instead of being recognised as the chorus (needs staff size). Not in the five passages.
 - Roon matching (disc numbers per album, titles vs tags) is P7/P8.
+
+## P6 result (2026-11-11)
+
+`libretto-pipeline text figaro <piece>` prints a piece's decoded text by speaker (the draft
+the session writes from). Texts in operas/figaro/text/:
+- the three recitatives rewritten from Bärenreiter's text, speakers and punctuation
+  ("oh caro amico", "sì rimoti", "del denar", "al gusto mio", "cosa nova", ...); letter
+  match against the decoded score 75-91% -> 100%;
+- the finale and Sextet respelled where Bärenreiter differs from the libretto (19 words:
+  "Cogl'uomin", "diventaste/foste", "de' nostri vassalli", "Uh che testa!", "di bon core",
+  "ei se la sposa", ...); two glosses changed with the meaning; "Voi che sapete" already
+  matched.
+Decoder fixes found on the way: speaker cues stacked above a stage direction (window
+22 -> 40 pt, never above the staff above); the page footer "BA 4565 b" was read as a lyric
+on scaled ensemble pages; "I" was dropped as a choir part name, losing "Io!".
 
 ## Pending for the user
 

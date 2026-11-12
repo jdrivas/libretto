@@ -50,9 +50,10 @@ def is_lyric_size(size, sp):
     return (abs(size - LYRIC_FULL_PT) < LYRIC_FULL_TOLERANCE
             or any(abs(size - r * sp) < LYRIC_TOLERANCE_PT for r in LYRIC_PER_SP))
 INSET_SP_RATIO = 0.75  # a system whose staves are all this much smaller is an inset
-CUE_ABOVE_PT = 22      # a speaker cue sits within this distance above its staff's top line
+CUE_ABOVE_PT = 40      # a speaker cue sits within this distance above its staff's top line
 _STAGE_DIRECTION = re.compile(r"\([a-zà-ù’' ]+\)")
-CHOIR_PARTS = {"Soprano", "Alto", "Tenore", "Basso", "Soprani", "Tenori", "Bassi", "I", "II"}
+_FOOTER = re.compile(r"BA \d{3,}")  # Bärenreiter's edition number in the page footer
+CHOIR_PARTS = {"Soprano", "Alto", "Tenore", "Basso", "Soprani", "Tenori", "Bassi"}  # not "I": "I - o!"
 # Full-size noteheads are 15.9 pt on a staff with 3.96 pt line spacing; grace notes are
 # about two-thirds of that. 3.6 x spacing (14.3 pt on solo staves) keeps the old 15 pt cut.
 EVENT_SIZE_PER_SP = 3.6
@@ -214,16 +215,19 @@ def read_system(sts, cs, sp_, vs, pno, si):
     tempo = [(s["x0"], s["t"].strip()) for s in sp_ if s["font"] == "Palatino-Bold" and s["size"] < 11
              and top - 30 < s["y"] < top + 5 and re.search(r"[a-z]", s["t"])]
     # Staff labels in the left margin (abbreviated, or the full name on a piece's first system).
-    for st in staves_out:
+    for k, st in enumerate(staves_out):
         lab = [s for s in sp_ if s["font"].startswith("Palatino") and s["x1"] < st["chars"][0]["x"] + 1
                and s["x1"] < x0 + 2 and st["top"] - 3 <= s["y"] <= st["bottom"] + 4] if st["chars"] else []
         st["label"] = " ".join(s["t"].strip() for s in lab)
-        # Speaker cues: a character's name printed just above the staff, inside the system
-        # (on a shared staff, as in secco recitative, it says who sings from there on).
+        # Speaker cues: a character's name printed above the staff, inside the system (on a
+        # shared staff, as in secco recitative, it says who sings from there on). It can sit
+        # on top of a stage direction, so the window is generous, but never reaches the
+        # staff above.
+        floor = max(st["top"] - CUE_ABOVE_PT, staves_out[k - 1]["bottom"] + 2 if k else -1e9)
         st["cues"] = [(s["x0"], s["t"].strip()) for s in sp_
                       if s["font"] == "Palatino-Roman" and s["t"].strip().isupper()
                       and len(re.sub(r"[^A-Z]", "", s["t"])) >= 3 and s["x0"] > x0 + 2
-                      and st["top"] - CUE_ABOVE_PT < s["y"] < st["top"] + 1]
+                      and floor < s["y"] < st["top"] + 1]
     # Time signatures: "c" or stacked digits, per staff; take them from the first staff that has one.
     timesig = []
     for st in staves_out:
@@ -254,6 +258,7 @@ def read_system(sts, cs, sp_, vs, pno, si):
               # Not a stage direction at lyric size ("(partono)"; a sung aside opens a
               # parenthesis without closing it) or a choir part name.
               and not _STAGE_DIRECTION.fullmatch(s["t"].strip())
+              and not _FOOTER.match(s["t"].strip())  # the edition's page footer ("BA 4565 b")
               and s["t"].strip() not in CHOIR_PARTS
               and st["bottom"] + 2 < s["y"] < min(nxt - 2, st["bottom"] + 40) and s["x0"] > x0 - 1
               and not (s["t"].strip().isupper() and len(re.sub(r"\W", "", s["t"])) >= 3)]

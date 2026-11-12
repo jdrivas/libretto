@@ -1,7 +1,7 @@
 {
  "piece": "no16",
- "written": "2026-11 in session (experiment); converted 2026-11-11",
- "source": "finale2_text.py (libretto, spelled as sung)",
+ "written": "2026-11 in session (experiment); converted 2026-11-11; checked against the Bärenreiter decode 2026-11-11 (spellings as sung there)",
+ "source": "finale2_text.py (libretto, spelled as sung); Bärenreiter BA 4565 wording where it differs",
  "characters": {
   "SUSANNA": [
    [
@@ -126,7 +126,7 @@
    ],
    [
     [
-     "Cogli uomin, signora,",
+     "Cogl'uomin, signora,",
      "With-the men, madam,"
     ],
     [
@@ -646,7 +646,7 @@
      "the faithless one"
     ],
     [
-     "ch'ognora v'inganna.",
+     "che ognora v'inganna.",
      "who always you deceives."
     ]
    ],
@@ -1112,7 +1112,7 @@
      "and I claim"
     ],
     [
-     "ch'il contratto",
+     "che il contratto",
      "that the contract"
     ],
     [
@@ -1176,7 +1176,7 @@
    ],
    [
     [
-     "Io com'uomo",
+     "Io com'uom",
      "I as a man"
     ],
     [
@@ -1318,7 +1318,7 @@
      "Go far"
     ],
     [
-     "dagli occhi miei,",
+     "dagl'occhi miei,",
      "from-the eyes mine,"
     ],
     [
@@ -2220,7 +2220,7 @@
      "How ever"
     ],
     [
-     "diventasti sì grosso?",
+     "diventaste sì grosso?",
      "you became so big?"
     ],
     [
@@ -2228,7 +2228,7 @@
      "After the jump"
     ],
     [
-     "non fosti così.",
+     "non foste così.",
      "not you were thus."
     ]
    ],
@@ -2282,7 +2282,7 @@
      "Will be perhaps"
     ],
     [
-     "il sommario dei debiti?",
+     "il sommario de' debiti?",
      "the list of-the debts?"
     ]
    ],
@@ -2316,7 +2316,7 @@
      "the trumpets hear,"
     ],
     [
-     "i pifferi udite,",
+     "i piffari udite,",
      "the fifes hear,"
     ],
     [
@@ -2324,8 +2324,8 @@
      "among songs, among dances"
     ],
     [
-     "de' vostri vassalli,",
-     "of your vassals,"
+     "de' nostri vassalli,",
+     "of-our vassals,"
     ],
     [
      "corriamo, voliamo",
@@ -2534,7 +2534,7 @@
      "since the fact"
     ],
     [
-     "non può stare occulto,",
+     "non può star occulto,",
      "not can stay hidden,"
     ],
     [
@@ -2664,7 +2664,7 @@
    ],
    [
     [
-     "No, la lista degli osti.",
+     "No, la lista degl'osti.",
      "No, the list of-the innkeepers."
     ]
    ],
@@ -2690,11 +2690,11 @@
    ],
    [
     [
-     "Oh che testa!",
+     "Uh che testa!",
      "Oh what a head!"
     ],
     [
-     "Quest'è la patente",
+     "Questa è la patente",
      "This is the commission"
     ],
     [
