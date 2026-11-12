@@ -1,0 +1,47 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(.venv/bin/libretto-pipeline:*)",
+      "Bash(.venv/bin/python:*)",
+      "Bash(uv sync:*)",
+      "Bash(uv run:*)",
+      "Bash(cargo build:*)",
+      "Bash(cargo test:*)"
+    ],
+    "deny": [
+      "Bash(rm -rf:*)",
+      "Edit(//Users/jdr/Dropbox/Development/rust/libretto-scratch/Barenreiter/**)"
+    ],
+    "additionalDirectories": [
+      "/Users/jdr/Dropbox/Development/libretto-work"
+    ]
+  },
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": false,
+    "autoAllowBashIfSandboxed": true,
+    "allowUnsandboxedCommands": true,
+    "network": {
+      "allowedDomains": [
+        "pypi.org",
+        "files.pythonhosted.org",
+        "crates.io",
+        "static.crates.io",
+        "index.crates.io"
+      ]
+    },
+    "filesystem": {
+      "denyRead": [
+        "~/.ssh",
+        "~/.aws",
+        "~/.gnupg",
+        "~/.config/gh",
+        "~/.netrc",
+        "~/.npmrc"
+      ],
+      "denyWrite": [
+        "/Users/jdr/Dropbox/Development/rust/libretto-scratch/Barenreiter"
+      ]
+    }
+  }
+}
