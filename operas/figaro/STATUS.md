@@ -59,5 +59,5 @@ Open items from P2:
 - ~~Commit the decoder fix in `libretto-scratch`~~ done 2026-11-11 (313c7b4).
 - ~~`libretto/.claude/settings.json`~~ done 2026-11-11, with `settings.local.json`
   (UV_CACHE_DIR, not committed). The scores folder is write-denied in both layers.
-- Where `libretto-work` lives (it is in Dropbox, via the `~/Development` symlink): move it
-  out or mark it ignored before P3's stems.
+- ~~Where `libretto-work` lives~~ marked Dropbox-ignored 2026-11-11 (stays local, no
+  longer synced); revisit when the external disk arrives.
