@@ -16,7 +16,7 @@ P8's regression check. Decisions: `docs/sung-text-pipeline.md` ("Decisions").
 | P5 | Placement of every piece in each recording | done 2026-11-11, **waiting for review** |
 | P6 | Text: verse list, phrase split, gloss (in session) for the five passages | done 2026-11-11, **waiting for review** |
 | P7 | Interchange format: piece id, bars, edition; roon-rd matching | pipeline side done 2026-11-11; roon-rd change awaiting approval |
-| P8 | Regression: rebuild the five passages from scratch; route B side test on a recitative | not started |
+| P8 | Regression: rebuild the five passages from scratch; route B side test on a recitative | rebuilt 2026-11-12; **waiting for the listening check** |
 
 ## P2 result (2026-11-11)
 
@@ -117,6 +117,29 @@ on scaled ensemble pages; "I" was dropped as a choir part name, losing "Io!".
 - roon-rd (branch libretto-number-match, not committed): when the album matches and the
   file numbers its tracks, a disc/track number the file lacks means "not in this file",
   not a title-matching fallback (the "track 52" case).
+
+## P8 result (2026-11-12)
+
+`libretto-pipeline decode figaro` then `build figaro no12 rec12a no16 no19 rec19a rec19b`
+from the score PDF and the stems, both recordings. Checks against the vocal stem
+(compare: pipeline/experiment/compare_p8.py):
+
+| Passage | Solti | Currentzis |
+|---|---|---|
+| No. 16 finale (B) | agreement 84%, entries 79/79, median 0.12 s, 92% within 1 s | 88%, 79/79, 0.06 s, 96% |
+| No. 19 Sextet (B) | 84%, 11/11, 0.94 s, 64% (experiment, same check: 85%, 18/21, 0.40 s, 83%) | 89%, 13/14, 0.10 s, 85% (experiment 87%, 25/25, 0.33 s, 80%) |
+| No. 12 "Voi che sapete" (B) | 87%, 12/12, 0.13 s, 100% | 91%, 13/14, 0.12 s, 100% |
+| rec12a "Bravo!" (C) | 6/110 words in silence | 4/110 |
+| rec19a "Eccovi" (C) | 14/95 | 3/95 |
+| rec19b "Andiam" (C) | 50/72 (light voices below the detector; same times as the experiment) | 3/72 |
+
+The finale and recitatives agree with the experiment's lines to a median 0.00-0.01 s.
+Found and fixed on the way: placement can start a number 24 s early after a recitative
+(Solti's Sextet), so route B now refines each placed start and end from the piece's opening
+and closing 20 s of score. Solti's Sextet remains weaker than the experiment's on entries.
+
+Route B side test (decision 2), "Eccovi": route B's phrase starts differ from route C's by a
+median 0.72 s (Solti; 21/42 over 1 s) and 0.14 s (Currentzis). Route C stays for secco.
 
 ## Pending for the user
 

@@ -46,13 +46,50 @@ def map_lines(lines, to_audio, score=None):
     return timed
 
 
-def time_number(opera, rec_id, pid, tracks, excerpt=None):
-    """Route B for one piece over the given consecutive tracks. excerpt: (t0, t1) on the
-    joined timeline where the piece lies; default from the first to the last loud moment."""
+EDGE_S = 20.0        # score seconds at each end used to refine a placed boundary
+EDGE_SEARCH_S = (30.0, 70.0)  # search from this much before to this much after (or mirrored)
+
+
+def refine_edges(x, tuning, notes, start, end):
+    """Refine a placed span's start and end (seconds in x): the piece's opening EDGE_S of
+    score located near the start, its closing EDGE_S near the end. An opening or closing
+    is far more distinctive against the recitative around it than a whole number is."""
+    df = notes.sort_values("start").reset_index(drop=True)
+    end_s = float((df["start"] + df["duration"]).max())
+    dur = len(x) / align.FS
+    out = [start, end]
+    for k, (part, w0, w1) in enumerate((
+            (df[df["start"] < EDGE_S], start - EDGE_SEARCH_S[0], start + EDGE_SEARCH_S[1]),
+            (df[df["start"] + df["duration"] > end_s - EDGE_S], end - EDGE_SEARCH_S[1], end + EDGE_SEARCH_S[0]))):
+        w0, w1 = max(0.0, w0), min(dur, w1)
+        if len(part) < 3 or w1 - w0 < 2 * EDGE_S:
+            continue
+        part = part.copy()
+        part["start"] -= part["start"].min()
+        xw = x[int(w0 * align.FS):int(w1 * align.FS)]
+        f0, f1, _, _ = align.locate_excerpt(align.features_audio(xw, tuning)[0], align.features_score(part)[0])
+        out[k] = w0 + (f0 if k == 0 else f1)
+    if out[1] - out[0] < 0.5 * (end - start):  # implausible: keep the placement
+        return start, end
+    return out[0], out[1]
+
+
+def time_number(opera, rec_id, pid, tracks, excerpt=None, window=None):
+    """Route B for one piece over the given consecutive tracks (times on their joined
+    timeline).
+    excerpt: (t0, t1) where the piece starts and ends, taken as given.
+    window: (w0, w1) the placed span; its start and end are refined (refine_edges), as
+      placement is only accurate to seconds (24 s for Solti's Sextet, after a recitative),
+      and a fixed start that early squeezes the opening into the music before it.
+    Neither: from the first to the last loud moment."""
     score = json.loads((opera.work / "score" / f"{pid}.json").read_text())
     lines = json.loads((opera.work / "clean" / f"{pid}.json").read_text())["lines"]
     mix, voc, acc = _paths(opera, rec_id, tracks)
     x, tuning, offsets = align.load_mix(mix)
+    placed = None
+    if window is not None:
+        placed = window
+        excerpt = refine_edges(x, tuning, pd.DataFrame(score["notes"]), *window)
     if excerpt is None:
         import librosa
         rms = librosa.feature.rms(y=x, hop_length=align.FS // 10)[0]
@@ -72,6 +109,7 @@ def time_number(opera, rec_id, pid, tracks, excerpt=None):
             notes.setdefault(ln["character"], []).append((to_audio(g["score_start"]), to_audio(g["score_end"])))
     chk = voice.checks(t, det, lv, timed, notes, excerpt[0], excerpt[1])
     chk |= {"route": "B", "tuning_cents": float(tuning), "excerpt": [round(e, 2) for e in excerpt],
+            "placed": [round(e, 2) for e in placed] if placed else None,
             "section_tempo_factors": [round(float(f), 2) for f in factor],
             "trimmed_ends": sum(k == "end" for _, k, _, _ in trimmed),
             "trimmed_starts": sum(k == "start" for _, k, _, _ in trimmed)}

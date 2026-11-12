@@ -13,6 +13,8 @@ from .config import OPERAS
 
 log = logging.getLogger(__name__)
 
+WINDOW_S = 75.0  # tracks within this much of a placed span are loaded (covers the edge search)
+
 
 def manifest(opera):
     return json.loads((opera.work / "decode" / "manifest.json").read_text())
@@ -77,10 +79,15 @@ def run_time(opera, rec_id, ids=None):
         act = acts[e["act"]]
         if e["kind"] != "secco":
             if (want is None or e["id"] in want) and e["id"] in have_clean:
-                k0 = act["tracks"].index(e["tracks"][0])
-                o0 = act["offsets"][k0]
-                res = timing.time_number(opera, rec_id, e["id"], e["tracks"],
-                                         excerpt=(e["start"] - o0, e["end"] - o0))
+                # The tracks the placed span and its edge search reach into; the span's
+                # edges are refined there.
+                lo, hi = e["start"] - WINDOW_S, e["end"] + WINDOW_S
+                ks = [k for k, o in enumerate(act["offsets"])
+                      if o < hi and (k + 1 == len(act["offsets"]) or act["offsets"][k + 1] > lo)]
+                tracks = [act["tracks"][k] for k in ks]
+                o0 = act["offsets"][ks[0]]
+                res = timing.time_number(opera, rec_id, e["id"], tracks,
+                                         window=(e["start"] - o0, e["end"] - o0))
                 _write_timed(opera, rec_id, res)
             i += 1
             continue

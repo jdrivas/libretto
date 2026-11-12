@@ -71,6 +71,21 @@ def cmd_publish(args):
         publish.publish(opera, rid)
 
 
+def cmd_build(args):
+    """score -> clean -> place -> time -> publish, for the named pieces (or every piece
+    with a text file) in each recording. The decode must exist."""
+    from . import place, publish, stages
+    opera = load_opera(args.opera)
+    recs = args.recording or [r["id"] for r in opera.recordings]
+    stages.run_score(opera)
+    stages.run_clean(opera, args.piece or None)
+    for rid in recs:
+        opera.recording(rid)
+        place.place(opera, rid)
+        stages.run_time(opera, rid, args.piece or None)
+        publish.publish(opera, rid)
+
+
 def cmd_status(args):
     from . import recording
     opera = load_opera(args.opera)
@@ -129,6 +144,11 @@ def parser():
     pb.add_argument("opera")
     pb.add_argument("recording", nargs="*")
     pb.set_defaults(func=cmd_publish)
+    bd = sub.add_parser("build", help="score, clean, place, time and publish (the decode must exist)")
+    bd.add_argument("opera")
+    bd.add_argument("--recording", action="append", help="recording id (repeatable; default all)")
+    bd.add_argument("piece", nargs="*", help="piece ids (default: every piece with a text file)")
+    bd.set_defaults(func=cmd_build)
     s = sub.add_parser("status", help="show what has been built for an opera")
     s.add_argument("opera")
     s.set_defaults(func=cmd_status)
