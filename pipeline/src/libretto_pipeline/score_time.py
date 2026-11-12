@@ -18,6 +18,7 @@ TEMPO_BPM = [("prestissimo", 184), ("presto", 168), ("più allegro", 150), ("all
              ("molto andante", 84), ("andante", 76), ("larghetto", 60), ("adagio", 56), ("largo", 50)]
 LINE_GAP_S = 0.6       # a pause of this much (score s) between syllables ends a line
 LINE_MAX_SYLLS = 20
+CHORUS = "CORO"
 
 
 def bar_seconds(timesig, tempo):
@@ -82,7 +83,17 @@ def score_time(dec, cast):
             prev = key
     notes = [{"start": round(to_s(n["t0"]), 3), "duration": round(max(to_s(n["t1"]) - to_s(n["t0"]), 0.06), 3),
               "pitch": n["pitch"], "velocity": 80, "instrument": n["label"] or "piano"} for n in dec["notes"]]
-    who = speakers(dec, cast)
+    who0 = speakers(dec, cast)
+    who = who0
+    # The chorus: Figaro's choir parts sing the same words, so its text is read from one
+    # staff, the top choir staff that sings in each bar (the viewer shows it once).
+    top = {}
+    for s, w in zip(dec["syllables"], who):
+        if w == CHORUS:
+            b = int(s["t0"])
+            top[b] = min(top.get(b, s["staff"]), s["staff"])
+    who = [None if w == CHORUS and s["staff"] != top[int(s["t0"])] else w
+           for s, w in zip(dec["syllables"], who)]
     order = [n for n, _ in cast.members]
     lines, unattributed = [], 0
     for char in order:
@@ -105,7 +116,7 @@ def score_time(dec, cast):
                 flush()
             cur.append(s)
         flush()
-    unattributed = sum(w is None for w in who)
+    unattributed = sum(w is None for w in who0)
     lines.sort(key=lambda l: l["start"])
     return {"lines": lines, "notes": notes, "sections": sections, "score_end_s": round(end_t, 3),
             "bars": [[b["bar"], round(start[b["bar"]], 3), round(length[b["bar"]], 3)] for b in bars],
