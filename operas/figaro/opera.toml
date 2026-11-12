@@ -17,6 +17,8 @@ contents_pages = [13, 21]      # PDF pages of the "Verzeichnis der Szenen und Nu
 [[recording]]
 id = "georg-solti-1981"
 album_title = "Mozart: Le Nozze di Figaro"
+# What Roon calls the box set this Figaro comes from (seen in now-playing, 2026-11-12).
+album_title_aliases = ["Solti: The Operas - Mozart"]
 artist = "Georg Solti / London Philharmonic Orchestra and Chorus"
 conductor = "Georg Solti"
 orchestra = "London Philharmonic Orchestra and Chorus"

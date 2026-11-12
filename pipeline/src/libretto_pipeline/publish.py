@@ -56,8 +56,8 @@ def publish(opera, rec_id):
           "opera": {"title": f"{opera.composer} {opera.title}", "composer": opera.composer,
                     "language": opera.language, "translation_language": "en", "year": rec.get("year")},
           "edition": opera.edition,
-          "recording": {k: rec[k] for k in ("album_title", "artist", "conductor", "orchestra", "year", "label")
-                        if k in rec},
+          "recording": {k: rec[k] for k in ("album_title", "album_title_aliases", "artist", "conductor",
+                                            "orchestra", "year", "label") if k in rec},
           "tracks": tracks}
     dst = opera.work / "interchange"
     dst.mkdir(parents=True, exist_ok=True)

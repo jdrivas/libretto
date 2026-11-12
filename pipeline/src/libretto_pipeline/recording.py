@@ -76,8 +76,8 @@ def inventory(opera, rec):
         raise SystemExit(f"{rec['id']}: duplicate track ids")
     out = opera.work / "recordings" / rec["id"]
     out.mkdir(parents=True, exist_ok=True)
-    meta = {k: rec[k] for k in ("id", "album_title", "artist", "conductor", "orchestra", "year",
-                                "label", "store") if k in rec}
+    meta = {k: rec[k] for k in ("id", "album_title", "album_title_aliases", "artist", "conductor",
+                                "orchestra", "year", "label", "store") if k in rec}
     acts = {}
     for t in tracks:
         acts[t["act"]] = acts.get(t["act"], 0) + t["duration_s"]

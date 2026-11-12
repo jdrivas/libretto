@@ -16,7 +16,7 @@ P8's regression check. Decisions: `docs/sung-text-pipeline.md` ("Decisions").
 | P5 | Placement of every piece in each recording | done 2026-11-11, **waiting for review** |
 | P6 | Text: verse list, phrase split, gloss (in session) for the five passages | done 2026-11-11, **waiting for review** |
 | P7 | Interchange format: piece id, bars, edition; roon-rd matching | pipeline side done 2026-11-11; roon-rd change awaiting approval |
-| P8 | Regression: rebuild the five passages from scratch; route B side test on a recitative | rebuilt 2026-11-12; **waiting for the listening check** |
+| P8 | Regression: rebuild the five passages from scratch; route B side test on a recitative | done 2026-11-12; listening check passed |
 
 ## P2 result (2026-11-11)
 
@@ -140,6 +140,13 @@ and closing 20 s of score. Solti's Sextet remains weaker than the experiment's o
 
 Route B side test (decision 2), "Eccovi": route B's phrase starts differ from route C's by a
 median 0.72 s (Solti; 21/42 over 1 s) and 0.14 s (Currentzis). Route C stays for secco.
+
+Listening check in the viewer (2026-11-12): passed, both recordings. Solti first showed
+0/0 segments: Roon calls its album "Solti: The Operas - Mozart" and its titles differ from
+the file's tags, so roon-rd's title matching picked an empty track. Fixed by an
+`album_title_aliases` entry in opera.toml (carried into recording.json and the interchange)
+and, in roon-rd (5890dc3), a title match within 1 s of the playing length wins. Solti's
+Sextet drifts a little at times and recovers; left for now (see its entry figures above).
 
 ## Pending for the user
 
