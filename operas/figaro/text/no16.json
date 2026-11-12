@@ -1,0 +1,2833 @@
+{
+ "piece": "no16",
+ "written": "2026-11 in session (experiment); converted 2026-11-11",
+ "source": "finale2_text.py (libretto, spelled as sung)",
+ "characters": {
+  "SUSANNA": [
+   [
+    [
+     "Signore!",
+     "Sir!"
+    ],
+    [
+     "Cos'è quel stupore?",
+     "What is that amazement?"
+    ],
+    [
+     "Il brando prendete,",
+     "The sword take,"
+    ],
+    [
+     "il paggio uccidete,",
+     "the page kill,"
+    ],
+    [
+     "quel paggio malnato",
+     "that page ill-born"
+    ],
+    [
+     "vedetelo qua.",
+     "see him here."
+    ]
+   ],
+   [
+    [
+     "Confusa han la testa,",
+     "Confused they have the head,"
+    ],
+    [
+     "non san come va!",
+     "not they know how it goes!"
+    ]
+   ],
+   [
+    [
+     "Guardate,",
+     "Look,"
+    ],
+    [
+     "qui ascoso sarà.",
+     "here hidden he will be."
+    ]
+   ],
+   [
+    [
+     "Più lieta,",
+     "More cheerful,"
+    ],
+    [
+     "più franca,",
+     "more bold,"
+    ],
+    [
+     "in salvo è di già.",
+     "in safety he is already."
+    ]
+   ],
+   [
+    [
+     "Le vostre follie",
+     "The your follies"
+    ],
+    [
+     "non mertan pietà.",
+     "not deserve pity."
+    ]
+   ],
+   [
+    [
+     "Così si condanna",
+     "So one condemns"
+    ],
+    [
+     "chi può sospettar.",
+     "who can suspect."
+    ]
+   ],
+   [
+    [
+     "Signora!",
+     "Madam!"
+    ]
+   ],
+   [
+    [
+     "Confuso, pentito,",
+     "Confused, repentant,"
+    ],
+    [
+     "è troppo punito;",
+     "he is too-much punished;"
+    ],
+    [
+     "abbiate pietà.",
+     "have pity."
+    ]
+   ],
+   [
+    [
+     "Di Figaro è il foglio,",
+     "Of Figaro is the note,"
+    ],
+    [
+     "e a voi per Basilio...",
+     "and to you through Basilio..."
+    ]
+   ],
+   [
+    [
+     "Perdono non merta",
+     "Pardon not deserves"
+    ],
+    [
+     "chi agli altri non dà.",
+     "who to-the others not gives."
+    ]
+   ],
+   [
+    [
+     "Cogli uomin, signora,",
+     "With-the men, madam,"
+    ],
+    [
+     "girate, volgete,",
+     "turn, twist,"
+    ],
+    [
+     "vedrete che ognora",
+     "you will see that always"
+    ],
+    [
+     "si cade poi là.",
+     "one falls then there."
+    ]
+   ],
+   [
+    [
+     "Da questo momento",
+     "From this moment"
+    ],
+    [
+     "quest'alma a conoscerla",
+     "this soul to know her"
+    ],
+    [
+     "apprender potrà.",
+     "learn will be able."
+    ]
+   ],
+   [
+    [
+     "La cosa è scabrosa,",
+     "The thing is thorny,"
+    ],
+    [
+     "com'ha da finir?",
+     "how has it to end?"
+    ]
+   ],
+   [
+    [
+     "Nol conosci?",
+     "It-not you know?"
+    ]
+   ],
+   [
+    [
+     "E nol desti",
+     "And it-not you gave"
+    ],
+    [
+     "a Don Basilio?",
+     "to Don Basilio?"
+    ]
+   ],
+   [
+    [
+     "E non sai",
+     "And not you know"
+    ],
+    [
+     "del damerino...",
+     "of-the little dandy..."
+    ]
+   ],
+   [
+    [
+     "Il talento",
+     "The talent"
+    ],
+    [
+     "aguzzi invano,",
+     "you sharpen in vain,"
+    ],
+    [
+     "palesato abbiam l'arcano,",
+     "revealed we have the secret,"
+    ],
+    [
+     "non v'è nulla da ridir.",
+     "not there is nothing to object."
+    ]
+   ],
+   [
+    [
+     "Eh via chetati,",
+     "Eh come, be quiet,"
+    ],
+    [
+     "balordo,",
+     "dolt,"
+    ],
+    [
+     "la burletta",
+     "the little joke"
+    ],
+    [
+     "ha da finir.",
+     "has to end."
+    ]
+   ],
+   [
+    [
+     "Deh signor,",
+     "Pray sir,"
+    ],
+    [
+     "nol contrastate,",
+     "it-not oppose,"
+    ],
+    [
+     "consolate i miei desir.",
+     "console the my desires."
+    ]
+   ],
+   [
+    [
+     "Cosa dici,",
+     "What you say,"
+    ],
+    [
+     "cos'hai,",
+     "what you have,"
+    ],
+    [
+     "cosa è nato?",
+     "what is born?"
+    ]
+   ],
+   [
+    [
+     "Via parla,",
+     "Come speak,"
+    ],
+    [
+     "di' su!",
+     "say up!"
+    ]
+   ],
+   [
+    [
+     "Figaro, all'erta!",
+     "Figaro, on-the alert!"
+    ]
+   ],
+   [
+    [
+     "Costui ci sconcerta,",
+     "This man us upsets,"
+    ],
+    [
+     "quel briaco",
+     "that drunkard"
+    ],
+    [
+     "che viene a far qui?",
+     "what comes he to do here?"
+    ]
+   ],
+   [
+    [
+     "Sai che il paggio...",
+     "You know that the page..."
+    ]
+   ],
+   [
+    [
+     "Ma signore,",
+     "But sir,"
+    ],
+    [
+     "se in lui parla il vino.",
+     "if in him speaks the wine."
+    ]
+   ],
+   [
+    [
+     "Olà, Figaro, ascolta!",
+     "Hey, Figaro, listen!"
+    ]
+   ],
+   [
+    [
+     "Che testa!",
+     "What a head!"
+    ],
+    [
+     "Che ingegno!",
+     "What wit!"
+    ]
+   ],
+   [
+    [
+     "Ed insiste quel pazzo?",
+     "And insists that madman?"
+    ]
+   ],
+   [
+    [
+     "Maledetto!",
+     "Cursed!"
+    ]
+   ],
+   [
+    [
+     "Come mai,",
+     "How ever,"
+    ],
+    [
+     "giusto ciel,",
+     "just heaven,"
+    ],
+    [
+     "finirà?",
+     "will it end?"
+    ]
+   ],
+   [
+    [
+     "Figaro all'erta.",
+     "Figaro on-the alert."
+    ]
+   ],
+   [
+    [
+     "Lascialo,",
+     "Leave him,"
+    ],
+    [
+     "e parti.",
+     "and leave."
+    ]
+   ],
+   [
+    [
+     "Giusti dei!",
+     "Just gods!"
+    ],
+    [
+     "La patente!",
+     "The commission!"
+    ]
+   ],
+   [
+    [
+     "Il suggello!",
+     "The seal!"
+    ]
+   ],
+   [
+    [
+     "Se mi salvo",
+     "If myself I save"
+    ],
+    [
+     "da questa tempesta,",
+     "from this storm,"
+    ],
+    [
+     "più non avvi",
+     "no more there is"
+    ],
+    [
+     "naufragio per me,",
+     "shipwreck for me,"
+    ],
+    [
+     "no.",
+     "no."
+    ]
+   ],
+   [
+    [
+     "Son venuti",
+     "They have come"
+    ],
+    [
+     "a sconcertarmi,",
+     "to upset me,"
+    ],
+    [
+     "qual rimedio",
+     "what remedy"
+    ],
+    [
+     "a ritrovar?",
+     "to find?"
+    ]
+   ],
+   [
+    [
+     "Come? Come?",
+     "What? What?"
+    ]
+   ],
+   [
+    [
+     "È un birbante!",
+     "He is a rogue!"
+    ]
+   ],
+   [
+    [
+     "Son tre matti,",
+     "They are three madmen,"
+    ]
+   ],
+   [
+    [
+     "Son confusa,",
+     "I am confused,"
+    ],
+    [
+     "son stordita,",
+     "I am stunned,"
+    ],
+    [
+     "disperata,",
+     "desperate,"
+    ],
+    [
+     "sbalordita!",
+     "dumbfounded!"
+    ],
+    [
+     "Certo un diavol",
+     "Surely a devil"
+    ],
+    [
+     "dell'inferno",
+     "of-the hell"
+    ],
+    [
+     "qui li ha fatti",
+     "here them has made"
+    ],
+    [
+     "capitar!",
+     "turn up!"
+    ]
+   ]
+  ],
+  "LA CONTESSA": [
+   [
+    [
+     "Ah! signore,",
+     "Ah! sir,"
+    ],
+    [
+     "quel furore,",
+     "that fury,"
+    ],
+    [
+     "per lui",
+     "for him"
+    ],
+    [
+     "fammi il cor tremar.",
+     "makes-me the heart tremble."
+    ]
+   ],
+   [
+    [
+     "No, sentite.",
+     "No, listen."
+    ]
+   ],
+   [
+    [
+     "Giuro al ciel,",
+     "I swear to-the heaven,"
+    ],
+    [
+     "ch'ogni sospetto...",
+     "that every suspicion..."
+    ],
+    [
+     "e lo stato",
+     "and the state"
+    ],
+    [
+     "in che il trovate,",
+     "in which him you find,"
+    ],
+    [
+     "sciolto il collo,",
+     "loosened the collar,"
+    ],
+    [
+     "nudo il petto...",
+     "bare the chest..."
+    ]
+   ],
+   [
+    [
+     "Per vestir",
+     "To dress"
+    ],
+    [
+     "femminee spoglie...",
+     "feminine garments..."
+    ]
+   ],
+   [
+    [
+     "Mi fa torto",
+     "To-me does wrong"
+    ],
+    [
+     "quel trasporto;",
+     "that passion;"
+    ],
+    [
+     "m'oltraggiate",
+     "me you outrage"
+    ],
+    [
+     "a dubitar.",
+     "to doubt."
+    ]
+   ],
+   [
+    [
+     "Egli è innocente...",
+     "He is innocent..."
+    ],
+    [
+     "Voi sapete...",
+     "You know..."
+    ]
+   ],
+   [
+    [
+     "Vado... sì... ma...",
+     "I go... yes... but..."
+    ]
+   ],
+   [
+    [
+     "ma...",
+     "but..."
+    ]
+   ],
+   [
+    [
+     "non son rea!",
+     "not I am guilty!"
+    ]
+   ],
+   [
+    [
+     "Ah! la cieca gelosia,",
+     "Ah! the blind jealousy,"
+    ],
+    [
+     "qual eccesso",
+     "what excess"
+    ],
+    [
+     "gli fa far!",
+     "him makes do!"
+    ]
+   ],
+   [
+    [
+     "Susanna!",
+     "Susanna!"
+    ]
+   ],
+   [
+    [
+     "Che storia è mai questa!",
+     "What story is ever this!"
+    ],
+    [
+     "Susanna v'è là!",
+     "Susanna there is there!"
+    ]
+   ],
+   [
+    [
+     "Susanna, son morta...",
+     "Susanna, I am dead..."
+    ],
+    [
+     "il fiato mi manca.",
+     "the breath me lacks."
+    ]
+   ],
+   [
+    [
+     "Le vostre follie",
+     "The your follies"
+    ],
+    [
+     "non mertan pietà.",
+     "not deserve pity."
+    ]
+   ],
+   [
+    [
+     "Nol dite!",
+     "It-not say!"
+    ]
+   ],
+   [
+    [
+     "Mentite!",
+     "You lie!"
+    ],
+    [
+     "Son l'empia,",
+     "I am the impious one,"
+    ],
+    [
+     "l'infida",
+     "the faithless one"
+    ],
+    [
+     "ch'ognora v'inganna.",
+     "who always you deceives."
+    ]
+   ],
+   [
+    [
+     "Adunque la fede",
+     "So then the faith"
+    ],
+    [
+     "d'un'anima amante,",
+     "of a soul loving,"
+    ],
+    [
+     "sì fiera mercede",
+     "so cruel reward"
+    ],
+    [
+     "doveva sperar?",
+     "had to hope for?"
+    ]
+   ],
+   [
+    [
+     "Crudele!",
+     "Cruel one!"
+    ],
+    [
+     "Più quella non sono!",
+     "Any more that one not I am!"
+    ],
+    [
+     "Ma il misero oggetto",
+     "But the wretched object"
+    ],
+    [
+     "del vostro abbandono",
+     "of-the your abandonment"
+    ],
+    [
+     "che avete diletto",
+     "whom you have delight"
+    ],
+    [
+     "di far disperar.",
+     "to make despair."
+    ],
+    [
+     "Crudele, crudele!",
+     "Cruel one, cruel one!"
+    ],
+    [
+     "Soffrir sì gran torto",
+     "To suffer so great wrong"
+    ],
+    [
+     "quest'alma non sa.",
+     "this soul not knows how."
+    ]
+   ],
+   [
+    [
+     "Fu sol per provarvi.",
+     "It was only to test you."
+    ]
+   ],
+   [
+    [
+     "Fu sol per burlarvi.",
+     "It was only to fool you."
+    ]
+   ],
+   [
+    [
+     "Di Figaro è il foglio,",
+     "Of Figaro is the note,"
+    ],
+    [
+     "e a voi per Basilio...",
+     "and to you through Basilio..."
+    ]
+   ],
+   [
+    [
+     "Perdono non merta",
+     "Pardon not deserves"
+    ],
+    [
+     "chi agli altri non dà.",
+     "who to-the others not gives."
+    ]
+   ],
+   [
+    [
+     "Ah quanto, Susanna,",
+     "Ah how, Susanna,"
+    ],
+    [
+     "son dolce di core!",
+     "I am sweet of heart!"
+    ],
+    [
+     "Di donne al furore",
+     "Of women to-the fury"
+    ],
+    [
+     "chi più crederà?",
+     "who any more will believe?"
+    ]
+   ],
+   [
+    [
+     "Ingrato!",
+     "Ungrateful one!"
+    ]
+   ],
+   [
+    [
+     "Da questo momento",
+     "From this moment"
+    ],
+    [
+     "quest'alma a conoscermi",
+     "this soul to know me"
+    ],
+    [
+     "apprender potrà.",
+     "learn will be able."
+    ]
+   ],
+   [
+    [
+     "La cosa è scabrosa,",
+     "The thing is thorny,"
+    ],
+    [
+     "com'ha da finir?",
+     "how has it to end?"
+    ]
+   ],
+   [
+    [
+     "Nol conosci?",
+     "It-not you know?"
+    ]
+   ],
+   [
+    [
+     "Per recarlo...",
+     "To deliver it..."
+    ]
+   ],
+   [
+    [
+     "Che stasera",
+     "That this evening"
+    ],
+    [
+     "nel giardino...",
+     "in-the garden..."
+    ]
+   ],
+   [
+    [
+     "Il talento",
+     "The talent"
+    ],
+    [
+     "aguzzi invano,",
+     "you sharpen in vain,"
+    ],
+    [
+     "palesato abbiam l'arcano,",
+     "revealed we have the secret,"
+    ],
+    [
+     "non v'è nulla da ridir.",
+     "not there is nothing to object."
+    ]
+   ],
+   [
+    [
+     "Eh via chetati,",
+     "Eh come, be quiet,"
+    ],
+    [
+     "balordo,",
+     "dolt,"
+    ],
+    [
+     "la burletta",
+     "the little joke"
+    ],
+    [
+     "ha da finir.",
+     "has to end."
+    ]
+   ],
+   [
+    [
+     "Deh signor,",
+     "Pray sir,"
+    ],
+    [
+     "nol contrastate,",
+     "it-not oppose,"
+    ],
+    [
+     "consolate i lor desir.",
+     "console the their desires."
+    ]
+   ],
+   [
+    [
+     "Cosa dici,",
+     "What you say,"
+    ],
+    [
+     "cos'hai,",
+     "what you have,"
+    ],
+    [
+     "cosa è nato?",
+     "what is born?"
+    ]
+   ],
+   [
+    [
+     "Via parla,",
+     "Come speak,"
+    ],
+    [
+     "di' su!",
+     "say up!"
+    ]
+   ],
+   [
+    [
+     "Figaro, all'erta!",
+     "Figaro, on-the alert!"
+    ]
+   ],
+   [
+    [
+     "Costui ci sconcerta,",
+     "This man us upsets,"
+    ],
+    [
+     "quel briaco",
+     "that drunkard"
+    ],
+    [
+     "che viene a far qui?",
+     "what comes he to do here?"
+    ]
+   ],
+   [
+    [
+     "Ma signore,",
+     "But sir,"
+    ],
+    [
+     "se in lui parla il vino.",
+     "if in him speaks the wine."
+    ]
+   ],
+   [
+    [
+     "Olà, Figaro, ascolta!",
+     "Hey, Figaro, listen!"
+    ]
+   ],
+   [
+    [
+     "Che testa!",
+     "What a head!"
+    ],
+    [
+     "Che ingegno!",
+     "What wit!"
+    ]
+   ],
+   [
+    [
+     "Ed insiste quel pazzo?",
+     "And insists that madman?"
+    ]
+   ],
+   [
+    [
+     "Maledetto!",
+     "Cursed!"
+    ]
+   ],
+   [
+    [
+     "Come mai,",
+     "How ever,"
+    ],
+    [
+     "giusto ciel,",
+     "just heaven,"
+    ],
+    [
+     "finirà?",
+     "will it end?"
+    ]
+   ],
+   [
+    [
+     "Figaro all'erta.",
+     "Figaro on-the alert."
+    ]
+   ],
+   [
+    [
+     "Lascialo,",
+     "Leave him,"
+    ],
+    [
+     "e parti.",
+     "and leave."
+    ]
+   ],
+   [
+    [
+     "O ciel!",
+     "O heaven!"
+    ],
+    [
+     "La patente del paggio!",
+     "The commission of-the page!"
+    ]
+   ],
+   [
+    [
+     "Il suggello!",
+     "The seal!"
+    ]
+   ],
+   [
+    [
+     "Se mi salvo",
+     "If myself I save"
+    ],
+    [
+     "da questa tempesta,",
+     "from this storm,"
+    ],
+    [
+     "più non avvi",
+     "no more there is"
+    ],
+    [
+     "naufragio per me,",
+     "shipwreck for me,"
+    ],
+    [
+     "no.",
+     "no."
+    ]
+   ],
+   [
+    [
+     "Son venuti",
+     "They have come"
+    ],
+    [
+     "a sconcertarmi,",
+     "to upset me,"
+    ],
+    [
+     "qual rimedio",
+     "what remedy"
+    ],
+    [
+     "a ritrovar?",
+     "to find?"
+    ]
+   ],
+   [
+    [
+     "Come? Come?",
+     "What? What?"
+    ]
+   ],
+   [
+    [
+     "È un birbante!",
+     "He is a rogue!"
+    ]
+   ],
+   [
+    [
+     "Son tre matti,",
+     "They are three madmen,"
+    ]
+   ],
+   [
+    [
+     "Son confusa,",
+     "I am confused,"
+    ],
+    [
+     "son stordita,",
+     "I am stunned,"
+    ],
+    [
+     "disperata,",
+     "desperate,"
+    ],
+    [
+     "sbalordita!",
+     "dumbfounded!"
+    ],
+    [
+     "Certo un diavol",
+     "Surely a devil"
+    ],
+    [
+     "dell'inferno",
+     "of-the hell"
+    ],
+    [
+     "qui li ha fatti",
+     "here them has made"
+    ],
+    [
+     "capitar!",
+     "turn up!"
+    ]
+   ]
+  ],
+  "MARCELLINA": [
+   [
+    [
+     "Voi signor,",
+     "You sir,"
+    ],
+    [
+     "che giusto siete,",
+     "who just are,"
+    ],
+    [
+     "ci dovete",
+     "us you must"
+    ],
+    [
+     "or ascoltar.",
+     "now hear."
+    ]
+   ],
+   [
+    [
+     "Un impegno nuziale",
+     "A pledge nuptial"
+    ],
+    [
+     "ha costui con me contratto,",
+     "has this man with me contracted,"
+    ],
+    [
+     "e pretendo",
+     "and I claim"
+    ],
+    [
+     "ch'il contratto",
+     "that the contract"
+    ],
+    [
+     "deva meco effettuar.",
+     "he must with-me fulfil."
+    ]
+   ],
+   [
+    [
+     "Che bel colpo!",
+     "What a fine stroke!"
+    ],
+    [
+     "Che bel caso!",
+     "What a fine chance!"
+    ],
+    [
+     "È cresciuto",
+     "Has grown"
+    ],
+    [
+     "a tutti il naso;",
+     "to all the nose;"
+    ],
+    [
+     "qualche nume",
+     "some god"
+    ],
+    [
+     "a noi propizio",
+     "to us favourable"
+    ],
+    [
+     "qui ci ha fatti",
+     "here us has made"
+    ],
+    [
+     "capitar!",
+     "turn up!"
+    ]
+   ]
+  ],
+  "BASILIO": [
+   [
+    [
+     "Voi signor,",
+     "You sir,"
+    ],
+    [
+     "che giusto siete,",
+     "who just are,"
+    ],
+    [
+     "ci dovete",
+     "us you must"
+    ],
+    [
+     "or ascoltar.",
+     "now hear."
+    ]
+   ],
+   [
+    [
+     "Io com'uomo",
+     "I as a man"
+    ],
+    [
+     "al mondo cognito,",
+     "to-the world known,"
+    ],
+    [
+     "vengo qui",
+     "I come here"
+    ],
+    [
+     "per testimonio",
+     "as witness"
+    ],
+    [
+     "del promesso matrimonio",
+     "of-the promised marriage"
+    ],
+    [
+     "con prestanza di danar.",
+     "with loan of money."
+    ]
+   ],
+   [
+    [
+     "Che bel colpo!",
+     "What a fine stroke!"
+    ],
+    [
+     "Che bel caso!",
+     "What a fine chance!"
+    ],
+    [
+     "È cresciuto",
+     "Has grown"
+    ],
+    [
+     "a tutti il naso;",
+     "to all the nose;"
+    ],
+    [
+     "qualche nume",
+     "some god"
+    ],
+    [
+     "a noi propizio",
+     "to us favourable"
+    ],
+    [
+     "qui ci ha fatti",
+     "here us has made"
+    ],
+    [
+     "capitar!",
+     "turn up!"
+    ]
+   ]
+  ],
+  "IL CONTE": [
+   [
+    [
+     "Esci omai,",
+     "Come out now,"
+    ],
+    [
+     "garzon malnato,",
+     "boy ill-born,"
+    ],
+    [
+     "sciagurato,",
+     "wretch,"
+    ],
+    [
+     "non tardar.",
+     "not delay."
+    ]
+   ],
+   [
+    [
+     "E d'opporvi",
+     "And to oppose me"
+    ],
+    [
+     "ancor osate?",
+     "still you dare?"
+    ]
+   ],
+   [
+    [
+     "Via parlate!",
+     "Come speak!"
+    ]
+   ],
+   [
+    [
+     "Sciolto il collo!",
+     "Loosened the collar!"
+    ],
+    [
+     "Nudo il petto!",
+     "Bare the chest!"
+    ],
+    [
+     "Seguitate!",
+     "Go on!"
+    ]
+   ],
+   [
+    [
+     "Ah! comprendo,",
+     "Ah! I understand,"
+    ],
+    [
+     "indegna moglie;",
+     "unworthy wife;"
+    ],
+    [
+     "mi vo' tosto",
+     "myself I want at once"
+    ],
+    [
+     "vendicar.",
+     "to avenge."
+    ]
+   ],
+   [
+    [
+     "Qua la chiave!",
+     "Here the key!"
+    ]
+   ],
+   [
+    [
+     "Non so niente!",
+     "Not I know nothing!"
+    ],
+    [
+     "Va lontan",
+     "Go far"
+    ],
+    [
+     "dagli occhi miei,",
+     "from-the eyes mine,"
+    ],
+    [
+     "un'infida,",
+     "a faithless one,"
+    ],
+    [
+     "un'empia sei,",
+     "an impious one you are,"
+    ],
+    [
+     "e mi cerchi",
+     "and me you seek"
+    ],
+    [
+     "d'infamar!",
+     "to disgrace!"
+    ]
+   ],
+   [
+    [
+     "Non ascolto.",
+     "Not I listen."
+    ]
+   ],
+   [
+    [
+     "Vel leggo in volto!",
+     "It-you I read in face!"
+    ],
+    [
+     "Mora, mora,",
+     "Let him die, let him die,"
+    ],
+    [
+     "più non sia",
+     "no more let him be"
+    ],
+    [
+     "la cagion",
+     "the cause"
+    ],
+    [
+     "del mio penar.",
+     "of-the my suffering."
+    ]
+   ],
+   [
+    [
+     "Susanna!",
+     "Susanna!"
+    ]
+   ],
+   [
+    [
+     "Che scola!",
+     "What a lesson!"
+    ],
+    [
+     "La testa",
+     "The head"
+    ],
+    [
+     "girando mi va!",
+     "spinning to-me goes!"
+    ]
+   ],
+   [
+    [
+     "Sei sola?",
+     "Are you alone?"
+    ]
+   ],
+   [
+    [
+     "Guardiamo,",
+     "Let us look,"
+    ],
+    [
+     "qui ascoso sarà.",
+     "here hidden he will be."
+    ]
+   ],
+   [
+    [
+     "Che sbaglio mai presi!",
+     "What mistake ever I made!"
+    ],
+    [
+     "Appena lo credo;",
+     "Hardly it I believe;"
+    ],
+    [
+     "se a torto v'offesi",
+     "if wrongly you I offended"
+    ],
+    [
+     "perdono vi chiedo,",
+     "pardon you I ask,"
+    ],
+    [
+     "ma far burla simile",
+     "but to make joke such"
+    ],
+    [
+     "è poi crudeltà.",
+     "is after all cruelty."
+    ]
+   ],
+   [
+    [
+     "Io v'amo!",
+     "I you love!"
+    ]
+   ],
+   [
+    [
+     "Vel giuro!",
+     "It-you I swear!"
+    ]
+   ],
+   [
+    [
+     "Quell'ira, Susanna,",
+     "That anger, Susanna,"
+    ],
+    [
+     "m'aita a calmar.",
+     "me help to calm."
+    ]
+   ],
+   [
+    [
+     "Rosina!",
+     "Rosina!"
+    ]
+   ],
+   [
+    [
+     "Confuso, pentito,",
+     "Confused, repentant,"
+    ],
+    [
+     "son troppo punito;",
+     "I am too-much punished;"
+    ],
+    [
+     "abbiate pietà.",
+     "have pity."
+    ]
+   ],
+   [
+    [
+     "Ma il paggio rinchiuso?",
+     "But the page locked in?"
+    ]
+   ],
+   [
+    [
+     "Ma i tremiti,",
+     "But the tremblings,"
+    ],
+    [
+     "i palpiti?",
+     "the throbbings?"
+    ]
+   ],
+   [
+    [
+     "E un foglio sì barbaro?",
+     "And a note so barbarous?"
+    ]
+   ],
+   [
+    [
+     "Ah, perfidi...",
+     "Ah, treacherous ones..."
+    ],
+    [
+     "io voglio...",
+     "I want..."
+    ]
+   ],
+   [
+    [
+     "Ebben, se vi piace,",
+     "Well then, if to-you it pleases,"
+    ],
+    [
+     "comune è la pace;",
+     "common is the peace;"
+    ],
+    [
+     "Rosina inflessibile",
+     "Rosina unbending"
+    ],
+    [
+     "con me non sarà.",
+     "with me not will be."
+    ]
+   ],
+   [
+    [
+     "Guardatemi!",
+     "Look at me!"
+    ],
+    [
+     "ho torto,",
+     "I am wrong,"
+    ],
+    [
+     "e mi pento.",
+     "and I repent."
+    ]
+   ],
+   [
+    [
+     "Da questo momento",
+     "From this moment"
+    ],
+    [
+     "quest'alma a conoscervi",
+     "this soul to know you"
+    ],
+    [
+     "apprender potrà.",
+     "learn will be able."
+    ]
+   ],
+   [
+    [
+     "Pian piano,",
+     "Gently gently,"
+    ],
+    [
+     "men fretta...",
+     "less haste..."
+    ]
+   ],
+   [
+    [
+     "un dubbio toglietemi",
+     "a doubt remove-for-me"
+    ],
+    [
+     "in pria di partir.",
+     "before of leaving."
+    ]
+   ],
+   [
+    [
+     "Con arte le carte",
+     "With art the cards"
+    ],
+    [
+     "convien qui scoprir.",
+     "it is fitting here to uncover."
+    ]
+   ],
+   [
+    [
+     "Conoscete,",
+     "Do you know,"
+    ],
+    [
+     "signor Figaro,",
+     "mister Figaro,"
+    ],
+    [
+     "questo foglio",
+     "this note"
+    ],
+    [
+     "chi vergò?",
+     "who wrote?"
+    ]
+   ],
+   [
+    [
+     "Nol conosci?",
+     "It-not you know?"
+    ]
+   ],
+   [
+    [
+     "Tu c'intendi?",
+     "You us understand?"
+    ]
+   ],
+   [
+    [
+     "Già capisci?",
+     "Already you understand?"
+    ]
+   ],
+   [
+    [
+     "Cerchi invan",
+     "You seek in vain"
+    ],
+    [
+     "difesa e scusa,",
+     "defence and excuse,"
+    ],
+    [
+     "il tuo ceffo",
+     "the your mug"
+    ],
+    [
+     "già t'accusa,",
+     "already you accuses,"
+    ],
+    [
+     "vedo ben",
+     "I see well"
+    ],
+    [
+     "che vuoi mentir.",
+     "that you want to lie."
+    ]
+   ],
+   [
+    [
+     "Che rispondi?",
+     "What you answer?"
+    ]
+   ],
+   [
+    [
+     "Dunque accordi?",
+     "So you agree?"
+    ]
+   ],
+   [
+    [
+     "Marcellina!",
+     "Marcellina!"
+    ],
+    [
+     "Quanto tardi",
+     "How-much you are late"
+    ],
+    [
+     "a comparir!",
+     "to appear!"
+    ]
+   ],
+   [
+    [
+     "Cosa è stato?",
+     "What has been?"
+    ]
+   ],
+   [
+    [
+     "Cosa dici,",
+     "What you say,"
+    ],
+    [
+     "cos'hai,",
+     "what you have,"
+    ],
+    [
+     "cosa è nato?",
+     "what is born?"
+    ]
+   ],
+   [
+    [
+     "Via parla,",
+     "Come speak,"
+    ],
+    [
+     "di' su!",
+     "say up!"
+    ]
+   ],
+   [
+    [
+     "Dal balcone?",
+     "From-the balcony?"
+    ]
+   ],
+   [
+    [
+     "In giardino?",
+     "In garden?"
+    ]
+   ],
+   [
+    [
+     "Cosa sento?",
+     "What do I hear?"
+    ]
+   ],
+   [
+    [
+     "Dunque un uom,",
+     "So a man,"
+    ],
+    [
+     "ma dov'è gito?",
+     "but where is he gone?"
+    ]
+   ],
+   [
+    [
+     "Taci là!",
+     "Be quiet there!"
+    ]
+   ],
+   [
+    [
+     "Or ripetimi,",
+     "Now repeat to me,"
+    ],
+    [
+     "un uom dal balcone?",
+     "a man from-the balcony?"
+    ]
+   ],
+   [
+    [
+     "Segui pure;",
+     "Go on then;"
+    ],
+    [
+     "né in volto il vedesti?",
+     "nor in face him you saw?"
+    ]
+   ],
+   [
+    [
+     "Sì?",
+     "Yes?"
+    ]
+   ],
+   [
+    [
+     "Chi! Voi stesso?",
+     "Who! You yourself?"
+    ]
+   ],
+   [
+    [
+     "Già creder nol posso.",
+     "Really to believe it-not I can."
+    ]
+   ],
+   [
+    [
+     "Tu che dici?",
+     "You what do you say?"
+    ]
+   ],
+   [
+    [
+     "Cherubin?",
+     "Cherubino?"
+    ]
+   ],
+   [
+    [
+     "Che pazienza!",
+     "What patience!"
+    ],
+    [
+     "Finiam questo ballo!",
+     "Let us end this dance!"
+    ]
+   ],
+   [
+    [
+     "Dunque tu?",
+     "So you?"
+    ]
+   ],
+   [
+    [
+     "Ma perché?",
+     "But why?"
+    ]
+   ],
+   [
+    [
+     "Che timor...?",
+     "What fear...?"
+    ]
+   ],
+   [
+    [
+     "Olà, porgile a me!",
+     "Hey, hand them to me!"
+    ]
+   ],
+   [
+    [
+     "Dite un po',",
+     "Say a bit,"
+    ],
+    [
+     "questo foglio cos'è?",
+     "this note what is it?"
+    ]
+   ],
+   [
+    [
+     "Parlate?",
+     "You speak?"
+    ],
+    [
+     "E tu lascialo.",
+     "And you leave him."
+    ]
+   ],
+   [
+    [
+     "Lascialo,",
+     "Leave him,"
+    ],
+    [
+     "e parti.",
+     "and leave."
+    ]
+   ],
+   [
+    [
+     "Dunque?",
+     "So?"
+    ]
+   ],
+   [
+    [
+     "Coraggio!",
+     "Courage!"
+    ]
+   ],
+   [
+    [
+     "Perché fare?",
+     "Why to do?"
+    ]
+   ],
+   [
+    [
+     "Vi manca?",
+     "There lacks?"
+    ]
+   ],
+   [
+    [
+     "Rispondi!",
+     "Answer!"
+    ]
+   ],
+   [
+    [
+     "Su via,",
+     "Come on,"
+    ],
+    [
+     "ti confondi?",
+     "you get confused?"
+    ]
+   ],
+   [
+    [
+     "Questo birbo",
+     "This rascal"
+    ],
+    [
+     "mi toglie il cervello,",
+     "from-me takes the brain,"
+    ],
+    [
+     "tutto è un mistero",
+     "all is a mystery"
+    ],
+    [
+     "per me,",
+     "for me,"
+    ],
+    [
+     "sì.",
+     "yes."
+    ]
+   ],
+   [
+    [
+     "Son venuti",
+     "They have come"
+    ],
+    [
+     "a vendicarmi,",
+     "to avenge me,"
+    ],
+    [
+     "io mi sento",
+     "I myself feel"
+    ],
+    [
+     "a consolar.",
+     "to be consoled."
+    ]
+   ],
+   [
+    [
+     "Pian pianin",
+     "Gently gently"
+    ],
+    [
+     "senza schiamazzi,",
+     "without uproar,"
+    ],
+    [
+     "dica ognun",
+     "let say each one"
+    ],
+    [
+     "quel che gli par.",
+     "what to-him seems."
+    ]
+   ],
+   [
+    [
+     "Olà! Silenzio!",
+     "Hey! Silence!"
+    ],
+    [
+     "Io son qui",
+     "I am here"
+    ],
+    [
+     "per giudicar.",
+     "to judge."
+    ]
+   ],
+   [
+    [
+     "Lo vedremo,",
+     "It we shall see,"
+    ],
+    [
+     "il contratto leggeremo,",
+     "the contract we shall read,"
+    ],
+    [
+     "tutto in ordin",
+     "all in order"
+    ],
+    [
+     "deve andar.",
+     "must go."
+    ]
+   ],
+   [
+    [
+     "Che bel colpo!",
+     "What a fine stroke!"
+    ],
+    [
+     "Che bel caso!",
+     "What a fine chance!"
+    ],
+    [
+     "È cresciuto",
+     "Has grown"
+    ],
+    [
+     "a tutti il naso;",
+     "to all the nose;"
+    ],
+    [
+     "qualche nume",
+     "some god"
+    ],
+    [
+     "a noi propizio",
+     "to us favourable"
+    ],
+    [
+     "qui li ha fatti",
+     "here them has made"
+    ],
+    [
+     "capitar!",
+     "turn up!"
+    ]
+   ]
+  ],
+  "BARTOLO": [
+   [
+    [
+     "Voi signor,",
+     "You sir,"
+    ],
+    [
+     "che giusto siete,",
+     "who just are,"
+    ],
+    [
+     "ci dovete",
+     "us you must"
+    ],
+    [
+     "or ascoltar.",
+     "now hear."
+    ]
+   ],
+   [
+    [
+     "Io da lei",
+     "I by her"
+    ],
+    [
+     "scelto avvocato",
+     "chosen lawyer"
+    ],
+    [
+     "vengo a far",
+     "come to make"
+    ],
+    [
+     "le sue difese,",
+     "the her defences,"
+    ],
+    [
+     "le legittime pretese",
+     "the lawful claims"
+    ],
+    [
+     "io vi vengo a palesar.",
+     "I to-you come to reveal."
+    ]
+   ],
+   [
+    [
+     "Che bel colpo!",
+     "What a fine stroke!"
+    ],
+    [
+     "Che bel caso!",
+     "What a fine chance!"
+    ],
+    [
+     "È cresciuto",
+     "Has grown"
+    ],
+    [
+     "a tutti il naso;",
+     "to all the nose;"
+    ],
+    [
+     "qualche nume",
+     "some god"
+    ],
+    [
+     "a noi propizio",
+     "to us favourable"
+    ],
+    [
+     "qui ci ha fatti",
+     "here us has made"
+    ],
+    [
+     "capitar!",
+     "turn up!"
+    ]
+   ]
+  ],
+  "ANTONIO": [
+   [
+    [
+     "Ah! Signor, signor!",
+     "Ah! Sir, sir!"
+    ]
+   ],
+   [
+    [
+     "Che insolenza!",
+     "What insolence!"
+    ],
+    [
+     "Chi'l fece?",
+     "Who it did?"
+    ],
+    [
+     "Chi fu?",
+     "Who was it?"
+    ]
+   ],
+   [
+    [
+     "Ascoltate!",
+     "Listen!"
+    ]
+   ],
+   [
+    [
+     "Dal balcone",
+     "From-the balcony"
+    ],
+    [
+     "che guarda in giardino",
+     "that looks into garden"
+    ],
+    [
+     "mille cose",
+     "a thousand things"
+    ],
+    [
+     "ogni dì gittar veggio,",
+     "every day thrown I see,"
+    ],
+    [
+     "e poc'anzi,",
+     "and a little while ago,"
+    ],
+    [
+     "può darsi di peggio,",
+     "can there be worse,"
+    ],
+    [
+     "vidi un uom,",
+     "I saw a man,"
+    ],
+    [
+     "signor mio,",
+     "lord mine,"
+    ],
+    [
+     "gittar giù.",
+     "thrown down."
+    ]
+   ],
+   [
+    [
+     "Vedete i garofani.",
+     "See the carnations."
+    ]
+   ],
+   [
+    [
+     "Sì!",
+     "Yes!"
+    ]
+   ],
+   [
+    [
+     "Ratto, ratto,",
+     "Swift, swift,"
+    ],
+    [
+     "il birbone è fuggito,",
+     "the rascal has fled,"
+    ],
+    [
+     "e ad un tratto",
+     "and all at once"
+    ],
+    [
+     "di vista m'uscì.",
+     "from sight me went out."
+    ]
+   ],
+   [
+    [
+     "Cosa ridi?",
+     "What do you laugh?"
+    ]
+   ],
+   [
+    [
+     "Dal balcone.",
+     "From-the balcony."
+    ]
+   ],
+   [
+    [
+     "In giardino.",
+     "In garden."
+    ]
+   ],
+   [
+    [
+     "No, nol vidi.",
+     "No, him-not I saw."
+    ]
+   ],
+   [
+    [
+     "Chi! Voi stesso?",
+     "Who! You yourself?"
+    ]
+   ],
+   [
+    [
+     "Come mai",
+     "How ever"
+    ],
+    [
+     "diventasti sì grosso?",
+     "you became so big?"
+    ],
+    [
+     "Dopo il salto",
+     "After the jump"
+    ],
+    [
+     "non fosti così.",
+     "not you were thus."
+    ]
+   ],
+   [
+    [
+     "Chi'l direbbe?",
+     "Who it would say?"
+    ]
+   ],
+   [
+    [
+     "A me parve il ragazzo...",
+     "To me seemed the boy..."
+    ]
+   ],
+   [
+    [
+     "Questo no;",
+     "This no;"
+    ],
+    [
+     "che il cavallo",
+     "for the horse"
+    ],
+    [
+     "io non vidi",
+     "I not saw"
+    ],
+    [
+     "saltare di là.",
+     "jump from there."
+    ]
+   ],
+   [
+    [
+     "Vostre dunque",
+     "Yours then"
+    ],
+    [
+     "saran queste carte",
+     "will be these papers"
+    ],
+    [
+     "che perdeste...",
+     "that you lost..."
+    ]
+   ],
+   [
+    [
+     "Sarà forse",
+     "Will be perhaps"
+    ],
+    [
+     "il sommario dei debiti?",
+     "the list of-the debts?"
+    ]
+   ],
+   [
+    [
+     "Parto sì,",
+     "I leave yes,"
+    ],
+    [
+     "ma se torno",
+     "but if I come back"
+    ],
+    [
+     "a trovarti...",
+     "to find you..."
+    ]
+   ]
+  ],
+  "FIGARO": [
+   [
+    [
+     "Signori, di fuori",
+     "Lords, outside"
+    ],
+    [
+     "son già i suonatori,",
+     "are already the musicians,"
+    ],
+    [
+     "le trombe sentite,",
+     "the trumpets hear,"
+    ],
+    [
+     "i pifferi udite,",
+     "the fifes hear,"
+    ],
+    [
+     "tra canti, tra balli",
+     "among songs, among dances"
+    ],
+    [
+     "de' vostri vassalli,",
+     "of your vassals,"
+    ],
+    [
+     "corriamo, voliamo",
+     "let us run, let us fly"
+    ],
+    [
+     "le nozze a compir.",
+     "the wedding to complete."
+    ]
+   ],
+   [
+    [
+     "La turba m'aspetta.",
+     "The crowd me awaits."
+    ]
+   ],
+   [
+    [
+     "La cosa è scabrosa,",
+     "The thing is thorny,"
+    ],
+    [
+     "com'ha da finir?",
+     "how has it to end?"
+    ]
+   ],
+   [
+    [
+     "Nol conosco!",
+     "It-not I know!"
+    ]
+   ],
+   [
+    [
+     "No, no, no!",
+     "No, no, no!"
+    ]
+   ],
+   [
+    [
+     "Oibò, oibò!",
+     "Pooh, pooh!"
+    ]
+   ],
+   [
+    [
+     "Io non lo so.",
+     "I not it know."
+    ]
+   ],
+   [
+    [
+     "Mente il ceffo,",
+     "Lies the mug,"
+    ],
+    [
+     "io già non mento.",
+     "I really not lie."
+    ]
+   ],
+   [
+    [
+     "Niente, niente!",
+     "Nothing, nothing!"
+    ]
+   ],
+   [
+    [
+     "Non accordo!",
+     "Not I agree!"
+    ]
+   ],
+   [
+    [
+     "Per finirla",
+     "To end it"
+    ],
+    [
+     "lietamente,",
+     "happily,"
+    ],
+    [
+     "e all'usanza teatrale,",
+     "and in-the custom theatrical,"
+    ],
+    [
+     "un'azion matrimoniale",
+     "an action matrimonial"
+    ],
+    [
+     "le faremo",
+     "to it we will make"
+    ],
+    [
+     "ora seguir.",
+     "now follow."
+    ]
+   ],
+   [
+    [
+     "Deh signor,",
+     "Pray sir,"
+    ],
+    [
+     "nol contrastate,",
+     "it-not oppose,"
+    ],
+    [
+     "consolate i miei desir.",
+     "console the my desires."
+    ]
+   ],
+   [
+    [
+     "Cosa dici,",
+     "What you say,"
+    ],
+    [
+     "cos'hai,",
+     "what you have,"
+    ],
+    [
+     "cosa è nato?",
+     "what is born?"
+    ]
+   ],
+   [
+    [
+     "Via parla,",
+     "Come speak,"
+    ],
+    [
+     "di' su!",
+     "say up!"
+    ]
+   ],
+   [
+    [
+     "Costui ci sconcerta,",
+     "This man us upsets,"
+    ],
+    [
+     "quel briaco",
+     "that drunkard"
+    ],
+    [
+     "che viene a far qui?",
+     "what comes he to do here?"
+    ]
+   ],
+   [
+    [
+     "So tutto,",
+     "I know everything,"
+    ],
+    [
+     "lo vidi.",
+     "him I saw."
+    ]
+   ],
+   [
+    [
+     "Ah ah ah ah!",
+     "Ha ha ha ha!"
+    ]
+   ],
+   [
+    [
+     "Tu sei cotto",
+     "You are cooked"
+    ],
+    [
+     "dal sorger del dì.",
+     "from-the rising of-the day."
+    ]
+   ],
+   [
+    [
+     "Ma signore,",
+     "But sir,"
+    ],
+    [
+     "se in lui parla il vino.",
+     "if in him speaks the wine."
+    ]
+   ],
+   [
+    [
+     "Via piangione,",
+     "Come cry-baby,"
+    ],
+    [
+     "sta' zitto una volta!",
+     "be quiet once!"
+    ],
+    [
+     "Per tre soldi",
+     "For three pennies"
+    ],
+    [
+     "far un tumulto;",
+     "to make an uproar;"
+    ],
+    [
+     "giacché il fatto",
+     "since the fact"
+    ],
+    [
+     "non può stare occulto,",
+     "not can stay hidden,"
+    ],
+    [
+     "sono io stesso",
+     "am I myself"
+    ],
+    [
+     "saltato di lì!",
+     "jumped from there!"
+    ]
+   ],
+   [
+    [
+     "Che stupor!",
+     "What amazement!"
+    ]
+   ],
+   [
+    [
+     "A chi salta",
+     "To who jumps"
+    ],
+    [
+     "succede così.",
+     "it happens thus."
+    ]
+   ],
+   [
+    [
+     "Esso appunto,",
+     "He precisely,"
+    ],
+    [
+     "da Siviglia a cavallo",
+     "from Seville on horseback"
+    ],
+    [
+     "qui giunto,",
+     "here arrived,"
+    ],
+    [
+     "da Siviglia",
+     "from Seville"
+    ],
+    [
+     "ci forse sarà.",
+     "there perhaps he will be."
+    ]
+   ],
+   [
+    [
+     "Saltai giù...",
+     "I jumped down..."
+    ]
+   ],
+   [
+    [
+     "Il timor...",
+     "The fear..."
+    ]
+   ],
+   [
+    [
+     "Là rinchiuso,",
+     "There shut in,"
+    ],
+    [
+     "aspettando",
+     "waiting for"
+    ],
+    [
+     "quel caro visetto...",
+     "that dear little face..."
+    ],
+    [
+     "tippe, tappe",
+     "pitter, patter"
+    ],
+    [
+     "un sussurro fuor d'uso",
+     "a whispering out of usual"
+    ],
+    [
+     "voi gridaste...",
+     "you shouted..."
+    ],
+    [
+     "lo scritto biglietto...",
+     "the written note..."
+    ],
+    [
+     "saltai giù",
+     "I jumped down"
+    ],
+    [
+     "dal terrore confuso,",
+     "by-the terror confused,"
+    ],
+    [
+     "e stravolto m'ho",
+     "and twisted to-me I have"
+    ],
+    [
+     "un nervo del piè.",
+     "a nerve of-the foot."
+    ]
+   ],
+   [
+    [
+     "Sono in trappola.",
+     "I am in trap."
+    ]
+   ],
+   [
+    [
+     "Tosto, tosto,",
+     "At once, at once,"
+    ],
+    [
+     "ne ho tanti,",
+     "of-them I have so many,"
+    ],
+    [
+     "aspettate!",
+     "wait!"
+    ]
+   ],
+   [
+    [
+     "No, la lista degli osti.",
+     "No, the list of-the innkeepers."
+    ]
+   ],
+   [
+    [
+     "Lasciami,",
+     "Leave me,"
+    ],
+    [
+     "e parti.",
+     "and leave."
+    ]
+   ],
+   [
+    [
+     "Vanne, vanne,",
+     "Go away, go away,"
+    ],
+    [
+     "non temo di te.",
+     "not I fear of you."
+    ]
+   ],
+   [
+    [
+     "Oh che testa!",
+     "Oh what a head!"
+    ],
+    [
+     "Quest'è la patente",
+     "This is the commission"
+    ],
+    [
+     "che poc'anzi",
+     "that a little while ago"
+    ],
+    [
+     "il fanciullo mi diè.",
+     "the boy to-me gave."
+    ]
+   ],
+   [
+    [
+     "Vi manca...",
+     "There lacks..."
+    ]
+   ],
+   [
+    [
+     "È l'usanza",
+     "It is the custom"
+    ],
+    [
+     "di porvi il suggello.",
+     "to put-there the seal."
+    ]
+   ],
+   [
+    [
+     "Sbuffa invano",
+     "He snorts in vain"
+    ],
+    [
+     "e la terra calpesta!",
+     "and the ground tramples!"
+    ],
+    [
+     "Poverino",
+     "Poor little man"
+    ],
+    [
+     "ne sa men di me.",
+     "of-it knows less than me."
+    ]
+   ],
+   [
+    [
+     "Son venuti",
+     "They have come"
+    ],
+    [
+     "a sconcertarmi,",
+     "to upset me,"
+    ],
+    [
+     "qual rimedio",
+     "what remedy"
+    ],
+    [
+     "a ritrovar?",
+     "to find?"
+    ]
+   ],
+   [
+    [
+     "Son tre stolidi,",
+     "They are three dolts,"
+    ],
+    [
+     "tre pazzi,",
+     "three madmen,"
+    ],
+    [
+     "cosa mai",
+     "what ever"
+    ],
+    [
+     "vengono da far?",
+     "do they come to do?"
+    ]
+   ],
+   [
+    [
+     "Come? Come?",
+     "What? What?"
+    ]
+   ],
+   [
+    [
+     "È un birbante!",
+     "He is a rogue!"
+    ]
+   ],
+   [
+    [
+     "Son tre matti,",
+     "They are three madmen,"
+    ]
+   ],
+   [
+    [
+     "Son confuso,",
+     "I am confused,"
+    ],
+    [
+     "son stordito,",
+     "I am stunned,"
+    ],
+    [
+     "disperato,",
+     "desperate,"
+    ],
+    [
+     "sbalordito!",
+     "dumbfounded!"
+    ],
+    [
+     "Certo un diavol",
+     "Surely a devil"
+    ],
+    [
+     "dell'inferno",
+     "of-the hell"
+    ],
+    [
+     "qui li ha fatti",
+     "here them has made"
+    ],
+    [
+     "capitar!",
+     "turn up!"
+    ]
+   ]
+  ]
+ }
+}

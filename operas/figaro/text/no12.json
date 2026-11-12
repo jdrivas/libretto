@@ -1,0 +1,387 @@
+{
+ "piece": "no12",
+ "written": "2026-11 in session (experiment); converted 2026-11-11",
+ "source": "act2_text.py VOI_CHE_SAPETE (repeats written out)",
+ "characters": {
+  "CHERUBINO": [
+   [
+    [
+     "Voi che sapete",
+     "You who know"
+    ],
+    [
+     "che cosa è amor,",
+     "what thing is love,"
+    ],
+    [
+     "donne, vedete",
+     "ladies, see"
+    ],
+    [
+     "s'io l'ho nel cor,",
+     "if I it have in-the heart,"
+    ],
+    [
+     "donne, vedete",
+     "ladies, see"
+    ],
+    [
+     "s'io l'ho nel cor.",
+     "if I it have in-the heart."
+    ]
+   ],
+   [
+    [
+     "Quello ch'io provo",
+     "That which I feel"
+    ],
+    [
+     "vi ridirò,",
+     "to you I will retell,"
+    ],
+    [
+     "è per me nuovo,",
+     "it is for me new,"
+    ],
+    [
+     "capir nol so.",
+     "understand it-not I can."
+    ]
+   ],
+   [
+    [
+     "Sento un affetto",
+     "I feel an affection"
+    ],
+    [
+     "pien di desir,",
+     "full of desire,"
+    ],
+    [
+     "ch'ora è diletto,",
+     "that now is delight,"
+    ],
+    [
+     "ch'ora è martir.",
+     "that now is torment."
+    ]
+   ],
+   [
+    [
+     "Gelo e poi sento",
+     "I freeze and then I feel"
+    ],
+    [
+     "l'alma avvampar,",
+     "the soul blaze up,"
+    ],
+    [
+     "e in un momento",
+     "and in a moment"
+    ],
+    [
+     "torno a gelar.",
+     "I return to freezing."
+    ]
+   ],
+   [
+    [
+     "Ricerco un bene",
+     "I seek a good"
+    ],
+    [
+     "fuori di me,",
+     "outside of me,"
+    ],
+    [
+     "non so chi il tiene,",
+     "not I know who it holds,"
+    ],
+    [
+     "non so cos'è;",
+     "not I know what it is;"
+    ]
+   ],
+   [
+    [
+     "sospiro e gemo",
+     "I sigh and I moan"
+    ],
+    [
+     "senza voler,",
+     "without wanting,"
+    ],
+    [
+     "palpito e tremo",
+     "I throb and I tremble"
+    ],
+    [
+     "senza saper;",
+     "without knowing;"
+    ]
+   ],
+   [
+    [
+     "non trovo pace",
+     "not I find peace"
+    ],
+    [
+     "notte né dì,",
+     "night nor day,"
+    ],
+    [
+     "ma pur mi piace",
+     "but yet to-me it pleases"
+    ],
+    [
+     "languir così.",
+     "to languish thus."
+    ]
+   ],
+   [
+    [
+     "Voi che sapete",
+     "You who know"
+    ],
+    [
+     "che cosa è amor,",
+     "what thing is love,"
+    ],
+    [
+     "donne, vedete",
+     "ladies, see"
+    ],
+    [
+     "s'io l'ho nel cor,",
+     "if I it have in-the heart,"
+    ],
+    [
+     "donne, vedete",
+     "ladies, see"
+    ],
+    [
+     "s'io l'ho nel cor,",
+     "if I it have in-the heart,"
+    ],
+    [
+     "donne, vedete",
+     "ladies, see"
+    ],
+    [
+     "s'io l'ho nel cor.",
+     "if I it have in-the heart."
+    ]
+   ]
+  ]
+ },
+ "speeches": [
+  {
+   "characters": [
+    "CHERUBINO"
+   ],
+   "phrases": [
+    [
+     "Voi che sapete",
+     "You who know"
+    ],
+    [
+     "che cosa è amor,",
+     "what thing is love,"
+    ],
+    [
+     "donne, vedete",
+     "ladies, see"
+    ],
+    [
+     "s'io l'ho nel cor,",
+     "if I it have in-the heart,"
+    ],
+    [
+     "donne, vedete",
+     "ladies, see"
+    ],
+    [
+     "s'io l'ho nel cor.",
+     "if I it have in-the heart."
+    ]
+   ]
+  },
+  {
+   "characters": [
+    "CHERUBINO"
+   ],
+   "phrases": [
+    [
+     "Quello ch'io provo",
+     "That which I feel"
+    ],
+    [
+     "vi ridirò,",
+     "to you I will retell,"
+    ],
+    [
+     "è per me nuovo,",
+     "it is for me new,"
+    ],
+    [
+     "capir nol so.",
+     "understand it-not I can."
+    ]
+   ]
+  },
+  {
+   "characters": [
+    "CHERUBINO"
+   ],
+   "phrases": [
+    [
+     "Sento un affetto",
+     "I feel an affection"
+    ],
+    [
+     "pien di desir,",
+     "full of desire,"
+    ],
+    [
+     "ch'ora è diletto,",
+     "that now is delight,"
+    ],
+    [
+     "ch'ora è martir.",
+     "that now is torment."
+    ]
+   ]
+  },
+  {
+   "characters": [
+    "CHERUBINO"
+   ],
+   "phrases": [
+    [
+     "Gelo e poi sento",
+     "I freeze and then I feel"
+    ],
+    [
+     "l'alma avvampar,",
+     "the soul blaze up,"
+    ],
+    [
+     "e in un momento",
+     "and in a moment"
+    ],
+    [
+     "torno a gelar.",
+     "I return to freezing."
+    ]
+   ]
+  },
+  {
+   "characters": [
+    "CHERUBINO"
+   ],
+   "phrases": [
+    [
+     "Ricerco un bene",
+     "I seek a good"
+    ],
+    [
+     "fuori di me,",
+     "outside of me,"
+    ],
+    [
+     "non so chi il tiene,",
+     "not I know who it holds,"
+    ],
+    [
+     "non so cos'è;",
+     "not I know what it is;"
+    ]
+   ]
+  },
+  {
+   "characters": [
+    "CHERUBINO"
+   ],
+   "phrases": [
+    [
+     "sospiro e gemo",
+     "I sigh and I moan"
+    ],
+    [
+     "senza voler,",
+     "without wanting,"
+    ],
+    [
+     "palpito e tremo",
+     "I throb and I tremble"
+    ],
+    [
+     "senza saper;",
+     "without knowing;"
+    ]
+   ]
+  },
+  {
+   "characters": [
+    "CHERUBINO"
+   ],
+   "phrases": [
+    [
+     "non trovo pace",
+     "not I find peace"
+    ],
+    [
+     "notte né dì,",
+     "night nor day,"
+    ],
+    [
+     "ma pur mi piace",
+     "but yet to-me it pleases"
+    ],
+    [
+     "languir così.",
+     "to languish thus."
+    ]
+   ]
+  },
+  {
+   "characters": [
+    "CHERUBINO"
+   ],
+   "phrases": [
+    [
+     "Voi che sapete",
+     "You who know"
+    ],
+    [
+     "che cosa è amor,",
+     "what thing is love,"
+    ],
+    [
+     "donne, vedete",
+     "ladies, see"
+    ],
+    [
+     "s'io l'ho nel cor,",
+     "if I it have in-the heart,"
+    ],
+    [
+     "donne, vedete",
+     "ladies, see"
+    ],
+    [
+     "s'io l'ho nel cor,",
+     "if I it have in-the heart,"
+    ],
+    [
+     "donne, vedete",
+     "ladies, see"
+    ],
+    [
+     "s'io l'ho nel cor.",
+     "if I it have in-the heart."
+    ]
+   ]
+  }
+ ]
+}

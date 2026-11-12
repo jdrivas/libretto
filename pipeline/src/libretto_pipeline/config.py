@@ -47,9 +47,17 @@ class Opera:
     contents_pages: list
     cast: Cast
     work: Path
+    recordings: list = field(default_factory=list)  # [dict] from [[recording]]
 
     def printed_page(self, pdf_page):
         return pdf_page - self.first_music_page + 1
+
+    def recording(self, rec_id):
+        for r in self.recordings:
+            if r["id"] == rec_id:
+                return r
+        raise SystemExit(f"no recording {rec_id!r} for {self.id}; known: "
+                         f"{', '.join(r['id'] for r in self.recordings)}")
 
 
 def load_opera(opera_id):
@@ -60,7 +68,19 @@ def load_opera(opera_id):
     work_root = Path(workspace()["work_root"]).expanduser()
     cast = Cast([(m["name"], [a.lower() for a in m["labels"]]) for m in c.get("cast", [])])
     first, last = c["score"]["contents_pages"]
+    recordings = [r | {"sources": [str(Path(s).expanduser()) for s in r["sources"]]}
+                  for r in c.get("recording", [])]
     return Opera(id=opera_id, title=c["opera"]["title"], composer=c["opera"]["composer"],
                  language=c["opera"]["language"], score_pdf=Path(c["score"]["pdf"]).expanduser(),
                  edition=c["score"]["edition"], first_music_page=c["score"]["first_music_page"],
-                 contents_pages=list(range(first, last + 1)), cast=cast, work=work_root / opera_id)
+                 contents_pages=list(range(first, last + 1)), cast=cast, work=work_root / opera_id,
+                 recordings=recordings)
+
+
+def tool_env():
+    """Environment for the model-running tools (Demucs, torchaudio): model caches under
+    work_root, where the sandbox can write, and no network (the weights are copied in)."""
+    import os
+    cache = Path(workspace()["work_root"]).expanduser() / ".cache"
+    return os.environ | {"HF_HOME": str(cache / "huggingface"), "HF_HUB_OFFLINE": "1",
+                         "TORCH_HOME": str(cache / "torch")}

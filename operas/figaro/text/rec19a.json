@@ -1,0 +1,441 @@
+{
+ "piece": "rec19a",
+ "written": "2026-11 in session (experiment); converted 2026-11-11",
+ "source": "recit_text.py ECCOVI (Ricordi wording)",
+ "characters": {
+  "MARCELLINA": [
+   [
+    [
+     "Eccovi,",
+     "Here you have,"
+    ],
+    [
+     "o caro amico,",
+     "o dear friend,"
+    ],
+    [
+     "il dolce frutto",
+     "the sweet fruit"
+    ],
+    [
+     "dell'antico amor nostro...",
+     "of-the old love of ours..."
+    ]
+   ],
+   [
+    [
+     "Oggi,",
+     "Today,"
+    ],
+    [
+     "e doppie saranno;",
+     "and double they will be;"
+    ],
+    [
+     "prendi,",
+     "take,"
+    ],
+    [
+     "questo è il biglietto",
+     "this is the note"
+    ],
+    [
+     "del danar che a me devi,",
+     "of-the money that to me you owe,"
+    ],
+    [
+     "ed è tua dote.",
+     "and it is your dowry."
+    ]
+   ],
+   [
+    [
+     "Io.",
+     "I."
+    ]
+   ],
+   [
+    [
+     "E schiatti",
+     "And may burst"
+    ],
+    [
+     "il signor Conte",
+     "the lord Count"
+    ],
+    [
+     "al gioir mio.",
+     "at-the joy mine."
+    ]
+   ]
+  ],
+  "BARTOLO": [
+   [
+    [
+     "Or non parliamo",
+     "Now not let's speak"
+    ],
+    [
+     "di fatti sì remoti:",
+     "of deeds so distant:"
+    ],
+    [
+     "egli è mio figlio,",
+     "he is my son,"
+    ],
+    [
+     "mia consorte voi siete;",
+     "my wife you are;"
+    ],
+    [
+     "e le nozze farem",
+     "and the wedding we'll make"
+    ],
+    [
+     "quando volete.",
+     "when you wish."
+    ]
+   ],
+   [
+    [
+     "E questa ancora.",
+     "And this one too."
+    ]
+   ],
+   [
+    [
+     "Io.",
+     "I."
+    ]
+   ],
+   [
+    [
+     "E schiatti",
+     "And may burst"
+    ],
+    [
+     "il signor Conte",
+     "the lord Count"
+    ],
+    [
+     "al gioir mio.",
+     "at-the joy mine."
+    ]
+   ]
+  ],
+  "SUSANNA": [
+   [
+    [
+     "Prendi ancor",
+     "Take also"
+    ],
+    [
+     "questa borsa.",
+     "this purse."
+    ]
+   ],
+   [
+    [
+     "Voliamo ad informar",
+     "Let us fly to inform"
+    ],
+    [
+     "d'ogni avventura",
+     "of every adventure"
+    ],
+    [
+     "Madama e nostro zio.",
+     "Madam and our uncle."
+    ],
+    [
+     "Chi al par di me",
+     "Who equal to me"
+    ],
+    [
+     "contenta?",
+     "happy?"
+    ],
+    [
+     "Chi al par di me",
+     "Who equal to me"
+    ],
+    [
+     "contenta?",
+     "happy?"
+    ]
+   ],
+   [
+    [
+     "E schiatti",
+     "And may burst"
+    ],
+    [
+     "il signor Conte",
+     "the lord Count"
+    ],
+    [
+     "al gioir mio.",
+     "at-the joy mine."
+    ]
+   ]
+  ],
+  "FIGARO": [
+   [
+    [
+     "Bravi;",
+     "Well done;"
+    ],
+    [
+     "gittate pur,",
+     "throw away then,"
+    ],
+    [
+     "ch'io piglio ognora.",
+     "for I take always."
+    ]
+   ],
+   [
+    [
+     "Io.",
+     "I."
+    ]
+   ],
+   [
+    [
+     "E schiatti",
+     "And may burst"
+    ],
+    [
+     "il signor Conte",
+     "the lord Count"
+    ],
+    [
+     "al gioir mio.",
+     "at-the joy mine."
+    ]
+   ]
+  ]
+ },
+ "speeches": [
+  {
+   "characters": [
+    "MARCELLINA"
+   ],
+   "phrases": [
+    [
+     "Eccovi,",
+     "Here you have,"
+    ],
+    [
+     "o caro amico,",
+     "o dear friend,"
+    ],
+    [
+     "il dolce frutto",
+     "the sweet fruit"
+    ],
+    [
+     "dell'antico amor nostro...",
+     "of-the old love of ours..."
+    ]
+   ]
+  },
+  {
+   "characters": [
+    "BARTOLO"
+   ],
+   "phrases": [
+    [
+     "Or non parliamo",
+     "Now not let's speak"
+    ],
+    [
+     "di fatti sì remoti:",
+     "of deeds so distant:"
+    ],
+    [
+     "egli è mio figlio,",
+     "he is my son,"
+    ],
+    [
+     "mia consorte voi siete;",
+     "my wife you are;"
+    ],
+    [
+     "e le nozze farem",
+     "and the wedding we'll make"
+    ],
+    [
+     "quando volete.",
+     "when you wish."
+    ]
+   ]
+  },
+  {
+   "characters": [
+    "MARCELLINA"
+   ],
+   "phrases": [
+    [
+     "Oggi,",
+     "Today,"
+    ],
+    [
+     "e doppie saranno;",
+     "and double they will be;"
+    ],
+    [
+     "prendi,",
+     "take,"
+    ],
+    [
+     "questo è il biglietto",
+     "this is the note"
+    ],
+    [
+     "del danar che a me devi,",
+     "of-the money that to me you owe,"
+    ],
+    [
+     "ed è tua dote.",
+     "and it is your dowry."
+    ]
+   ]
+  },
+  {
+   "characters": [
+    "SUSANNA"
+   ],
+   "phrases": [
+    [
+     "Prendi ancor",
+     "Take also"
+    ],
+    [
+     "questa borsa.",
+     "this purse."
+    ]
+   ]
+  },
+  {
+   "characters": [
+    "BARTOLO"
+   ],
+   "phrases": [
+    [
+     "E questa ancora.",
+     "And this one too."
+    ]
+   ]
+  },
+  {
+   "characters": [
+    "FIGARO"
+   ],
+   "phrases": [
+    [
+     "Bravi;",
+     "Well done;"
+    ],
+    [
+     "gittate pur,",
+     "throw away then,"
+    ],
+    [
+     "ch'io piglio ognora.",
+     "for I take always."
+    ]
+   ]
+  },
+  {
+   "characters": [
+    "SUSANNA"
+   ],
+   "phrases": [
+    [
+     "Voliamo ad informar",
+     "Let us fly to inform"
+    ],
+    [
+     "d'ogni avventura",
+     "of every adventure"
+    ],
+    [
+     "Madama e nostro zio.",
+     "Madam and our uncle."
+    ],
+    [
+     "Chi al par di me",
+     "Who equal to me"
+    ],
+    [
+     "contenta?",
+     "happy?"
+    ],
+    [
+     "Chi al par di me",
+     "Who equal to me"
+    ],
+    [
+     "contenta?",
+     "happy?"
+    ]
+   ]
+  },
+  {
+   "characters": [
+    "FIGARO"
+   ],
+   "phrases": [
+    [
+     "Io.",
+     "I."
+    ]
+   ]
+  },
+  {
+   "characters": [
+    "BARTOLO"
+   ],
+   "phrases": [
+    [
+     "Io.",
+     "I."
+    ]
+   ]
+  },
+  {
+   "characters": [
+    "MARCELLINA"
+   ],
+   "phrases": [
+    [
+     "Io.",
+     "I."
+    ]
+   ]
+  },
+  {
+   "characters": [
+    "SUSANNA",
+    "MARCELLINA",
+    "BARTOLO",
+    "FIGARO"
+   ],
+   "phrases": [
+    [
+     "E schiatti",
+     "And may burst"
+    ],
+    [
+     "il signor Conte",
+     "the lord Count"
+    ],
+    [
+     "al gioir mio.",
+     "at-the joy mine."
+    ]
+   ]
+  }
+ ]
+}

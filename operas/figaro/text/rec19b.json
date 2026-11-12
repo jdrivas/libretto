@@ -1,0 +1,248 @@
+{
+ "piece": "rec19b",
+ "written": "2026-11 in session (experiment); converted 2026-11-11",
+ "source": "recit_text.py ANDIAM",
+ "characters": {
+  "BARBARINA": [
+   [
+    [
+     "Andiam, andiam,",
+     "Let's go, let's go,"
+    ],
+    [
+     "bel paggio:",
+     "handsome page:"
+    ],
+    [
+     "in casa mia",
+     "in house mine"
+    ],
+    [
+     "tutte ritroverai",
+     "all you will find"
+    ],
+    [
+     "le più belle ragazze",
+     "the most beautiful girls"
+    ],
+    [
+     "del castello:",
+     "of-the castle:"
+    ],
+    [
+     "di tutte sarai tu",
+     "of all will be you"
+    ],
+    [
+     "certo il più bello.",
+     "surely the most beautiful."
+    ]
+   ],
+   [
+    [
+     "Oh ve' che maraviglia!",
+     "Oh look what a marvel!"
+    ],
+    [
+     "E se ti trova,",
+     "And if you he finds,"
+    ],
+    [
+     "non sarà cosa nuova.",
+     "not will be thing new."
+    ],
+    [
+     "Odi,",
+     "Listen,"
+    ],
+    [
+     "vogliam vestirti",
+     "we want to dress you"
+    ],
+    [
+     "come noi:",
+     "like us:"
+    ],
+    [
+     "tutte insieme",
+     "all together"
+    ],
+    [
+     "andrem poi",
+     "we'll go then"
+    ],
+    [
+     "a presentar de' fiori",
+     "to present some flowers"
+    ],
+    [
+     "a Madamina.",
+     "to little Madam."
+    ],
+    [
+     "Fidati,",
+     "Trust,"
+    ],
+    [
+     "o Cherubin,",
+     "o Cherubino,"
+    ],
+    [
+     "di Barbarina.",
+     "in Barbarina."
+    ]
+   ]
+  ],
+  "CHERUBINO": [
+   [
+    [
+     "Ah! se il Conte mi trova,",
+     "Ah! if the Count me finds,"
+    ],
+    [
+     "misero me!",
+     "wretched me!"
+    ],
+    [
+     "Tu sai",
+     "You know"
+    ],
+    [
+     "che partito ei mi crede",
+     "that departed he me believes"
+    ],
+    [
+     "per Siviglia.",
+     "for Seville."
+    ]
+   ]
+  ]
+ },
+ "speeches": [
+  {
+   "characters": [
+    "BARBARINA"
+   ],
+   "phrases": [
+    [
+     "Andiam, andiam,",
+     "Let's go, let's go,"
+    ],
+    [
+     "bel paggio:",
+     "handsome page:"
+    ],
+    [
+     "in casa mia",
+     "in house mine"
+    ],
+    [
+     "tutte ritroverai",
+     "all you will find"
+    ],
+    [
+     "le più belle ragazze",
+     "the most beautiful girls"
+    ],
+    [
+     "del castello:",
+     "of-the castle:"
+    ],
+    [
+     "di tutte sarai tu",
+     "of all will be you"
+    ],
+    [
+     "certo il più bello.",
+     "surely the most beautiful."
+    ]
+   ]
+  },
+  {
+   "characters": [
+    "CHERUBINO"
+   ],
+   "phrases": [
+    [
+     "Ah! se il Conte mi trova,",
+     "Ah! if the Count me finds,"
+    ],
+    [
+     "misero me!",
+     "wretched me!"
+    ],
+    [
+     "Tu sai",
+     "You know"
+    ],
+    [
+     "che partito ei mi crede",
+     "that departed he me believes"
+    ],
+    [
+     "per Siviglia.",
+     "for Seville."
+    ]
+   ]
+  },
+  {
+   "characters": [
+    "BARBARINA"
+   ],
+   "phrases": [
+    [
+     "Oh ve' che maraviglia!",
+     "Oh look what a marvel!"
+    ],
+    [
+     "E se ti trova,",
+     "And if you he finds,"
+    ],
+    [
+     "non sarà cosa nuova.",
+     "not will be thing new."
+    ],
+    [
+     "Odi,",
+     "Listen,"
+    ],
+    [
+     "vogliam vestirti",
+     "we want to dress you"
+    ],
+    [
+     "come noi:",
+     "like us:"
+    ],
+    [
+     "tutte insieme",
+     "all together"
+    ],
+    [
+     "andrem poi",
+     "we'll go then"
+    ],
+    [
+     "a presentar de' fiori",
+     "to present some flowers"
+    ],
+    [
+     "a Madamina.",
+     "to little Madam."
+    ],
+    [
+     "Fidati,",
+     "Trust,"
+    ],
+    [
+     "o Cherubin,",
+     "o Cherubino,"
+    ],
+    [
+     "di Barbarina.",
+     "in Barbarina."
+    ]
+   ]
+  }
+ ]
+}

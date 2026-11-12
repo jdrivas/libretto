@@ -50,6 +50,7 @@ def is_lyric_size(size, sp):
     return (abs(size - LYRIC_FULL_PT) < LYRIC_FULL_TOLERANCE
             or any(abs(size - r * sp) < LYRIC_TOLERANCE_PT for r in LYRIC_PER_SP))
 INSET_SP_RATIO = 0.75  # a system whose staves are all this much smaller is an inset
+CUE_ABOVE_PT = 22      # a speaker cue sits within this distance above its staff's top line
 _STAGE_DIRECTION = re.compile(r"\([a-zà-ù’' ]+\)")
 CHOIR_PARTS = {"Soprano", "Alto", "Tenore", "Basso", "Soprani", "Tenori", "Bassi", "I", "II"}
 # Full-size noteheads are 15.9 pt on a staff with 3.96 pt line spacing; grace notes are
@@ -217,6 +218,12 @@ def read_system(sts, cs, sp_, vs, pno, si):
         lab = [s for s in sp_ if s["font"].startswith("Palatino") and s["x1"] < st["chars"][0]["x"] + 1
                and s["x1"] < x0 + 2 and st["top"] - 3 <= s["y"] <= st["bottom"] + 4] if st["chars"] else []
         st["label"] = " ".join(s["t"].strip() for s in lab)
+        # Speaker cues: a character's name printed just above the staff, inside the system
+        # (on a shared staff, as in secco recitative, it says who sings from there on).
+        st["cues"] = [(s["x0"], s["t"].strip()) for s in sp_
+                      if s["font"] == "Palatino-Roman" and s["t"].strip().isupper()
+                      and len(re.sub(r"[^A-Z]", "", s["t"])) >= 3 and s["x0"] > x0 + 2
+                      and st["top"] - CUE_ABOVE_PT < s["y"] < st["top"] + 1]
     # Time signatures: "c" or stacked digits, per staff; take them from the first staff that has one.
     timesig = []
     for st in staves_out:
@@ -305,7 +312,7 @@ def decode(sy, first_bar):
     syllables attached to their notes. Bars are numbered from first_bar."""
     barx = sy["barx"]
     if not barx:
-        return [], [], []
+        return [], [], [], []
     evs_all = [c for st in sy["staves"] for c in st["chars"]
                if _event(c, st) and c["x"] < barx[-1]]
     start = min([c["x"] for c in evs_all], default=barx[0]) - 1.0
@@ -322,7 +329,7 @@ def decode(sy, first_bar):
         return first_bar + k + float(np.clip((x - a) / max(edges[k + 1] - a, 1.0), 0, 0.999))
 
     bars = [{"bar": first_bar + k, "page": sy["page"], "system": sy["system"]} for k in range(len(barx))]
-    notes, sylls = [], []
+    notes, sylls, cues = [], [], []
     for st in sy["staves"]:
         clefs = sorted((c for c in st["chars"] if c["c"] in CLEFS and c["x"] > st["keysig_x"]), key=lambda c: c["x"])
         evs = sorted((c for c in st["chars"] if _event(c, st) and c["x"] < barx[-1]), key=lambda c: c["x"])
@@ -363,7 +370,10 @@ def decode(sy, first_bar):
             n = min(heads, key=lambda n: abs(n["x"] + 3.5 - cx))
             sylls.append({"staff": st["i"], "label": st["label"], "text": s["t"].strip(),
                           "t0": n["t0"], "t1": n["t1"], "x": n["x"]})
-    return bars, notes, sylls
+    for st in sy["staves"]:
+        for x, name in st.get("cues", []):
+            cues.append({"staff": st["i"], "label": st["label"], "name": name, "t0": when(x), "t1": when(x)})
+    return bars, notes, sylls, cues
 
 
 def read_score(pdf_path, first=1, last=None):
@@ -380,7 +390,7 @@ def decode_systems(systems):
 
     An upbeat: the edition does not count an incomplete opening bar, so when the first
     printed number is one less than the count, the opening bar is renumbered 0."""
-    bars, notes, sylls, problems, ts_at, tempo_at = [], [], [], [], [], []
+    bars, notes, sylls, cues, problems, ts_at, tempo_at = [], [], [], [], [], [], []
     nxt = (systems[0]["number"] if systems and systems[0]["number"] else 1)
     pickup, numbered = False, bool(systems and systems[0]["number"])
     for sy in systems:
@@ -389,7 +399,7 @@ def decode_systems(systems):
                 pickup = True
                 for b in bars:
                     b["bar"] -= 1
-                for e in notes + sylls:
+                for e in notes + sylls + cues:
                     e["t0"] -= 1
                     e["t1"] -= 1
                 ts_at = [(b - 1, v) for b, v in ts_at]
@@ -402,7 +412,8 @@ def decode_systems(systems):
                 problems.append(f"p{sy['page']} sys {sy['system']}: printed bar {sy['number']}, counted {nxt}")
             nxt = sy["number"]
         numbered = numbered or sy["number"] is not None
-        b, n, s = decode(sy, nxt)
+        b, n, s, c = decode(sy, nxt)
+        cues += c
         for tx, ts in sy["timesig"]:
             ts_at.append((nxt + sum(1 for x in sy["barx"] if x < tx), ts))
         for tx, word in sy["tempo"]:
@@ -424,4 +435,4 @@ def decode_systems(systems):
             wi += 1
         b["timesig"], b["tempo"] = list(ts), tempo
     return {"systems": len(systems), "pickup": pickup, "bars": bars, "notes": notes,
-            "syllables": sylls, "problems": problems}
+            "syllables": sylls, "cues": cues, "problems": problems}
