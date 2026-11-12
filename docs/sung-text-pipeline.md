@@ -337,20 +337,29 @@ plan is:
 - the full Figaro build is its second;
 - Così is the first opera started the new way, from a fresh session.
 
-### Open questions for you
+### Decisions
 
-1. Route B as the main path for Figaro, with the Sextet and arias re-timed from it?
-2. Secco recitatives by forced alignment (C) using the score's text, with a route B side test?
-3. An LLM pass for the phrase split and gloss, replacing hand-written text files, judged by the
-   automatic checks plus your reading of a sample?
-4. Rewrite into staged tools now, or do the full Figaro build with the experiment scripts first
-   and then restructure from what it teaches? I lean toward a light restructure first:
-   per-number outputs and a single publish step. Without them a 30-number build will trip
-   over the in-place edits.
-5. Bar locations: include `bar_start`/`bar_end` in the interchange file during this build
-   (cheap with route B), with the viewer display later?
-6. The workspace for "start a new opera from a session" (see Operating model): the `libretto`
-   repo, or a new directory? And set it up during the step 6 restructure?
+Questions 1–6 were decided on 2026-11-11, all as recommended; question 7 on 2026-11-08.
+
+1. **Route B is the main path for Figaro.** Every number is timed from the Bärenreiter decode,
+   and the Sextet and "Voi che sapete" are re-timed from it. Route A stays only for operas
+   without a born-digital score.
+2. **Secco recitative by route C, with the score's text.** The recitative text and speakers
+   come from the decode, and every timed word gets its bar. Route B gets a side test on one
+   recitative.
+3. **Verse list, phrase split and gloss, in a session.** The tool decodes the sung syllables.
+   Claude turns them into each character's verse list (each line once, in order) and writes
+   the phrase split and gloss in the same pass. The tool checks that every sung syllable
+   maps to a verse and phrase. No published libretto is needed. (This replaces the earlier
+   question about an LLM pass inside the tool; see 7.)
+4. **A light restructure first:** per-number outputs, a single publish step, and stage verbs
+   wrapping the existing scripts. Its first test is the from-scratch rebuild of the five
+   passages.
+5. **Bar locations go in now:** the number, `bar_start`/`bar_end` and the edition on every
+   segment, with a new format version string. The viewer shows them later.
+6. **The workspace is the `libretto` repo,** with the pipeline code copied in from
+   `libretto-scratch`, and scores and bulk data in `libretto-work`. It is set up during the
+   restructure. The preparation plan (P0–P8) is in `operas/figaro/STATUS.md`.
 7. ~~The gloss inside the tool, or in a session?~~ **Decided 2026-11-08: in a session for
    now.** The tool stops after `text`, Claude writes the phrase split and gloss in a session,
    and the tool checks them.
