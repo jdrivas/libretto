@@ -32,11 +32,14 @@ def _paths(opera, rec_id, tracks):
             [base / "stems" / t / "no_vocals.flac" for t in tracks])
 
 
-def map_lines(lines, to_audio):
+def map_lines(lines, to_audio, score=None):
+    from .score_time import bar_of
     timed = []
     for ln in lines:
         seg = copy.deepcopy(ln)
         seg["start"], seg["end"] = round(to_audio(ln["score_start"]), 2), round(to_audio(ln["score_end"]), 2)
+        if score is not None:
+            seg["bar_start"], seg["bar_end"] = bar_of(score, ln["score_start"]), bar_of(score, ln["score_end"])
         seg["gloss"] = [{**g, "start": round(to_audio(g["score_start"]), 2), "end": round(to_audio(g["score_end"]), 2)}
                         for g in ln["gloss"]]
         timed.append(seg)
@@ -59,7 +62,7 @@ def time_number(opera, rec_id, pid, tracks, excerpt=None):
     end_s = float((df["start"] + df["duration"]).max())
     bounds = [s["score_s"] for s in score["sections"]] + [end_s]
     to_audio, factor = align.two_pass(x, tuning, df, bounds, excerpt, f"{rec_id} {pid}")
-    timed = map_lines(lines, to_audio)
+    timed = map_lines(lines, to_audio, score)
     t, lv, la, f0, vprob, det = voice.analyse(voc, acc, pitch=False)
     trimmed = voice.trim_to_silences(timed, voice.silences(t, lv))
     timed.sort(key=lambda s: s["start"])
@@ -154,8 +157,19 @@ def time_recitatives(opera, rec_id, pieces, tracks, region):
     heard = np.zeros(len(t_), bool)
     for s0, s1 in det:
         heard[(t_ >= s0) & (t_ <= s1)] = True
+    from .score_time import bar_of
     out = {}
     for pid, _ in pieces:
+        # Bars: where each phrase is in the score, from the piece's cleaned score lines
+        # (clean numbers a character's speeches 0, 1, ... in order, as the text lists them).
+        where, score = {}, None
+        clean_path = opera.work / "clean" / f"{pid}.json"
+        if clean_path.exists():
+            score = json.loads((opera.work / "score" / f"{pid}.json").read_text())
+            for ln in json.loads(clean_path.read_text())["lines"]:
+                for g in ln["gloss"]:
+                    where.setdefault((g["v"], g["c"]), (g["score_start"], g["score_end"]))
+        rank = {}
         segs, inside, regs = [], [], []
         for si, (p, k, sp) in enumerate(sps):
             if p != pid:
@@ -172,6 +186,7 @@ def time_recitatives(opera, rec_id, pieces, tracks, region):
                     cur = []
             for char in sp["characters"]:
                 vid = f"{char}:{pid}.{k}"
+                vi = rank[char] = rank.get(char, -1) + 1
                 for g in groups:
                     gloss = []
                     for ci in g:
@@ -180,11 +195,16 @@ def time_recitatives(opera, rec_id, pieces, tracks, region):
                             gloss.append({"v": vid, "c": ci, "it": sp["phrases"][ci][0], "en": sp["phrases"][ci][1],
                                           "start": cw[0]["start"], "end": cw[-1]["end"]})
                     if gloss:
-                        segs.append({"start": gloss[0]["start"], "end": gloss[-1]["end"], "character": char,
-                                     "voice": order.index(char) if char in order else len(order),
-                                     "text": " ".join(x["it"] for x in gloss),
-                                     "translation": " ".join(x["en"] for x in gloss), "gloss": gloss,
-                                     "verses": {vid: [list(c) for c in sp["phrases"]]}, "source": "recit-forced-align"})
+                        seg = {"start": gloss[0]["start"], "end": gloss[-1]["end"], "character": char,
+                               "voice": order.index(char) if char in order else len(order),
+                               "text": " ".join(x["it"] for x in gloss),
+                               "translation": " ".join(x["en"] for x in gloss), "gloss": gloss,
+                               "verses": {vid: [list(c) for c in sp["phrases"]]}, "source": "recit-forced-align"}
+                        sc_t = [where[(f"{char}:{vi}", x["c"])] for x in gloss if (f"{char}:{vi}", x["c"]) in where]
+                        if sc_t and score:
+                            seg["bar_start"] = bar_of(score, min(a for a, _ in sc_t))
+                            seg["bar_end"] = bar_of(score, max(b for _, b in sc_t))
+                        segs.append(seg)
             if wt:
                 s0, s1 = wt[0]["start"], wt[-1]["end"]
                 m = (t_ >= s0) & (t_ <= s1) & np.isfinite(f0)

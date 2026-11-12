@@ -15,7 +15,7 @@ P8's regression check. Decisions: `docs/sung-text-pipeline.md` ("Decisions").
 | P4 | The tool: stages score, clean, place, time, publish; per-piece outputs | code done; finale reproduces the experiment |
 | P5 | Placement of every piece in each recording | done 2026-11-11, **waiting for review** |
 | P6 | Text: verse list, phrase split, gloss (in session) for the five passages | done 2026-11-11, **waiting for review** |
-| P7 | Interchange format: piece id, bars, edition | publish writes 1.1-score with edition and piece; bars and roon-rd check not done |
+| P7 | Interchange format: piece id, bars, edition; roon-rd matching | pipeline side done 2026-11-11; roon-rd change awaiting approval |
 | P8 | Regression: rebuild the five passages from scratch; route B side test on a recitative | not started |
 
 ## P2 result (2026-11-11)
@@ -101,6 +101,22 @@ the session writes from). Texts in operas/figaro/text/:
 Decoder fixes found on the way: speaker cues stacked above a stage direction (window
 22 -> 40 pt, never above the staff above); the page footer "BA 4565 b" was read as a lyric
 on scaled ensemble pages; "I" was dropped as a choir part name, losing "Io!".
+
+## P7 result (2026-11-11)
+
+- Every segment carries `piece` and `bar_start`/`bar_end` (bar + fraction, as printed in
+  BA 4565). Route B from its score times; route C by cleaning the recitative's decoded
+  syllables against the same text, so each phrase has a score position.
+- `publish` writes version 1.1-score with `edition`, lists every track of the recording
+  (empty where nothing is timed yet), and numbers discs from 1 as Roon does (Solti's
+  files say 9-11). roon-rd loads the file unchanged ("32 tracks").
+- First real route C run (Solti, "Eccovi" + "Andiam"): word times agree with the
+  experiment's to about 0.1 s. "Andiam" shows 50/72 words "mostly in silence": its two
+  light voices sit below the singing detector's threshold (the experiment placed the
+  words identically); a limit of the check, not the timing.
+- roon-rd (branch libretto-number-match, not committed): when the album matches and the
+  file numbers its tracks, a disc/track number the file lacks means "not in this file",
+  not a title-matching fallback (the "track 52" case).
 
 ## Pending for the user
 

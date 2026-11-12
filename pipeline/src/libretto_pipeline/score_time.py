@@ -108,7 +108,19 @@ def score_time(dec, cast):
     unattributed = sum(w is None for w in who)
     lines.sort(key=lambda l: l["start"])
     return {"lines": lines, "notes": notes, "sections": sections, "score_end_s": round(end_t, 3),
+            "bars": [[b["bar"], round(start[b["bar"]], 3), round(length[b["bar"]], 3)] for b in bars],
             "unattributed": unattributed}
+
+
+def bar_of(score, s):
+    """Score seconds -> bar + fraction, as printed in the edition (e.g. 83.5 = halfway
+    through bar 83)."""
+    bars = score["bars"]
+    if not bars:
+        return None
+    k = max(0, min(len(bars) - 1, sum(1 for b in bars if b[1] <= s) - 1))
+    bar, start, length = bars[k]
+    return round(bar + min(max((s - start) / length, 0.0), 0.999), 2)
 
 
 def run(opera, piece_ids):
