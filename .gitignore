@@ -1,2 +1,8 @@
 target/
 scratch/
+
+# libretto-pipeline (Python)
+pipeline/.venv/
+pipeline/src/libretto_pipeline/_version.py
+__pycache__/
+.pytest_cache/

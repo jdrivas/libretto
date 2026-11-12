@@ -1,0 +1,47 @@
+[project]
+name = "libretto-pipeline"
+version = "0.1.0"
+description = "Builds time-synced sung-text files for opera recordings from a vocal score and the recordings"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.4.6",
+    "pymupdf>=2.1",
+]
+
+[project.optional-dependencies]
+# Alignment, timing and checks (P4 onwards).
+align = [
+    "librosa>=0.11.0",
+    "matplotlib>=3.11.2",
+    "pandas>=2.2",
+    "scipy>=1.18.1",
+    "soundfile>=0.14.0",
+    "synctoolbox>=1.4.2",
+]
+# Vocal separation and forced alignment (P3 onwards). Large: about 1.5 GB with models.
+audio = [
+    "demucs>=4.1.0",
+    "torch>=2.15.0",
+    "torchaudio>=2.11.1",
+]
+
+[project.scripts]
+libretto-pipeline = "libretto_pipeline.cli:main"
+
+[tool.uv]
+# Runs on this Apple Silicon Mac only (demucs pins numpy<2 on Intel Macs).
+environments = ["sys_platform == 'darwin' and platform_machine == 'arm64'"]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/libretto_pipeline"]
+
+# Writes src/libretto_pipeline/_version.py (git hash, dirty state, build time) at install.
+[tool.hatch.build.hooks.custom]
+path = "hatch_build.py"

@@ -1,0 +1,43 @@
+# libretto: workspace notes for Claude
+
+This repo is where operas are built into time-synced sung-text files for the roon-rd
+viewer. Start a session here and say which opera; read `operas/<opera>/STATUS.md` first.
+
+## What's here
+
+| Path | What |
+|---|---|
+| `pipeline/` | `libretto-pipeline`, the Python tool that builds an opera stage by stage (README there) |
+| `operas/<id>/` | per opera: `opera.toml` (score, edition, cast) and `STATUS.md` (where the build is) |
+| `docs/sung-text-pipeline.md` | the method, the decisions, the operating model |
+| `docs/repertoire-plan.md` | which operas, in what order, and the checkpoints |
+| `docs/report/` | the technical report on the experiment |
+| `crates/` | the earlier Rust libretto model (February word-count approach); not used by the pipeline |
+
+## Rules that hold in every session
+
+- **Licensed scores.** The user's Bärenreiter (and later Schott) PDFs are personal licensed
+  copies. Never share, upload or commit a score PDF or a full decode. A single page or small
+  excerpt for study is fine; crop the "Issued for" footer and the margin order ID. Small
+  decoded data in interchange files (the sung text, an `ocr` field) is fine.
+- **Audio library is read-only.** Never modify or write anything under `~/Dropbox/Audio`.
+- **Bulk and licensed outputs go to `work_root`** (`pipeline/config.toml`), never into git.
+  `~/Development` is a symlink to `~/Dropbox/Development`: use the real path in settings,
+  because the sandbox matches real paths only.
+- **No hand-marking.** Timings come from the pipeline. Never propose tapping along or
+  marking times by hand; don't re-propose snapping to anchors.
+- **Every line accounted for.** After any change to timed lines or the viewer, check that no
+  line is missing and none is shown twice.
+- **Gloss in the session.** For now Claude writes the verse list, phrase split and literal
+  gloss in the session, and the tool checks them. Revisit moving it into the tool (Claude
+  API) at the latest at the Così checkpoint.
+- **The edition is the reference.** Numbers, scenes, pages and bars follow the decoded
+  vocal score (for Figaro, Bärenreiter BA 4565), not Ricordi or a libretto.
+- **Discussion first** for non-trivial decisions; no code until the user says go. Commit only
+  when asked, on a branch, never pushed unless asked. Never bump a version.
+
+## Running
+
+```
+cd pipeline && uv sync && .venv/bin/libretto-pipeline decode figaro
+```

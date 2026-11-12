@@ -1,0 +1,68 @@
+[opera]
+title = "Le nozze di Figaro"
+composer = "Wolfgang Amadeus Mozart"
+librettist = "Lorenzo Da Ponte"
+language = "it"
+translation_language = "en"
+
+[score]
+edition = "Bärenreiter BA 4565"
+# The user's licensed copy: read only, never shared, never committed.
+pdf = "/Users/jdr/Dropbox/Development/rust/libretto-scratch/Barenreiter/Mozart,W+A+Le+nozze+di+KV+492+(KV,U).pdf"
+first_music_page = 22          # PDF page of printed page 1
+contents_pages = [13, 21]      # PDF pages of the "Verzeichnis der Szenen und Nummern"
+
+# Characters, in cast-list order, with the names and abbreviations the score uses for
+# them: full names on a piece's first system, abbreviations on later systems, and
+# speaker cues above shared staves. Matching ignores case and full stops.
+[[cast]]
+name = "IL CONTE"
+labels = ["il conte", "conte", "il c"]
+
+[[cast]]
+name = "LA CONTESSA"
+labels = ["la contessa", "contessa", "la c"]
+
+[[cast]]
+name = "SUSANNA"
+labels = ["susanna", "sus"]
+
+[[cast]]
+name = "FIGARO"
+labels = ["figaro", "fig"]
+
+[[cast]]
+name = "CHERUBINO"
+labels = ["cherubino", "cher"]
+
+[[cast]]
+name = "MARCELLINA"
+labels = ["marcellina", "marc"]
+
+[[cast]]
+name = "BARTOLO"
+labels = ["bartolo", "don bartolo", "bart"]
+
+[[cast]]
+name = "BASILIO"
+labels = ["basilio", "don basilio", "bas"]
+
+[[cast]]
+name = "DON CURZIO"
+labels = ["don curzio", "curzio", "curz", "don c", "d c"]
+
+[[cast]]
+name = "BARBARINA"
+labels = ["barbarina", "barb"]
+
+[[cast]]
+name = "ANTONIO"
+labels = ["antonio", "ant"]
+
+[[cast]]
+name = "DUE DONNE"
+labels = ["due donne", "due d"]
+
+[[cast]]
+name = "CORO"
+labels = ["coro"]

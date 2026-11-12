@@ -1,0 +1,5 @@
+# Machine paths for libretto-pipeline.
+# work_root holds everything bulky or licensed: score decodes, audio, stems, timings.
+# Use the real path: ~/Development is a symlink into Dropbox, and the sandbox matches
+# real paths only.
+work_root = "/Users/jdr/Dropbox/Development/libretto-work"
