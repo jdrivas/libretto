@@ -46,7 +46,7 @@ def cmd_place(args):
     opera = load_opera(args.opera)
     for rid in args.recording or [r["id"] for r in opera.recordings]:
         opera.recording(rid)
-        place.place(opera, rid)
+        place.place(opera, rid, args.act)
 
 
 def cmd_time(args):
@@ -107,6 +107,7 @@ def parser():
     pl = sub.add_parser("place", help="find each piece in a recording (all configured if none named)")
     pl.add_argument("opera")
     pl.add_argument("recording", nargs="*")
+    pl.add_argument("--act", type=int, action="append", help="only this act (repeatable); others are kept")
     pl.set_defaults(func=cmd_place)
     tm = sub.add_parser("time", help="time placed pieces in one recording (routes B and C)")
     tm.add_argument("opera")
@@ -124,7 +125,10 @@ def parser():
 
 
 def main(argv=None):
+    import os
+    from .config import workspace
     args = parser().parse_args(argv)
+    os.environ.setdefault("MPLCONFIGDIR", str(os.path.expanduser(workspace()["work_root"]) + "/.cache/matplotlib"))
     logs.setup(args.log_level, args.log_utc)
     log.info(VERSION_STRING)
     try:

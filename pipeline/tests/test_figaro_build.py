@@ -1,0 +1,53 @@
+"""Score, clean, placement and timing against the experiment (licensed score, local audio).
+
+Uses outputs already built under work_root; skipped where they are absent. Rebuild with:
+  libretto-pipeline score/clean/place/time figaro ...
+"""
+import json
+
+import numpy as np
+import pytest
+
+from libretto_pipeline import clean, score_time
+from libretto_pipeline.config import OPERAS, load_opera
+
+OPERA = load_opera("figaro")
+EXP = OPERA.score_pdf.parents[1] / "sextet-experiment" / "out"
+need = lambda p: pytest.mark.skipif(not p.exists(), reason=f"{p.name} not present")
+
+
+@need(OPERA.work / "decode" / "pieces" / "no16.score.json")
+@need(EXP / "finale2ba.clean.json")
+def test_score_and_clean_reproduce_the_experiment_finale():
+    dec = json.loads((OPERA.work / "decode" / "pieces" / "no16.score.json").read_text())
+    sc = score_time.score_time(dec, OPERA.cast)
+    old = json.loads((EXP / "finale2ba.score.json").read_text())
+    assert sc["notes"] == old["notes"] and sc["sections"] == old["sections"]
+    text = json.loads((OPERAS / "figaro" / "text" / "no16.json").read_text())["characters"]
+    new, _ = clean.clean_piece(sc["lines"], text, [n for n, _ in OPERA.cast.members])
+    ren = lambda l: json.loads(json.dumps({k: v for k, v in l.items() if k not in ("voice", "bar_start", "bar_end")},
+                                          ensure_ascii=False).replace("DON BARTOLO", "BARTOLO"))
+    key = lambda l: (l["score_start"], l["character"], l["text"])
+    exp = json.loads((EXP / "finale2ba.clean.json").read_text())
+    assert sorted(map(ren, exp), key=key) == sorted(map(ren, new), key=key)
+
+
+@need(OPERA.work / "placement" / "georg-solti-1981.json")
+@need(OPERA.work / "placement" / "currentzis-2014.json")
+def test_placement_agrees_with_track_titles():
+    for rec, finale_track in (("georg-solti-1981", "d10t04"), ("currentzis-2014", "t36")):
+        d = json.loads((OPERA.work / "placement" / f"{rec}.json").read_text())
+        nums = [p for p in d["pieces"] if p["kind"] != "secco"]
+        assert len(nums) == 34 and sum(p["titles"] is False for p in nums) <= 1, rec
+        fin = next(p for p in nums if p["id"] == "no16")
+        assert fin["track_start"][0] == finale_track and fin["track_start"][1] < 5, rec
+
+
+@need(OPERA.work / "timed" / "georg-solti-1981" / "no16.json")
+@need(EXP / "finale2ba.lines.solti.json")
+def test_solti_finale_timing_matches_the_experiment():
+    new = json.loads((OPERA.work / "timed" / "georg-solti-1981" / "no16.json").read_text())
+    old = {(l["character"].replace("DON BARTOLO", "BARTOLO"), l["text"], round(l["score_start"], 2)): l["start"]
+           for l in json.loads((EXP / "finale2ba.lines.solti.json").read_text())}
+    d = [l["start"] - old[(l["character"], l["text"], round(l["score_start"], 2))] for l in new["lines"]]
+    assert len(d) == 823 and np.max(np.abs(d)) < 1.0

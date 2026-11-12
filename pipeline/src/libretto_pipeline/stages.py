@@ -86,10 +86,10 @@ def run_time(opera, rec_id, ids=None):
             log.warning(f"time {rec_id}: skipping {', '.join(g['id'] for g in group)}: no speeches text for "
                         f"{', '.join(pid for pid, sp in texts if not sp)}")
             continue
-        k0 = act["tracks"].index(e["tracks"][0])
+        k0 = act["tracks"].index(e["region_tracks"][0])
         o0 = act["offsets"][k0]
         region = (e["region"][0] - o0, e["region"][1] - o0)
-        for res in timing.time_recitatives(opera, rec_id, texts, e["tracks"], region).values():
+        for res in timing.time_recitatives(opera, rec_id, texts, e["region_tracks"], region).values():
             _write_timed(opera, rec_id, res)
 
 

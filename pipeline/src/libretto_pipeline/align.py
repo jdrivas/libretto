@@ -68,7 +68,7 @@ def locate_excerpt(audio_chroma, score_chroma):
                                  step_sizes_sigma=np.array([[1, 1], [2, 1], [1, 2]]),
                                  weights_mul=np.array([1.0, 2.0, 2.0]))
     wp = wp[::-1]
-    path_cost = float(np.mean(cost[wp[:, 0], wp[:, 1]]))
+    path_cost = float(np.mean(cost[np.clip(wp[:, 0], 0, cost.shape[0] - 1), np.clip(wp[:, 1], 0, cost.shape[1] - 1)]))
     return wp[0, 1] / rate, wp[-1, 1] / rate, shift, path_cost
 
 
