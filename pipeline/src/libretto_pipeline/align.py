@@ -54,12 +54,20 @@ def features_score(df):
     return chroma, dlnco
 
 
-def locate_excerpt(audio_chroma, score_chroma):
+def locate_excerpt(audio_chroma, score_chroma, shifts=None):
     """Subsequence DTW on 5 Hz CENS: where does the score sit inside the audio?
-    Returns (start s, end s, chroma shift, mean path cost)."""
+    Returns (start s, end s, chroma shift, mean path cost).
+    shifts: the chroma shifts to try, keeping the lowest path cost (a short excerpt's own
+    shift estimate can be a fifth off, and then matches the wrong music); default: the
+    estimate."""
+    return min((_locate(audio_chroma, score_chroma, sh) for sh in (shifts or [None])), key=lambda r: r[3])
+
+
+def _locate(audio_chroma, score_chroma, shift):
     a, rate = quantized_chroma_to_CENS(audio_chroma, 41, 10, RATE)
     s, _ = quantized_chroma_to_CENS(score_chroma, 41, 10, RATE)
-    shift = compute_optimal_chroma_shift(a, s)
+    if shift is None:
+        shift = compute_optimal_chroma_shift(a, s)
     s = shift_chroma_vectors(s, shift)
     cost = 1.0 - s.T @ a  # (score frames, audio frames); CENS is L2-normalised
     # Slope-constrained steps (tempo ratio 0.5x-2x) so a sparse score can't collapse onto

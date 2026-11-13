@@ -53,7 +53,19 @@ def test_placement_agrees_with_track_titles():
 @need(EXP / "finale2ba.lines.solti.json")
 def test_solti_finale_timing_matches_the_experiment():
     new = json.loads((OPERA.work / "timed" / "georg-solti-1981" / "no16.json").read_text())
-    old = {(l["character"].replace("DON BARTOLO", "BARTOLO"), l["text"], round(l["score_start"], 2)): l["start"]
-           for l in json.loads((EXP / "finale2ba.lines.solti.json").read_text())}
-    d = [l["start"] - old[(l["character"], l["text"], round(l["score_start"], 2))] for l in new["lines"]]
-    assert len(d) == 823 and np.max(np.abs(d)) < 1.0
+    # Lines are matched to the experiment's nearest line of the same character in score time:
+    # No. 16's text has since been respelled as the score prints it ("dagl'occhi", "Uh che
+    # testa!"), so some texts differ, and two lines start up to 0.5 s earlier in the score.
+    old = [(l["character"].replace("DON BARTOLO", "BARTOLO"), l["score_start"], l["start"])
+           for l in json.loads((EXP / "finale2ba.lines.solti.json").read_text())]
+    d = []
+    for l in new["lines"]:
+        gap, start = min((abs(s - l["score_start"]), t) for c, s, t in old if c == l["character"])
+        assert gap < 1.5, (l["character"], l["text"], l["score_start"])
+        # The experiment's times start at the finale's first track; the timed file's at the
+        # first track the edge search loads (the track before).
+        d.append(l["start"] - new["offsets"][new["tracks"].index("d10t04")] - start)
+    # The start and end are now refined from the audio, not hand-picked as in the
+    # experiment; 2 of 823 lines move by 1-2 s (one of them a respelled line).
+    a = np.abs(d)
+    assert len(d) == 823 and np.median(a) < 0.05 and np.sum(a > 1.0) <= 3 and np.max(a) < 2.0

@@ -48,6 +48,7 @@ def map_lines(lines, to_audio, score=None):
 
 EDGE_S = 20.0        # score seconds at each end used to refine a placed boundary
 EDGE_SEARCH_S = (30.0, 70.0)  # search from this much before to this much after (or mirrored)
+EDGE_SHIFTS = (0, 1, 11)  # chroma shifts tried (as in placement); 20 s's own estimate can be a fifth off
 
 
 def refine_edges(x, tuning, notes, start, end):
@@ -67,7 +68,8 @@ def refine_edges(x, tuning, notes, start, end):
         part = part.copy()
         part["start"] -= part["start"].min()
         xw = x[int(w0 * align.FS):int(w1 * align.FS)]
-        f0, f1, _, _ = align.locate_excerpt(align.features_audio(xw, tuning)[0], align.features_score(part)[0])
+        f0, f1, _, _ = align.locate_excerpt(align.features_audio(xw, tuning)[0], align.features_score(part)[0],
+                                            shifts=EDGE_SHIFTS)
         out[k] = w0 + (f0 if k == 0 else f1)
     if out[1] - out[0] < 0.5 * (end - start):  # implausible: keep the placement
         return start, end
