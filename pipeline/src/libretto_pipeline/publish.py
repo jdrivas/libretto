@@ -28,7 +28,7 @@ def publish(opera, rec_id):
     for t in rec["tracks"]:
         d = disc_no[t["disc"] or 1]
         tr = {"track_id": f"d{d}t{t['track']}", "title": t["title"], "disc_number": d,
-              "track_number": t["track"], "duration_seconds": round(t["duration_s"], 1),
+              "track_number": t["track"], "duration_seconds": round(t["duration_s"], 3),
               "act": str(t["act"]), "segments": []}
         tracks.append(tr)
         by_id[t["id"]] = (tr, t["duration_s"])
