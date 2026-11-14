@@ -148,6 +148,25 @@ the file's tags, so roon-rd's title matching picked an empty track. Fixed by an
 and, in roon-rd (5890dc3), a title match within 1 s of the playing length wins. Solti's
 Sextet drifts a little at times and recovers; left for now (see its entry figures above).
 
+## Act I (2026-11-12/13)
+
+Texts for Nos. 1-10 and their recitatives written in session (three lines follow the
+libretto over the decode's staff; see the commit). The chorus is read from its top choir
+staff (Nos. 8-9 letter match 0.69 -> 1.0). Built for both recordings.
+
+Fixed on the way:
+- **Chroma shift** (the main one): a piece's own key estimate over all 12 shifts was a
+  fourth or fifth off (Solti Nos. 2-3; the 20 s edges of Solti's finale and Nos. 3-4 and
+  Currentzis's finale), and the alignment then matched the wrong music. Alignment and edges
+  now try shifts {0, 1, 11}, as placement does. Every number in both recordings: singing
+  agreement 78-94%, entries median 0.03-0.26 s; Solti's Sextet 0.94 -> 0.11 s (92% within
+  1 s), so its drift should be gone.
+- **roon-rd matching** (e4ba2a0): Roon truncates lengths to whole seconds and passes no disc
+  number; a track fits Roon's length L if it lasts L to L + 1 s. Exact title, then an
+  exact-album file's fitting track, then length. Publish writes durations to the ms.
+- A tempo-limited guide for the fine pass (option A) is in align.py, off (`GUIDE`): it did
+  not help, as the cause was the key.
+
 ## Pending for the user
 
 - **At the next listening check:** listen to and watch the choruses (Nos. 8 and 9; No. 23

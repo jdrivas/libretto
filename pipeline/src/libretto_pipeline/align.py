@@ -21,6 +21,10 @@ log = logging.getLogger(__name__)
 
 FS = 22050   # audio sample rate for alignment (the mix FLACs are written at this rate)
 RATE = 50    # feature rate, Hz
+# Chroma shifts (semitones) tried when matching score to audio: the score's pitch, or a
+# semitone either way (period pitch, tuning). A piece's own estimate over all 12 can be a
+# fourth or fifth off (Solti's Nos. 2-3, and 20 s edges), and then matches the wrong music.
+SHIFTS = (0, 1, 11)
 
 
 def load_mix(paths):
@@ -80,14 +84,14 @@ def _locate(audio_chroma, score_chroma, shift):
     return wp[0, 1] / rate, wp[-1, 1] / rate, shift, path_cost
 
 
-def align(x, tuning, df, label="score", excerpt=None):
+def align(x, tuning, df, label="score", excerpt=None, guide=False):
     """Align a score note DataFrame to audio x. Returns a score-s -> audio-s function.
     excerpt=(t0, t1) fixes where the score starts and ends in x (the coarse search still
-    decides the chroma shift)."""
+    decides the chroma shift). guide: correct the path where it wanders (guided)."""
     dur = len(x) / FS
     a_chroma, _ = features_audio(x, tuning)
     s_chroma, s_dlnco = features_score(df)
-    t0, t1, shift, _ = locate_excerpt(a_chroma, s_chroma)
+    t0, t1, shift, _ = locate_excerpt(a_chroma, s_chroma, shifts=SHIFTS)
     if excerpt is not None:
         t0, t1 = excerpt
     log.debug(f"[{label}] {'given' if excerpt else 'coarse match'}: {t0:.1f}-{t1:.1f} s (chroma shift {shift})")
@@ -101,7 +105,83 @@ def align(x, tuning, df, label="score", excerpt=None):
                           threshold_rec=10 ** 6, verbose=False)
     wp = make_path_strictly_monotonic(wp)
     audio_t, score_t = wp[0] / RATE + m0, wp[1] / RATE
+    if guide:
+        audio_t = guided(a_chroma, shift_chroma_vectors(s_chroma, shift), score_t, audio_t - m0, label) + m0
     return lambda t: float(np.interp(t, score_t, audio_t))
+
+
+GUIDE = False          # correct the second pass with the tempo-limited guide (guided)
+GUIDE_RATE = 10        # Hz: the guide path's resolution
+GUIDE_BAND_S = 15.0    # the guide searches this far either side of its centre
+GUIDE_CENTRE = "diagonal"  # band centre: the straight diagonal, or "fine" (the fine path)
+GUIDE_STEPS = ((1, 1), (2, 3), (3, 2))  # (score, audio) frames: local tempo 2/3x-3/2x
+GUIDE_TRUST_S = 0.75   # the fine path is kept where it is this close to the guide
+
+
+def guided(a_chroma, s_chroma, score_t, audio_t, label=""):
+    """Correct a fine alignment path where it wanders. The fine pass (MrMsDTW) has no
+    tempo constraint and can lock onto the wrong repeat of a short figure (Solti's No. 2:
+    local tempo 0.5x-1.9x within a section; Currentzis's 1.0x-1.6x). The score here is
+    already rescaled to each section's tempo, so a steady performance is a slope-1 path:
+    a coarse DTW whose every step keeps the local tempo within 2/3x-3/2x, searched within
+    GUIDE_BAND_S of the fine path, gives a guide; where the fine path strays more than
+    GUIDE_TRUST_S from it, the guide's times are used. Returns corrected audio times."""
+    a, _ = quantized_chroma_to_CENS(a_chroma, 21, RATE // GUIDE_RATE, RATE)
+    s, _ = quantized_chroma_to_CENS(s_chroma, 21, RATE // GUIDE_RATE, RATE)
+    n, m = s.shape[1], a.shape[1]
+    if n < 4 or m < 4:
+        return audio_t
+    # Band centre for each score frame: the fine path's audio frame.
+    centre = (np.arange(n) * (m - 1) / (n - 1)) if GUIDE_CENTRE == "diagonal" else \
+        np.interp(np.arange(n) / GUIDE_RATE, score_t, audio_t) * GUIDE_RATE
+    R = int(GUIDE_BAND_S * GUIDE_RATE)
+    lo = np.clip(np.round(centre).astype(int) - R, 0, m - 1)
+    W = 2 * R + 1
+    cost_rows = lambda i: 1.0 - s[:, i] @ a[:, lo[i]:lo[i] + W]
+    INF = np.inf
+    D = np.full((n, W), INF)
+    step = np.full((n, W), -1, np.int8)
+    c0 = cost_rows(0)
+    D[0, :len(c0)] = c0  # the path may start anywhere in the band
+    for i in range(1, n):
+        c = cost_rows(i)
+        js = lo[i] + np.arange(len(c))
+        best = np.full(len(c), INF)
+        arg = np.full(len(c), -1, np.int8)
+        for k, (di, dj) in enumerate(GUIDE_STEPS):
+            if i - di < 0:
+                continue
+            idx = js - dj - lo[i - di]
+            ok = (idx >= 0) & (idx < W)
+            prev = np.full(len(c), INF)
+            prev[ok] = D[i - di, idx[ok]]
+            cand = prev + c * (di + dj) / 2.0
+            better = cand < best
+            best[better], arg[better] = cand[better], k
+        D[i, :len(c)] = best
+        step[i, :len(c)] = arg
+    # Backtrack from the best end on the last score frame.
+    j_idx = int(np.argmin(D[n - 1]))
+    if not np.isfinite(D[n - 1, j_idx]):
+        log.warning(f"[{label}] guide: no path within the band; fine path kept")
+        return audio_t
+    path, i = [], n - 1
+    while True:
+        path.append((i, lo[i] + j_idx))
+        k = step[i, j_idx]
+        if i == 0 or k < 0:
+            break
+        di, dj = GUIDE_STEPS[k]
+        j = lo[i] + j_idx - dj
+        i -= di
+        j_idx = j - lo[i]
+    path = np.array(path[::-1], float) / GUIDE_RATE
+    g = np.interp(score_t, path[:, 0], path[:, 1])
+    off = np.abs(audio_t - g) > GUIDE_TRUST_S
+    log.info(f"[{label}] guide: fine path replaced on {off.mean():.0%} of the score "
+             f"(largest gap {np.abs(audio_t - g).max():.1f} s)")
+    out = np.where(off, g, audio_t)
+    return np.maximum.accumulate(out)
 
 
 def two_pass(x, tuning, df, bounds_s, excerpt, label):
@@ -119,5 +199,5 @@ def two_pass(x, tuning, df, bounds_s, excerpt, label):
     df2 = df.drop(columns=["end"], errors="ignore").copy()  # synctoolbox adds "end" in place
     df2["duration"] = np.maximum(df["duration"] * factor[k_of(df["start"].to_numpy())], 0.1)
     df2["start"] = to_norm(df["start"].to_numpy())
-    second = align(x, tuning, df2, f"{label} pass 2", excerpt=excerpt)
+    second = align(x, tuning, df2, f"{label} pass 2", excerpt=excerpt, guide=GUIDE)
     return (lambda s: second(float(to_norm(s)))), factor
