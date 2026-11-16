@@ -120,3 +120,13 @@ checks, the moved speakers, a few numbers) and we go on. A full listening comes 
 *Why:* the checks plus a spot check have caught every real problem so far (the key shift,
 track matching); a full listening of each act would hold up the build. *Revisit:* when the
 whole opera is built, before calling Figaro done: plan the full listening then.
+
+### D18. Fewer stops: go ahead unless there's a real choice or a surprise (2026-11-15)
+Within an agreed plan (for example "Act III: texts, the No. 23 decoder fix, then build"),
+Claude goes ahead without asking: texts, builds, regression checks, commits on the
+`pipeline` branch, and fixes whose right answer is clear. It stops only for (a) a decision
+with real alternatives, explained with a recommendation, or (b) a result that looks wrong
+and that it can't explain or fix. Speaker changes (D16) and other judgment calls are listed
+in the end-of-act report rather than asked about beforehand. *Why:* the user asked to limit
+the number of things they have to OK. Unchanged: roon-rd commits still need approval, and
+nothing is pushed.
