@@ -189,8 +189,31 @@ recordings; Act II is complete with Nos. 12 and 16 from P8. Letter match 1.0 in 
 
 Solti's No. 15 is the detector, not the timing: Susanna's sotto voce opening (bars 5-10)
 sits at the orchestra's level in the vocal stem, and the first line is placed 0.2 s after
-the voice appears. Every line published once (2264 segments in each recording). Listening
-check pending.
+the voice appears. Every line published once (2264 segments in each recording). Spot check
+passed 2026-11-15 (D17: a full listening comes when the opera is built).
+
+## Act III (2026-11-15)
+
+Texts for the 15 remaining pieces written in session, after a decoder fix (D19): No. 23's
+choir staves are smaller and were unlabelled, so they took the soloists' names, and "Il C."
+and "La C." are Times-Roman labels on about 100 systems, which the decoder had ignored.
+Speeches moved per D16: rec17a, rec18a, rec22a (three), plus "Rimandate il sigillo"
+(rec21a), which the decode does not read. Built for both recordings with rec09a (its
+decoded speakers improved): 51 pieces, 2691 segments each, every line once.
+
+| | Solti | Currentzis |
+|---|---|---|
+| No. 17 | 86%, entries 0.08 s | 87%, 0.07 s |
+| No. 18 recit. / aria | 87%, 0.15 s / 84%, 0.11 s | 87%, 0.16 s / 81%, 0.12 s |
+| No. 20 recit. / aria | 79%, 0.28 s / 82%, 0.16 s | 76%, 0.32 s / 80%, 0.18 s |
+| No. 21 | 80%, 0.50 s | 84%, 0.51 s |
+| No. 22 | 84%, 0.19 s | 65%, 0.34 s |
+| No. 23 | 86%, 0.16 s | 91%, 0.12 s |
+| Recitatives, words in silence | 0-17% | 0-43% (rec17a 36/84) |
+
+The orchestral recitatives stay with route B: No. 18's is as good as a number, and No. 20's
+is weaker but not bad. Weakest: No. 21 (the Countess's first "sotto i pini", bars 18-21, may
+be early; the final "il capirà" exchange is squeezed at the end) and Currentzis's No. 22.
 
 ## Pending for the user
 

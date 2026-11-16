@@ -17,6 +17,7 @@ Entries that are flagged to come back to, and when. Raise each one when its trig
 | D13 Tempo-limited guide (option A) left off | if a number drifts and the key shift is right |
 | D14 Vocal-stem onsets (option B) not pursued | if a number or recitative is mistimed and D12 doesn't explain it |
 | D17 Spot check per act; full listening later | when all of Figaro is built |
+| D20 Orchestral recitatives by route B | if No. 20's recitative drifts when listened to |
 
 ## Entries
 
@@ -150,3 +151,10 @@ disposto" are now right) and rec21a (the Countess's "prendi una spilla") changed
 other piece decodes to the same singers. *Alternatives:* a per-piece staff map in
 opera.toml, rejected because it's hand work for every new score. *Revisit:* if a later
 score (Schott, Wagner) labels or sizes staves differently.
+
+### D20. Orchestral recitatives are timed like numbers (route B) (2026-11-15)
+"Hai già vinta la causa" (No. 18) and "E Susanna non vien" (No. 20) are timed by matching the
+score to the music, like the numbers. *Why:* they have real orchestral music to match. No.
+18's came out as good as a number (87%, entries 0.15 s, all within 1 s); No. 20's is weaker
+(76-79%, 0.28-0.32 s). *Alternative:* time them from the words, as the secco recitatives
+are. *Revisit:* if the user hears No. 20's recitative drift; try route C on it then.
