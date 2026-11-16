@@ -339,6 +339,9 @@ plan is:
 
 ### Decisions
 
+These are now kept, with all later decisions, in `docs/decisions.md` (D1–D7 there). The
+text below is the original record.
+
 Questions 1–6 were decided on 2026-11-11, all as recommended; question 7 on 2026-11-08.
 
 1. **Route B is the main path for Figaro.** Every number is timed from the Bärenreiter decode,

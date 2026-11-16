@@ -9,7 +9,8 @@ viewer. Start a session here and say which opera; read `operas/<opera>/STATUS.md
 |---|---|
 | `pipeline/` | `libretto-pipeline`, the Python tool that builds an opera stage by stage (README there) |
 | `operas/<id>/` | per opera: `opera.toml` (score, edition, cast) and `STATUS.md` (where the build is) |
-| `docs/sung-text-pipeline.md` | the method, the decisions, the operating model |
+| `docs/sung-text-pipeline.md` | the method and the operating model |
+| `docs/decisions.md` | the decision log: every decision, and the ones to revisit |
 | `docs/repertoire-plan.md` | which operas, in what order, and the checkpoints |
 | `docs/report/` | the technical report on the experiment |
 | `crates/` | the earlier Rust libretto model (February word-count approach); not used by the pipeline |
@@ -33,6 +34,10 @@ viewer. Start a session here and say which opera; read `operas/<opera>/STATUS.md
   API) at the latest at the Così checkpoint.
 - **The edition is the reference.** Numbers, scenes, pages and bars follow the decoded
   vocal score (for Figaro, Bärenreiter BA 4565), not Ricordi or a libretto.
+- **Decision log.** Every decision made in a session gets an entry in `docs/decisions.md`
+  (date, decision, why, alternatives, revisit). It goes in the same commit as the change,
+  roon-rd decisions included. When the user asks to come back to a decision, add it to the
+  log's "To revisit" table with its trigger, and raise it when the trigger arrives.
 - **Discussion first** for non-trivial decisions; no code until the user says go. Commit only
   when asked, on a branch, never pushed unless asked. Never bump a version.
 
