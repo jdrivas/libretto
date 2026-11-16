@@ -175,10 +175,8 @@ needed.
 
 ## Pending for the user
 
-- **At the next listening check:** listen to and watch the choruses (Nos. 8 and 9; No. 23
-  later) and see how showing the chorus text once, from the top choir staff, feels. Decided
-  2026-11-12 (score stage reads CORO from the top choir staff singing in each bar); the
-  alternative was a line per choir staff, which repeats the same words in the CORO card.
+- ~~Listen to and watch the choruses (shown once, from the top choir staff)~~ done
+  2026-11-15: works as it is (decisions.md D10).
 
 - ~~Commit the decoder fix in `libretto-scratch`~~ done 2026-11-11 (313c7b4).
 - ~~`libretto/.claude/settings.json`~~ done 2026-11-11, with `settings.local.json`

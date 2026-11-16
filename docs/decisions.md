@@ -14,7 +14,6 @@ Entries that are flagged to come back to, and when. Raise each one when its trig
 | Entry | Revisit when |
 |---|---|
 | D7 Gloss written in the session | once the glosses are trusted; at the Così checkpoint at the latest |
-| D10 Chorus shown once, from the top choir staff | at the next listening check (Nos. 8-9, then No. 23) |
 | D13 Tempo-limited guide (option A) left off | if a number drifts and the key shift is right |
 | D14 Vocal-stem onsets (option B) not pursued | if a number or recitative is mistimed and D12 doesn't explain it |
 
@@ -66,8 +65,8 @@ the act's audio with one DTW. *Why:* placing number by number failed. One wrong 
 ### D10. Chorus shown once, from the top choir staff (2026-11-12)
 The score stage takes CORO text from the top choir staff that is singing in each bar.
 *Alternative:* a line per choir staff, which repeats the same words in the CORO card.
-*Revisit:* the user will listen to and watch the choruses at the next listening check
-(Nos. 8-9, later No. 23).
+*Confirmed 2026-11-15* after the user listened to and watched Nos. 8-9 in both recordings:
+"one for all". *Revisit:* no. It applies to every chorus (No. 23 and later operas).
 
 ### D11. roon-rd track matching (2026-11-12, refined 2026-11-13; roon-rd 5890dc3, e4ba2a0)
 An `album_title_aliases` entry in opera.toml covers Roon's album names, for example "Solti:
