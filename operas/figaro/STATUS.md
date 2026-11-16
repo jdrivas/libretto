@@ -173,6 +173,25 @@ recitatives show 10-32% of words "in silence" against Currentzis's 3-15%, but so
 the detector, not the timing). Option B (vocal-stem onsets as alignment features) not
 needed.
 
+## Act II (2026-11-15)
+
+Texts for Nos. 11, 13-15 and their seven recitatives written in session (four speeches moved
+to Da Ponte's speaker where the decode missed a cue: decisions.md D16). Built for both
+recordings; Act II is complete with Nos. 12 and 16 from P8. Letter match 1.0 in every number.
+
+| | Solti | Currentzis |
+|---|---|---|
+| No. 11 | 87%, entries 0.20 s | 89%, 0.22 s |
+| No. 13 | 90%, 0.03 s | 82%, 0.07 s |
+| No. 14 | 88%, 0.10 s | 87%, 0.14 s |
+| No. 15 | 71%, 0.16 s | 91%, 0.06 s |
+| Recitatives, words in silence | 3-22% (rec15a 12/25) | 1-14% (rec15a 10/25) |
+
+Solti's No. 15 is the detector, not the timing: Susanna's sotto voce opening (bars 5-10)
+sits at the orchestra's level in the vocal stem, and the first line is placed 0.2 s after
+the voice appears. Every line published once (2264 segments in each recording). Listening
+check pending.
+
 ## Pending for the user
 
 - ~~Listen to and watch the choruses (shown once, from the top choir staff)~~ done
