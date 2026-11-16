@@ -1,0 +1,20 @@
+{
+ "piece": "rec20a",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec20a)",
+ "source": "Bärenreiter BA 4565, Recitativo (Atto terzo, Scena IX)",
+ "speeches": [
+  {"characters": ["ANTONIO"], "phrases": [
+   ["Io vi dico signor", "I to-you say sir"], ["che Cherubino è ancora nel castello,", "that Cherubino is still in-the castle,"],
+   ["e vedete per prova", "and see for proof"], ["il suo cappello.", "the his hat."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Ma come", "But how"], ["se a quest’ora", "if at this-hour"], ["esser giunto a Siviglia", "to-have arrived at Seville"], ["egli dovria.", "he should."]]},
+  {"characters": ["ANTONIO"], "phrases": [
+   ["Scusate,", "Excuse-me,"], ["oggi Siviglia è a casa mia,", "today Seville is at house mine,"],
+   ["là vestissi da donna,", "there he-dressed-himself as woman,"], ["e là lasciati ha", "and there left has"],
+   ["gl’altri abiti suoi.", "the-other clothes his."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Perfidi!", "Traitors!"]]},
+  {"characters": ["ANTONIO"], "phrases": [
+   ["Andiam,", "Let-us-go,"], ["e li vedrete voi.", "and them will-see you."]]}
+ ]
+}

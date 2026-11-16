@@ -1,0 +1,19 @@
+{
+ "piece": "no21",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro no21)",
+ "source": "Bärenreiter BA 4565, No. 21 Duettino (Atto terzo, Scena X). The last syllable (\"-rà\") is decoded into rec21a, which starts on the same system",
+ "characters": {
+  "LA CONTESSA": [
+   [["Che soave zeffiretto", "What gentle little-breeze"], ["questa sera spirerà,", "this evening will-blow,"],
+    ["sotto i pini del boschetto,", "under the pines of-the little-wood,"], ["ei già il resto capirà.", "he already the rest will-understand."],
+    ["il capirà,", "it will-understand,"]],
+   [["Canzonetta sull’aria…", "Little-song on-the air…"]]
+  ],
+  "SUSANNA": [
+   [["sull’aria…", "on-the air…"], ["Che soave zeffiretto…", "What gentle little-breeze…"], ["zeffiretto…", "little-breeze…"],
+    ["questa sera spirerà…", "this evening will-blow…"], ["sotto i pini…", "under the pines…"],
+    ["del boschetto…", "of-the little-wood…"], ["certo certo il capirà.", "surely surely it he-will-understand."],
+    ["il capirà,", "it he-will-understand,"]]
+  ]
+ }
+}

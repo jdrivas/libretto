@@ -1,0 +1,17 @@
+{
+ "piece": "rec21a",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec21a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 21 (Atto terzo, Scena X). The decode runs the Countess's \"prendi una spilla … del foglio\" (bars 3-7) into Susanna's speech, and does not read the words written on the letter (\"Rimandate il sigillo\", bar 7); both written as in Da Ponte's libretto. Its first decoded syllable (\"-rà\") ends No. 21",
+ "speeches": [
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Piegato è il foglio…", "Folded is the letter…"], ["or come si sigilla?", "now how itself it-seals?"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Ecco…", "Here…"], ["prendi una spilla:", "take a pin:"], ["servirà di sigillo:", "it-will-serve as seal:"],
+   ["attendi…", "wait…"], ["scrivi sul riverso del foglio,", "write on-the back of-the letter,"],
+   ["«Rimandate il sigillo».", "«Send-back the seal»."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["È più bizzarro", "It-is more odd"], ["di quel della patente.", "than that of-the commission."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Presto nascondi:", "Quickly hide:"], ["io sento venir gente.", "I hear come people."]]}
+ ]
+}

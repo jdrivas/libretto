@@ -1,0 +1,87 @@
+{
+ "piece": "rec18a",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec18a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 18 (Atto terzo, Scena V). The decode runs Marcellina's \"Una spatola impressa al braccio destro…\" (bar 30) into Figaro's speech; given to Marcellina as in Da Ponte's libretto",
+ "speeches": [
+  {"characters": ["DON CURZIO"], "phrases": [
+   ["È decisa la lite.", "Is decided the suit."], ["O pagarla, o sposarla,", "Either pay-her, or marry-her,"], ["ora ammutite.", "now be-silent."]]},
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["Io respiro.", "I breathe."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Ed io moro.", "And I die."]]},
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["(Alfin sposa io sarò", "(At-last wife I will-be"], ["d’un uom ch’adoro.)", "of-a man that-I-adore.)"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Eccellenza m’appello…", "Excellency I-appeal…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["È giusta la sentenza.", "Is just the sentence."], ["O pagar, o sposar,", "Either pay, or marry,"], ["bravo Don Curzio.", "well-done Don Curzio."]]},
+  {"characters": ["DON CURZIO"], "phrases": [
+   ["Bontà di sua Eccellenza.", "Goodness of his Excellency."]]},
+  {"characters": ["BARTOLO"], "phrases": [
+   ["Che superba sentenza!", "What superb sentence!"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["In che superba?", "In what superb?"]]},
+  {"characters": ["BARTOLO"], "phrases": [
+   ["Siam tutti vendicati…", "We-are all avenged…"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Io non la sposerò.", "I not her will-marry."]]},
+  {"characters": ["BARTOLO"], "phrases": [
+   ["La sposerai.", "Her you-will-marry."]]},
+  {"characters": ["DON CURZIO"], "phrases": [
+   ["O pagarla, o sposarla.", "Either pay-her, or marry-her."], ["Lei t’ha prestati", "She to-you-has lent"], ["due mille pezzi duri.", "two thousand pieces hard."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Son gentiluomo,", "I-am gentleman,"], ["e senza l’assenso", "and without the assent"], ["de’ miei nobili parenti…", "of my noble parents…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Dove sono?", "Where are-they?"], ["chi sono?", "who are-they?"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Lasciate ancor cercarli:", "Let still to-look-for-them:"], ["dopo dieci anni", "after ten years"], ["io spero di trovarli.", "I hope to find-them."]]},
+  {"characters": ["BARTOLO"], "phrases": [
+   ["Qualche bambin trovato?", "Some child found?"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["No perduto, dottor,", "No lost, doctor,"], ["anzi rubato.", "rather stolen."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Come? Cosa?", "How? What?"]]},
+  {"characters": ["BARTOLO"], "phrases": [
+   ["La pruova?", "The proof?"]]},
+  {"characters": ["DON CURZIO"], "phrases": [
+   ["Il testimonio?", "The witness?"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["L’oro, le gemme,", "The gold, the gems,"], ["e i ricamati panni,", "and the embroidered clothes,"],
+   ["che ne’ più teneri anni", "that in-the most tender years"], ["mi ritrovaro addosso", "on-me found on-my-back"],
+   ["i masnadieri,", "the bandits,"], ["sono gl’indizi veri", "are the-signs true"],
+   ["di mia nascita illustre:", "of my birth illustrious:"], ["e sopra tutto questo", "and above all this"],
+   ["al mio braccio impresso geroglifico…", "on-the my arm impressed hieroglyph…"]]},
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["Una spatola impressa", "A spatula impressed"], ["al braccio destro…", "on-the arm right…"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["E a voi chi’l disse?", "And to you who-it told?"]]},
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["Oh Dio, è egli…", "Oh God, it-is he…"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["È ver son io.", "It-is true it-is I."]]},
+  {"characters": ["DON CURZIO"], "phrases": [
+   ["Chi?", "Who?"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Chi?", "Who?"]]},
+  {"characters": ["BARTOLO"], "phrases": [
+   ["Chi?", "Who?"]]},
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["Rafaello.", "Rafaello."]]},
+  {"characters": ["BARTOLO"], "phrases": [
+   ["E i ladri ti rapir…", "And the thieves you snatched…"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Presso un castello.", "Near a castle."]]},
+  {"characters": ["BARTOLO"], "phrases": [
+   ["Ecco tua madre.", "Here-is your mother."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Balia…", "Nurse…"]]},
+  {"characters": ["BARTOLO"], "phrases": [
+   ["No, tua madre.", "No, your mother."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Sua madre!", "His mother!"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Cosa sento!", "What I-hear!"]]},
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["Ecco tuo padre.", "Here-is your father."]]}
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "piece": "no20-recit",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro no20-recit)",
+ "source": "Bärenreiter BA 4565, No. 20 Recitativo istrumentato (Atto terzo, Scena VIII); \"anziosa\" as printed",
+ "characters": {
+  "LA CONTESSA": [
+   [["E Susanna non vien!", "And Susanna not comes!"], ["sono anziosa di saper", "I-am anxious to know"],
+    ["come il Conte accolse la proposta.", "how the Count received the proposal."], ["Alquanto ardito", "Somewhat bold"],
+    ["il progetto mi par,", "the plan to-me seems,"], ["e ad uno sposo", "and to a husband"],
+    ["sì vivace, e geloso!", "so lively, and jealous!"], ["Ma che mal c’è?", "But what harm there-is?"],
+    ["cangiando i miei vestiti", "changing the my clothes"], ["con quelli di Susanna", "with those of Susanna"],
+    ["e i suoi co’ miei…", "and hers with mine…"], ["al favor della notte…", "at-the favour of-the night…"],
+    ["oh cielo,", "oh heaven,"], ["a qual umil stato fatale", "to what humble state fatal"],
+    ["io son ridotta", "I am reduced"], ["da un consorte crudel,", "by a consort cruel,"],
+    ["che dopo avermi", "who after having-me"], ["con un misto inaudito", "with a mixture unheard-of"],
+    ["d’infedeltà, di gelosia, di sdegni,", "of-infidelity, of jealousy, of scorn,"], ["prima amata,", "first loved,"],
+    ["indi offesa,", "then offended,"], ["e alfin tradita,", "and at-last betrayed,"],
+    ["fammi or cercar", "makes-me now seek"], ["da una mia serva aita!", "from a my servant help!"]]
+  ]
+ }
+}

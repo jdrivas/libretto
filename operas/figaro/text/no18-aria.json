@@ -1,0 +1,22 @@
+{
+ "piece": "no18-aria",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro no18-aria)",
+ "source": "Bärenreiter BA 4565, No. 18 Aria (Atto terzo, Scena IV); the second statement sings \"vedrò che un ben ch'io desio\"",
+ "characters": {
+  "IL CONTE": [
+   [["Vedrò mentre io sospiro,", "I-will-see while I sigh,"], ["felice un servo mio!", "happy a servant mine!"],
+    ["E un ben che invan desio,", "And a good that in-vain I-desire,"], ["vedrò che un ben ch’io desio,", "I-will-see that a good that-I desire,"],
+    ["ei posseder dovrà?", "he possess must?"]],
+   [["Vedrò per man d’amore", "I-will-see by hand of-love"], ["unita a un vile oggetto", "united to a base object"],
+    ["chi in me destò un affetto", "she-who in me awoke an affection"], ["che per me poi non ha?", "that for me then not she-has?"],
+    ["vedrò,", "I-will-see,"]],
+   [["Ah no, lasciarti in pace,", "Ah no, to-leave-you in peace,"], ["Ah che lasciarti in pace", "Ah that to-leave-you in peace"],
+    ["non vo’ questo contento,", "not I-want this contentment,"], ["tu non nascesti, audace,", "you not were-born, bold-one,"],
+    ["per dare a me tormento,", "to give to me torment,"], ["e forse ancor per ridere,", "and perhaps also to laugh,"],
+    ["per ridere", "to laugh"], ["di mia infelicità.", "at my unhappiness."]],
+   [["Già la speranza sola", "Already the hope alone"], ["delle vendette mie", "of-the revenges mine"],
+    ["quest’anima consola,", "this-soul consoles,"], ["e giubilar mi fa,", "and rejoice me makes,"],
+    ["e giubilar,", "and rejoice,"]]
+  ]
+ }
+}

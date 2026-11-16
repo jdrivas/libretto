@@ -1,0 +1,106 @@
+{
+ "piece": "rec22a",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec22a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 22 (Atto terzo, Scena XI-XII). The decode runs three of the Countess's speeches into others': \"Oh brave, vi ringrazio\" (bar 5, into Barbarina's), \"Onoriamo la bella forestiera … ad alcuno?\" (bars 12-16, into Barbarina's) and \"Stamane … vestito adesso\" (bars 24-27, into the Count's); given to the Countess as in Da Ponte's libretto. Figaro's last word (\"so\") is decoded into No. 23",
+ "speeches": [
+  {"characters": ["BARBARINA"], "phrases": [
+   ["Queste sono, madama,", "These are, madam,"], ["le ragazze del loco", "the girls of-the place"],
+   ["che il poco ch’han", "who the little that-they-have"], ["vi vengono ad offrire,", "to-you come to offer,"],
+   ["e vi chiedon perdon", "and of-you ask pardon"], ["del loro ardire.", "for-the their boldness."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Oh brave,", "Oh good-girls,"], ["vi ringrazio.", "you I-thank."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Come sono vezzose.", "How they-are charming."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["E chi è, narratemi,", "And who is, tell-me,"], ["quell’amabil fanciulla", "that-lovable girl"],
+   ["ch’ha l’aria sì modesta?", "who-has the-air so modest?"]]},
+  {"characters": ["BARBARINA"], "phrases": [
+   ["Ell’è una mia cugina,", "She-is a my cousin,"], ["e per le nozze", "and for the wedding"], ["è venuta ier sera.", "has come last evening."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Onoriamo la bella forestiera,", "Let-us-honour the beautiful stranger,"], ["venite qui…", "come here…"],
+   ["datemi i vostri fiori.", "give-me the your flowers."], ["Come arrossì…", "How she-blushed…"],
+   ["Susanna, e non ti pare…", "Susanna, and not to-you it-seems…"], ["che somigli ad alcuno?", "that she-resembles to someone?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Al naturale.", "To-the life."]]},
+  {"characters": ["ANTONIO"], "phrases": [
+   ["Eh! cospettaccio!", "Eh! confound-it!"], ["è questi l’uffiziale.", "it-is this-one the-officer."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Oh stelle!", "Oh stars!"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["(Malandrino!)", "(Rascal!)"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Ebben, madama!", "Well, madam!"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Io sono, oh signor mio,", "I am, oh lord mine,"], ["irritata e sorpresa", "irritated and surprised"], ["al par di voi.", "at-the equal of you."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Ma stamane…", "But this-morning…"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Stamane…", "This-morning…"], ["per l’odierna festa", "for the-today's feast"],
+   ["volevam travestirlo", "we-wanted to-disguise-him"], ["al modo stesso,", "in-the way same,"],
+   ["che l’han vestito adesso.", "that him-they-have dressed now."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["E perché non partisti?", "And why not you-left?"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Signor!", "Sir!"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Saprò punire", "I-will-know-how to-punish"], ["la tua disubbidienza.", "the your disobedience."]]},
+  {"characters": ["BARBARINA"], "phrases": [
+   ["Eccellenza, Eccellenza,", "Excellency, Excellency,"], ["voi mi dite sì spesso", "you to-me say so often"],
+   ["qual volta m’abbracciate,", "whenever me-you-embrace,"], ["e mi baciate:", "and me you-kiss:"],
+   ["Barbarina, se m’ami,", "Barbarina, if me-you-love,"], ["ti darò quel che brami…", "to-you I-will-give what you-desire…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Io dissi questo?", "I said this?"]]},
+  {"characters": ["BARBARINA"], "phrases": [
+   ["Voi.", "You."], ["Or datemi, padrone,", "Now give-me, master,"], ["in sposo Cherubino,", "as husband Cherubino,"],
+   ["e v’amerò,", "and you-I-will-love,"], ["com’amo il mio gattino.", "as-I-love the my kitten."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Ebbene:", "Well:"], ["or tocca a voi.", "now it-falls to you."]]},
+  {"characters": ["ANTONIO"], "phrases": [
+   ["Brava figliuola,", "Good daughter,"], ["hai buon maestro,", "you-have good teacher,"], ["che ti fa la scola.", "who to-you makes the school."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["(Non so qual uom,", "(Not I-know what man,"], ["qual demone, qual Dio", "what demon, what God"],
+   ["rivolga tutto quanto", "turns all whatever"], ["a torto mio.)", "to wrong mine.)"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Signor…", "Sir…"], ["se trattenete", "if you-detain"], ["tutte queste ragazze,", "all these girls,"],
+   ["addio festa…", "farewell feast…"], ["addio danza…", "farewell dance…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["E che?", "And what?"], ["vorresti ballar", "you-would-like to-dance"], ["col piè stravolto?", "with-the foot twisted?"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Eh non mi duol più molto.", "Eh not to-me it-hurts more much."], ["Andiam belle fanciulle.", "Let-us-go beautiful girls."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Come si caverà", "How himself will-he-get-out"], ["dall’imbarazzo?", "from-the-embarrassment?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Lasciate fare a lui.", "Let do to him."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Per buona sorte", "By good luck"], ["i vasi eran di creta.", "the pots were of clay."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Senza fallo.", "Without fail."], ["Andiamo dunque, andiamo.", "Let-us-go then, let-us-go."]]},
+  {"characters": ["ANTONIO"], "phrases": [
+   ["E intanto a cavallo", "And meanwhile on horse"], ["di galoppo a Siviglia", "at gallop to Seville"], ["andava il paggio.", "was-going the page."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Di galoppo, o di passo…", "At gallop, or at walk…"], ["buon viaggio.", "good journey."],
+   ["Venite, oh belle giovani.", "Come, oh beautiful young-ones."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["E a te la sua patente", "And to you the his commission"], ["era in tasca rimasta…", "was in pocket remained…"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Certamente,", "Certainly,"], ["che razza di domande!", "what kind of questions!"]]},
+  {"characters": ["ANTONIO"], "phrases": [
+   ["Via non gli far più motti,", "Come not to-him make more signs,"], ["ei non t’intende.", "he not you-understands."],
+   ["Ed ecco chi pretende", "And here-is who claims"], ["che sia un bugiardo", "that is a liar"], ["il mio signor nipote.", "the my lord nephew."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Cherubino?", "Cherubino?"]]},
+  {"characters": ["ANTONIO"], "phrases": [
+   ["Or ci sei.", "Now there you-are."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Che diamin canta?", "What the-devil does-he-sing?"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Non canta, no,", "Not he-sings, no,"], ["ma dice ch’egli saltò stamane", "but says that-he jumped this-morning"], ["in sui garofani…", "onto the carnations…"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Ei lo dice!", "He it says!"], ["Sarà…", "It-may-be…"], ["se ho saltato io,", "if have jumped I,"],
+   ["si può dare", "it can happen"], ["ch’anch’esso abbia fatto lo stesso.", "that-he-too has done the same."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Anch’esso?", "He-too?"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Perché no?", "Why not?"], ["Io non impugno mai", "I not dispute ever"], ["quel che non so.", "what that not I-know."]]}
+ ]
+}

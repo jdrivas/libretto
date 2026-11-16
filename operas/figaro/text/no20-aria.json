@@ -1,0 +1,17 @@
+{
+ "piece": "no20-aria",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro no20-aria)",
+ "source": "Bärenreiter BA 4565, No. 20 Aria (Atto terzo, Scena VIII)",
+ "characters": {
+  "LA CONTESSA": [
+   [["Dove sono i bei momenti", "Where are the beautiful moments"], ["di dolcezza, e di piacer,", "of sweetness, and of pleasure,"],
+    ["dove andaro i giuramenti", "where went the oaths"], ["di quel labbro menzogner?", "of that lip lying?"]],
+   [["Perché mai se in pianti e in pene", "Why ever if into tears and into pains"], ["per me tutto si cangiò,", "for me everything itself changed,"],
+    ["la memoria di quel bene", "the memory of that good"], ["la memoria di quel ben", "the memory of that good"],
+    ["dal mio sen non trapassò?", "from-the my breast not passed?"], ["non trapassò?", "not passed?"]],
+   [["Ah! se almen la mia costanza", "Ah! if at-least the my constancy"], ["nel languire amando ognor,", "in-the languishing loving always,"],
+    ["mi portasse una speranza", "to-me brought a hope"], ["di cangiar l’ingrato cor.", "of changing the-ungrateful heart."],
+    ["l’ingrato cor.", "the-ungrateful heart."]]
+  ]
+ }
+}

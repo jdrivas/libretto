@@ -1,0 +1,22 @@
+{
+ "piece": "no17",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro no17)",
+ "source": "Bärenreiter BA 4565, No. 17 Duettino (Atto terzo, Scena II)",
+ "characters": {
+  "IL CONTE": [
+   [["Crudel!", "Cruel-one!"], ["perché finora", "why until-now"], ["farmi languir così?", "make-me languish thus?"]],
+   [["Dunque in giardin verrai?", "Then into-the garden you-will-come?"]],
+   [["E non mi mancherai?", "And not me you-will-fail?"]],
+   [["Verrai?", "You-will-come?"], ["non mancherai?", "not you-will-fail?"], ["dunque verrai?", "then you-will-come?"],
+    ["no!", "no!"], ["sì!", "yes!"]],
+   [["Mi sento dal contento", "I feel from-the contentment"], ["pieno di gioia il cor.", "full of joy the heart."]]
+  ],
+  "SUSANNA": [
+   [["Signor, la donna ognora", "Sir, the woman always"], ["tempo ha di dir di sì.", "time has to say of yes."]],
+   [["Se piace a voi, verrò.", "If it-pleases to you, I-will-come."]],
+   [["No non vi mancherò.", "No not you I-will-fail."]],
+   [["sì!", "yes!"], ["no!", "no!"]],
+   [["Scusatemi se mento,", "Forgive-me if I-lie,"], ["voi che intendete amor.", "you who understand love."]]
+  ]
+ }
+}

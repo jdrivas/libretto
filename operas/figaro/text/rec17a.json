@@ -1,0 +1,36 @@
+{
+ "piece": "rec17a",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec17a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 17 (Atto terzo, Scena II-III). The decode runs the Count's \"Carissima!\" (bar 12) into Susanna's speech; given to the Count as in Da Ponte's libretto",
+ "speeches": [
+  {"characters": ["IL CONTE"], "phrases": [
+   ["E perché fosti meco", "And why were-you with-me"], ["stamattina sì austera?", "this-morning so austere?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Col paggio ch’ivi c’era…", "With-the page who-there there-was…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Ed a Basilio", "And to Basilio"], ["che per me ti parlò?", "who for me to-you spoke?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Ma qual bisogno abbiam noi,", "But what need have we,"], ["che un Basilio…", "that a Basilio…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["È vero, è vero,", "It-is true, it-is true,"], ["e mi prometti poi…", "and me you-promise then…"],
+   ["se tu manchi, oh cor mio…", "if you fail, oh heart mine…"], ["ma la contessa", "but the countess"],
+   ["attenderà il fiaschetto.", "will-await the little-flask."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Eh fu un pretesto:", "Eh it-was a pretext:"], ["parlato io non avrei", "spoken I not would-have"],
+   ["senza di questo.", "without of this."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Carissima!", "Dearest!"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Vien gente.", "Comes someone."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["È mia senz’altro.", "She-is mine without-doubt."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Forbitevi la bocca,", "Wipe-yourself the mouth,"], ["oh signor scaltro.", "oh lord sly."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Ehi, Susanna, ove vai?", "Hey, Susanna, where are-you-going?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Taci:", "Hush:"], ["senza avvocato", "without lawyer"], ["hai già vinta la causa.", "you-have already won the case."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Cos’è nato?", "What-has happened?"]]}
+ ]
+}

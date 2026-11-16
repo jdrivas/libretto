@@ -1,0 +1,72 @@
+{
+ "piece": "rec16a",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec16a)",
+ "source": "Bärenreiter BA 4565, Recitativo (Atto terzo, Scena I-II); the Count's monologue interleaved with the Countess and Susanna, as the edition orders it",
+ "speeches": [
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Che imbarazzo è mai questo!", "What embarrassment is ever this!"], ["un foglio anonimo…", "a letter anonymous…"],
+   ["la cameriera in gabinetto chiusa…", "the chambermaid in closet shut…"], ["la padrona confusa…", "the mistress confused…"],
+   ["un uom che salta dal balcone", "a man who jumps from-the balcony"], ["in giardino…", "into garden…"],
+   ["un altro appresso", "an other after"], ["che dice esser quel desso…", "who says to-be that very-one…"],
+   ["non so cosa pensar.", "not I-know what to-think."], ["Potrebbe forse", "Could perhaps"],
+   ["qualcun de’ miei vassalli…", "someone of my vassals…"], ["a simil razza", "to such breed"],
+   ["è comune l’ardir,", "is common the daring,"], ["ma la contessa…", "but the countess…"],
+   ["ah che un dubbio l’offende…", "ah that a doubt her-offends…"], ["ella rispetta troppo se stessa:", "she respects too-much herself:"],
+   ["e l’onor mio…", "and the honour mine…"], ["l’onore…", "the honour…"],
+   ["dove diamin l’ha posto", "where the-devil it-has put"], ["umano errore!", "human error!"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Via fatti core:", "Come make-yourself heart:"], ["digli che ti attenda", "tell-him that you he-await"], ["in giardino.", "in-the garden."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Saprò, se Cherubino", "I-will-know, if Cherubino"], ["era giunto a Siviglia:", "had arrived at Seville:"],
+   ["a tale oggetto", "to such object"], ["ho mandato Basilio…", "I-have sent Basilio…"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Oh cielo!", "Oh heaven!"], ["e Figaro!", "and Figaro!"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["A lui non dei dir nulla:", "To him not you-must say nothing:"], ["in vece tua", "in stead yours"],
+   ["voglio andarci io medesma.", "I-want to-go-there I myself."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Avanti sera", "Before evening"], ["dovrebbe ritornar.", "he-should return."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Oddio…", "Oh-God…"], ["non oso!", "not I-dare!"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Pensa, ch’è in tua mano", "Think, that-is in your hand"], ["il mio riposo.", "the my peace."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["E Susanna?", "And Susanna?"], ["chi sa ch’ella tradito abbia", "who knows that-she betrayed has"],
+   ["il segreto mio…", "the secret mine…"], ["oh se ha parlato,", "oh if she-has spoken,"],
+   ["gli fo sposar la vecchia.", "him I-make marry the old-woman."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["(Marcellina!)", "(Marcellina!)"], ["Signor…", "Sir…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Cosa bramate?", "What do-you-desire?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Mi par che siete in collera!", "To-me it-seems that you-are in anger!"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Volete qualche cosa?", "Do-you-want some thing?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Signor…", "Sir…"], ["la vostra sposa", "the your wife"], ["ha i soliti vapori,", "has the usual vapours,"],
+   ["e vi chiede", "and of-you asks"], ["il fiaschetto degli odori.", "the little-flask of-the scents."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Prendete.", "Take."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Or vel riporto.", "Now to-you-it I-bring-back."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Eh no:", "Eh no:"], ["potete ritenerlo per voi.", "you-can keep-it for you."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Per me?", "For me?"], ["questi non son mali", "these not are ills"], ["da donne triviali.", "of women common."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Un’amante, che perde", "A-lover, who loses"], ["il caro sposo", "the dear bridegroom"],
+   ["sul punto d’ottenerlo.", "at-the point of-obtaining-him."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Pagando Marcellina", "Paying Marcellina"], ["colla dote", "with-the dowry"],
+   ["che voi mi prometteste…", "that you to-me promised…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Ch’io vi promisi,", "That-I to-you promised,"], ["quando?", "when?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Credea d’averlo inteso.", "I-believed to-have-it understood."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Sì, se voluto aveste", "Yes, if wanted you-had"], ["intender me voi stessa.", "understand me you yourself."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["È mio dovere:", "It-is my duty:"], ["e quel di sua Eccellenza", "and that of his Excellency"],
+   ["è il mio volere.", "is the my will."]]}
+ ]
+}

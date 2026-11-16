@@ -1,0 +1,23 @@
+{
+ "piece": "rec20b",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec20b)",
+ "source": "Bärenreiter BA 4565, Recitativo before No. 21 (Atto terzo, Scena X)",
+ "speeches": [
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Cosa mi narri?", "What to-me you-tell?"], ["e che ne disse il Conte?", "and what of-it said the Count?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Gli si leggeva in fronte", "On-him one-read on forehead"], ["il dispetto e la rabbia.", "the spite and the rage."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Piano:", "Softly:"], ["che meglio or lo porremo in gabbia.", "for better now him we-will-put in cage."],
+   ["Dov’è l’appuntamento", "Where-is the-rendezvous"], ["che tu gli proponesti?", "that you to-him proposed?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["In giardino.", "In-the garden."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Fissiamgli un loco.", "Let-us-fix-for-him a place."], ["Scrivi.", "Write."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Ch’io scriva…", "That-I write…"], ["ma signora…", "but madam…"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Eh scrivi dico;", "Eh write I-say;"], ["e tutto io prendo su me stessa.", "and all I take on me myself."],
+   ["Canzonetta sull’aria…", "Little-song on-the air…"]]}
+ ]
+}

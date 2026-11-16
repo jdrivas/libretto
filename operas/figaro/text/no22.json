@@ -1,0 +1,14 @@
+{
+ "piece": "no22",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro no22)",
+ "source": "Bärenreiter BA 4565, No. 22 Coro (Atto terzo, Scena XI)",
+ "characters": {
+  "CORO": [
+   [["Ricevete, oh padroncina,", "Receive, oh little-mistress,"], ["queste rose e questi fior,", "these roses and these flowers,"],
+    ["che abbiam colti stamattina", "that we-have picked this-morning"], ["per mostrarvi il nostro amor.", "to show-you the our love."]],
+   [["Siamo tante contadine,", "We-are so-many peasant-girls,"], ["e siam tutte poverine,", "and we-are all poor-little-ones,"],
+    ["ma quel poco che rechiamo", "but that little that we-bring"], ["ve lo diamo", "to-you it we-give"],
+    ["di buon cor.", "of good heart."]]
+  ]
+ }
+}
