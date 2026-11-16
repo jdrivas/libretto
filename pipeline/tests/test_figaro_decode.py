@@ -64,5 +64,22 @@ def test_finale_matches_experiment_decode(manifest):
     new = json.loads((OPERA.work / "decode" / "pieces" / "no16.score.json").read_text())
     strip = lambda xs: [{k: v for k, v in x.items() if k != "page"} for x in xs]
     assert strip(old["notes"]) == strip(new["notes"])
-    assert old["syllables"] == new["syllables"]
+    # Syllables now also carry their system, staff count, clef and choir flag (for naming
+    # unlabelled staves); compare the experiment's fields.
+    assert old["syllables"] == [{k: s[k] for k in old["syllables"][0]} for s in new["syllables"]]
     assert strip(old["bars"][:-1]) == strip(new["bars"])  # the experiment counted a 940th bar
+
+
+def test_no23_choir_and_unlabelled_staves():
+    """No. 23: the four smaller choir staves are the chorus (not the solo names above
+    them), and "La C."/"Il C." labels in Times-Roman are read (p. 398's two staves)."""
+    from libretto_pipeline import score_time
+    dec = json.loads((OPERA.work / "decode" / "pieces" / "no23.score.json").read_text())
+    who = score_time.speakers(dec, OPERA.cast)
+    by = lambda bar: {w for s, w in zip(dec["syllables"], who) if int(s["t0"]) == bar}
+    assert by(15) == {"LA CONTESSA"}   # "Ecco qui le due nozze"
+    assert by(12) == {"IL CONTE"}      # "Contessa…"
+    assert by(21) == {"IL CONTE"}      # "(e meditiam vendetta)"
+    assert by(120) == {"CORO"}         # "Cantiamo, lodiamo"
+    assert by(190) == {"CORO"}         # the closing "Amanti costanti"
+    assert "Due Donne" not in {s["text"] for s in dec["syllables"]}

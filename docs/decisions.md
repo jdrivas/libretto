@@ -130,3 +130,23 @@ and that it can't explain or fix. Speaker changes (D16) and other judgment calls
 in the end-of-act report rather than asked about beforehand. *Why:* the user asked to limit
 the number of things they have to OK. Unchanged: roon-rd commits still need approval, and
 nothing is pushed.
+
+### D19. Naming unlabelled staves: choir size, Times-Roman labels, layout changes (2026-11-15)
+The score stage names each syllable's singer in this order:
+1. its staff label, now including the "Il C." and "La C." labels that are set in
+   Times-Roman on about 100 systems (only Palatino was read before);
+2. an unlabelled staff smaller than 0.92 of its system's largest is the chorus (CORO);
+3. the staff's last cue or singer, carried by position only while the system keeps the
+   same number of staves;
+4. after a layout change, the most recent singer with the staff's clef (the clef in force
+   at the note).
+
+"Due Donne" and "Fine dell'Opera" are no longer read as sung words.
+
+*Why:* No. 23 had its chorus given to the soloists and its opening speeches shifted by
+one staff, and No. 29 lost the Count and Countess wherever their labels were Times-Roman.
+*Effect:* only Nos. 23 and 29, rec09a (the Count's "-dio" and Cherubino's "son già
+disposto" are now right) and rec21a (the Countess's "prendi una spilla") changed; every
+other piece decodes to the same singers. *Alternatives:* a per-piece staff map in
+opera.toml, rejected because it's hand work for every new score. *Revisit:* if a later
+score (Schott, Wagner) labels or sizes staves differently.

@@ -52,8 +52,12 @@ def is_lyric_size(size, sp):
 INSET_SP_RATIO = 0.75  # a system whose staves are all this much smaller is an inset
 CUE_ABOVE_PT = 40      # a speaker cue sits within this distance above its staff's top line
 _STAGE_DIRECTION = re.compile(r"\([a-zà-ù’' ]+\)")
-_FOOTER = re.compile(r"BA \d{3,}")  # Bärenreiter's edition number in the page footer
-CHOIR_PARTS = {"Soprano", "Alto", "Tenore", "Basso", "Soprani", "Tenori", "Bassi"}  # not "I": "I - o!"
+_FOOTER = re.compile(r"BA \d{3,}|Fine dell")  # the edition number in the page footer; "Fine dell’Opera"
+CHOIR_PARTS = {"Soprano", "Alto", "Tenore", "Basso", "Soprani", "Tenori", "Bassi",  # not "I": "I - o!"
+               "Due Donne"}  # No. 23: the part name over the two women's staff, at lyric size
+# Choir staves are engraved smaller than the solo staves of the same system (No. 23: 3.38
+# against 3.97 pt line spacing; scaled ensemble pages shrink every staff alike).
+CHOIR_SP_RATIO = 0.92
 # Full-size noteheads are 15.9 pt on a staff with 3.96 pt line spacing; grace notes are
 # about two-thirds of that. 3.6 x spacing (14.3 pt on solo staves) keeps the old 15 pt cut.
 EVENT_SIZE_PER_SP = 3.6
@@ -216,7 +220,9 @@ def read_system(sts, cs, sp_, vs, pno, si):
              and top - 30 < s["y"] < top + 5 and re.search(r"[a-z]", s["t"])]
     # Staff labels in the left margin (abbreviated, or the full name on a piece's first system).
     for k, st in enumerate(staves_out):
-        lab = [s for s in sp_ if s["font"].startswith("Palatino") and s["x1"] < st["chars"][0]["x"] + 1
+        # (Most labels are Palatino; "Il C." and "La C." are Times-Roman on about 100 systems.)
+        lab = [s for s in sp_ if (s["font"].startswith("Palatino") or (s["font"] == "Times-Roman" and s["size"] >= 7 and re.search(r"[A-Za-z]", s["t"])))
+               and s["x1"] < st["chars"][0]["x"] + 1
                and s["x1"] < x0 + 2 and st["top"] - 3 <= s["y"] <= st["bottom"] + 4] if st["chars"] else []
         st["label"] = " ".join(s["t"].strip() for s in lab)
         # Speaker cues: a character's name printed above the staff, inside the system (on a
@@ -335,6 +341,18 @@ def decode(sy, first_bar):
 
     bars = [{"bar": first_bar + k, "page": sy["page"], "system": sy["system"]} for k in range(len(barx))]
     notes, sylls, cues = [], [], []
+    # What the score stage needs to name an unlabelled staff: its system and that system's
+    # staff count (a changed layout means staff positions no longer match), its clef, and
+    # whether it is a (smaller) choir staff.
+    max_sp = max(st["sp"] for st in sy["staves"])
+
+    def where(st, x):
+        # the clef in force at x (a shared recitative staff changes clef between speakers)
+        clef = st["clef"]
+        for c in sorted((c for c in st["chars"] if c["c"] in CLEFS and st["keysig_x"] < c["x"] < x), key=lambda c: c["x"]):
+            clef = CLEFS[c["c"]]
+        return {"sys": [sy["page"], sy["system"]], "n_staves": len(sy["staves"]), "clef": clef,
+                "choir": st["sp"] < CHOIR_SP_RATIO * max_sp}
     for st in sy["staves"]:
         clefs = sorted((c for c in st["chars"] if c["c"] in CLEFS and c["x"] > st["keysig_x"]), key=lambda c: c["x"])
         evs = sorted((c for c in st["chars"] if _event(c, st) and c["x"] < barx[-1]), key=lambda c: c["x"])
@@ -374,10 +392,10 @@ def decode(sy, first_bar):
             cx = (s["x0"] + s["x1"]) / 2
             n = min(heads, key=lambda n: abs(n["x"] + 3.5 - cx))
             sylls.append({"staff": st["i"], "label": st["label"], "text": s["t"].strip(),
-                          "t0": n["t0"], "t1": n["t1"], "x": n["x"]})
+                          "t0": n["t0"], "t1": n["t1"], "x": n["x"]} | where(st, n["x"]))
     for st in sy["staves"]:
         for x, name in st.get("cues", []):
-            cues.append({"staff": st["i"], "label": st["label"], "name": name, "t0": when(x), "t1": when(x)})
+            cues.append({"staff": st["i"], "label": st["label"], "name": name, "t0": when(x), "t1": when(x)} | where(st, x + 20))
     return bars, notes, sylls, cues
 
 

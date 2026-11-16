@@ -1,0 +1,48 @@
+{
+ "piece": "no23",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro no23), after the choir-staff and Times-Roman label fixes",
+ "source": "Bärenreiter BA 4565, No. 23 Finale (Atto terzo, Scena XIII-XIV). Its first decoded syllable (\"so.\") ends rec22a; the bars 154-185 recitative is part of the number",
+ "characters": {
+  "IL CONTE": [
+   [["Temerari.", "Rash-ones."], ["Contessa…", "Countess…"]],
+   [["Seggiamo,", "Let-us-sit,"], ["(e meditiam vendetta.)", "(and let-us-plot revenge.)"]],
+   [["Eh già solita usanza,", "Eh of-course usual custom,"], ["le donne ficcan gli aghi", "the women stick the needles"],
+    ["in ogni loco:", "in every place:"], ["ah ah, capisco il gioco.", "ah ah, I-understand the game."]],
+   [["Andate amici!", "Go friends!"], ["e sia per questa sera", "and let-be for this evening"],
+    ["disposto l’apparato nuziale", "prepared the-apparatus nuptial"], ["colla più ricca pompa;", "with-the most rich pomp;"],
+    ["io vo’ che sia magnifica la festa,", "I want that be magnificent the feast,"], ["e canti e fochi,", "and songs and fireworks,"],
+    ["e gran cena, e gran ballo:", "and great supper, and great ball:"], ["e ognuno impari", "and everyone learn"],
+    ["com’io tratto color,", "how-I treat those,"], ["che a me son cari.", "who to me are dear."]]
+  ],
+  "LA CONTESSA": [
+   [["Io son di ghiaccio!", "I am of ice!"]],
+   [["Or non parliamo.", "Now not let-us-speak."], ["Ecco qui le due nozze,", "Here-are here the two weddings,"],
+    ["riceverle dobbiam,", "receive-them we-must,"], ["alfin si tratta", "after-all it is-about"],
+    ["d’una vostra protetta.", "of-a your protégée."], ["Seggiamo.", "Let-us-sit."]]
+  ],
+  "SUSANNA": [
+   [["Eccolo!", "Here-it-is!"]]
+  ],
+  "FIGARO": [
+   [["Ecco la marcia,", "Here-is the march,"], ["andiamo;", "let-us-go;"], ["ai vostri posti,", "to your places,"],
+    ["oh belle,", "oh beauties,"], ["Susanna dammi il braccio.", "Susanna give-me the arm."]],
+   [["Un biglietto amoroso", "A note amorous"], ["che gli diè nel passar", "that to-him gave in-the passing"],
+    ["qualche galante,", "some gallant-lady,"], ["ed era sigillato", "and it-was sealed"],
+    ["d’una spilla,", "with-a pin,"], ["ond’ei si punse il dito,", "whence-he himself pricked the finger,"],
+    ["il Narciso or la cerca;", "the Narcissus now it seeks;"], ["oh che stordito!", "oh what a-scatterbrain!"]]
+  ],
+  "DUE DONNE": [
+   [["Amanti costanti,", "Lovers constant,"], ["seguaci d’onor,", "followers of-honour,"],
+    ["cantate, lodate", "sing, praise"], ["sì saggio signor.", "so wise lord."]],
+   [["A un dritto cedendo,", "A right yielding,"], ["che oltraggia, che offende,", "which outrages, which offends,"],
+    ["ei caste vi rende", "he chaste you returns"], ["ai vostri amator.", "to-the your lovers."]]
+  ],
+  "CORO": [
+   [["Cantiamo, lodiamo", "Let-us-sing, let-us-praise"], ["sì saggio signor.", "so wise lord."]],
+   [["Amanti costanti,", "Lovers constant,"], ["seguaci d’onor,", "followers of-honour,"],
+    ["cantate, lodate", "sing, praise"], ["sì saggio signor.", "so wise lord."]],
+   [["A un dritto cedendo,", "A right yielding,"], ["ch’oltraggia, che offende,", "which-outrages, which offends,"],
+    ["ei caste vi rende", "he chaste you returns"], ["ai vostri amator.", "to-the your lovers."]]
+  ]
+ }
+}

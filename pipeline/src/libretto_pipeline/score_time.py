@@ -32,37 +32,61 @@ def bar_seconds(timesig, tempo):
 
 
 def speakers(dec, cast):
-    """Character of each syllable (same order as dec['syllables']), or None."""
-    cues = sorted(((c["staff"], c["t0"], cast.find(c["name"])) for c in dec.get("cues", [])),
-                  key=lambda c: (c[0], c[1]))
-    out = []
-    for s in dec["syllables"]:
-        found = cast.find(s["label"])
-        if len(found) == 1:
-            out.append(next(iter(found)))
-            continue
-        # A shared staff: the last cue on this staff at or before the syllable.
-        prior = [names for staff, t, names in cues if staff == s["staff"] and t <= s["t0"] + 0.02 and len(names) == 1]
-        if prior:
-            out.append(next(iter(prior[-1])))
-        elif len(found) > 1:  # labelled with several names and no cue yet: the first named
-            out.append(min(found, key=cast.order))
-        else:
-            out.append(None)
-    # Unlabelled staves: the score names a staff on a piece's first system only (solo
-    # pieces, choir staves). Carry each staff's character forward in time; failing that,
-    # the piece's only named character, or the chorus.
+    """Character of each syllable (same order as dec['syllables']), or None.
+
+    In score order, per syllable:
+      1. its staff's label names one character;
+      2. a smaller, unlabelled choir staff: the chorus;
+      3. the staff's current character: the last cue on it (a shared staff, as in secco
+         recitative) or the character it last carried. Staff positions only carry over
+         while the system layout (its number of staves) stays the same;
+      4. several names on the label and no cue yet: the first named;
+      5. an unlabelled staff after the layout changed (No. 23: four solo staves, then two
+         unnamed ones): the character with this staff's clef who sang most recently and
+         is not already on another staff of this system;
+      6. the piece's only named character, or the chorus."""
     named = {n for s in dec["syllables"] for n in cast.find(s["label"])}
     named |= {n for c in dec.get("cues", []) for n in cast.find(c["name"])}
-    last = {}
-    for i in sorted(range(len(out)), key=lambda i: dec["syllables"][i]["t0"]):
-        st = dec["syllables"][i]["staff"]
-        if out[i] is None:
-            out[i] = last.get(st)
-        if out[i] is None:
-            out[i] = (next(iter(named)) if len(named) == 1 else "CORO" if "CORO" in named else None)
-        if out[i] is not None:
-            last[st] = out[i]
+    events = [(c["t0"], 0, k, c) for k, c in enumerate(dec.get("cues", []))]
+    events += [(s["t0"], 1, k, s) for k, s in enumerate(dec["syllables"])]
+    out = [None] * len(dec["syllables"])
+    state, layout, cur_sys, on_sys = {}, None, None, {}
+    recent, clef_of = {}, {}
+    for t, kind, k, e in sorted(events, key=lambda e: (e[0] - 0.02 * (e[1] == 0), e[1], e[2])):
+        sys_ = tuple(e.get("sys") or ()) or None
+        if sys_ != cur_sys:
+            cur_sys, on_sys = sys_, {}
+            if e.get("n_staves") is not None and e["n_staves"] != layout:
+                if layout is not None:
+                    state = {}
+                layout = e["n_staves"]
+        st = e["staff"]
+        if kind == 0:
+            names = cast.find(e["name"])
+            if len(names) == 1:
+                state[st] = next(iter(names))
+                recent[state[st]] = t
+            continue
+        found = cast.find(e["label"])
+        if len(found) == 1:
+            c = next(iter(found))
+        elif e.get("choir") and not found:
+            c = CHORUS
+        elif state.get(st):
+            c = state[st]
+        elif len(found) > 1:
+            c = min(found, key=cast.order)
+        else:
+            taken = {v for s2, v in on_sys.items() if s2 != st}
+            cands = [n for n in recent if n != CHORUS and n not in taken
+                     and (clef_of.get(n) is None or e.get("clef") is None or clef_of[n] == e["clef"])]
+            c = (max(cands, key=lambda n: recent[n]) if cands
+                 else next(iter(named)) if len(named) == 1 else CHORUS if CHORUS in named else None)
+        out[k] = c
+        if c is not None:
+            state[st], on_sys[st], recent[c] = c, c, t
+            if e.get("clef") and c != CHORUS:
+                clef_of.setdefault(c, e["clef"])
     return out
 
 
