@@ -107,9 +107,10 @@ on scaled ensemble pages; "I" was dropped as a choir part name, losing "Io!".
 - Every segment carries `piece` and `bar_start`/`bar_end` (bar + fraction, as printed in
   BA 4565). Route B from its score times; route C by cleaning the recitative's decoded
   syllables against the same text, so each phrase has a score position.
-- `publish` writes version 1.1-score with `edition`, lists every track of the recording
-  (empty where nothing is timed yet), and numbers discs from 1 as Roon does (Solti's
-  files say 9-11). roon-rd loads the file unchanged ("32 tracks").
+- `publish` writes version 1.1-score with `edition` and lists every track of the recording
+  (empty where nothing is timed yet). roon-rd loads the file unchanged ("32 tracks").
+  (It first renumbered discs from 1; Roon in fact shows Solti's as 9-11, like the files,
+  so since 2026-11-15 the files' disc numbers are kept.)
 - First real route C run (Solti, "Eccovi" + "Andiam"): word times agree with the
   experiment's to about 0.1 s. "Andiam" shows 50/72 words "mostly in silence": its two
   light voices sit below the singing detector's threshold (the experiment placed the

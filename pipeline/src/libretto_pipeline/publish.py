@@ -5,8 +5,8 @@ The experiment's "1.0-score" shape (what the roon-rd viewer reads), plus (decisi
   - per segment: "piece" (e.g. "no19", "rec19a") and, where known, "bar_start"/"bar_end"
     (bar + fraction, as printed in that edition).
 Version "1.1-score". Lines are split into tracks by start time; times are track-relative.
-Disc numbers count the recording's discs from 1 in order (Roon numbers a box set's
-discs per album: Solti's Figaro is discs 9-11 in the files, 1-3 in Roon).
+Disc numbers are the files' own, as Roon shows them (Solti's Figaro is discs 9-11 of a
+box set, in the files and in Roon).
 
 Output: <work>/<opera>/interchange/<recording>.interchange.json
 """
@@ -22,11 +22,9 @@ VERSION = "1.1-score"
 
 def publish(opera, rec_id):
     rec = json.loads((opera.work / "recordings" / rec_id / "recording.json").read_text())
-    discs = sorted({t["disc"] or 1 for t in rec["tracks"]})
-    disc_no = {d: i + 1 for i, d in enumerate(discs)}
     tracks, by_id = [], {}
     for t in rec["tracks"]:
-        d = disc_no[t["disc"] or 1]
+        d = t["disc"] or 1
         tr = {"track_id": f"d{d}t{t['track']}", "title": t["title"], "disc_number": d,
               "track_number": t["track"], "duration_seconds": round(t["duration_s"], 3),
               "act": str(t["act"]), "segments": []}
