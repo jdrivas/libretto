@@ -215,6 +215,22 @@ The orchestral recitatives stay with route B: No. 18's is as good as a number, a
 is weaker but not bad. Weakest: No. 21 (the Countess's first "sotto i pini", bars 18-21, may
 be early; the final "il capirà" exchange is squeezed at the end) and Currentzis's No. 22.
 
+Spot check (2026-11-16): Solti's No. 21 "quite late", "Dove sono" entrance a little late,
+Currentzis's No. 22 chorus starting late; No. 20 recitative (Solti) "quite good", No. 23
+"Amanti costanti" (Currentzis) fine. Cause: a number's start is refined by finding its
+opening, and that search couldn't follow paces 1.6-2.3x the printed tempo (No. 21's start
+landed 50 s late). Fixed (D21) and re-timed; 2691 segments each, every line once:
+
+| | Solti | Currentzis |
+|---|---|---|
+| No. 18 aria | 85%, 0.11 s | 83%, 0.08 s |
+| No. 20 aria | 83%, 0.12 s (starts 4 s earlier) | 81%, 0.11 s |
+| No. 20 recit. | (as built) | 77%, 0.30 s |
+| No. 21 | 85%, 0.19 s (starts 49 s earlier) | 84%, 0.10 s |
+| No. 22 | (as built) | 75%, 0.11 s (starts 16 s earlier) |
+| No. 23 | 87%, 0.16 s | (as built) |
+| Act I: Nos. 5, 8, 9, 10 | (as built) | 86% / 88% / 82% / 89%, 0.01-0.12 s |
+
 ## Pending for the user
 
 - ~~Listen to and watch the choruses (shown once, from the top choir staff)~~ done

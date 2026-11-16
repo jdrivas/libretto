@@ -48,14 +48,24 @@ def map_lines(lines, to_audio, score=None):
 
 EDGE_S = 20.0        # score seconds at each end used to refine a placed boundary
 EDGE_SEARCH_S = (30.0, 70.0)  # search from this much before to this much after (or mirrored)
+EDGE_PACES = (0.7, 0.85, 1.0, 1.2, 1.4)  # x the placed span's tempo ratio, tried at each edge
 
 
 def refine_edges(x, tuning, notes, start, end):
     """Refine a placed span's start and end (seconds in x): the piece's opening EDGE_S of
     score located near the start, its closing EDGE_S near the end. An opening or closing
-    is far more distinctive against the recitative around it than a whole number is."""
+    is far more distinctive against the recitative around it than a whole number is.
+
+    The opening is also tried stretched to the recording's pace (the placed span's tempo
+    ratio times each of EDGE_PACES), keeping the best match. The search allows only 0.5-2x
+    of the pace it is given, and the printed tempo can be 2.2x off (Solti's No. 21, whose
+    start then landed 50 s late on the music's repeat); an opening can also be slower
+    than the piece as a whole (Solti's "Dove sono", 2.25x against 1.65x, 4 s late).
+    Not the closing: a stretched closing matches the sparser recitative after it more
+    cheaply the more it is stretched (No. 6 ended 24 s late in Solti, 57 s in Currentzis)."""
     df = notes.sort_values("start").reset_index(drop=True)
     end_s = float((df["start"] + df["duration"]).max())
+    ratio = (end - start) / end_s
     dur = len(x) / align.FS
     out = [start, end]
     for k, (part, w0, w1) in enumerate((
@@ -66,9 +76,12 @@ def refine_edges(x, tuning, notes, start, end):
             continue
         part = part.copy()
         part["start"] -= part["start"].min()
-        xw = x[int(w0 * align.FS):int(w1 * align.FS)]
-        f0, f1, _, _ = align.locate_excerpt(align.features_audio(xw, tuning)[0], align.features_score(part)[0],
-                                            shifts=align.SHIFTS)
+        a_chroma = align.features_audio(x[int(w0 * align.FS):int(w1 * align.FS)], tuning)[0]
+        f0, f1, _, _ = min((align.locate_excerpt(
+            a_chroma, align.features_score(part.assign(start=part["start"] * s,
+                                                       duration=part["duration"] * s))[0],
+            shifts=align.SHIFTS) for s in ((1.0, *(ratio * p for p in EDGE_PACES)) if k == 0 else (1.0,))),
+            key=lambda r: r[3])
         out[k] = w0 + (f0 if k == 0 else f1)
     if out[1] - out[0] < 0.5 * (end - start):  # implausible: keep the placement
         return start, end

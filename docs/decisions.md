@@ -17,7 +17,7 @@ Entries that are flagged to come back to, and when. Raise each one when its trig
 | D13 Tempo-limited guide (option A) left off | if a number drifts and the key shift is right |
 | D14 Vocal-stem onsets (option B) not pursued | if a number or recitative is mistimed and D12 doesn't explain it |
 | D17 Spot check per act; full listening later | when all of Figaro is built |
-| D20 Orchestral recitatives by route B | if No. 20's recitative drifts when listened to |
+| D21 Openings searched at the recording's pace; four Solti numbers kept as built | before any re-time of all pieces (it would cut Solti's No. 9 short) |
 
 ## Entries
 
@@ -158,3 +158,24 @@ score to the music, like the numbers. *Why:* they have real orchestral music to 
 18's came out as good as a number (87%, entries 0.15 s, all within 1 s); No. 20's is weaker
 (76-79%, 0.28-0.32 s). *Alternative:* time them from the words, as the secco recitatives
 are. *Revisit:* if the user hears No. 20's recitative drift; try route C on it then.
+*Confirmed 2026-11-16:* the user's Act III spot check found Solti's No. 20 recitative
+"quite good".
+
+### D21. A number's opening is searched for at the recording's pace (2026-11-16)
+Before a number is aligned, its placed start is refined by finding its first 20 score
+seconds in the music. That search now also tries the opening stretched to the recording's
+pace (the placed span's tempo ratio x 0.7-1.4) and keeps the best match. Its end is searched
+for as before. *Why:* the user heard Solti's No. 21 "quite late", the start of Currentzis's
+No. 22 chorus late, and Solti's "Dove sono" entrance a little late. The search allows
+only 0.5-2x the pace it is given, and these are sung at 1.6-2.3x their printed tempo. No.
+21's start had landed 50 s late, on the music's repeat. Re-timed, each with checks equal
+or better: Solti's No. 18 aria, No. 20 aria, No. 21 and No. 23; Currentzis's Nos. 5, 8, 9
+and 10, No. 18 aria, No. 20 recitative and aria, No. 21 and No. 22. *Alternative tried:* stretching
+the closing too. That cheaply matched the sparser recitative after the closing (No. 6 ended
+24 s late in Solti and 57 s late in Currentzis), so it was dropped. *Kept as built:* Solti's
+Nos. 8, 9 and 11 and No. 18's recitative, whose checks were equal or slightly worse. No. 9
+would be wrong: before, a failed start search put both edges back to the placement. With
+the start now found, the end search's own result is kept, and that result (486.4 s) cuts
+off the chorus's last "nostro signor" (which ends at 495 s). *Revisit:* before re-timing
+every piece, give the end search a guard (e.g. the vocal stem's last singing) or keep
+those four.
