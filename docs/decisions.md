@@ -16,6 +16,7 @@ Entries that are flagged to come back to, and when. Raise each one when its trig
 | D7 Gloss written in the session | once the glosses are trusted; at the Così checkpoint at the latest |
 | D13 Tempo-limited guide (option A) left off | if a number drifts and the key shift is right |
 | D14 Vocal-stem onsets (option B) not pursued | if a number or recitative is mistimed and D12 doesn't explain it |
+| D17 Spot check per act; full listening later | when all of Figaro is built |
 
 ## Entries
 
@@ -112,3 +113,10 @@ speech has no bar numbers ("verses not found" in the clean report), because no d
 of that character carries it. *Alternatives:* follow the decode as printed, which mislabels
 the singer. Applied in rec05a, rec08a and rec09a (Act I) and in rec11a, rec13a and rec13b
 (Act II).
+
+### D17. Listening: a spot check per act, with a full listening later (2026-11-15)
+After each act is built, the user spot-checks it in the viewer (the weak pieces from the
+checks, the moved speakers, a few numbers) and we go on. A full listening comes later.
+*Why:* the checks plus a spot check have caught every real problem so far (the key shift,
+track matching); a full listening of each act would hold up the build. *Revisit:* when the
+whole opera is built, before calling Figaro done: plan the full listening then.
