@@ -1,0 +1,88 @@
+{
+ "piece": "rec13a",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec13a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 13 (Atto secondo, Scena III). The decode runs the Countess's \"Or piange…\" (bar 40) into Cherubino's speech; given to the Countess as in Da Ponte's libretto",
+ "speeches": [
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Quante buffonerie!", "How-many buffooneries!"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Ma se ne sono", "But if of-it am"], ["io medesma gelosa;", "I myself jealous;"],
+   ["ehi serpentello,", "hey little-serpent,"], ["volete tralasciar", "will-you leave-off"],
+   ["d’esser sì bello?", "being so handsome?"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Finiam le ragazzate:", "Let-us-finish the childish-pranks:"], ["or quelle maniche", "now those sleeves"],
+   ["oltre il gomito gli alza,", "beyond the elbow for-him raise,"], ["onde più agiatamente", "so-that more comfortably"],
+   ["l’abito gli si adatti.", "the dress to-him itself fits."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Ecco.", "There."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Più indietro.", "More back."], ["Così:", "So:"], ["che nastro è quello?", "what ribbon is that?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["È quel ch’esso involommi.", "It-is that which-he stole-from-me."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["E questo sangue?", "And this blood?"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Quel sangue…", "That blood…"], ["io non so come…", "I not know how…"],
+   ["poco pria sdrucciolando…", "little before slipping…"], ["in un sasso…", "on a stone…"],
+   ["la pelle io mi graffiai…", "the skin I to-me scratched…"], ["e la piaga col nastro", "and the wound with-the ribbon"],
+   ["io mi fasciai.", "I to-me bandaged."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Mostrate:", "Show:"], ["non è mal:", "not is bad:"], ["cospetto!", "goodness!"],
+   ["ha il braccio", "he-has the arm"], ["più candido del mio!", "more white than-the mine!"],
+   ["qualche ragazza…", "some girl…"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["E segui a far la pazza?", "And you-go-on to play the madwoman?"], ["va nel mio gabinetto,", "go into-the my closet,"],
+   ["e prendi un poco", "and take a little"], ["d’inglese taffetà;", "of-English taffeta;"],
+   ["ch’è sullo scrigno:", "which-is on-the casket:"], ["in quanto al nastro…", "as for-the ribbon…"],
+   ["inver…", "truly…"], ["per il colore", "for the colour"],
+   ["mi spiacea di privarmene.", "to-me it-displeased to deprive-myself-of-it."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Tenete,", "Take,"], ["e da legargli il braccio!", "and for to-bind-him the arm!"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Un altro nastro prendi", "An other ribbon take"], ["insiem col mio vestito.", "together with-the my dress."]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Ah più presto", "Ah more quickly"], ["m’avria quello guarito!", "me-would-have that cured!"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Perché?", "Why?"], ["questo è migliore!", "this is better!"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Allor che un nastro…", "When that a ribbon…"], ["legò la chioma…", "bound the hair…"],
+   ["ovver toccò la pelle…", "or touched the skin…"], ["d’oggetto…", "of-a-person…"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Forastiero", "Foreign"], ["è buon per le ferite!", "is good for the wounds!"], ["non è vero?", "not is-it true?"],
+   ["Guardate qualità", "Look-at quality"], ["ch’io non sapea!", "that-I not knew!"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Madama scherza;", "Madam jokes;"], ["ed io frattanto parto.", "and I meanwhile depart."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Poverin!", "Poor-boy!"], ["che sventura!", "what misfortune!"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Oh me infelice!", "Oh me unhappy!"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Or piange…", "Now he-weeps…"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Oh ciel!", "Oh heaven!"], ["perché morir non lice!", "why to-die not is-allowed!"],
+   ["Forse vicino", "Perhaps near"], ["all’ultimo momento…", "to-the last moment…"],
+   ["questa bocca oseria!", "this mouth would-dare!"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Siate saggio:", "Be wise:"], ["cos’è questa follia?", "what-is this folly?"],
+   ["Chi picchia alla mia porta?", "Who knocks at-the my door?"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Perché chiusa?", "Why shut?"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Il mio sposo,", "The my husband,"], ["oh Dei!", "oh Gods!"], ["son morta!", "I-am dead!"],
+   ["voi qui:", "you here:"], ["senza mantello!", "without cloak!"], ["in quello stato!", "in that state!"],
+   ["un ricevuto foglio…", "a received letter…"], ["la sua gran gelosia!", "the his great jealousy!"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Cosa indugiate?", "Why do-you-delay?"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Son sola…", "I-am alone…"], ["anzi…", "indeed…"], ["son sola…", "I-am alone…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["E a chi parlate?", "And to whom do-you-speak?"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["A voi…", "To you…"], ["certo…", "certainly…"], ["a voi stesso…", "to you yourself…"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Dopo quel ch’è successo,", "After that which-has happened,"], ["il suo furore…", "the his fury…"],
+   ["non trovo altro consiglio!", "not I-find other counsel!"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Ah mi difenda il cielo", "Ah me may-defend the heaven"], ["in tal periglio!", "in such peril!"]]}
+ ]
+}

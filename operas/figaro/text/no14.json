@@ -1,0 +1,31 @@
+{
+ "piece": "no14",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro no14)",
+ "source": "Bärenreiter BA 4565, No. 14 Terzetto (Atto secondo, Scena IV)",
+ "characters": {
+  "IL CONTE": [
+   [["Susanna,", "Susanna,"], ["or via sortite,", "now come come-out,"], ["sortite,", "come-out,"],
+    ["io così vo’.", "I thus want."]],
+   [["E chi vietarlo", "And who to-forbid-it"], ["or osa?", "now dares?"], ["Chi?", "Who?"]],
+   [["Chiarissima è la cosa:", "Very-clear is the thing:"], ["l’amante", "the lover"], ["qui sarà.", "here will-be."]],
+   [["Dunque parlate almeno.", "Then speak at-least."], ["Susanna se qui siete…", "Susanna if here you-are…"]],
+   [["Consorte mia", "Consort mine"], ["giudizio,", "judgement,"], ["un scandalo un disordine,", "a scandal a disorder,"],
+    ["schiviam", "let-us-avoid"], ["per carità.", "for charity."]]
+  ],
+  "LA CONTESSA": [
+   [["Fermatevi…", "Stop…"], ["sentite…", "listen…"], ["sortire ella non può.", "come-out she not can."]],
+   [["Lo vieta,", "It forbids,"], ["lo vieta l’onestà.", "it forbids the decency."],
+    ["Un abito da sposa", "A dress of bride"], ["provando ella si sta.", "trying-on she herself is."]],
+   [["Bruttissima è la cosa,", "Very-ugly is the thing,"], ["chi sa", "who knows"], ["cosa sarà.", "what will-be."]],
+   [["Nemmen nemmeno,", "Not-even not-even,"], ["io v’ordino", "I you-order"], ["tacete.", "be-silent."]],
+   [["Consorte mio", "Consort mine"], ["giudizio,", "judgement,"], ["un scandalo un disordine,", "a scandal a disorder,"],
+    ["schiviam", "let-us-avoid"], ["per carità.", "for charity."]]
+  ],
+  "SUSANNA": [
+   [["Cos’è codesta lite!", "What-is this quarrel!"], ["il paggio dove andò!", "the page where went!"]],
+   [["Capisco qualche cosa,", "I-understand some thing,"], ["veggiamo", "let-us-see"], ["come va.", "how it-goes."]],
+   [["Oh cielo", "Oh heaven"], ["un precipizio,", "a precipice,"], ["un scandalo un disordine,", "a scandal a disorder,"],
+    ["qui certo", "here certainly"], ["nascerà.", "will-be-born."]]
+  ]
+ }
+}

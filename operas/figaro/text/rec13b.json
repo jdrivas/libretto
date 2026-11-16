@@ -1,0 +1,54 @@
+{
+ "piece": "rec13b",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec13b)",
+ "source": "Bärenreiter BA 4565, Recitativo before No. 14 (Atto secondo, Scena IV). The decode runs the Countess's \"Per la mia cameriera?\" (bar 23) into the Count's speech; given to the Countess as in Da Ponte's libretto",
+ "speeches": [
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Che novità!", "What novelty!"], ["non fu mai vostra usanza", "not was ever your custom"],
+   ["di rinchiudervi in stanza!", "to shut-yourself-in in room!"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["È ver;", "It-is true;"], ["ma io…", "but I…"], ["io stava qui mettendo…", "I was here putting…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Via mettendo…", "Come putting…"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Certe robe…", "Certain things…"], ["era meco la Susanna…", "was with-me the Susanna…"],
+   ["che in sua camera è andata:", "who into her room has gone:"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Ad ogni modo", "In any way"], ["voi non siete tranquilla:", "you not are calm:"],
+   ["guardate questo foglio?", "look-at this letter?"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Numi!", "Gods!"], ["è il foglio", "it-is the letter"], ["che Figaro gli scrisse…", "that Figaro to-him wrote…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Cos’è codesto strepito?", "What-is this noise?"], ["in gabinetto", "in closet"],
+   ["qualche cosa è caduta:", "some thing has fallen:"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Io non intesi niente.", "I not heard nothing."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Convien che abbiate", "It-must-be that you-have"], ["i gran pensieri in mente.", "the great thoughts in mind."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Di che?", "Of what?"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Là v’è qualcuno.", "There there-is someone."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Chi volete che sia?", "Who do-you-want that it-be?"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Lo chiedo a voi.", "It I-ask to you."], ["Io vengo in questo punto.", "I come in this moment."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Ah sì, Susanna…", "Ah yes, Susanna…"], ["appunto…", "just-so…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Che passò mi diceste", "Who passed me you-said"], ["alla sua stanza!…", "to-the her room!…"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Alla sua stanza,", "To-the her room,"], ["o qui", "or here"], ["non vidi bene…", "not I-saw well…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Susanna!", "Susanna!"], ["e donde viene", "and whence comes-it"], ["che siete sì turbata?", "that you-are so troubled?"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Per la mia cameriera?", "For the my chambermaid?"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Io non so nulla:", "I not know nothing:"], ["ma turbata senz’altro.", "but troubled without-doubt."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Ah questa serva", "Ah this servant"], ["più che non turba me", "more than not troubles me"],
+   ["turba voi stesso.", "troubles you yourself."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["È vero, è vero:", "It-is true, it-is true:"], ["e lo vedrete adesso.", "and it you-will-see now."]]}
+ ]
+}

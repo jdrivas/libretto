@@ -1,0 +1,12 @@
+{
+ "piece": "rec15a",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec15a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 15 (Atto secondo, Scena V)",
+ "speeches": [
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Oh guarda il demonietto!", "Oh look-at the little-devil!"], ["come fugge!", "how he-flees!"],
+   ["è già un miglio lontano.", "he-is already a mile away."], ["Ma non perdiamci invano:", "But not let-us-lose-ourselves in-vain:"],
+   ["entriam in gabinetto:", "let-us-go in closet:"], ["venga poi lo smargiasso,", "let-come then the braggart,"],
+   ["io qui l’aspetto.", "I here him-await."]]}
+ ]
+}

@@ -101,3 +101,14 @@ and D12 doesn't explain it.
 For example, Solti's discs stay 9-11. This supersedes P7's renumbering from 1. *Why:* Roon
 shows them as 9-11 too. If Roon ever passes a disc number, a renumbered file would match
 nothing.
+
+### D16. Missed speaker cues in secco follow Da Ponte's libretto (2026-11-12; recorded 2026-11-15)
+A secco recitative puts every character on one shared staff, named by cues above the notes.
+Where the decode misses a cue and runs one character's words into another's speech, the text
+file gives them to the speaker in Da Ponte's libretto. The file's `source` names the bars and
+the change. Otherwise the text follows the decode. *Why:* the words are timed by route C from
+the text file's speeches, so the right singer's card must light up. *Consequence:* a moved
+speech has no bar numbers ("verses not found" in the clean report), because no decoded line
+of that character carries it. *Alternatives:* follow the decode as printed, which mislabels
+the singer. Applied in rec05a, rec08a and rec09a (Act I) and in rec11a, rec13a and rec13b
+(Act II).

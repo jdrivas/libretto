@@ -1,0 +1,13 @@
+{
+ "piece": "no11",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro no11)",
+ "source": "Bärenreiter BA 4565, No. 11 Cavatina (Atto secondo, Scena I)",
+ "characters": {
+  "LA CONTESSA": [
+   [["Porgi amor", "Grant, love,"], ["qualche ristoro", "some comfort"],
+    ["al mio duolo,", "to-the my grief,"], ["a’ miei sospir.", "to my sighs."]],
+   [["O mi rendi", "Either to-me give-back"], ["il mio tesoro,", "the my treasure,"],
+    ["o mi lascia", "or me let"], ["almen morir.", "at-least die."]]
+  ]
+ }
+}

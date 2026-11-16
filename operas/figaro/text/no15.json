@@ -1,0 +1,28 @@
+{
+ "piece": "no15",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro no15)",
+ "source": "Bärenreiter BA 4565, No. 15 Duettino (Atto secondo, Scena V)",
+ "characters": {
+  "SUSANNA": [
+   [["Aprite presto aprite;", "Open quickly open;"], ["aprite è la Susanna:", "open it-is the Susanna:"],
+    ["sortite,", "come-out,"], ["via sortite,", "come come-out,"], ["andate via di qua.", "go away from here."]],
+   [["Partite, non tardate", "Leave, not delay"], ["di qua,", "this way,"], ["di là.", "that way."]],
+   [["Le porte son serrate,", "The doors are locked,"], ["che mai sarà!", "what ever will-be!"]],
+   [["V’uccide se vi trova.", "You-he-kills if you he-finds."]],
+   [["Fermate, Cherubino!", "Stop, Cherubino!"], ["fermate", "stop"], ["per pietà!", "for pity!"]],
+   [["Tropp’alto per un salto,", "Too-high for a jump,"], ["fermate per pietà!", "stop for pity!"]],
+   [["Ei va a perire", "He goes to perish"], ["oh Dei!", "oh Gods!"], ["fermate per pietà;", "stop for pity;"],
+    ["fermate!", "stop!"]]
+  ],
+  "CHERUBINO": [
+   [["Oimè che scena orribile!", "Alas what scene horrible!"], ["che gran fatalità!", "what great fatality!"]],
+   [["Le porte son serrate,", "The doors are locked,"], ["che mai sarà!", "what ever will-be!"]],
+   [["Qui perdersi non giova.", "Here to-lose-oneself not helps."]],
+   [["M’uccide se mi trova.", "Me-he-kills if me he-finds."]],
+   [["Veggiamo un po’ qui fuori,", "Let-us-see a little here outside,"], ["dà proprio nel giardino.", "it-gives right onto-the garden."]],
+   [["Un vaso o due di fiori,", "A pot or two of flowers,"], ["più mal non avverrà.", "more harm not will-happen."]],
+   [["Lasciami,", "Let-me-go,"], ["pria di nuocerle", "before to harm-her"], ["nel foco volerei.", "into-the fire I-would-fly."],
+    ["Abbraccio te per lei", "I-embrace you for her"], ["addio:", "farewell:"], ["così si fa.", "thus one does."]]
+  ]
+ }
+}

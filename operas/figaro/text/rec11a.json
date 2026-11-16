@@ -1,0 +1,107 @@
+{
+ "piece": "rec11a",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec11a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 11 (Atto secondo, Scena I-II). The decode runs \"A voi non tocca … e naturale\" (bars 24-31) into Susanna's speech and \"E poi?\" (bar 88) into Figaro's; given to Figaro and the Countess as in Da Ponte's libretto",
+ "speeches": [
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Vieni, cara Susanna,", "Come, dear Susanna,"], ["finiscimi l’istoria:", "finish-for-me the story:"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["È già finita.", "It is already finished."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Dunque volle sedurti?", "So he-wanted to-seduce-you?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Oh il signor Conte", "Oh the lord Count"], ["non fa tai complimenti", "not makes such compliments"],
+   ["colle donne mie pari;", "with-the women my equals;"], ["egli venne a contratto", "he came to contract"],
+   ["di danari.", "of money."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Ah il crudel", "Ah the cruel-one"], ["più non m’ama!", "no-more not me-loves!"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["E come poi", "And how then"], ["è geloso di voi?", "is-he jealous of you?"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Come lo sono", "As it are"], ["i moderni mariti:", "the modern husbands:"],
+   ["per sistema infedeli,", "by system unfaithful,"], ["per genio capricciosi,", "by nature capricious,"],
+   ["e per orgoglio poi", "and by pride then"], ["tutti gelosi.", "all jealous."],
+   ["Ma se Figaro t’ama…", "But if Figaro you-loves…"], ["ei sol potria…", "he alone could…"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["La la la la la la la la la la", "La la la la la la la la la la"],
+   ["la la la la la la la la la.", "la la la la la la la la la."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Eccolo:", "Here-he-is:"], ["vieni amico.", "come friend."], ["Madama impaziente…", "Madam impatient…"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["A voi non tocca", "To you not falls"], ["stare in pena per questo.", "to-be in pain for this."],
+   ["Alfin di che si tratta?", "After-all of what is-it about?"],
+   ["Al signor Conte", "To-the lord Count"], ["piace la sposa mia,", "pleases the bride mine,"],
+   ["indi segretamente", "hence secretly"], ["ricuperar vorria", "to-recover he-would-like"],
+   ["il diritto feudale.", "the right feudal."],
+   ["Possibile è la cosa,", "Possible is the thing,"], ["e naturale.", "and natural."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Possibil!", "Possible!"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Natural!", "Natural!"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Naturalissima.", "Most-natural."], ["E se Susanna vuol", "And if Susanna wants"],
+   ["possibilissima.", "most-possible."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Finiscila una volta.", "Finish-it one time."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Ho già finito.", "I-have already finished."],
+   ["Quindi prese il partito", "So he-took the decision"], ["di sceglier me corriero,", "to choose me courier,"],
+   ["e la Susanna", "and the Susanna"], ["consigliera segreta", "counsellor secret"],
+   ["d’ambasciata:", "of-embassy:"], ["e perch’ella ostinata", "and because-she obstinate"],
+   ["ognor rifiuta", "always refuses"], ["il diploma d’onor", "the diploma of-honour"],
+   ["ch’ei le destina", "that-he to-her destines"], ["minaccia di protegger Marcellina.", "he-threatens to protect Marcellina."],
+   ["Questo è tutto l’affare.", "This is all the affair."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Ed hai coraggio", "And you-have courage"], ["di trattar scherzando", "to treat joking"],
+   ["un negozio sì serio?", "a business so serious?"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Non vi basta", "Not to-you suffices"], ["che scherzando io ci pensi?", "that joking I about-it think?"],
+   ["Ecco il progetto:", "Here-is the plan:"], ["per Basilio un biglietto", "through Basilio a note"],
+   ["io gli fo capitar", "I to-him make arrive"], ["che l’avvertisca", "that him-warns"],
+   ["di certo appuntamento", "of certain rendezvous"], ["che per l’ora del ballo", "that for the hour of-the dance"],
+   ["a un amante voi deste…", "to a lover you gave…"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Oh ciel!", "Oh heaven!"], ["che sento!", "what I-hear!"], ["ad un uom sì geloso!…", "to a man so jealous!…"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Ancora meglio.", "Even better."], ["Così potrem più presto", "So we-can more quickly"],
+   ["imbarazzarlo,", "embarrass-him,"], ["confonderlo, imbrogliarlo,", "confuse-him, entangle-him,"],
+   ["rovesciargli i progetti,", "overturn-for-him the plans,"], ["empierlo di sospetti,", "fill-him with suspicions,"],
+   ["e porgli in testa", "and put-to-him in head"], ["che la moderna festa", "that the modern feast"],
+   ["ch’ei di fare a me tenta", "that-he to make to me tries"], ["altri a lui faccia;", "others to him do;"],
+   ["onde qua perda il tempo,", "so-that here he-loses the time,"], ["ivi la traccia.", "there the trail."],
+   ["Così quasi ex abrupto,", "So almost ex abrupto,"], ["e senza ch’abbia fatto", "and without that-he-has made"],
+   ["per frastornarci", "to thwart-us"], ["alcun disegno", "any design"],
+   ["vien l’ora delle nozze,", "comes the hour of-the wedding,"], ["e in faccia a lei", "and in face to you"],
+   ["non fia, ch’osi", "not will-be, that-he-dare"], ["d’opporsi ai voti miei.", "to-oppose to-the wishes mine."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["È ver,", "It-is true,"], ["ma in di lui vece", "but in of him stead"], ["s’opporrà Marcellina.", "will-oppose Marcellina."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Aspetta:", "Wait:"], ["al Conte farai subito dir,", "to-the Count you-will-have at-once said,"],
+   ["che verso sera", "that towards evening"], ["attendati in giardino:", "you-wait in-the garden:"],
+   ["il picciol Cherubino", "the little Cherubino"], ["per mio consiglio", "by my advice"],
+   ["non ancor partito", "not yet departed"], ["da femmina vestito,", "as woman dressed,"],
+   ["faremo che in sua vece", "we-will-make that in your stead"], ["ivi sen vada.", "there he-goes."],
+   ["Questa è l’unica strada", "This is the only road"], ["onde monsù sorpreso", "whereby monsieur surprised"],
+   ["da madama", "by madam"], ["sia costretto a far poi", "be forced to do then"],
+   ["quel che si brama.", "what one wishes."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Che ti par?", "What to-you seems?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Non c’è mal.", "Not there-is bad."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Nel nostro caso…", "In-the our case…"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Quand’egli è persuaso…", "When-he is persuaded…"], ["e dove è il tempo?", "and where is the time?"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Ito è il Conte alla caccia;", "Gone is the Count to-the hunt;"], ["e per qualch’ora", "and for some-hour"],
+   ["non sarà di ritorno:", "not he-will-be of return:"], ["io vado e tosto", "I go and soon"],
+   ["Cherubino vi mando;", "Cherubino to-you I-send;"], ["lascio a voi la cura", "I-leave to you the care"],
+   ["di vestirlo.", "of dressing-him."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["E poi?…", "And then?…"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["E poi…", "And then…"], ["Se vuol ballare", "If you-want to-dance"], ["signor Contino,", "lord little-Count,"],
+   ["il chitarrino", "the little-guitar"], ["le suonerò sì,", "for-you I-will-play yes,"],
+   ["le suonerò sì,", "for-you I-will-play yes,"], ["le suonerò.", "for-you I-will-play."]]}
+ ]
+}

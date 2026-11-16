@@ -1,0 +1,44 @@
+{
+ "piece": "rec15b",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec15b)",
+ "source": "Bärenreiter BA 4565, Recitativo before No. 16 (Atto secondo, Scena VI)",
+ "speeches": [
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Tutto è come il lasciai:", "All is as it I-left:"], ["volete dunque aprir voi stessa,", "will-you then open you yourself,"],
+   ["o deggio…", "or must-I…"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Ahimè fermate:", "Alas stop:"], ["e ascoltatemi un poco.", "and listen-to-me a little."],
+   ["Mi credete capace", "Me you-believe capable"], ["di mancar al dover?", "of failing to-the duty?"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Come vi piace.", "As to-you it-pleases."], ["Entro quel gabinetto", "Within that closet"],
+   ["chi v’è chiuso vedrò.", "who there-is shut I-will-see."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Sì lo vedrete…", "Yes it you-will-see…"], ["ma uditemi tranquillo.", "but hear-me calm."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Non è dunque Susanna!", "Not is-it then Susanna!"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["No:", "No:"], ["ma invece è un oggetto", "but instead it-is a person"],
+   ["che ragion di sospetto", "who reason of suspicion"], ["non vi deve lasciar:", "not to-you must leave:"],
+   ["per questa sera…", "for this evening…"], ["una burla innocente…", "a joke innocent…"],
+   ["di farsi disponeva…", "to make we-were-preparing…"], ["ed io vi giuro…", "and I to-you swear…"],
+   ["che l’onor…", "that the honour…"], ["l’onestà…", "the decency…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Chi è dunque!", "Who is-it then!"], ["dite…", "say…"], ["l’ucciderò.", "him-I-will-kill."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Sentite.", "Listen."], ["Ah non ho cor!", "Ah not I-have heart!"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Parlate.", "Speak."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["È un fanciullo…", "It-is a boy…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Un fanciul!…", "A boy!…"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Sì…", "Yes…"], ["Cherubino…", "Cherubino…"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["(E mi farà il destino", "(And me will-make the destiny"], ["ritrovar questo paggio", "find-again this page"],
+   ["in ogni loco!)", "in every place!)"], ["Come?", "What?"], ["non è partito?", "not has-he departed?"],
+   ["Scellerati!", "Villains!"], ["Ecco i dubbi spiegati:", "Here-are the doubts explained:"],
+   ["ecco l’imbroglio,", "here-is the muddle,"], ["ecco il raggiro,", "here-is the trick,"],
+   ["onde m’avverte il foglio.", "of-which me-warns the letter."]]}
+ ]
+}

@@ -1,0 +1,24 @@
+{
+ "piece": "no13",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro no13)",
+ "source": "Bärenreiter BA 4565, No. 13 Aria (Atto secondo, Scena III)",
+ "characters": {
+  "SUSANNA": [
+   [["Venite inginocchiatevi:", "Come kneel-down:"], ["restate fermo lì.", "stay still there."],
+    ["Pian piano", "Slowly slowly"], ["or via giratevi:", "now come turn-around:"],
+    ["bravo,", "good,"], ["va ben così.", "goes well thus."],
+    ["La faccia ora volgetemi:", "The face now turn-to-me:"], ["olà quegli occhi a me.", "hey those eyes to me."],
+    ["Drittissimo,", "Very-straight,"], ["guardatemi.", "look-at-me."],
+    ["Madama qui non è.", "Madam here not is."]],
+   [["Restate fermo…", "Stay still…"], ["or via giratevi…", "now come turn-around…"],
+    ["guardatemi…", "look-at-me…"], ["bravo…", "good…"],
+    ["più alto quel colletto…", "more high that collar…"], ["quel ciglio un po’ più basso…", "that brow a little more low…"],
+    ["le mani sotto il petto…", "the hands under the breast…"], ["vedremo poscia il passo", "we-will-see afterwards the walk"],
+    ["quando sarete in piè.", "when you-will-be on foot."]],
+   [["Mirate il bricconcello!", "Look-at the little-rogue!"], ["mirate quanto è bello!", "look how-much he-is handsome!"],
+    ["che furba guardatura!", "what sly glance!"], ["che vezzo, che figura!", "what charm, what figure!"],
+    ["Se l’amano le femmine", "If him-love the women"], ["han certo", "they-have certainly"],
+    ["il lor perché.", "the their why."]]
+  ]
+ }
+}

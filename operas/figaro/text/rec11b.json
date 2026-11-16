@@ -1,0 +1,40 @@
+{
+ "piece": "rec11b",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec11b)",
+ "source": "Bärenreiter BA 4565, Recitativo before No. 12 (Atto secondo, Scena II-III)",
+ "speeches": [
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Quanto duolmi, Susanna,", "How-much it-grieves-me, Susanna,"], ["che questo giovinotto", "that this young-man"],
+   ["abbia del Conte", "has of-the Count"], ["le stravaganze udite?", "the extravagances heard?"],
+   ["Ah tu non sai!…", "Ah you not know!…"], ["ma per qual causa mai", "but for what cause ever"],
+   ["da me stessa", "to me herself"], ["ei non venne?…", "he not came?…"],
+   ["Dov’è la canzonetta?", "Where-is the little-song?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Eccola:", "Here-it-is:"], ["appunto facciam che ce la canti:", "just-so let-us-make that to-us it he-sings:"],
+   ["zitto:", "hush:"], ["vien gente:", "comes someone:"], ["è desso:", "it-is he:"],
+   ["avanti avanti:", "forward forward:"], ["signor uffiziale.", "lord officer."]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Ah non chiamarmi", "Ah not call-me"], ["con nome sì fatale!", "with name so fatal!"],
+   ["ei mi rammenta", "it me reminds"], ["che abbandonar degg’io", "that abandon must-I"],
+   ["comare tanto buona…", "godmother so good…"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["E tanto bella!", "And so beautiful!"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Ah sì… certo…", "Ah yes… certainly…"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Ah sì… certo…", "Ah yes… certainly…"], ["Ipocritone!", "Big-hypocrite!"],
+   ["via presto la canzone", "come quickly the song"], ["che stamane a me deste", "that this-morning to me you-gave"],
+   ["a madama cantate.", "to madam sing."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Chi n’è l’autor?", "Who of-it-is the author?"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Guardate:", "Look:"], ["egli ha due braccia", "he has two arms'-lengths"],
+   ["di rossor sulla faccia.", "of blush on-the face."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Prendi la mia chitarra,", "Take the my guitar,"], ["e l’accompagna.", "and him-accompany."]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Io sono sì tremante…", "I am so trembling…"], ["ma se madama vuole…", "but if madam wants…"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Lo vuole, sì, lo vuol.", "It she-wants, yes, it she-wants."], ["Manco parole.", "Fewer words."]]}
+ ]
+}

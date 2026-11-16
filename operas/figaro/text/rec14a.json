@@ -1,0 +1,32 @@
+{
+ "piece": "rec14a",
+ "written": "2026-11-15 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec14a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 14 (Atto secondo, Scena IV)",
+ "speeches": [
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Dunque voi non aprite?", "So you not open?"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["E perché deggio", "And why must-I"], ["le mie camere aprir?", "the my rooms open?"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Ebben, lasciate,", "Well, leave-it,"], ["l’aprirem senza chiavi:", "it-we-will-open without keys:"],
+   ["ehi gente…", "hey people…"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Come?", "What?"], ["porreste a repentaglio", "would-you-put at risk"], ["d’una dama l’onore?", "of-a lady the honour?"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["È vero, io sbaglio:", "It-is true, I err:"], ["posso senza rumore,", "I-can without noise,"],
+   ["senza scandalo alcun", "without scandal any"], ["di nostra gente", "of our people"],
+   ["andar io stesso", "go I myself"], ["a prender l’occorrente.", "to fetch the needful."],
+   ["Attendete pur qui…", "Wait then here…"], ["ma perché in tutto", "but so-that in all"],
+   ["sia il mio dubbio distrutto", "be the my doubt destroyed"], ["anco le porte", "also the doors"],
+   ["io prima chiuderò.", "I first will-close."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["(Che imprudenza?)", "(What imprudence?)"]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Voi la condiscendenza", "You the condescension"], ["di venir meco avrete.", "to come with-me will-have."],
+   ["Madama, eccovi il braccio,", "Madam, here-to-you the arm,"], ["andiamo.", "let-us-go."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Andiamo.", "Let-us-go."]]},
+  {"characters": ["IL CONTE"], "phrases": [
+   ["Susanna starà qui", "Susanna will-stay here"], ["finché torniamo.", "until we-return."]]}
+ ]
+}
