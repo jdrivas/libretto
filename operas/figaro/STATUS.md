@@ -168,6 +168,11 @@ Fixed on the way:
 - A tempo-limited guide for the fine pass (option A) is in align.py, off (`GUIDE`): it did
   not help, as the cause was the key.
 
+Listening check (2026-11-15): passed, both recordings, recitatives included (Solti's
+recitatives show 10-32% of words "in silence" against Currentzis's 3-15%, but sound right:
+the detector, not the timing). Option B (vocal-stem onsets as alignment features) not
+needed.
+
 ## Pending for the user
 
 - **At the next listening check:** listen to and watch the choruses (Nos. 8 and 9; No. 23
