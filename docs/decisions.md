@@ -18,6 +18,7 @@ Entries that are flagged to come back to, and when. Raise each one when its trig
 | D14 Vocal-stem onsets (option B) not pursued | if a number or recitative is mistimed and D12 doesn't explain it |
 | D17 Spot check per act; full listening later | when all of Figaro is built |
 | D21 Openings searched at the recording's pace; four Solti numbers kept as built | before any re-time of all pieces (it would cut Solti's No. 9 short) |
+| D22 Simultaneous singing shown as separate cards | when all of Figaro is built |
 
 ## Entries
 
@@ -179,3 +180,12 @@ the start now found, the end search's own result is kept, and that result (486.4
 off the chorus's last "nostro signor" (which ends at 495 s). *Revisit:* before re-timing
 every piece, give the end search a guard (e.g. the vocal stem's last singing) or keep
 those four.
+
+### D22. Simultaneous singing stays as separate cards, for now (2026-11-16)
+Where characters sing together, each keeps their own cards. *Why:* the user's spot check
+of Solti's No. 21 found the timing good, chorus included, but from about 1:51 to 2:51 the
+Countess and Susanna sing together and the viewer shows many overlapping cards. The user
+suggested one ensemble card for such a passage, and asked that it wait until the whole
+opera is built. *Alternative:* merge a stretch where two or more characters sing at once
+into one ensemble card (as the chorus is shown once, D10). *Revisit:* when all of Figaro
+is built; look at No. 21 first (Solti disc 11, track 2, 1:51 to 2:51).
