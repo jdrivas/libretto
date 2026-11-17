@@ -252,6 +252,9 @@ both recordings: 64 pieces, 3327 segments each, every line once.
 Solti's "Deh vieni" at 62% is the detector: Popp's soft singing stays well above the
 orchestra in the vocal stem through the "silent" phrases, and the line gaps match its dips.
 
+Spot check (2026-11-16): the user found everything good. All of Figaro is built; the D17
+full listening and D22 are now due.
+
 ## Pending for the user
 
 - ~~Listen to and watch the choruses (shown once, from the top choir staff)~~ done
