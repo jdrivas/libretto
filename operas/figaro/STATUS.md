@@ -231,6 +231,27 @@ landed 50 s late). Fixed (D21) and re-timed; 2691 segments each, every line once
 | No. 23 | 87%, 0.16 s | (as built) |
 | Act I: Nos. 5, 8, 9, 10 | (as built) | 86% / 88% / 82% / 89%, 0.01-0.12 s |
 
+## Act IV (2026-11-16)
+
+Texts for the 13 pieces written in session. Speeches moved per D16: rec24a ("L’ho
+perduta, cugino" to Barbarina), rec27a ("Parmi umida la notte" to the Countess), rec28a
+("La la la la lera" to Cherubino, "Ahi me meschina!" to the Countess). No. 29's "Perdono"
+and closing tutti are one TUTTI card (D23). No. 24 keeps its placed end (D24). Built for
+both recordings: 64 pieces, 3327 segments each, every line once.
+
+| | Solti | Currentzis |
+|---|---|---|
+| No. 24 | 90%, entries 0.07 s | 88%, 0.12 s |
+| No. 25 | 83%, 0.10 s | 80%, 0.08 s |
+| No. 26 | 78%, 0.15 s | 86%, 0.07 s |
+| No. 27 recit. / aria | 71%, 0.56 s / 93%, 0.11 s | 79%, 0.24 s / 93%, 0.05 s |
+| No. 28 recit. / aria | 78%, 0.20 s / 62%, 0.35 s | 86%, 0.30 s / 81%, 0.10 s |
+| No. 29 | 82%, 0.09 s | 84%, 0.06 s |
+| Recitatives, words in silence | 1-57% (rec27a 48/84) | 3-27% |
+
+Solti's "Deh vieni" at 62% is the detector: Popp's soft singing stays well above the
+orchestra in the vocal stem through the "silent" phrases, and the line gaps match its dips.
+
 ## Pending for the user
 
 - ~~Listen to and watch the choruses (shown once, from the top choir staff)~~ done

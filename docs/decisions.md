@@ -18,6 +18,7 @@ Entries that are flagged to come back to, and when. Raise each one when its trig
 | D14 Vocal-stem onsets (option B) not pursued | if a number or recitative is mistimed and D12 doesn't explain it |
 | D17 Spot check per act; full listening later | when all of Figaro is built |
 | D21 Openings searched at the recording's pace; four Solti numbers kept as built | before any re-time of all pieces (it would cut Solti's No. 9 short) |
+| D24 Numbers that keep their placed end (No. 24) | with D21, before any re-time of all pieces |
 | D22 Simultaneous singing shown as separate cards | when all of Figaro is built |
 
 ## Entries
@@ -205,3 +206,15 @@ word is the Countess's last "sì", sung on the shared staff. In Act I, rec08a's 
 is also on shared staves; its decode moves from the Count (wrong) to TUTTI, but rec08a is
 timed from its text file (CORO), so nothing published changes. The three single-name staves of "Oh
 cielo! che veggio!" (Count, Basilio, Antonio, bars 403-420) keep three cards.
+
+### D24. A short list of numbers keep their placed end (2026-11-16)
+`[timing] keep_placed_end` in opera.toml lists numbers whose end is not refined; for now
+No. 24. *Why:* No. 24's refined end came 40 s early in both recordings (Solti 65 s, where
+Barbarina sings to 108 s; in Currentzis it fills its own track, 121 s against 74 s). The
+closing's best match sits on earlier music, and nothing general told it apart: the opening's
+pace against the span's (0.83, among right ends from 0.68 to 1.6) and the closing's match
+near the placed end (as good as the wrong one, but also as good for Currentzis's No. 6,
+whose refined end is right) were both tried. With the placed end: all 8 entries matched,
+0.07 s and 0.12 s. *Alternative:* the vocal stem's last singing as the end (close to
+anchor snapping, which is not pursued). *Revisit:* with D21's guard, before any re-time of
+all pieces; Solti's No. 9 is the likely next entry (D21).

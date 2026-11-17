@@ -45,6 +45,12 @@ store = "HDTracks"
 sources = ["~/Dropbox/Audio/HDTracks/Teodor Currentzis/Mozart  Le nozze di Figaro, K  492 [192kHz · 24bit]"]
 match = "nozze di Figaro"
 
+[timing]
+# Numbers whose placed end is kept, not refined (decisions.md D24): their closing matches
+# earlier music as well as their real end. No. 24: 40 s early in both recordings (in
+# Currentzis it fills its own track; Solti's Barbarina sings to 108 s, not 65 s).
+keep_placed_end = ["no24"]
+
 # Characters, in cast-list order, with the names and abbreviations the score uses for
 # them: full names on a piece's first system, abbreviations on later systems, and
 # speaker cues above shared staves. Matching ignores case and full stops.

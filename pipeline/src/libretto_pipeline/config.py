@@ -48,6 +48,7 @@ class Opera:
     cast: Cast
     work: Path
     recordings: list = field(default_factory=list)  # [dict] from [[recording]]
+    keep_placed_end: set = field(default_factory=set)  # piece ids: don't refine their end
 
     def printed_page(self, pdf_page):
         return pdf_page - self.first_music_page + 1
@@ -74,7 +75,8 @@ def load_opera(opera_id):
                  language=c["opera"]["language"], score_pdf=Path(c["score"]["pdf"]).expanduser(),
                  edition=c["score"]["edition"], first_music_page=c["score"]["first_music_page"],
                  contents_pages=list(range(first, last + 1)), cast=cast, work=work_root / opera_id,
-                 recordings=recordings)
+                 recordings=recordings,
+                 keep_placed_end=set(c.get("timing", {}).get("keep_placed_end", [])))
 
 
 def tool_env():

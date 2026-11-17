@@ -51,7 +51,7 @@ EDGE_SEARCH_S = (30.0, 70.0)  # search from this much before to this much after 
 EDGE_PACES = (0.7, 0.85, 1.0, 1.2, 1.4)  # x the placed span's tempo ratio, tried at each edge
 
 
-def refine_edges(x, tuning, notes, start, end):
+def refine_edges(x, tuning, notes, start, end, keep_end=False):
     """Refine a placed span's start and end (seconds in x): the piece's opening EDGE_S of
     score located near the start, its closing EDGE_S near the end. An opening or closing
     is far more distinctive against the recitative around it than a whole number is.
@@ -62,7 +62,9 @@ def refine_edges(x, tuning, notes, start, end):
     start then landed 50 s late on the music's repeat); an opening can also be slower
     than the piece as a whole (Solti's "Dove sono", 2.25x against 1.65x, 4 s late).
     Not the closing: a stretched closing matches the sparser recitative after it more
-    cheaply the more it is stretched (No. 6 ended 24 s late in Solti, 57 s in Currentzis)."""
+    cheaply the more it is stretched (No. 6 ended 24 s late in Solti, 57 s in Currentzis).
+    keep_end: keep the placed end (the opera's [timing] keep_placed_end, D24): No. 24's
+    closing matches music 40 s before its end, as well as its real end does."""
     df = notes.sort_values("start").reset_index(drop=True)
     end_s = float((df["start"] + df["duration"]).max())
     ratio = (end - start) / end_s
@@ -72,7 +74,7 @@ def refine_edges(x, tuning, notes, start, end):
             (df[df["start"] < EDGE_S], start - EDGE_SEARCH_S[0], start + EDGE_SEARCH_S[1]),
             (df[df["start"] + df["duration"] > end_s - EDGE_S], end - EDGE_SEARCH_S[1], end + EDGE_SEARCH_S[0]))):
         w0, w1 = max(0.0, w0), min(dur, w1)
-        if len(part) < 3 or w1 - w0 < 2 * EDGE_S:
+        if len(part) < 3 or w1 - w0 < 2 * EDGE_S or (k == 1 and keep_end):
             continue
         part = part.copy()
         part["start"] -= part["start"].min()
@@ -103,7 +105,8 @@ def time_number(opera, rec_id, pid, tracks, excerpt=None, window=None):
     placed = None
     if window is not None:
         placed = window
-        excerpt = refine_edges(x, tuning, pd.DataFrame(score["notes"]), *window)
+        excerpt = refine_edges(x, tuning, pd.DataFrame(score["notes"]), *window,
+                               keep_end=pid in opera.keep_placed_end)
     if excerpt is None:
         import librosa
         rms = librosa.feature.rms(y=x, hop_length=align.FS // 10)[0]
