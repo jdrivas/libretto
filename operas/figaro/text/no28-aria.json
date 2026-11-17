@@ -1,0 +1,20 @@
+{
+ "piece": "no28-aria",
+ "written": "2026-11-16 in session, from the Bärenreiter decode (libretto-pipeline text figaro no28-aria)",
+ "source": "Bärenreiter BA 4565, No. 28 Aria (Atto quarto, Scena X)",
+ "characters": {
+  "SUSANNA": [
+   [["Deh vieni non tardar,", "Ah come not delay,"], ["oh gioia bella,", "oh joy beautiful,"],
+    ["vieni ove amore", "come where love"], ["per goder t’appella,", "to enjoy you-calls,"],
+    ["finché non splende in ciel", "until not shines in sky"], ["notturna face,", "nocturnal torch,"],
+    ["finché l’aria è ancor bruna,", "while the-air is still dark,"], ["e il mondo tace.", "and the world is-silent."]],
+   [["Qui mormora il ruscel,", "Here murmurs the brook,"], ["qui scherza l’aura,", "here plays the-breeze,"],
+    ["che col dolce susurro", "which with-the sweet whisper"], ["il cor ristaura,", "the heart restores,"],
+    ["qui ridono i fioretti", "here laugh the little-flowers"], ["e l’erba è fresca,", "and the-grass is fresh,"],
+    ["ai piaceri d’amor", "to-the pleasures of-love"], ["qui tutto adesca.", "here everything entices."]],
+   [["Vieni ben mio,", "Come beloved my,"], ["tra queste piante ascose,", "among these plants hidden,"],
+    ["vieni, vieni,", "come, come,"], ["ti vo’ la fronte", "to-you I-want the brow"],
+    ["incoronar di rose,", "to-crown with roses,"], ["incoronar,", "to-crown,"], ["di rose.", "with roses."]]
+  ]
+ }
+}

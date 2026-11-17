@@ -1,0 +1,16 @@
+{
+ "piece": "no28-recit",
+ "written": "2026-11-16 in session, from the Bärenreiter decode (libretto-pipeline text figaro no28-recit)",
+ "source": "Bärenreiter BA 4565, No. 28 Recitativo istrumentato (Atto quarto, Scena X)",
+ "characters": {
+  "SUSANNA": [
+   [["Giunse alfin il momento", "Came at-last the moment"], ["che godrò senz’affanno", "when I-will-enjoy without-anxiety"],
+    ["in braccio all’idol mio.", "in arm of-the-idol my."], ["Timide cure,", "Timid cares,"],
+    ["uscite dal mio petto,", "go-out from-the my breast,"], ["a turbar non venite", "to disturb not come"],
+    ["il mio diletto!", "the my delight!"], ["Oh come par", "Oh how it-seems"],
+    ["che all’amoroso foco", "that to-the-amorous fire"], ["l’amenità del loco,", "the-pleasantness of-the place,"],
+    ["la terra e il ciel risponda!", "the earth and the sky respond!"], ["Come la notte", "How the night"],
+    ["i furti miei seconda!", "the stealths my assists!"]]
+  ]
+ }
+}

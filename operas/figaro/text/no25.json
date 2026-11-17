@@ -1,0 +1,17 @@
+{
+ "piece": "no25",
+ "written": "2026-11-16 in session, from the Bärenreiter decode (libretto-pipeline text figaro no25)",
+ "source": "Bärenreiter BA 4565, No. 25 Aria (Atto quarto, Scena IV)",
+ "characters": {
+  "MARCELLINA": [
+   [["Il capro e la capretta", "The billy-goat and the little-she-goat"], ["son sempre in amistà,", "are always in friendship,"],
+    ["l’agnello all’agnelletta", "the-lamb to-the-little-ewe-lamb"], ["la guerra mai non fa.", "the war never not makes."],
+    ["Le più feroci belve", "The most ferocious beasts"], ["per selve e per campagne", "through woods and through fields"],
+    ["lascian le lor compagne", "leave the their mates"], ["in pace e libertà,", "in peace and freedom,"],
+    ["in libertà.", "in freedom."]],
+   [["Sol noi povere femmine", "Only we poor women"], ["che tanto amiam questi uomini,", "who so-much love these men,"],
+    ["trattate siam dai perfidi", "treated are-we by-the faithless-ones"], ["ognor con crudeltà,", "always with cruelty,"],
+    ["con crudeltà.", "with cruelty."]]
+  ]
+ }
+}

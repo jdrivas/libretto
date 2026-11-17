@@ -189,3 +189,19 @@ suggested one ensemble card for such a passage, and asked that it wait until the
 opera is built. *Alternative:* merge a stretch where two or more characters sing at once
 into one ensemble card (as the chorus is shown once, D10). *Revisit:* when all of Figaro
 is built; look at No. 21 first (Solti disc 11, track 2, 1:51 to 2:51).
+
+### D23. An all-singer passage on shared staves is shown once, as TUTTI (2026-11-16)
+No. 29's "Perdono" (bars 389-395) and its close from "Ah tutti contenti" (bar 430 to the
+end) put every singer on five shared staves ("Sus. La C.", "Barb. Cher. Marc.", "Bas.",
+"Il C.", "Ant. Fig."), all singing the same words. They are shown as one card, TUTTI, read
+from the top staff, as the chorus is (D10). The rule: in a system where two or more staves
+are each labelled with several characters, those staves and any other staff singing mostly
+the same words are TUTTI. A staff singing something else keeps its singer (the Count's
+"No!" during "Perdono"). *Why:* the user chose it (2026-11-16). Before, each shared staff
+went to one of its names, so Susanna, Cherubino, Marcellina and Antonio had no card in the
+close. *Alternatives:* a card per staff named for all its singers (accurate, but five cards
+with the same words); the first name per staff (as decoded). *Side effects:* TUTTI's first
+word is the Countess's last "sì", sung on the shared staff. In Act I, rec08a's "Evviva"
+is also on shared staves; its decode moves from the Count (wrong) to TUTTI, but rec08a is
+timed from its text file (CORO), so nothing published changes. The three single-name staves of "Oh
+cielo! che veggio!" (Count, Basilio, Antonio, bars 403-420) keep three cards.

@@ -99,3 +99,9 @@ labels = ["due donne", "due d"]
 [[cast]]
 name = "CORO"
 labels = ["coro"]
+
+# Not a printed label: where every singer sings the same words on shared staves (No. 29's
+# close), shown once as TUTTI (decisions.md D23).
+[[cast]]
+name = "TUTTI"
+labels = ["tutti"]

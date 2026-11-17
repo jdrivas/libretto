@@ -19,6 +19,8 @@ TEMPO_BPM = [("prestissimo", 184), ("presto", 168), ("più allegro", 150), ("all
 LINE_GAP_S = 0.6       # a pause of this much (score s) between syllables ends a line
 LINE_MAX_SYLLS = 20
 CHORUS = "CORO"
+TUTTI = "TUTTI"
+TUTTI_SHARED = 0.5     # a staff joins the tutti if this share of its words are the tutti's
 
 
 def bar_seconds(timesig, tempo):
@@ -44,7 +46,11 @@ def speakers(dec, cast):
       5. an unlabelled staff after the layout changed (No. 23: four solo staves, then two
          unnamed ones): the character with this staff's clef who sang most recently and
          is not already on another staff of this system;
-      6. the piece's only named character, or the chorus."""
+      6. the piece's only named character, or the chorus.
+    Before all of these: a tutti (D23). In a system where two or more staves are each
+    labelled with several characters (No. 29's close: "Sus. La C.", "Barb. Cher. Marc.",
+    ...), those staves, and any other staff singing mostly the same words, are TUTTI."""
+    tutti = _tutti_staves(dec, cast)
     named = {n for s in dec["syllables"] for n in cast.find(s["label"])}
     named |= {n for c in dec.get("cues", []) for n in cast.find(c["name"])}
     events = [(c["t0"], 0, k, c) for k, c in enumerate(dec.get("cues", []))]
@@ -68,6 +74,9 @@ def speakers(dec, cast):
                 recent[state[st]] = t
             continue
         found = cast.find(e["label"])
+        if (sys_, st) in tutti:
+            out[k] = TUTTI
+            continue
         if len(found) == 1:
             c = next(iter(found))
         elif e.get("choir") and not found:
@@ -87,6 +96,25 @@ def speakers(dec, cast):
             state[st], on_sys[st], recent[c] = c, c, t
             if e.get("clef") and c != CHORUS:
                 clef_of.setdefault(c, e["clef"])
+    return out
+
+
+def _tutti_staves(dec, cast):
+    """{(system, staff)} singing a tutti (see speakers)."""
+    words, labels = {}, {}
+    for s in dec["syllables"]:
+        key = (tuple(s.get("sys") or ()) or None, s["staff"])
+        words.setdefault(key, set()).add(re.sub(r"[^\w’']", "", s["text"].lower()))
+        labels[key] = s["label"]
+    out = set()
+    for sys_ in {k[0] for k in words if k[0] is not None}:
+        staves = [k for k in words if k[0] == sys_]
+        shared = [k for k in staves if len(cast.find(labels[k])) >= 2]
+        if len(shared) < 2:
+            continue
+        common = set().union(*(words[k] for k in shared))
+        out |= {k for k in staves if k in shared
+                or len(words[k] & common) >= TUTTI_SHARED * len(words[k])}
     return out
 
 
@@ -110,13 +138,14 @@ def score_time(dec, cast):
     who0 = speakers(dec, cast)
     who = who0
     # The chorus: Figaro's choir parts sing the same words, so its text is read from one
-    # staff, the top choir staff that sings in each bar (the viewer shows it once).
+    # staff, the top choir staff that sings in each bar (the viewer shows it once). A
+    # tutti likewise.
     top = {}
     for s, w in zip(dec["syllables"], who):
-        if w == CHORUS:
-            b = int(s["t0"])
+        if w in (CHORUS, TUTTI):
+            b = (w, int(s["t0"]))
             top[b] = min(top.get(b, s["staff"]), s["staff"])
-    who = [None if w == CHORUS and s["staff"] != top[int(s["t0"])] else w
+    who = [None if w in (CHORUS, TUTTI) and s["staff"] != top[(w, int(s["t0"]))] else w
            for s, w in zip(dec["syllables"], who)]
     order = [n for n, _ in cast.members]
     lines, unattributed = [], 0

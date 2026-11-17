@@ -1,0 +1,80 @@
+{
+ "piece": "rec24a",
+ "written": "2026-11-16 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec24a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 24 (Atto quarto, Scena I-II). The decode runs Barbarina's \"L’ho perduta, cugino\" (bar 2) into Figaro's speech; given to Barbarina as in Da Ponte's libretto",
+ "speeches": [
+  {"characters": ["FIGARO"], "phrases": [
+   ["Barbarina cos’hai?", "Barbarina what-have-you?"]]},
+  {"characters": ["BARBARINA"], "phrases": [
+   ["L’ho perduta, cugino.", "It-I-have lost, cousin."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Cosa?", "What?"]]},
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["Cosa?", "What?"]]},
+  {"characters": ["BARBARINA"], "phrases": [
+   ["La spilla,", "The pin,"], ["che a me diede il padrone", "that to me gave the master"],
+   ["per recar a Susanna.", "to bring to Susanna."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["A Susanna?…", "To Susanna?…"], ["la spilla…", "the pin…"],
+   ["E così tenerella", "And so very-young"], ["il mestiero già sai…", "the trade already you-know…"],
+   ["di far tutto sì ben", "of doing everything so well"], ["quel che tu fai?", "that which you do?"]]},
+  {"characters": ["BARBARINA"], "phrases": [
+   ["Cos’è,", "What-is-it,"], ["vai meco in collera?", "you-go with-me into anger?"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["E non vedi ch’io scherzo?", "And not you-see that-I joke?"], ["Osserva…", "Look…"],
+   ["questa è la spilla", "this is the pin"], ["che il Conte da recare", "which the Count to bring"],
+   ["ti diede alla Susanna,", "to-you gave to-the Susanna,"], ["e servia di sigillo", "and served as seal"],
+   ["a un bigliettino;", "to a little-note;"], ["vedi s’io sono instrutto.", "see if-I am informed."]]},
+  {"characters": ["BARBARINA"], "phrases": [
+   ["E perché il chiedi a me", "And why it you-ask of me"], ["quando sai tutto?", "when you-know everything?"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Avea gusto d’udir", "I-had pleasure of-hearing"], ["come il padrone", "how the master"],
+   ["ti diè la commissione.", "to-you gave the errand."]]},
+  {"characters": ["BARBARINA"], "phrases": [
+   ["Che miracoli!", "What miracles!"], ["Tieni fanciulla", "Take girl"],
+   ["reca questa spilla", "bring this pin"], ["alla bella Susanna:", "to-the beautiful Susanna:"],
+   ["e dille:", "and tell-her:"], ["questo è il sigillo de’ pini.", "this is the seal of-the pines."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Ah ah, de’ pini!", "Ah ah, of-the pines!"]]},
+  {"characters": ["BARBARINA"], "phrases": [
+   ["È ver ch’ei mi soggiunse:", "It-is true that-he to-me added:"], ["guarda che alcun non veda;", "mind that anyone not sees;"],
+   ["ma tu già tacerai.", "but you of-course will-be-silent."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Sicuramente.", "Certainly."]]},
+  {"characters": ["BARBARINA"], "phrases": [
+   ["A te già niente preme.", "To you of-course nothing matters."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Oh niente, niente.", "Oh nothing, nothing."]]},
+  {"characters": ["BARBARINA"], "phrases": [
+   ["Addio mio bel cugino;", "Goodbye my handsome cousin;"], ["vò da Susanna,", "I-go to Susanna,"],
+   ["e poi da Cherubino.", "and then to Cherubino."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Madre!", "Mother!"]]},
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["Figlio!", "Son!"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Son morto.", "I-am dead."]]},
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["Calmati, figlio mio.", "Calm-yourself, son my."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Son morto, dico.", "I-am dead, I-say."]]},
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["Flemma, flemma,", "Calm, calm,"], ["e poi flemma:", "and then calm:"], ["il fatto è serio;", "the matter is serious;"],
+   ["e pensarci convien:", "and to-think-on-it is-fitting:"], ["ma pensa un poco", "but think a little"],
+   ["che ancor non sai", "that yet not you-know"], ["di chi si prenda gioco.", "of whom is made sport."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Ah quella spilla,", "Ah that pin,"], ["oh madre, è quella stessa", "oh mother, is that same-one"],
+   ["che poc’anzi ei raccolse.", "which a-little-before he picked-up."]]},
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["È ver, ma questo al più", "It-is true, but this at-the most"], ["ti porge un dritto", "to-you gives a right"],
+   ["di stare in guardia,", "to stay on guard,"], ["e vivere in sospetto:", "and to-live in suspicion:"],
+   ["ma non sai, se in effetto…", "but not you-know, if in fact…"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["All’erta dunque:", "On-the-alert then:"], ["il loco del congresso", "the place of-the meeting"],
+   ["so dov’è stabilito…", "I-know where-it-is fixed…"]]},
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["Dove vai figlio mio?", "Where you-go son my?"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["A vendicar tutti i mariti:", "To avenge all the husbands:"], ["addio.", "goodbye."]]}
+ ]
+}

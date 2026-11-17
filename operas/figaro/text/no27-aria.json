@@ -1,0 +1,27 @@
+{
+ "piece": "no27-aria",
+ "written": "2026-11-16 in session, from the Bärenreiter decode (libretto-pipeline text figaro no27-aria)",
+ "source": "Bärenreiter BA 4565, No. 27 Aria (Atto quarto, Scena VIII); \"schiocchi\" as printed in the repeat",
+ "characters": {
+  "FIGARO": [
+   [["Aprite un po’ quegl’occhi,", "Open a little those-eyes,"], ["uomini incauti e sciocchi,", "men incautious and foolish,"],
+    ["uomini incauti e schiocchi,", "men incautious and foolish,"],
+    ["guardate queste femmine,", "look-at these women,"], ["guardate cosa son,", "look-at what they-are,"],
+    ["guardate,", "look,"], ["cosa son,", "what they-are,"]],
+   [["Queste chiamate Dee", "These called goddesses"], ["dagli ingannati sensi", "by-the deceived senses"],
+    ["a cui tributa incensi", "to whom pays incense"], ["la debole ragion,", "the weak reason,"]],
+   [["son streghe che incantano", "they-are witches who enchant"], ["per farci penar,", "to make-us suffer,"],
+    ["sirene che cantano", "sirens who sing"], ["per farci affogar,", "to make-us drown,"],
+    ["civette che allettano", "coquettes who lure"], ["per trarci le piume,", "to pluck-from-us the feathers,"],
+    ["comete che brillano", "comets that shine"], ["per toglierci il lume;", "to take-from-us the light;"],
+    ["son rose spinose,", "they-are roses thorny,"], ["son volpi vezzose,", "they-are vixens charming,"],
+    ["son orse benigne,", "they-are she-bears gentle,"], ["colombe maligne,", "doves malicious,"],
+    ["maestre d’inganni,", "mistresses of-deceits,"], ["amiche d’affanni", "friends of-troubles"],
+    ["che fingono, mentono,", "who feign, lie,"], ["amore non senton,", "love not they-feel,"],
+    ["non senton pietà,", "not they-feel pity,"], ["no no no no,", "no no no no,"],
+    ["(il resto nol dico)", "(the rest not-it I-say)"],
+    ["il resto, il resto nol dico,", "the rest, the rest not-it I-say,"], ["già ognuno, già ognuno lo sa.", "already everyone, already everyone it knows."],
+    ["già ognuno lo sa.", "already everyone it knows."]]
+  ]
+ }
+}

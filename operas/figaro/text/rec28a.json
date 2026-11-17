@@ -1,0 +1,24 @@
+{
+ "piece": "rec28a",
+ "written": "2026-11-16 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec28a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 28 (Atto quarto, Scena X-XI). The decode runs Cherubino's \"La la la la lera\" (bar 3) into Figaro's speech and the Countess's \"Ahi me meschina!\" (bar 7) into Cherubino's; given to them as in Da Ponte's libretto. \"veglie, dorma\" as decoded is \"vegli, o dorma\"",
+ "speeches": [
+  {"characters": ["FIGARO"], "phrases": [
+   ["Perfida,", "Faithless-one,"], ["e in quella forma meco mentia?", "and in that manner with-me she-lied?"],
+   ["Non so s’io vegli, o dorma.", "Not I-know if-I am-awake, or I-sleep."]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["La la la la lera", "La la la la lera"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Il picciol paggio.", "The little page."]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["Io sento gente,", "I hear people,"], ["entriamo ove entrò Barbarina.", "let-us-enter where entered Barbarina."],
+   ["Oh vedo qui una donna.", "Oh I-see here a woman."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Ahi me meschina!", "Ah me wretched!"]]},
+  {"characters": ["CHERUBINO"], "phrases": [
+   ["M’inganno,", "I-am-mistaken,"], ["a quel cappello,", "by that hat,"],
+   ["che nell’ombra vegg’io", "which in-the-shadow see-I"], ["parmi Susanna.", "seems-to-me Susanna."]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["E se il Conte ora vien,", "And if the Count now comes,"], ["sorte tiranna!", "fate tyrannical!"]]}
+ ]
+}

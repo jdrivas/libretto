@@ -1,0 +1,35 @@
+{
+ "piece": "no26",
+ "written": "2026-11-16 in session, from the Bärenreiter decode (libretto-pipeline text figaro no26)",
+ "source": "Bärenreiter BA 4565, No. 26 Aria (Atto quarto, Scena VII); \"In quegl’anni\" as printed",
+ "characters": {
+  "BASILIO": [
+   [["In quegl’anni, in cui val poco", "In those-years, in which is-worth little"], ["la mal pratica ragion,", "the badly practised reason,"],
+    ["ebbi anch’io lo stesso foco,", "had also-I the same fire,"], ["fui quel pazzo ch’or non son,", "I-was that madman that-now not I-am,"],
+    ["fui quel pazzo ch’or non son.", "I-was that madman that-now not I-am."]],
+   [["Che col tempo e coi perigli", "For with-the time and with-the dangers"], ["donna flemma capitò;", "lady Prudence turned-up;"],
+    ["e i capricci, ed i puntigli", "and the whims, and the obstinacies"], ["dalla testa mi cavò,", "from-the head of-me she-drew,"],
+    ["dalla testa mi cavò.", "from-the head of-me she-drew."]],
+   [["Presso un piccolo abituro", "Near a little hovel"], ["seco lei mi trasse un giorno,", "with-her she me drew one day,"],
+    ["e togliendo giù dal muro", "and taking down from-the wall"], ["del pacifico soggiorno", "of-the peaceful dwelling"],
+    ["una pelle di somaro,", "a skin of donkey,"], ["di somaro,", "of donkey,"], ["prendi disse,", "take she-said,"],
+    ["oh figlio caro,", "oh son dear,"], ["poi disparve, e mi lasciò,", "then she-vanished, and me left,"]],
+   [["Mentre ancor tacito", "While still silent"], ["guardo quel dono,", "I-look-at that gift,"],
+    ["mentre ancor guardo quel dono,", "while still I-look-at that gift,"], ["il ciel s’annuvola", "the sky clouds-over"],
+    ["rimbomba il tuono,", "booms the thunder,"], ["mista alla grandine", "mixed with-the hail"],
+    ["scroscia la piova,", "pours the rain,"], ["ecco le membra", "lo the limbs"], ["coprir mi giova", "to-cover me helps"],
+    ["col manto d’asino", "with-the cloak of-donkey"], ["che mi donò,", "which me she-gave,"]],
+   [["Finisce il turbine,", "Ends the storm,"], ["nè fo due passi,", "nor I-make two steps,"],
+    ["che fiera orribile", "when beast horrible"], ["dianzi a me fassi;", "before to me makes-itself;"],
+    ["già già mi tocca", "already already me touches"], ["l’ingorda bocca,", "the-greedy mouth,"],
+    ["già di difendermi", "already of defending-myself"], ["speme non ho,", "hope not I-have,"]],
+   [["Ma il fiuto ignobile", "But the smell ignoble"], ["del mio vestito", "of-the my garment"],
+    ["tolse alla belva", "took-away from-the beast"], ["sì l’appetito,", "so the-appetite,"],
+    ["che disprezzandomi", "that despising-me"], ["si rinselvò,", "itself went-back-to-the-woods,"]],
+   [["Così conoscere", "Thus to-know"], ["mi fè la sorte,", "me made fate,"], ["ch’onte,", "that-shames,"],
+    ["pericoli, vergogna,", "dangers, disgrace,"], ["e morte", "and death"],
+    ["col cuoio d’asino", "with-the hide of-donkey"], ["fuggir si può,", "to-flee one can,"],
+    ["fuggir si può.", "to-flee one can."]]
+  ]
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "piece": "rec27a",
+ "written": "2026-11-16 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec27a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 27 (Atto quarto, Scena IX). The decode runs the Countess's \"Parmi umida la notte; io mi ritiro\" (bars 8-10) into Susanna's speech; given to the Countess as in Da Ponte's libretto",
+ "speeches": [
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Signora, ella mi disse", "Madam, she to-me said"], ["che Figaro verravvi.", "that Figaro will-come-there."]]},
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["Anzi è venuto:", "Indeed he-has come:"], ["abbassa un po’ la voce.", "lower a little the voice."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Dunque un ci ascolta:", "So one us listens:"], ["e l’altro dee venir a cercarmi,", "and the-other must come to look-for-me,"],
+   ["incominciam.", "let-us-begin."]]},
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["Io voglio qui celarmi.", "I want here to-hide-myself."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Madama voi tremate:", "Madam you tremble:"], ["avreste freddo?", "would-you-have cold?"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Parmi umida la notte;", "Seems-to-me damp the night;"], ["io mi ritiro.", "I myself withdraw."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["(Eccoci della crisi", "(Here-we-are of-the crisis"], ["al grande istante.)", "at-the great moment.)"]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Io sotto queste piante,", "I under these trees,"], ["se madama il permette,", "if madam it permits,"],
+   ["resto a prendere il fresco", "remain to take the cool-air"], ["una mezz’ora.", "a half-hour."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["(Il fresco, il fresco!)", "(The cool-air, the cool-air!)"]]},
+  {"characters": ["LA CONTESSA"], "phrases": [
+   ["Restaci in buon’ora.", "Stay-there in good-time."]]},
+  {"characters": ["SUSANNA"], "phrases": [
+   ["Il birbo è in sentinella:", "The rascal is on sentry-duty:"], ["divertiamci anche noi:", "let-us-amuse-ourselves also we:"],
+   ["diamogli la mercé", "let-us-give-him the reward"], ["de’ dubbi suoi.", "of-the doubts his."]]}
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "piece": "rec25a",
+ "written": "2026-11-16 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec25a)",
+ "source": "Bärenreiter BA 4565, Recitativo after No. 25 (Atto quarto, Scena V-VII). Barbarina's \"Per chi madamigella? Oh per qualcun, signori\" is her own account of the servants' teasing",
+ "speeches": [
+  {"characters": ["BARBARINA"], "phrases": [
+   ["Nel padiglione a manca:", "In-the pavilion on-the left:"], ["ei così disse:", "he thus said:"],
+   ["è questo…", "it-is this-one…"], ["è questo…", "it-is this-one…"], ["e poi se non venisse!", "and then if not he-came!"],
+   ["Oh ve’ che brava gente!", "Oh look what fine people!"], ["A stento darmi", "With difficulty to-give-me"],
+   ["un arancio, una pera,", "an orange, a pear,"], ["e una ciambella.", "and a ring-cake."],
+   ["Per chi madamigella?", "For whom young-lady?"], ["Oh per qualcun, signori:", "Oh for someone, sirs:"],
+   ["già lo sappiam:", "already it we-know:"], ["ebbene;", "well-then;"], ["il padron l’odia,", "the master him-hates,"],
+   ["ed io gli voglio bene,", "and I him wish well,"], ["però costommi un bacio,", "but it-cost-me a kiss,"],
+   ["e cosa importa?", "and what matters?"], ["forse qualcun me’l renderà…", "perhaps someone to-me-it will-return…"],
+   ["son morta.", "I-am dead."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["È Barbarina…", "It-is Barbarina…"], ["chi va là?", "who goes there?"]]},
+  {"characters": ["BASILIO"], "phrases": [
+   ["Son quelli che invitasti a venir.", "They-are those whom you-invited to come."]]},
+  {"characters": ["BARTOLO"], "phrases": [
+   ["Che brutto ceffo!", "What ugly mug!"], ["Sembri un cospirator:", "You-seem a conspirator:"],
+   ["che diamin sono", "what the-devil are"], ["quegli infausti apparati?", "those ill-omened preparations?"]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Lo vedrete tra poco.", "It you-will-see in a-little."], ["In questo stesso loco", "In this same place"],
+   ["celebrerem la festa", "we-will-celebrate the feast"], ["della mia sposa onesta", "of-the my bride honest"],
+   ["e del feudal signor…", "and of-the feudal lord…"]]},
+  {"characters": ["BASILIO"], "phrases": [
+   ["Ah buono buono,", "Ah good good,"], ["capisco come egli è,", "I-understand how it is,"],
+   ["(accordati si son senza di me).", "(agreed they have without of me)."]]},
+  {"characters": ["FIGARO"], "phrases": [
+   ["Voi da questi contorni", "You from these surroundings"], ["non vi scostate;", "not yourselves move-away;"],
+   ["intanto io vado", "meanwhile I go"], ["a dar certi ordini,", "to give certain orders,"],
+   ["e torno in pochi istanti:", "and I-return in few moments:"], ["a un fischio mio", "at a whistle mine"],
+   ["correte tutti quanti.", "run all of-you."]]},
+  {"characters": ["BASILIO"], "phrases": [
+   ["Ha i diavoli nel corpo.", "He-has the devils in-the body."]]},
+  {"characters": ["BARTOLO"], "phrases": [
+   ["Ma cosa nacque?", "But what happened?"]]},
+  {"characters": ["BASILIO"], "phrases": [
+   ["Nulla.", "Nothing."], ["Susanna piace al Conte:", "Susanna pleases to-the Count:"],
+   ["ella d’accordo", "she in-agreement"], ["gli diè un appuntamento", "to-him gave a rendezvous"],
+   ["che a Figaro non piace.", "which to Figaro not pleases."]]},
+  {"characters": ["BARTOLO"], "phrases": [
+   ["E che?", "And what?"], ["dunque dovria soffrirlo in pace?", "then he-should suffer-it in peace?"]]},
+  {"characters": ["BASILIO"], "phrases": [
+   ["Quel che soffrono tanti", "That which suffer so-many"], ["ei soffrir non potrebbe?", "he to-suffer not could?"],
+   ["e poi sentite,", "and then listen,"], ["che guadagno può far?", "what gain can-he make?"],
+   ["Nel mondo, amico,", "In-the world, friend,"], ["l’accozzarla co’ grandi", "the-tangling-it with-the great"],
+   ["fu pericolo ognora:", "was danger always:"], ["dan novanta per cento", "they-give ninety per cent"],
+   ["e han vinto ancora.", "and have won still."]]}
+ ]
+}

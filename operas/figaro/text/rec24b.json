@@ -1,0 +1,15 @@
+{
+ "piece": "rec24b",
+ "written": "2026-11-16 in session, from the Bärenreiter decode (libretto-pipeline text figaro rec24b)",
+ "source": "Bärenreiter BA 4565, Recitativo before No. 25 (Atto quarto, Scena III)",
+ "speeches": [
+  {"characters": ["MARCELLINA"], "phrases": [
+   ["Presto avvertiam Susanna:", "Quickly let-us-warn Susanna:"], ["io la credo innocente:", "I her believe innocent:"],
+   ["quella faccia,", "that face,"], ["quell’aria di modestia…", "that-air of modesty…"],
+   ["e caso ancora", "and in-case even"], ["ch’ella non fosse?…", "that-she not were?…"],
+   ["ah quando il cor non ci arma", "ah when the heart not us arms"], ["personale interesse,", "personal interest,"],
+   ["ogni donna è portata", "every woman is inclined"], ["alla difesa", "to-the defence"],
+   ["del suo povero sesso,", "of-the her poor sex,"], ["da questi uomini ingrati", "by these men ungrateful"],
+   ["a torto oppresso.", "wrongly oppressed."]]}
+ ]
+}

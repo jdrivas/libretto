@@ -1,0 +1,13 @@
+{
+ "piece": "no24",
+ "written": "2026-11-16 in session, from the Bärenreiter decode (libretto-pipeline text figaro no24)",
+ "source": "Bärenreiter BA 4565, No. 24 Cavatina (Atto quarto, Scena I)",
+ "characters": {
+  "BARBARINA": [
+   [["L’ho perduta…", "It-I-have lost…"], ["me meschina…", "me wretched…"], ["ah chi sa dove sarà?", "ah who knows where it-will-be?"],
+    ["Non la trovo…", "Not it I-find…"], ["non la trovo…", "not it I-find…"], ["l’ho perduta,", "it-I-have lost,"],
+    ["meschinella,", "poor-little-me,"], ["ah non la trovo,", "ah not it I-find,"]],
+   [["E mia cugina…", "And my cousin…"], ["e il padron…", "and the master…"], ["cosa dirà?", "what will-he-say?"]]
+  ]
+ }
+}

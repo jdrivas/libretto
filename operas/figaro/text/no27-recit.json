@@ -1,0 +1,20 @@
+{
+ "piece": "no27-recit",
+ "written": "2026-11-16 in session, from the Bärenreiter decode (libretto-pipeline text figaro no27-recit)",
+ "source": "Bärenreiter BA 4565, No. 27 Recitativo istrumentato (Atto quarto, Scena VIII)",
+ "characters": {
+  "FIGARO": [
+   [["Tutto è disposto:", "All is arranged:"], ["l’ora dovrebbe esser vicina;", "the-hour should be near;"],
+    ["io sento gente.", "I hear people."], ["È dessa…", "It-is she…"], ["non è alcun…", "not it-is anyone…"],
+    ["buia è la notte…", "dark is the night…"], ["ed io comincio omai,", "and I begin by-now,"],
+    ["a fare il scimunito", "to do the foolish"], ["mestiero di marito.", "trade of husband."],
+    ["Ingrata!", "Ungrateful-one!"], ["Nel momento della mia cerimonia", "In-the moment of-the my ceremony"],
+    ["ei godeva leggendo:", "he enjoyed reading:"], ["e nel vederlo", "and in-the seeing-him"],
+    ["io rideva di me", "I laughed at myself"], ["senza saperlo.", "without knowing-it."],
+    ["Oh Susanna, Susanna,", "Oh Susanna, Susanna,"], ["quanta pena mi costi,", "how-much pain me you-cost,"],
+    ["con quell’ingenua faccia…", "with that-ingenuous face…"], ["con quegli occhi innocenti…", "with those eyes innocent…"],
+    ["chi creduto l’avria?", "who believed it-would-have?"], ["Ah che il fidarsi a donna,", "Ah for the trusting-oneself to woman,"],
+    ["a donna è ognor follia.", "to woman is always folly."]]
+  ]
+ }
+}
