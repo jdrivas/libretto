@@ -137,7 +137,7 @@ checked in about a day.
 64 pieces are published for each recording, 3,327 lines each, every line once. Each line
 has its time, speaker, bar location in BA 4565, Italian text and English gloss.
 
-Before Figaro is called done:
+Before Figaro is called done (as of 2026-11-16; the live list is `docs/todo.md`):
 - **D22:** show simultaneous singing as one ensemble card. No. 21 is the first case.
 - **D17:** a full listening of the whole opera, after D22.
 - **Two appendix pieces** the decoder doesn't handle yet: app-no15 and app-no28a.

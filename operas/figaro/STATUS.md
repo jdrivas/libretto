@@ -253,7 +253,7 @@ Solti's "Deh vieni" at 62% is the detector: Popp's soft singing stays well above
 orchestra in the vocal stem through the "silent" phrases, and the line gaps match its dips.
 
 Spot check (2026-11-16): the user found everything good. All of Figaro is built; the D17
-full listening and D22 are now due.
+full listening and D22 are now due. What's next is kept in `docs/todo.md`.
 
 ## Pending for the user
 

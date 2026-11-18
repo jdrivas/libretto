@@ -218,3 +218,12 @@ whose refined end is right) were both tried. With the placed end: all 8 entries 
 0.07 s and 0.12 s. *Alternative:* the vocal stem's last singing as the end (close to
 anchor snapping, which is not pursued). *Revisit:* with D21's guard, before any re-time of
 all pieces; Solti's No. 9 is the likely next entry (D21).
+
+### D25. One to-do list: docs/todo.md, roon-rd included (2026-11-17)
+`docs/todo.md` is the only list of what's next. When work finishes an item, it is ticked
+in the same commit. New items are added as soon as they come up, each with a pointer to
+its detail. A "To revisit" trigger that fires puts its item under "Now". STATUS.md stays
+the build history, and this log keeps the reasons. *Why:* the plan had spread over
+STATUS.md, this log, a stale February todo.md and Claude's memory, and the roon-rd
+button fix was only in memory. *Alternatives:* a list in each STATUS.md; a to-do file in
+roon-rd as well. *Revisit:* no.
