@@ -367,7 +367,9 @@ Scope:
 
 **Paths:**
 - Code: `pipeline/src/libretto_pipeline/`.
-- Config: `pipeline/config.toml`, a single `work_root = "/Users/jdr/Dropbox/Development/libretto-work"`.
+- Config: `pipeline/config.toml`, a single `work_root`, since 2026-11-18 (D27)
+  `"/Volumes/JDR Desktop Attached/Google Drive/Projects/roon-rd/Libretto/libretto-work"`
+  (it was `/Users/jdr/Dropbox/Development/libretto-work` during the Figaro build).
 - Outputs: `<work_root>/<opera>/`.
 - Install, once: `cd pipeline && uv sync --extra align --extra audio`, plus Demucs and MMS_FA
   weights copied under `work_root/.cache`. **M**. macOS arm64 only.
@@ -390,7 +392,7 @@ Scope:
 | 10 | `libretto-pipeline publish <opera> [rec]` | Merges every `timed/<rec>/*.json`; each line goes to the track its start falls in, with track-relative times; ends clamped to the track end | → `interchange/<rec>.interchange.json`, version `1.1-score` | **A** |
 | — | `libretto-pipeline build <opera> [--recording R] [piece…]` | score (all pieces), clean, place (**all acts**), time, publish. Needs the decode | | **A**; see section 6 for its hazard |
 | — | `libretto-pipeline status <opera>` | Manifest checks; tracks and separation progress per recording | | **A** |
-| 11 | Point roon-rd at the folder and listen | `./target/debug/roon-rd server --port 3000 --libretto-dir /Users/jdr/Dropbox/Development/libretto-work/figaro/interchange`. Not recorded anywhere else: the committed `roon-rd/config.toml` still points at an old February file | | **M** |
+| 11 | Point roon-rd at the folder and listen | `./target/debug/roon-rd server --port 3000 --libretto-dir "/Volumes/JDR Desktop Attached/Google Drive/Projects/roon-rd/Libretto/libretto-work/figaro/interchange"` (the external disk must be mounted). Not recorded anywhere else: the committed `roon-rd/config.toml` still points at an old February file | | **M** |
 | 12 | Every-line check, user listening | Headless Chrome against the viewer (not committed); the user's spot checks (D17) | | **M** |
 
 **Regression set:** the P8 passages, `build figaro no12 rec12a no16 no19 rec19a rec19b`. Compare
