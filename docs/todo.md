@@ -45,6 +45,27 @@ the end of the session.
   checkpoints G0-G7, a definition of "done", and the code changes P1-P8. Its section 6
   lists the decisions. Così fails at `add-recording` today: the file names' Unicode form
   and "Act 1" titles (section 4.1).
+- [ ] **Decide: are `score/<piece>.json` files licensed?** They hold every pitch and sung
+  syllable, as much of the score as `decode/pieces/`, but the licence rule names only the
+  latter. Once decided: a D-entry, and the rule in `CLAUDE.md`. new-opera-model.md A.7.
+- [ ] **Interchange format 1.2, with P7** (new-opera-model.md A.11, "Quirks"):
+  - `act` as an integer, as in every other file;
+  - one track id form (the pipeline's `d09t01` against the interchange's `d9t1`);
+  - `translation_language` from opera.toml, not hard-coded "en";
+  - `opera.title` without the composer;
+  - add `opera.id` and `recording.id`;
+  - stop repeating `verses` in every segment (most of the 3.7 MB);
+  - a recording with no disc tags shouldn't be published as disc 1.
+- [ ] **With P4: name each file's clock.** `start`/`end` mean score seconds in `score/` and
+  `clean/`, piece seconds in `timed/` and track seconds in the interchange
+  (new-opera-model.md A.1, "Time bases"). Record the clock in each stage's state record, or
+  rename the fields.
+- [ ] **Reminder, with format 1.2: nothing reads `score_start`/`score_end`.** No roon-rd code
+  uses them (checked 2026-11-18), and route C segments lack them. Decide whether the
+  interchange keeps them (e.g. for a score-following view) or drops them.
+- [ ] **Reminder, with P4: no file records what produced it.** Only the interchange carries
+  a version; no stage output records its inputs or the tool version. P4's state records
+  are the fix; check they cover every format in new-opera-model.md A.2-A.11.
 - [ ] **D7: gloss in the tool.** Discuss moving the verse list, phrase split and gloss from
   the session into the tool (Claude API).
 - [ ] **D21 / D24: before any re-time of all pieces.** A full re-time would cut Solti's No. 9
