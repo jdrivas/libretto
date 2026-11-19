@@ -10,6 +10,9 @@ becomes a decision only when the user agrees, and then it goes in `decisions.md`
 **checked** was confirmed against code or files for this document. Everything marked
 **inferred** was not.
 
+**File formats.** [Appendix A](#appendix-a) describes every file this document refers to,
+with its fields, time bases and quirks. The links below go to its entries.
+
 **One correction to the handoff.** roon-rd's library code is `src/server/library.rs`, not
 `src/libretto/library.rs`. The line numbers the handoff gives are right for that file.
 
@@ -67,16 +70,16 @@ becomes a decision only when the user agrees, and then it goes in `decisions.md`
 | # | Step | Unit | Mode | Output (under `libretto-work/<opera>/` unless noted) |
 |---|---|---|---|---|
 | 0 | Write `opera.toml` | opera | M | `operas/<opera>/opera.toml` |
-| 1 | `decode` | whole score, about 12 s | A, review the manifest (S) | `decode/pieces/*.score.json` (licensed), `manifest.md` |
-| 2 | `add-recording` | recording | A | `recordings/<rec>/recording.json` (tracks, act per track) |
-| 3 | `separate` | recording, about 30 min each | A | mono mix and Demucs stems per track |
-| 4 | `score` | piece | A | `score/<piece>.json`: lines, singers, notes, bars |
-| 5 | `place` | act × recording | A, review the flags (S) | `placement/<rec>.json` |
+| 1 | `decode` | whole score, about 12 s | A, review the manifest (S) | [`decode/pieces/*.score.json`](#fmt-decode-pieces) (licensed), [`manifest.md`](#fmt-manifest) |
+| 2 | `add-recording` | recording | A | [`recordings/<rec>/recording.json`](#fmt-recording) (tracks, act per track) |
+| 3 | `separate` | recording, about 30 min each | A | [mono mix and Demucs stems](#fmt-audio) per track |
+| 4 | `score` | piece | A | [`score/<piece>.json`](#fmt-score): lines, singers, notes, bars |
+| 5 | `place` | act × recording | A, review the flags (S) | [`placement/<rec>.json`](#fmt-placement) |
 | 6 | `text` (draft) | piece | A | decoded text by speaker, to stdout |
-| 7 | Write the text file | piece | **M** (Claude in session: verses, phrases, gloss) | `operas/<opera>/text/<piece>.json` (in git) |
-| 8 | `clean` | piece | A, read the report (S) | `clean/<piece>.json` |
-| 9 | `time` | piece × recording | A, review the checks (S) | `timed/<rec>/<piece>.json`: route B (numbers, D20) or route C (secco, D2) |
-| 10 | `publish` | recording | A | `interchange/<rec>.interchange.json` |
+| 7 | Write the text file | piece | **M** (Claude in session: verses, phrases, gloss) | [`operas/<opera>/text/<piece>.json`](#fmt-text) (in git) |
+| 8 | `clean` | piece | A, read the report (S) | [`clean/<piece>.json`](#fmt-clean) |
+| 9 | `time` | piece × recording | A, review the checks (S) | [`timed/<rec>/<piece>.json`](#fmt-timed): route B (numbers, D20) or route C (secco, D2) |
+| 10 | `publish` | recording | A | [`interchange/<rec>.interchange.json`](#fmt-interchange) |
 | 11 | Every-line check | recording | **M**: a headless-Chrome harness in session scratch space, **not committed** | results in STATUS.md only |
 | 12 | Listening | act (D17) | **M**: the user, in roon-rd | verdicts in STATUS.md |
 
@@ -87,7 +90,8 @@ recordings only.
 ### 1.3 Where roon-rd consumes the output
 
 - **Loading.** roon-rd is started with
-  `--libretto-dir <work_root>/figaro/interchange`. It loads every `*.interchange.json` under
+  `--libretto-dir <work_root>/figaro/interchange`. It loads every
+  [`*.interchange.json`](#fmt-interchange) under
   that directory, recursively, and indexes each file by its album title and aliases
   (`library.rs:137-235`). Each file's id is its file name, so two files with the same name
   would collide. **Checked:** the committed `config.toml` still points at a February file.
@@ -97,7 +101,7 @@ recordings only.
   2. the one track that fits the length, in a file whose album matches exactly;
   3. title fragments, where a track that fits the length beats a better-scoring title;
   4. the closest length.
-- **Delivery and display.** The server sends `libretto_update` per zone. `libretto.js` does
+- **Delivery and display.** The server sends [`libretto_update`](#fmt-roon) per zone. `libretto.js` does
   the smoothing, the 0.7 s lead and the ensemble cards. Libretto mode runs on the touch
   display.
 
@@ -224,11 +228,12 @@ libretto-work/                               not in git; licensed and bulky
 ```
 
 The changes from today:
-- **Recordings get their own files.** Adding a recording then never edits `opera.toml`.
+- **Recordings get [their own files](#fmt-proposed).** Adding a recording then never edits
+  `opera.toml`.
 - **Profiles** take the tables now in the code (section 2.3).
-- **`state/` and `accepted/`** replace "kept as built" living only in STATUS.md and
-  decisions.md.
-- **One `published/` directory**, with the opera in each file's name. roon-rd then reads
+- **[`state/` and `accepted/`](#fmt-proposed)** replace "kept as built" living only in
+  STATUS.md and decisions.md.
+- **[One `published/` directory](#fmt-proposed)**, with the opera in each file's name. roon-rd then reads
   every opera from one path, and two operas can't produce the same file id. Today's
   `figaro/interchange/` path would hold only Figaro.
 
@@ -279,7 +284,7 @@ kind = "chorus"                      # (new) solo (default) | chorus | tutti: re
 labels = ["coro"]
 ```
 
-A recording file, `recordings/georg-solti-1974.toml`, would hold what `[[recording]]` holds
+A recording file, [`recordings/georg-solti-1974.toml`](#fmt-proposed), would hold what `[[recording]]` holds
 today: `album_title`, `album_title_aliases`, `artist`, `sources`, `match`, `year`, `label`,
 `store`. The year is to be checked.
 
@@ -296,11 +301,11 @@ opera.
 | 2 | Write the cast and form in `opera.toml`, from the score's cast list | Claude | — | 15 min |
 | 3 | `decode` the whole score | A | **G1 decode:** every contents entry found, bar counts right, no unknown labels, tempo words or act words. Claude reviews `manifest.md` | 30 min |
 | 4 | Write `recordings/<rec>.toml`; `add-recording` | Claude, A | **G2 inventory:** files found; every act in the score has tracks; act durations plausible; titles parsed. Otherwise stop | 15 min |
-| 5 | Publish an **empty** interchange (every track, no lines). The user plays the first track of each disc and a few others. roon-rd lists, for each, Roon's album, title and length against the matched file, track and method | user, 10 min | **G3 matching:** every played track matches the right file and track by an expected method. Add aliases now | 20 min |
+| 5 | Publish an **empty** [interchange](#fmt-interchange) (every track, no lines). The user plays the first track of each disc and a few others. roon-rd lists, for each, Roon's album, title and length against the matched file, track and method | user, 10 min | **G3 matching:** every played track matches the right file and track by an expected method. Add aliases now | 20 min |
 | 6 | `separate` (overnight if need be) and `place`, whole opera | A | **G4 placement:** flags (low fit, tempo ratio, titles disagree, squeezed or missing pieces) explained or fixed | 30 min |
 | 7 | **Pilot:** texts, then build the regression set (an ensemble, a chorus, a secco, an aria, a finale) | Claude | **G5 pilot listening:** the user listens to the five passages in both recordings (as P8 did); accepted pieces are recorded | user 30–45 min |
 | 8 | **Act loop:** texts for the act; `clean` (stop unless letter match is 1.0, or each gap is listed as a D16 move); `build --act N`; the committed every-line test | Claude, A | — | about a day per Figaro-sized act |
-| 9 | `report`: checks per piece, flags, and a spot-check list (the weakest pieces, D16 moves, a few numbers, each with disc, track and time) | A | **G6 act spot check (D17):** the user listens to the list; problems become generic fixes plus `regress` | user 20–40 min per act |
+| 9 | [`report`](#fmt-proposed): checks per piece, flags, and a spot-check list (the weakest pieces, D16 moves, a few numbers, each with disc, track and time) | A | **G6 act spot check (D17):** the user listens to the list; problems become generic fixes plus `regress` | user 20–40 min per act |
 | 10 | Close the opera | user, Claude | **G7 done:** see below | — |
 
 **Why G3 comes before any timing.** Half of Act I's rework was matching, found by
@@ -397,7 +402,7 @@ Walking the checklist:
 | G2 | **`match = "Così fan tutte"` selects no files.** The file names store "ì" decomposed (NFD); a TOML string is composed (NFC), and `in` compares them byte for byte (**checked**) | High: a confusing "0 tracks" | Normalise both to NFC; stop on zero files |
 | G2 | **Every track lands in act 0.** The title tags say "Così fan tutte / Act 1 …", and `act_of` reads only Roman `Act I–IV`, so each track inherits the overture's act 0 (**checked** against the tags). Placement per act then has no tracks for Acts I and II | High | Read Arabic numerals and profile words; stop if a score act has no tracks |
 | G3 | **Two operas share an album name.** Roon's "Solti: The Operas - Mozart" would be an alias of both Solti files. Where Roon's title doesn't equal the file's tag (true for this box), each file offers its track that fits the length. If a Figaro track fits too, the closest length wins, which is close to a coin toss. Rough estimate: about a 2% chance per track of a Figaro track within the same second, so a wrong-opera match or two in a 43-track opera is plausible (inferred) | Medium-high, user-visible | G3 catches it. Fix: among files that fit equally, prefer the one whose opera title appears in Roon's track title (Roon's titles include the opera name). Passing a disc number would be better, if Roon has one anywhere |
-| G3 | roon-rd is launched on `figaro/interchange`, so Così's file wouldn't load. File ids are bare recording ids, so `georg-solti-…` could collide | Low, but certain | The `published/` directory and `<opera>--<rec>` names |
+| G3 | roon-rd is launched on `figaro/interchange`, so Così's file wouldn't load. File ids are bare recording ids, so `georg-solti-…` could collide | Low, but certain | The [`published/` directory](#fmt-proposed) and `<opera>--<rec>` names |
 | G4 | **Acts twice as long.** Figaro's longest act was 46 min; Così's are 87 and 92. Placement's full DTW at 2 Hz grows about 4× (about 11k × 11k: roughly 1 GB per matrix, perhaps 2–3 GB in all, against about 0.5 GB for Figaro, inferred from `librosa.sequence.dtw`). One wrong local match also has more to throw off (D8's weakness) | Medium | Measure at G4; G4's flags. Splitting an act at a secure point is the fallback |
 | G4 | Cut seccos are never flagged; placement forces every piece in. Solti looks complete, so it is not expected to bite here | Low for Solti | Flag pieces squeezed below a minimum pace (also needed for Don Giovanni) |
 | G5–G6 | **`MALE` is Figaro's men.** Guglielmo, Ferrando and Don Alfonso would count as women in route C's check | Medium, silent | Cast `voice` |
@@ -464,10 +469,10 @@ roon-rd changes need the user's approval. Nothing here is started.
 | P1 | **Recording inventory:** compare `match` in NFC; read `Act 1`/`Act I`/`Atto …` and profile words; stop on zero files, or on a score act with no tracks; recordings in their own files | libretto | S | Così fails here first (4.1) |
 | P2 | **Cast and profiles:** `voice`, `short`, `kind` on the cast; `profiles/language/it.toml` (tempo words, act words, directions, choir parts, letters) and `profiles/publisher/baerenreiter.toml` (fonts, sizes, footer, ratios); remove `MALE`, `ABBR`, `CHOIR_PARTS` and the inline tables. Figaro must decode and build identically | libretto | M | Removes the silent Figaro and Italian assumptions |
 | P3 | **Stops:** unknown tempo word, label, act word or font; `clean` below letter match 1.0 without a listed reason; more than 8 seccos | libretto | S | The tool stops instead of guessing |
-| P4 | **State, accept, safe build:** a record per output (input hashes, tool version); `build` redoes only stale outputs and doesn't re-place unless placement's inputs changed; `accept <opera> <rec> [pieces]` records accepted results; a rebuild that would change an accepted piece reports it, and keeps the accepted one unless told otherwise. Record Figaro's current outputs as accepted, including D21's four and No. 24 | libretto | L | Protects Figaro before any cross-opera fix; replaces kept-as-built by memory |
+| P4 | **State, accept, safe build:** [a record per output](#fmt-proposed) (input hashes, tool version); `build` redoes only stale outputs and doesn't re-place unless placement's inputs changed; `accept <opera> <rec> [pieces]` records accepted results; a rebuild that would change an accepted piece reports it, and keeps the accepted one unless told otherwise. Record Figaro's current outputs as accepted, including D21's four and No. 24 | libretto | L | Protects Figaro before any cross-opera fix; replaces kept-as-built by memory |
 | P5 | **`regress` and the committed every-line test:** rebuild each opera's `[regression]` pieces for every recording and compare with the accepted results; a pytest that every timed line is published exactly once; port the viewer card check from session scratch into roon-rd (a headless test of `libretto.js` card grouping) | both | M | The user's most-valued check, which today exists in neither repo |
-| P6 | **`new` and `report`:** scaffold from a template; the font check; `report <opera> <rec>` writes checks, flags and the spot-check list with disc, track and time; `status` shows stale, accepted and stopped items | libretto | M | G0, G6 |
-| P7 | **roon-rd matching for many operas:** a "what did I match" view or log (Roon album, title, length → file, track, method) for G3; among equally fitting files, prefer the one whose opera title is in Roon's track title; read `published/`; fix the stale `config.toml` path | roon-rd | M | G3; the shared Solti box album |
+| P6 | **`new` and `report`:** scaffold from a template; the font check; [`report <opera> <rec>`](#fmt-proposed) writes checks, flags and the spot-check list with disc, track and time; `status` shows stale, accepted and stopped items | libretto | M | G0, G6 |
+| P7 | **roon-rd matching for many operas:** a "what did I match" view or log (Roon album, title, length → file, track, method) for G3; among equally fitting files, prefer the one whose opera title is in Roon's track title; read [`published/`](#fmt-proposed); fix the stale `config.toml` path | roon-rd | M | G3; the shared Solti box album |
 | P8 | **Placement at Così's scale:** measure memory and time on Così's Act II; banded DTW only if needed | libretto | S to measure, M if needed | Acts twice as long |
 
 **P1–P4 are the minimum** (about 2 days of the 6–8 for P1–P8). P5–P7 are what make a new
@@ -514,3 +519,388 @@ These are for the user. Each becomes a D-entry once agreed.
    measures only the per-opera cost.
 6. **The interchange layout change** (`published/`, `<opera>--<rec>`): it needs a roon-rd
    change and a new launch path.
+
+<a id="appendix-a"></a>
+## Appendix A. Output formats
+
+*Added 2026-11-18.* This covers every file format the document refers to:
+- the pipeline's outputs (A.2–A.11);
+- the session-written text files (A.6);
+- what roon-rd sends to the viewer (A.12);
+- the formats section 3 proposes (A.14).
+
+The shapes were read from Figaro's real files (Solti, with No. 16 and rec19a as examples)
+and from the code, at the commits named at the top. Only keys, types and counts were
+inspected, never the licensed content. "N×" means a list of N items. Field descriptions
+come from the code unless marked otherwise.
+
+### A.1 Overview
+
+| # | File | Written by | Read by | Licence | Figaro size |
+|---|---|---|---|---|---|
+| [A.2](#fmt-decode-pieces) | `decode/pieces/<piece>.score.json` | `decode` | `score` | **licensed: full decode** | 21 MB, 72 files |
+| [A.3](#fmt-manifest) | `decode/contents.json`, `manifest.json`, `manifest.md` | `decode` | `status`, piece lists, review | excerpts only | small |
+| [A.4](#fmt-recording) | `recordings/<rec>/recording.json` | `add-recording` | everything per recording | shareable | small |
+| [A.5](#fmt-audio) | `recordings/<rec>/mix/*.flac`, `stems/<track>/*.flac` | `separate` | `place`, `time` | derived from the audio library: private | 2.7 GB |
+| [A.6](#fmt-text) | `operas/<opera>/text/<piece>.json` (git) | Claude, in session | `clean`, `time` (route C) | shareable | 64 files |
+| [A.7](#fmt-score) | `score/<piece>.json` | `score` | `clean`, `place`, `time` | **treat as licensed** (see A.7) | 14 MB |
+| [A.8](#fmt-placement) | `placement/<rec>.json` | `place` | `time` | shareable | 56 KB |
+| [A.9](#fmt-clean) | `clean/<piece>.json` | `clean` | `time` | shareable | 3.8 MB |
+| [A.10](#fmt-timed) | `timed/<rec>/<piece>.json` | `time` | `publish` | shareable | 7.1 MB |
+| [A.11](#fmt-interchange) | `interchange/<rec>.interchange.json` | `publish` | roon-rd | shareable | 3.7 MB each |
+| [A.12](#fmt-roon) | `libretto_update` message, `LibrettoContent` | roon-rd server | `libretto.js`, `libretto-mode.js` | — | — |
+| [A.13](#fmt-logs) | stage logs (`build-act1.log`, `retime-*.log`, …) | every stage | people | shareable | small |
+| [A.14](#fmt-proposed) | `recordings/<rec>.toml`, `state/`, `accepted/`, `report/`, `published/` | proposed | — | — | — |
+
+The paths in A.2–A.11 are under `libretto-work/<opera>/` unless shown otherwise.
+
+**Time bases.** Five clocks appear across these files, and the same field name changes
+meaning between stages:
+
+| Clock | Meaning | Fields |
+|---|---|---|
+| bars | bar number + fraction of the bar, as printed | decode `t0`/`t1`; `bar_start`/`bar_end`; `sylls[].bar` |
+| score seconds | seconds at the nominal tempo from the tempo words (D21's "printed tempo") | `score_start`/`score_end`; `start`/`end` in `score/` and `clean/`; `notes[].start` |
+| act seconds | seconds on the act's tracks joined in order | placement `start`/`end`; placement `acts[].offsets` |
+| piece seconds | seconds on the tracks a piece spans, joined in order | `start`/`end` in `timed/`; `timed.offsets` |
+| track seconds | seconds from the start of one track | `start`/`end` in the interchange |
+
+**Checked:** No. 16's first line has `start` = 0.658 in `score/` and `clean/` (score
+seconds), 161.18 in `timed/` (piece seconds), and its interchange copy is relative to its
+track.
+
+<a id="fmt-decode-pieces"></a>
+### A.2 `decode/pieces/<piece>.score.json`: the decoded score
+
+One file per piece, written by `decode/vector.py` via `pieces.py`. **Licensed:** this is
+the score's full music and text. Never share or commit it.
+
+```
+{ id, edition, systems: int, pickup: bool,          // pickup: an upbeat numbered bar 0
+  bars:      939× { bar, page, system, timesig: [beats, unit], tempo: str },
+  notes:   18968× { staff, label, x, t0, t1, pitch: midi, kind: "black"|"half"|"whole" },
+  syllables: 8813× { staff, label, text, t0, t1, x, sys: [page, system], n_staves, clef, choir: bool },
+  cues:      141× { staff, label, name, t0, t1, sys, n_staves, clef, choir },
+  problems:  [str] }
+```
+
+- `t0`/`t1` are in bars.
+- `kind` is the notehead shape, so the rhythm is approximate: it comes from engraved
+  spacing.
+- `label` is the staff's printed label.
+- A cue's `name` is a speaker cue above a shared staff; its `t0` equals its `t1`.
+- `choir` marks a staff smaller than 0.92 of its system's largest (D19).
+- `clef` is one of `treble`, `treble8`, `bass`.
+- The piano's notes are included: they are what route B aligns.
+
+<a id="fmt-manifest"></a>
+### A.3 `decode/contents.json`, `manifest.json`, `manifest.md`
+
+- **`contents.json`**: the score's table of contents, 95 entries of
+  `{act, scene, kind, appendix, number, title, page}`.
+- **`manifest.json`**: what the decode found.
+
+```
+{ opera, title, edition, score_pdf,
+  checks: { pieces, with_problems, contents_entries, contents_not_found: [],
+            pieces_not_in_contents: [], duplicate_ids: [] },
+  pieces: 72× { id, kind, title, act, scene, appendix,
+                pages: [first, last], pdf_pages: [first, last], start_system,
+                bars: [first, last], bar_count, pickup, metre: [beats, unit], tempo, tempo_changes,
+                systems, characters: [CAST NAME], syllables_by_staff: {CAST NAME: count},
+                notes, syllables, first_words, sections: [{system, bar, mark, page}], problems } }
+```
+
+- `kind` is one of `sinfonia`, `number`, `secco`, `accompanied`, `aria`, `part`.
+- `manifest.md` is the same as a table, for review at G1.
+- `first_words` is a short excerpt.
+- `stages.main_pieces` reads this file: every non-appendix piece.
+
+<a id="fmt-recording"></a>
+### A.4 `recordings/<rec>/recording.json`: the recording's inventory
+
+```
+{ id, album_title, album_title_aliases: [str], artist, conductor, orchestra, year, label, store,
+  tracks: 32× { id: "d09t01", disc, track, title, act: int, duration_s, file, sample_rate, bits },
+  total_s, acts: { "<act>": seconds } }
+```
+
+- The metadata is copied from `opera.toml`'s `[[recording]]`.
+- `act` comes from the title (`act_of`). A title with no act inherits the previous one
+  (section 4.1's Così failure).
+- `file` is the absolute path into the read-only audio library.
+- **Track ids:** `d09t01` here, but `d9t1` in the interchange (A.11).
+
+<a id="fmt-audio"></a>
+### A.5 Audio: `mix/<track>.flac`, `stems/<track>/{vocals,no_vocals}.flac`
+
+- `mix`: mono, 22.05 kHz, 16-bit FLAC. This is what the alignment listens to.
+- `stems`: Demucs htdemucs two-stem output, converted to FLAC.
+- `separate` resumes by checking that `no_vocals.flac` exists, so a half-written stem
+  would be skipped.
+- Nothing records which Demucs model or version made a stem.
+- These files are the bulk of `libretto-work`: 2.7 GB for Figaro.
+
+<a id="fmt-text"></a>
+### A.6 `operas/<opera>/text/<piece>.json`: the session-written text
+
+The one hand-made format, in git. There are two forms:
+
+```
+// numbers and orchestral recitatives (route B): each character's verses, each written once
+{ piece, written: date, source: str,
+  characters: { CAST NAME: [ verse: [ [it, en] phrase, … ], … ] } }
+
+// secco recitatives (route C): speeches in sung order, repeats written out
+{ piece, written, source,
+  speeches: [ { characters: [CAST NAME], phrases: [ [it, en], … ] } ] }
+```
+
+- `en` is the literal word-order gloss.
+- `source` records provenance and any D16 speaker moves.
+- Character names must equal the cast names, but nothing checks that until `clean`.
+- For a route C file, `stages.text_of` derives `characters` from `speeches` (one verse per
+  speech).
+- There is no schema version, and nothing validates the file before `clean` runs. P3's
+  `clean` gate would be the first check on it.
+
+<a id="fmt-score"></a>
+### A.7 `score/<piece>.json`: lines and notes in score time
+
+```
+{ lines: 851× { start, end, score_start, score_end, bar_start, bar_end,
+                character: CAST NAME, voice: int, text,
+                sylls: [ { text, start, end, score_start, score_end, bar } ] },
+  notes: 18968× { start, duration, pitch, velocity, instrument: CAST NAME | "piano"… },
+  sections: [ { bar, score_s, timesig, tempo, bar_s } ],   // a tempo or metre change
+  score_end_s, bars: 939× [bar, score_s, bar_s], unattributed: int }
+```
+
+- **Time:** `start` equals `score_start` here (score seconds).
+- **`voice`** is the character's cast-order index (the viewer uses it for colour and order).
+- **`notes`** are in the shape of a MIDI note list (velocity is a constant 80). That is the
+  shape synctoolbox expects. `instrument` carries the singer's name.
+- **`unattributed`** counts syllables with no singer (D19).
+- **Licence:** the lines carry every sung syllable and the notes carry every pitch, so this
+  file holds as much of the score as A.2. The licence rule names only
+  `decode/pieces/*.score.json`. **Proposed:** treat `score/` as licensed too.
+
+<a id="fmt-placement"></a>
+### A.8 `placement/<rec>.json`: where each piece is in the recording
+
+```
+{ recording, rate_hz: int,                       // the DTW frame rate
+  acts: 5× { act, tracks: [track id], offsets: [act seconds], duration, tuning_cents,
+             chroma_shift, fit },
+  pieces: 65× { id, kind, act, start, end,          // act seconds
+                fit, nominal_s, tempo_ratio,
+                tracks: [track id], track_start: [track id, s], track_end: [track id, s],
+                titles: null | …, flags: [str],     // flags only on numbers
+                region: [start, end], region_tracks: [track id] } }   // secco only
+```
+
+- `tempo_ratio` is the placed span over `nominal_s`.
+- Flags seen: `titles disagree` (once, Solti's No. 9); `low fit` and `tempo ratio` are also
+  possible.
+- A secco gets a `region`: the gap between its neighbouring numbers, which route C times
+  as a group.
+- `flags` is missing on seccos rather than empty, so cut seccos can never be flagged
+  (section 4.1).
+
+<a id="fmt-clean"></a>
+### A.9 `clean/<piece>.json`: text matched to the decode
+
+```
+{ piece,
+  lines: 823× { start, end, score_start, score_end, bar_start, bar_end, character, voice,
+                text, ocr, translation,
+                gloss: [ { v: "CHAR:verse", c: phrase index, it, en,
+                           start, end, score_start, score_end } ],
+                verses: { "CHAR:verse": [ [it, en], … ] } },
+  report: { CAST NAME: { lines, cleaned, letter_match, verses, verses_not_found: [] } } }
+```
+
+- **Time:** score seconds, as in A.7.
+- **`text`** is the session's spelling. **`ocr`** is the decoded text it replaced (the name
+  is left over from the OMR days).
+- **`gloss`** splits a line into phrases. A phrase is named by its verse (`v`) and its
+  phrase index within the verse (`c`).
+- **`verses`** carries the whole verse each line belongs to, so the viewer can show an
+  ensemble stanza.
+- **`report`** is what G1 and P3 would gate on. Today it is only logged.
+
+<a id="fmt-timed"></a>
+### A.10 `timed/<rec>/<piece>.json`: lines in recording time
+
+The route B form (numbers, orchestral recitatives):
+
+```
+{ piece, recording, tracks: [track id], offsets: [piece seconds],
+  lines: [ clean's line, with start/end/gloss times now in piece seconds ],
+  checks: { route: "B", singing_agreement, entries_predicted, entries_matched,
+            median_abs_offset_s, within_1s, phrases, phrases_mostly_silent,
+            tuning_cents, excerpt: [s, s], placed: [s, s], section_tempo_factors: [..],
+            trimmed_starts, trimmed_ends } }
+```
+
+The route C form (secco):
+
+```
+{ piece, recording, tracks, offsets,
+  lines: [ { start, end, character, voice, text, translation, gloss: [ {v, c, it, en, start, end} ],
+             verses: { "CHAR:rec19a.0": … }, source: "recit-forced-align",
+             bar_start?, bar_end? } ],
+  checks: { route: "C", region: [s, s], words, words_mostly_silent, median_word_heard,
+            men_speeches_low: str } }
+```
+
+The two routes differ in four ways:
+- **No score times in route C.** Its lines have no `score_start`/`score_end`, and its gloss
+  phrases have none either.
+- **Bars only where found.** A route C line gets `bar_start`/`bar_end` only when its words
+  are matched back to the decode, so a D16-moved speech has none.
+- **Two verse-id schemes.** Route B uses `"CHAR:3"`; route C uses `"CHAR:<piece>.<n>"`.
+- **Different checks.** Route C's `men_speeches_low` depends on the hard-coded `MALE`
+  set (section 2.3).
+
+`checks` is where every per-piece figure in STATUS.md comes from. Nothing records what
+produced the file (placement, text and code versions), which is what P4 adds.
+
+<a id="fmt-interchange"></a>
+### A.11 `interchange/<rec>.interchange.json`: what roon-rd loads
+
+Version `1.1-score` (D5).
+
+```
+{ version: "1.1-score",
+  opera: { title, composer, language, translation_language, year },
+  edition,
+  recording: { album_title, album_title_aliases, artist, conductor, orchestra, year, label },
+  tracks: 32× { track_id: "d9t1", title, disc_number, track_number,
+                duration_seconds,                  // ms precision (D11)
+                act: "1",                          // a string here
+                segments: [ { start, end,          // track seconds
+                              score_start?, score_end?, bar_start?, bar_end?,
+                              character, voice, text, translation,
+                              gloss: [ {v, c, it, en, start, end, score_start?, score_end?} ],
+                              verses: { "CHAR:…": [ [it, en], … ] },
+                              piece, source? } ] } }
+```
+
+**How `publish` builds it (checked):**
+- Each line goes to the track its start falls in. Its times become track-relative, and its
+  end is clamped to the track's end.
+- `ocr` and `sylls` are dropped.
+- `piece` is added.
+- Segments are sorted by start, then voice.
+- Every track of the recording is listed, with empty `segments` where nothing is timed.
+  That makes G3's empty interchange already possible.
+
+**Figaro, Solti: 3,327 segments in three shapes:**
+- **2,450 route B segments,** which have every field;
+- **853 route C segments,** with `source` and no score times;
+- **24 segments with no bars:** the D16-moved speeches.
+
+**Quirks worth fixing with the next format version:**
+
+| Quirk | Effect |
+|---|---|
+| `opera.title` is composer + title concatenated ("Wolfgang Amadeus Mozart Le nozze di Figaro") | The display has to undo it |
+| `translation_language` is hard-coded `"en"` | Ignores `opera.toml` |
+| `act` is a string here and an integer everywhere else | Inconsistent types |
+| `track_id` `d9t1` differs from the pipeline's `d09t01` | Two id schemes for one track |
+| A recording with no disc tags gets disc 1 | Cannot be told from a real disc 1 |
+| Nothing names the opera or the recording id | roon-rd's file id is the file name (A.14's `published/`) |
+| `verses` is repeated in every segment (3,310 carry one verse, 17 carry two) | Most of the 3.7 MB |
+
+**What the viewer reads (checked):**
+- `libretto.js` uses `start`, `end`, `character`, `voice`, `text`, `translation`, `gloss`
+  and `verses`.
+- `libretto-mode.js` shows `piece` and `bar_start`.
+- Nothing in roon-rd reads `score_start` or `score_end`.
+
+<a id="fmt-roon"></a>
+### A.12 roon-rd to the browser: `libretto_update` and `LibrettoContent`
+
+Sent over the websocket per zone, only when the matched file and track change
+(`server/mod.rs`, `send_libretto_updates`):
+
+```
+{ type: "libretto_update", zone_id, content: null | LibrettoContent }
+
+LibrettoContent = { file_id, track_index, match_method, track_title, track_id, act,
+                    album, artist, opera_title,
+                    segments: [ interchange segment, passed through unchanged ] }
+```
+
+- `match_method` names the rule that matched the track (album and title, album and length,
+  and so on: D11). Logged against Roon's album, title and length, it is the raw material of
+  G3's matching report (P7).
+- `/libretto`, `/librettos` and `/libretto/:file_id` serve the same data over HTTP for the
+  older full-page viewer.
+
+<a id="fmt-logs"></a>
+### A.13 Logs
+
+Every stage writes the user's standard log line:
+`YYYY-MM-DD HH:MM:SS.mmm <level>   message`, with the `--version` line first.
+- The per-piece check figures go to the log at `info` (`stages._write_timed`).
+- The build logs in `libretto-work/<opera>/` are copies of that output, kept by hand.
+- They are the only record of when a stage ran, which is why section 3.6 proposes a cost
+  log.
+
+<a id="fmt-proposed"></a>
+### A.14 Proposed formats (section 3; not built)
+
+Sketches for discussion. Each becomes real only with its change in section 5.
+
+**`operas/<opera>/recordings/<rec>.toml`** (P1). The current `[[recording]]` table, one
+file per recording:
+
+```toml
+id = "georg-solti-1974"
+album_title = "…"                         # what the files' tags say
+album_title_aliases = ["Solti: The Operas - Mozart"]   # what Roon shows (G3)
+artist = "…"; conductor = "…"; orchestra = "…"; year = 1974; label = "Decca"; store = "Qobuz"
+sources = ["~/Dropbox/Audio/…/CD 01", "…/CD 02", "…/CD 03"]
+match = "Così fan tutte"                   # compared in NFC (P1)
+```
+
+**`state/<stage>/<unit>.json`** (P4). One per output, written beside it:
+
+```
+{ stage: "time", unit: "georg-solti-1981/no16", output: "timed/georg-solti-1981/no16.json",
+  output_sha: "…", tool_version: "libretto-pipeline 0.1.0 … (ab12cd3)", finished: "2026-…",
+  inputs: { "placement/georg-solti-1981.json#no16": "sha…", "clean/no16.json": "sha…",
+            "opera.toml#timing": "sha…" } }
+```
+
+An output is stale when any input's hash differs, or when the code it depends on has a
+different version. `status` lists stale outputs; `build` redoes only those.
+
+**`accepted/<rec>.json`** (P4). The user's verdicts, as data:
+
+```
+{ recording: "georg-solti-1981",
+  pieces: { "no09": { output_sha: "…", checks: { …A.10's checks… }, accepted: "2026-11-16",
+                      by: "spot check, Act III", note: "kept as built (D21)" } } }
+```
+
+A rebuild that would change an accepted piece's output reports the change and keeps the
+accepted file unless told otherwise. `regress` compares new checks with these.
+
+**`report/<rec>.md`** (P6). Generated, never edited:
+- the per-piece check table (A.10's `checks`), with the weak pieces against agreed bands;
+- the placement flags (A.8);
+- the D16 moves, from the text files' `source`;
+- the **spot-check list**, each item with its disc, track and time (the D17 practice, made
+  a product).
+
+**`libretto-work/published/<opera>--<rec>.interchange.json`** (P7). A.11 unchanged, in one
+directory for every opera. The file name makes roon-rd's file id unique. With the next
+format version:
+- add an `opera.id` and a `recording.id`;
+- separate `opera.title` from the composer.
+
+Then roon-rd can say which opera it matched, and break ties between files by opera (the
+shared Solti box, section 4.1).
