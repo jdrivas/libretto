@@ -9,7 +9,9 @@ phase is in `sextet-experiment-plan.md`.*
 ## What exists today
 
 Code: `libretto-scratch/sextet-experiment/` (Python, `uv`), about 3,500 lines in 18 scripts.
-Bulk data: `~/Development/libretto-work/`. Viewer: roon-rd `/libretto-view`, which reads the
+Bulk data: `libretto-work/`, the `work_root` in `pipeline/config.toml`; since 2026-11-18
+(D27) that is `/Volumes/JDR Desktop Attached/Google Drive/Projects/roon-rd/Libretto/libretto-work`
+(it was `~/Development/libretto-work` during the experiment). Viewer: roon-rd `/libretto-view`, which reads the
 interchange files in `sextet-experiment/out/librettos/`.
 
 | Number | Kind | Score used | Timing method | Solti 1981 | Currentzis 2014 |
