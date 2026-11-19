@@ -57,6 +57,10 @@ viewer. Start a session here and say which opera; read `docs/todo.md` (what's ne
   happens on a working branch (`cosi`, `figaro-fixes`, …) off `main`, merged back with a
   fast-forward when the work is accepted. Commits on any working branch are pre-authorised;
   merging into `main` and pushing still need the user's word.
+- **Tags mark major work sections (D29).** An annotated tag at the start and the end of each
+  (`pipeline-start` … `figaro-built`; next, `cosi-start` when the `cosi` branch is made), with
+  a one-line message saying what the section is, pushed to GitHub along with the work.
+  `git log <start>..<end>` is then the section's history.
 
 ## Running
 

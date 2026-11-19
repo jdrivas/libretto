@@ -266,3 +266,12 @@ base, with its own start and end; and `pipeline` is also a directory name, which
 commands ambiguous. *Alternatives:* carry on with Così on `pipeline` (mixes two operas'
 history); wait for the D17 fixes before merging (holds up the merge for an open-ended
 listening). The user agreed (2026-11-18).
+
+### D29. Annotated tags mark the start and end of each major work section (2026-11-18)
+Each major section of work gets an annotated tag where it starts and where it ends, with a
+one-line message, pushed to GitHub. The first pair: `pipeline-start` (ea80742, the last
+February commit, where the Figaro pipeline work grew from) and `figaro-built` (the D28
+merge). Next: `cosi-start` when the `cosi` branch is made. *Why:* the user asked for it, for
+retrospectives. A fast-forwarded branch marks nothing once `main` moves on, but tags keep
+both ends, so `git log <start>..<end>` and `git diff` show a section whole. *Alternatives:*
+keep each finished branch (it marks only the end, and only until it's deleted).
