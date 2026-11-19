@@ -204,6 +204,43 @@ the main thing that would have made a second opera expensive.
 
 ### 3.2 Folder layout
 
+**Why the work is split across directories (D6, 2026-11-11).** The rule: what is authored
+goes in git, and what is generated goes outside it.
+
+- **`libretto/`** (`~/Dropbox/Development/rust/libretto`) is the git repo. It holds
+  everything authored and small: the code, each opera's config, the session-written texts,
+  STATUS.md and the docs. These need history, and some can't be recreated: the texts are
+  hand work.
+- **`libretto-work/`** (`~/Dropbox/Development/libretto-work`, one level above `rust/`) is
+  not in git and is excluded from Dropbox sync. It holds everything the pipeline generates:
+  decodes, stems, placements, timings and interchange files. Figaro's folder is 2.8 GB.
+  It's outside the repo for three reasons:
+  1. **Licensing.** The decodes are the score in machine-readable form. Kept outside the
+     repo, a careless `git add` or push can't publish them.
+  2. **Size.** The stems alone are 2.2 GB, too big for git, and not worth syncing through
+     Dropbox.
+  3. **It can be rebuilt** from the score, the audio and the repo, so losing it costs
+     machine time, not work.
+
+  The pipeline finds it through `work_root` in `pipeline/config.toml`. It is given as the
+  real path, because `~/Development` is a symlink into Dropbox and the sandbox matches only
+  real paths.
+- **`libretto-scratch/`** holds the experiment-era code and the licensed score PDFs
+  (`Barenreiter/`). `opera.toml` points at the PDF there.
+
+**The weak spot: "it can be rebuilt" isn't quite true.** Some of `libretto-work` is not
+reproducible:
+- the pieces deliberately kept as built (D21's four Solti pieces);
+- the interchange files the user has listened to and accepted.
+
+A full rebuild would give different results, and nothing outside the folder records them.
+Since the folder isn't synced, it also has **no backup** today. The `accepted/` records
+below (P4) fix the first half, by keeping accepted results as data with their checks. The
+backup question belongs with D6's revisit, when the external disk arrives (`todo.md`,
+"Later").
+
+The proposed layout:
+
 ```
 libretto/                                    git, pipeline branch
   operas/<opera>/

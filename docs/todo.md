@@ -77,6 +77,10 @@ the end of the session.
 
 - [ ] **Where `libretto-work` lives**: it's Dropbox-ignored and local for now; revisit when
   the external disk arrives. Consider a separate data repo for the working files.
+  **It has no backup**, and part of it can't be rebuilt identically: the accepted
+  interchange files and D21's kept pieces (new-opera-model.md 3.2). Until P4's `accepted/`
+  records exist, a copy of `<opera>/interchange/` and `<opera>/timed/` is the only
+  protection.
 
 ## Done
 
