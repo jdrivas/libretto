@@ -5,6 +5,10 @@
 `decisions.md` (D1–D25). Nothing here is decided yet. Where this document proposes a rule, it
 becomes a decision only when the user agrees, and then it goes in `decisions.md`.*
 
+*Updated 2026-11-18: `libretto-work` moved from Dropbox to Google Drive on the external disk,
+and the uv cache moved beside it, outside Drive (D26, D27). Section 3.2 has the locations and
+reasons; sections 1.1 and 1.3 have the paths.*
+
 **Sources.** libretto `pipeline` at ba5013d, roon-rd `libretto-number-match` at e4ba2a0
 (master e54ed2d, 1.5.0), and the files on disk on 2026-11-18. Everything marked
 **checked** was confirmed against code or files for this document. Everything marked
@@ -61,7 +65,7 @@ with its fields, time bases and quirks. The links below go to its entries.
 | Recordings, FLAC | `~/Dropbox/Audio/...` (read-only) | Solti 1981 (32 tracks), Currentzis 2014 (83 tracks) |
 | Libretto text | none: the sung text comes from the score (D3) | Da Ponte's libretto consulted only for missed speaker cues (D16) |
 | Opera config | `operas/figaro/opera.toml` | hand-written: score paths, recordings, cast labels, one timing exception |
-| Model weights | `libretto-work/.cache` (Demucs, MMS_FA) | copied once, run offline |
+| Model weights | `libretto-work/.cache` (Demucs, MMS_FA); in Google Drive since D27, because `config.tool_env` derives the path from `work_root` | copied once, run offline |
 
 ### 1.2 Steps
 
@@ -90,7 +94,10 @@ recordings only.
 ### 1.3 Where roon-rd consumes the output
 
 - **Loading.** roon-rd is started with
-  `--libretto-dir <work_root>/figaro/interchange`. It loads every
+  `--libretto-dir <work_root>/figaro/interchange`. Since D27 that is
+  `--libretto-dir "/Volumes/JDR Desktop Attached/Google Drive/Projects/roon-rd/Libretto/libretto-work/figaro/interchange"`:
+  quoted, because the path has spaces, and found only while the external disk is mounted.
+  It loads every
   [`*.interchange.json`](#fmt-interchange) under
   that directory, recursively, and indexes each file by its album title and aliases
   (`library.rs:137-235`). Each file's id is its file name, so two files with the same name
@@ -227,9 +234,23 @@ goes in git, and what is generated goes outside it.
   real path, `/Volumes/JDR Desktop Attached/Google Drive/Projects/roon-rd/Libretto/libretto-work`,
   because `~/Google Drive` is a symlink chain and the sandbox matches only real paths. The
   external volume must be mounted for any stage to run, and for roon-rd to find the
-  interchange files.
+  interchange files. Everything in it uploads to Drive, stems included, so the Drive quota
+  matters as operas are added (`todo.md`, "Later").
+- **`libretto-cache/uv`** (`/Volumes/JDR Desktop Attached/libretto-cache/uv`, 1.3 GB) is
+  uv's package cache, set by `UV_CACHE_DIR` in libretto's `.claude/settings.local.json`. It
+  sits on the same external disk, but **outside** My Drive, so it doesn't sync: it can
+  always be downloaded again, and uv rewrites thousands of small files. It moved out of
+  `libretto-work/.uv-cache` on 2026-11-18 (D27). `pipeline/.venv` doesn't depend on it;
+  only `uv sync` and `uv run` use it.
 - **`libretto-scratch/`** holds the experiment-era code and the licensed score PDFs
   (`Barenreiter/`). `opera.toml` points at the PDF there.
+
+| Folder | Real path | In git | Synced to |
+|---|---|---|---|
+| `libretto/` | `/Users/jdr/Dropbox/Development/rust/libretto` | yes | Dropbox |
+| `libretto-scratch/` | `/Users/jdr/Dropbox/Development/rust/libretto-scratch` | yes, except the score PDFs (`Barenreiter/` is git-ignored) | Dropbox |
+| `libretto-work/` | `/Volumes/JDR Desktop Attached/Google Drive/Projects/roon-rd/Libretto/libretto-work` | no | Google Drive |
+| `libretto-cache/uv` | `/Volumes/JDR Desktop Attached/libretto-cache/uv` | no | nothing |
 
 **The weak spot: "it can be rebuilt" isn't quite true.** Some of `libretto-work` is not
 reproducible:
@@ -257,13 +278,17 @@ libretto/                                    git, pipeline branch
   pipeline/                 the tool
   docs/                     method, decisions, todo, this model
 
-libretto-work/                               not in git; licensed and bulky
+libretto-work/                               not in git; licensed and bulky;
+                                             Google Drive on the external disk (D27)
+  .cache/                   model weights (Demucs, MMS_FA)
   <opera>/
     decode/ score/ clean/ placement/ timed/ recordings/   as now
     state/<stage>/<unit>.json    inputs' hashes + tool version for each output
     accepted/<rec>.json          accepted pieces: their output hash, checks, date, who
     report/<rec>.md              checks, flags, spot-check list
   published/<opera>--<rec>.interchange.json   the one directory roon-rd reads
+
+libretto-cache/uv/                           uv's package cache; same disk, outside Drive
 ```
 
 The changes from today:

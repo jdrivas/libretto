@@ -38,17 +38,12 @@ the end of the session.
   moment (`is_next_allowed` false), and the output has no volume control. First log Roon's
   reply, `is_next_allowed` and the output's volume type, and have the user tap once. Then
   grey out the buttons Roon won't act on. Found 2026-11-17.
-- [ ] **Point roon-rd at the moved `libretto-work`** (D27). The user edits these; a
-  libretto session can't write roon-rd's settings:
-  - the launch command: `--libretto-dir "/Volumes/JDR Desktop Attached/Google Drive/Projects/roon-rd/Libretto/libretto-work/figaro/interchange"` (quoted: the path has spaces);
-  - `config.toml` line 18 (stale since February) to the same path: a roon-rd commit, which
-    needs the user's approval;
-  - `.claude/settings.local.json`: `UV_CACHE_DIR` to
-    `/Volumes/JDR Desktop Attached/libretto-cache/uv` (otherwise uv there recreates
-    `~/Dropbox/Development/libretto-work/`), the `additionalDirectories` entry to the new
-    path, and drop the experiment-era `libretto-work` read and `rm` entries;
-  - `.claude/settings.json`: the `additionalDirectories` entry to the new path; drop the
-    two `finale2` read entries.
+- [ ] **Point roon-rd's `config.toml` at the moved `libretto-work`** (D27). Line 18 has
+  pointed at a February file since then; set `libretto_dir` to
+  `/Volumes/JDR Desktop Attached/Google Drive/Projects/roon-rd/Libretto/libretto-work/figaro/interchange`.
+  It's a roon-rd commit, which needs the user's approval. Until then, launch with
+  `--libretto-dir "<that path>"` (quoted: the path has spaces). roon-rd's `.claude`
+  settings were switched to the new paths on 2026-11-18.
 
 ## Così checkpoint (before Così starts)
 
