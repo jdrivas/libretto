@@ -41,6 +41,10 @@ the end of the session.
 
 ## Così checkpoint (before Così starts)
 
+- [ ] **New-opera model: discuss and decide.** Proposal in `docs/new-opera-model.md`:
+  checkpoints G0-G7, a definition of "done", and the code changes P1-P8. Its section 6
+  lists the decisions. Così fails at `add-recording` today: the file names' Unicode form
+  and "Act 1" titles (section 4.1).
 - [ ] **D7: gloss in the tool.** Discuss moving the verse list, phrase split and gloss from
   the session into the tool (Claude API).
 - [ ] **D21 / D24: before any re-time of all pieces.** A full re-time would cut Solti's No. 9
