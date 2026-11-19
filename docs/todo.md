@@ -79,9 +79,15 @@ the end of the session.
   is 2.8 GB, mostly stems; the whole repertoire was projected at 80-240 GB of stems. Check
   the Drive plan before Wagner, or keep stems in a folder outside My Drive (a small
   `work_root` split).
-- [ ] **Old uv cache in Drive:** `libretto-work/.uv-cache` moved with the folder but is no
-  longer used (`UV_CACHE_DIR` is now `/Volumes/JDR Desktop Attached/libretto-cache/uv`).
-  Delete it so it stops syncing.
+- [ ] **Move the uv cache out of Drive** (D27). `UV_CACHE_DIR` is now
+  `/Volumes/JDR Desktop Attached/libretto-cache/uv`, outside My Drive so it doesn't sync,
+  but that folder doesn't exist yet, and a sandboxed session can't create it: `uv` fails
+  until it does. The old cache, `libretto-work/.uv-cache` (1.3 GB), is still in Drive.
+  Move it rather than delete it, which keeps the downloaded packages (same disk, so it's
+  an instant rename):
+  `mkdir -p "/Volumes/JDR Desktop Attached/libretto-cache" && mv "/Volumes/JDR Desktop Attached/Google Drive/Projects/roon-rd/Libretto/libretto-work/.uv-cache" "/Volumes/JDR Desktop Attached/libretto-cache/uv"`.
+  Also set roon-rd's `settings.local.json` `UV_CACHE_DIR` to the new path, or uv there
+  recreates `~/Dropbox/Development/libretto-work/`.
 
 ## Done
 
