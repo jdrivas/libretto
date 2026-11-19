@@ -38,6 +38,17 @@ the end of the session.
   moment (`is_next_allowed` false), and the output has no volume control. First log Roon's
   reply, `is_next_allowed` and the output's volume type, and have the user tap once. Then
   grey out the buttons Roon won't act on. Found 2026-11-17.
+- [ ] **Point roon-rd at the moved `libretto-work`** (D27). The user edits these; a
+  libretto session can't write roon-rd's settings:
+  - the launch command: `--libretto-dir "/Volumes/JDR Desktop Attached/Google Drive/Projects/roon-rd/Libretto/libretto-work/figaro/interchange"` (quoted: the path has spaces);
+  - `config.toml` line 18 (stale since February) to the same path: a roon-rd commit, which
+    needs the user's approval;
+  - `.claude/settings.local.json`: `UV_CACHE_DIR` to
+    `/Volumes/JDR Desktop Attached/libretto-cache/uv` (otherwise uv there recreates
+    `~/Dropbox/Development/libretto-work/`), the `additionalDirectories` entry to the new
+    path, and drop the experiment-era `libretto-work` read and `rm` entries;
+  - `.claude/settings.json`: the `additionalDirectories` entry to the new path; drop the
+    two `finale2` read entries.
 
 ## Così checkpoint (before Così starts)
 
@@ -79,18 +90,11 @@ the end of the session.
   is 2.8 GB, mostly stems; the whole repertoire was projected at 80-240 GB of stems. Check
   the Drive plan before Wagner, or keep stems in a folder outside My Drive (a small
   `work_root` split).
-- [ ] **Move the uv cache out of Drive** (D27). `UV_CACHE_DIR` is now
-  `/Volumes/JDR Desktop Attached/libretto-cache/uv`, outside My Drive so it doesn't sync,
-  but that folder doesn't exist yet, and a sandboxed session can't create it: `uv` fails
-  until it does. The old cache, `libretto-work/.uv-cache` (1.3 GB), is still in Drive.
-  Move it rather than delete it, which keeps the downloaded packages (same disk, so it's
-  an instant rename):
-  `mkdir -p "/Volumes/JDR Desktop Attached/libretto-cache" && mv "/Volumes/JDR Desktop Attached/Google Drive/Projects/roon-rd/Libretto/libretto-work/.uv-cache" "/Volumes/JDR Desktop Attached/libretto-cache/uv"`.
-  Also set roon-rd's `settings.local.json` `UV_CACHE_DIR` to the new path, or uv there
-  recreates `~/Dropbox/Development/libretto-work/`.
 
 ## Done
 
+- 2026-11-18: uv cache moved out of Drive to `/Volumes/JDR Desktop Attached/libretto-cache/uv`
+  (1.3 GB, packages kept; D27).
 - 2026-11-18: `libretto-work` moved to Google Drive on the external disk; config, settings
   and docs updated (D27). Replaces "Where `libretto-work` lives".
 - 2026-11-17: roon-rd 1.5.0 released: the sung-text viewer, libretto track matching, and
