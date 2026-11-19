@@ -238,3 +238,19 @@ The question came up when `libretto-work` moved into Google Drive, which syncs t
 servers. *Alternatives:* keep the licensed outputs (`decode/`, `score/`) in a second root
 outside any synced drive (a small code change). *Revisit:* if a licence for a later score
 (Schott, for Wagner) says otherwise.
+
+### D27. `libretto-work` moves to Google Drive on the external disk (2026-11-18)
+The user moved `libretto-work` from `~/Dropbox/Development/libretto-work` (Dropbox-ignored,
+no backup) to `~/Google Drive/My Drive/Projects/roon-rd/Libretto/libretto-work`. Its real path
+is `/Volumes/JDR Desktop Attached/Google Drive/Projects/roon-rd/Libretto/libretto-work`, and
+that is the path `work_root` and the sandbox settings use. The uv cache moves outside Drive,
+to `/Volumes/JDR Desktop Attached/libretto-cache/uv`, so it isn't synced. This is D6's
+revisit ("when the external disk arrives"). *Why:* the external disk arrived, and the folder
+had no backup. Drive gives it one, with file history, which covers the accepted results
+that a rebuild wouldn't reproduce. Storing licensed decodes there is allowed (D26).
+*Consequences:* the volume must be mounted for the pipeline and for roon-rd's libretto
+directory. Everything in the folder uploads, stems included, so the Drive quota matters as
+operas are added (todo.md). The Demucs and MMS_FA weights in `.cache` stay in the folder,
+because `config.tool_env` derives their path from `work_root`. *Alternatives:* a separate
+data repo (from D6's note); keeping stems outside My Drive. *Revisit:* if the Drive quota
+or sync load becomes a problem.

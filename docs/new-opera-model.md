@@ -211,20 +211,23 @@ goes in git, and what is generated goes outside it.
   everything authored and small: the code, each opera's config, the session-written texts,
   STATUS.md and the docs. These need history, and some can't be recreated: the texts are
   hand work.
-- **`libretto-work/`** (`~/Dropbox/Development/libretto-work`, one level above `rust/`) is
-  not in git and is excluded from Dropbox sync. It holds everything the pipeline generates:
-  decodes, stems, placements, timings and interchange files. Figaro's folder is 2.8 GB.
-  It's outside the repo for three reasons:
+- **`libretto-work/`** is not in git. Since 2026-11-18 (D27) it lives in Google Drive on
+  the external disk: `~/Google Drive/My Drive/Projects/roon-rd/Libretto/libretto-work`.
+  Before that it sat in `~/Dropbox/Development/libretto-work`, excluded from Dropbox sync.
+  It holds everything the pipeline generates: decodes, stems, placements, timings and
+  interchange files. Figaro's folder is 2.8 GB. It's outside the repo for three reasons:
   1. **Licensing.** The decodes are the score in machine-readable form. Kept outside the
-     repo, a careless `git add` or push can't publish them.
-  2. **Size.** The stems alone are 2.2 GB, too big for git, and not worth syncing through
-     Dropbox.
+     repo, a careless `git add` or push can't publish them. Private cloud storage is
+     allowed (D26).
+  2. **Size.** The stems alone are 2.2 GB, too big for git.
   3. **It can be rebuilt** from the score, the audio and the repo, so losing it costs
      machine time, not work.
 
   The pipeline finds it through `work_root` in `pipeline/config.toml`. It is given as the
-  real path, because `~/Development` is a symlink into Dropbox and the sandbox matches only
-  real paths.
+  real path, `/Volumes/JDR Desktop Attached/Google Drive/Projects/roon-rd/Libretto/libretto-work`,
+  because `~/Google Drive` is a symlink chain and the sandbox matches only real paths. The
+  external volume must be mounted for any stage to run, and for roon-rd to find the
+  interchange files.
 - **`libretto-scratch/`** holds the experiment-era code and the licensed score PDFs
   (`Barenreiter/`). `opera.toml` points at the PDF there.
 
@@ -234,10 +237,9 @@ reproducible:
 - the interchange files the user has listened to and accepted.
 
 A full rebuild would give different results, and nothing outside the folder records them.
-Since the folder isn't synced, it also has **no backup** today. The `accepted/` records
-below (P4) fix the first half, by keeping accepted results as data with their checks. The
-backup question belongs with D6's revisit, when the external disk arrives (`todo.md`,
-"Later").
+Google Drive now syncs the folder, so these files are backed up, with Drive's file history
+(D27). That doesn't record *which* results were accepted, though. The `accepted/` records
+below (P4) do: they keep accepted results as data, with their checks.
 
 The proposed layout:
 

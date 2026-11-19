@@ -75,15 +75,18 @@ the end of the session.
 
 ## Later
 
-- [ ] **Where `libretto-work` lives**: it's Dropbox-ignored and local for now; revisit when
-  the external disk arrives. Consider a separate data repo for the working files.
-  **It has no backup**, and part of it can't be rebuilt identically: the accepted
-  interchange files and D21's kept pieces (new-opera-model.md 3.2). Until P4's `accepted/`
-  records exist, a copy of `<opera>/interchange/` and `<opera>/timed/` is the only
-  protection.
+- [ ] **Google Drive quota for `libretto-work`** (D27): it now syncs to Google Drive. Figaro
+  is 2.8 GB, mostly stems; the whole repertoire was projected at 80-240 GB of stems. Check
+  the Drive plan before Wagner, or keep stems in a folder outside My Drive (a small
+  `work_root` split).
+- [ ] **Old uv cache in Drive:** `libretto-work/.uv-cache` moved with the folder but is no
+  longer used (`UV_CACHE_DIR` is now `/Volumes/JDR Desktop Attached/libretto-cache/uv`).
+  Delete it so it stops syncing.
 
 ## Done
 
+- 2026-11-18: `libretto-work` moved to Google Drive on the external disk; config, settings
+  and docs updated (D27). Replaces "Where `libretto-work` lives".
 - 2026-11-17: roon-rd 1.5.0 released: the sung-text viewer, libretto track matching, and
   libretto mode on the main page.
 - 2026-11-16: all of Figaro built, both recordings, 3,327 lines each; Act IV spot check

@@ -27,8 +27,12 @@ viewer. Start a session here and say which opera; read `docs/todo.md` (what's ne
   decoded data in interchange files (the sung text, an `ocr` field) is fine.
 - **Audio library is read-only.** Never modify or write anything under `~/Dropbox/Audio`.
 - **Bulk and licensed outputs go to `work_root`** (`pipeline/config.toml`), never into git.
-  `~/Development` is a symlink to `~/Dropbox/Development`: use the real path in settings,
-  because the sandbox matches real paths only.
+  Since 2026-11-18 (D27) that is `libretto-work` in Google Drive on the external disk:
+  `~/Google Drive/My Drive/Projects/roon-rd/Libretto/libretto-work`, whose real path is
+  `/Volumes/JDR Desktop Attached/Google Drive/Projects/roon-rd/Libretto/libretto-work`.
+  Use real paths in settings, because the sandbox matches real paths only (`~/Development`
+  is likewise a symlink to `~/Dropbox/Development`). The uv cache is outside Drive, in
+  `/Volumes/JDR Desktop Attached/libretto-cache/uv`.
 - **No hand-marking.** Timings come from the pipeline. Never propose tapping along or
   marking times by hand; don't re-propose snapping to anchors.
 - **Every line accounted for.** After any change to timed lines or the viewer, check that no

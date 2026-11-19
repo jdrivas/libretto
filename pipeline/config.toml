@@ -1,5 +1,6 @@
 # Machine paths for libretto-pipeline.
 # work_root holds everything bulky or licensed: score decodes, audio, stems, timings.
-# Use the real path: ~/Development is a symlink into Dropbox, and the sandbox matches
-# real paths only.
-work_root = "/Users/jdr/Dropbox/Development/libretto-work"
+# It lives in Google Drive on the external disk (moved 2026-11-18, decisions.md D27).
+# Use the real path: ~/Google Drive is a symlink chain onto the external volume, and the
+# sandbox matches real paths only. The volume must be mounted for any stage to run.
+work_root = "/Volumes/JDR Desktop Attached/Google Drive/Projects/roon-rd/Libretto/libretto-work"
