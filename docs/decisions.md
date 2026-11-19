@@ -254,3 +254,15 @@ operas are added (todo.md). The Demucs and MMS_FA weights in `.cache` stay in th
 because `config.tool_env` derives their path from `work_root`. *Alternatives:* a separate
 data repo (from D6's note); keeping stems outside My Drive. *Revisit:* if the Drive quota
 or sync load becomes a problem.
+
+### D28. `pipeline` merged into `main`; one working branch per piece of work (2026-11-18)
+`pipeline` was fast-forwarded into `main` and tagged `figaro-built`: all of Figaro built,
+read by roon-rd 1.5.0. From here `main` holds the accepted state. Each piece of work gets
+its own branch off `main` (`cosi` for Così, `figaro-fixes` for what the full listening
+turns up), merged back with a fast-forward when accepted. Commits on any working branch are
+pre-authorised, as they were on `pipeline`; merging into `main` and pushing need the
+user's word. *Why:* `main` still showed the February state; Così should start from a clean
+base, with its own start and end; and `pipeline` is also a directory name, which makes git
+commands ambiguous. *Alternatives:* carry on with Così on `pipeline` (mixes two operas'
+history); wait for the D17 fixes before merging (holds up the merge for an open-ended
+listening). The user agreed (2026-11-18).

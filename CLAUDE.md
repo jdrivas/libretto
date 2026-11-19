@@ -53,6 +53,10 @@ viewer. Start a session here and say which opera; read `docs/todo.md` (what's ne
   next?" from this file, and don't keep a separate list in STATUS.md or in memory.
 - **Discussion first** for non-trivial decisions; no code until the user says go. Commit only
   when asked, on a branch, never pushed unless asked. Never bump a version.
+- **Branches (D28).** `main` holds the accepted state; never commit to it directly. Work
+  happens on a working branch (`cosi`, `figaro-fixes`, …) off `main`, merged back with a
+  fast-forward when the work is accepted. Commits on any working branch are pre-authorised;
+  merging into `main` and pushing still need the user's word.
 
 ## Running
 
