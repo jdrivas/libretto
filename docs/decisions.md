@@ -227,3 +227,14 @@ the build history, and this log keeps the reasons. *Why:* the plan had spread ov
 STATUS.md, this log, a stale February todo.md and Claude's memory, and the roon-rd
 button fix was only in memory. *Alternatives:* a list in each STATUS.md; a to-do file in
 roon-rd as well. *Revisit:* no.
+
+### D26. Licensed scores and decodes may be stored on the user's private cloud drives (2026-11-18)
+The score PDFs, full decodes and other licensed working files may be kept in the user's own
+private cloud storage: Google Drive (where `libretto-work` moved on 2026-11-18) and
+Dropbox (where the score PDFs already live). The rule against uploading means sharing with
+anyone else, or publishing: never a share link, a public location, a commit or an artifact.
+*Why:* the user confirmed that the licence provides for storage on private Google drives.
+The question came up when `libretto-work` moved into Google Drive, which syncs to Google's
+servers. *Alternatives:* keep the licensed outputs (`decode/`, `score/`) in a second root
+outside any synced drive (a small code change). *Revisit:* if a licence for a later score
+(Schott, for Wagner) says otherwise.

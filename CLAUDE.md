@@ -20,7 +20,9 @@ viewer. Start a session here and say which opera; read `docs/todo.md` (what's ne
 ## Rules that hold in every session
 
 - **Licensed scores.** The user's Bärenreiter (and later Schott) PDFs are personal licensed
-  copies. Never share, upload or commit a score PDF or a full decode. A single page or small
+  copies. Never share, publish or commit a score PDF or a full decode: no share links, public
+  locations or artifacts. Storing them on the user's own private cloud drives (Google Drive,
+  Dropbox) is allowed (D26). A single page or small
   excerpt for study is fine; crop the "Issued for" footer and the margin order ID. Small
   decoded data in interchange files (the sung text, an `ocr` field) is fine.
 - **Audio library is read-only.** Never modify or write anything under `~/Dropbox/Audio`.
