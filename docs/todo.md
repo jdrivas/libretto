@@ -8,7 +8,7 @@ Keep it current: when work finishes an item, tick it and move it to "Done" in th
 commit. When a session turns up something to do later, add it here. Don't let it wait for
 the end of the session.
 
-*Last updated 2026-11-17.*
+*Last updated 2026-11-18.*
 
 ## Now
 
@@ -46,6 +46,16 @@ the end of the session.
   settings were switched to the new paths on 2026-11-18.
 
 ## Così checkpoint (before Così starts)
+
+- [ ] **Where scores and published librettos live: discuss and decide.** Proposal in
+  `docs/data-locations-proposal.md` (2026-11-18):
+  - scores move out of `libretto-scratch` into a library folder beside the audio;
+  - roon-rd gets a default libretto folder that it rescans;
+  - `publish` writes to `published/`, and a new `install` step copies the files to this Mac
+    and to the house machine.
+
+  It has three open questions for the user, starting with the house machine's OS and SSH
+  access. If agreed, it replaces the `config.toml` item under "roon-rd".
 
 - [ ] **New-opera model: discuss and decide.** Proposal in `docs/new-opera-model.md`:
   checkpoints G0-G7, a definition of "done", and the code changes P1-P8. Its section 6
